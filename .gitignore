@@ -338,3 +338,12 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# Omitir la carpeta vs
+.vs/
+
+# Omitir la carpeta bin
+bin/
+
+# Omitir la carpeta obj
+obj/
