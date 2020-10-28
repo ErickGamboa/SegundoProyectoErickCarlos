@@ -10,16 +10,16 @@ namespace Entities
     {
         public int Id { get; set; }
         public string numeroVehiculo;
-        public int IdConductor { get; set; }
+        public string CodigoConductor { get; set; }
         public bool Disponible { get; set; }
 
         public TransporteE() { }
 
-        public TransporteE(int id, string numeroVehiculo, int idConductor, bool disponible)
+        public TransporteE(int id, string numeroVehiculo, string codigoConductor, bool disponible)
         {
             Id = id;
             NumeroVehiculo = numeroVehiculo;
-            IdConductor = idConductor;
+            CodigoConductor = codigoConductor;
             Disponible = disponible;
         }
 
