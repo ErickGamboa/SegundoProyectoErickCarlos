@@ -9,23 +9,22 @@ namespace Entities
     public class PedidoCompletoE : PedidoE
     {
         public string CodigoVendedor { get; set; }
-        public string NombreVendedor { get; set; }
         public LinkedList<LinkedList<object>> Productos { get; set; }
         public DateTime HoraAtencion { get; set; }
         public DateTime HoraVenta { get; set; }
 
         public PedidoCompletoE() { }
 
-        public PedidoCompletoE(int id, string codigoVendedor, string nombreVendedor, string cedulaCliente,
+        public PedidoCompletoE(int id, string codigoVendedor, string cedulaCliente,
             LinkedList<LinkedList<object>> productos, LinkedList<LinkedList<object>> servicios,
             DateTime horaAtencion, DateTime horaVenta, DateTime horaRecibidoBodega, DateTime horaSalidaBodega,
-            DateTime horaIniciaTransporte, DateTime horaFinalizaTransporte)
-            : base(id, cedulaCliente, servicios, horaRecibidoBodega, horaSalidaBodega,
-                  horaIniciaTransporte, horaFinalizaTransporte)
+            string codigoConductor, DateTime horaIniciaTransporte, DateTime horaFinalizaTransporte,
+            DateTime fechaFactura, string codigoCajero, double subTotal, double iva, double total)
+            : base(id, cedulaCliente, servicios, horaRecibidoBodega, horaSalidaBodega, codigoConductor,
+                  horaIniciaTransporte, horaFinalizaTransporte, fechaFactura, codigoCajero, subTotal, iva, total)
         {
             Id = id;
             CodigoVendedor = codigoVendedor;
-            NombreVendedor = nombreVendedor;
             CedulaCliente = cedulaCliente;
             Productos = productos;
             Servicios = servicios;
@@ -33,9 +32,14 @@ namespace Entities
             HoraVenta = horaVenta;
             HoraRecibidoBodega = horaRecibidoBodega;
             HoraSalidaBodega = horaSalidaBodega;
+            CodigoConductor = codigoConductor;
             HoraIniciaTransporte = horaIniciaTransporte;
             HoraFinalizaTransporte = horaFinalizaTransporte;
+            FechaFactura = fechaFactura;
+            CodigoCajero = codigoCajero;
+            SubTotal = subTotal;
+            IVA = iva;
+            Total = total;
         }
-            
     }
 }
