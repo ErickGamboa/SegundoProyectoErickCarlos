@@ -347,3 +347,6 @@ bin/
 
 # Omitir la carpeta obj
 obj/
+
+# Omitir el archivo App.config
+App.config
