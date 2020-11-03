@@ -149,5 +149,23 @@
   <ItemGroup>
     <None Include="Resources\clock_24px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buy_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_shopping_cart_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear_shopping_cart_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout_rounded_left_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping_cart_24px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
