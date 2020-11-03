@@ -37,7 +37,8 @@
             this.btnRegistrarReg = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCedulaReg = new System.Windows.Forms.TextBox();
-            this.prueba = new System.Windows.Forms.Label();
+            this.lblMensajeRegistrar = new System.Windows.Forms.Label();
+            this.lblEjemploCed = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cbxTipoUsuReg
@@ -87,6 +88,7 @@
             // 
             this.TxtContraReg.Location = new System.Drawing.Point(214, 136);
             this.TxtContraReg.Name = "TxtContraReg";
+            this.TxtContraReg.PasswordChar = '*';
             this.TxtContraReg.Size = new System.Drawing.Size(147, 20);
             this.TxtContraReg.TabIndex = 4;
             // 
@@ -127,20 +129,30 @@
             this.txtCedulaReg.Size = new System.Drawing.Size(147, 20);
             this.txtCedulaReg.TabIndex = 8;
             // 
-            // prueba
+            // lblMensajeRegistrar
             // 
-            this.prueba.AutoSize = true;
-            this.prueba.Location = new System.Drawing.Point(102, 252);
-            this.prueba.Name = "prueba";
-            this.prueba.Size = new System.Drawing.Size(0, 13);
-            this.prueba.TabIndex = 9;
+            this.lblMensajeRegistrar.AutoSize = true;
+            this.lblMensajeRegistrar.Location = new System.Drawing.Point(91, 251);
+            this.lblMensajeRegistrar.Name = "lblMensajeRegistrar";
+            this.lblMensajeRegistrar.Size = new System.Drawing.Size(0, 13);
+            this.lblMensajeRegistrar.TabIndex = 9;
+            // 
+            // lblEjemploCed
+            // 
+            this.lblEjemploCed.AutoSize = true;
+            this.lblEjemploCed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEjemploCed.Location = new System.Drawing.Point(229, 114);
+            this.lblEjemploCed.Name = "lblEjemploCed";
+            this.lblEjemploCed.Size = new System.Drawing.Size(0, 13);
+            this.lblEjemploCed.TabIndex = 10;
             // 
             // WindowRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(476, 286);
-            this.Controls.Add(this.prueba);
+            this.Controls.Add(this.lblEjemploCed);
+            this.Controls.Add(this.lblMensajeRegistrar);
             this.Controls.Add(this.txtCedulaReg);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnRegistrarReg);
@@ -169,6 +181,7 @@
         private System.Windows.Forms.Button btnRegistrarReg;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCedulaReg;
-        private System.Windows.Forms.Label prueba;
+        private System.Windows.Forms.Label lblMensajeRegistrar;
+        private System.Windows.Forms.Label lblEjemploCed;
     }
 }

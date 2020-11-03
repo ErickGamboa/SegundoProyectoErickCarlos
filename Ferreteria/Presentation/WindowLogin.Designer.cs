@@ -30,11 +30,12 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtUsuarioLogin = new System.Windows.Forms.TextBox();
+            this.txtContraLogin = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.prueba = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -57,20 +58,20 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Contraseña";
             // 
-            // textBox1
+            // txtUsuarioLogin
             // 
-            this.textBox1.Location = new System.Drawing.Point(256, 70);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(173, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtUsuarioLogin.Location = new System.Drawing.Point(256, 70);
+            this.txtUsuarioLogin.Name = "txtUsuarioLogin";
+            this.txtUsuarioLogin.Size = new System.Drawing.Size(173, 20);
+            this.txtUsuarioLogin.TabIndex = 2;
             // 
-            // textBox2
+            // txtContraLogin
             // 
-            this.textBox2.Location = new System.Drawing.Point(256, 133);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(173, 20);
-            this.textBox2.TabIndex = 3;
+            this.txtContraLogin.Location = new System.Drawing.Point(256, 133);
+            this.txtContraLogin.Name = "txtContraLogin";
+            this.txtContraLogin.PasswordChar = '*';
+            this.txtContraLogin.Size = new System.Drawing.Size(173, 20);
+            this.txtContraLogin.TabIndex = 3;
             // 
             // label3
             // 
@@ -92,6 +93,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Acceder";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
@@ -104,16 +106,25 @@
             this.label4.Text = "Ingreso de cliente";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
+            // prueba
+            // 
+            this.prueba.AutoSize = true;
+            this.prueba.Location = new System.Drawing.Point(49, 78);
+            this.prueba.Name = "prueba";
+            this.prueba.Size = new System.Drawing.Size(0, 13);
+            this.prueba.TabIndex = 7;
+            // 
             // WindowLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(533, 249);
+            this.Controls.Add(this.prueba);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtContraLogin);
+            this.Controls.Add(this.txtUsuarioLogin);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "WindowLogin";
@@ -128,10 +139,11 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtUsuarioLogin;
+        private System.Windows.Forms.TextBox txtContraLogin;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label prueba;
     }
 }

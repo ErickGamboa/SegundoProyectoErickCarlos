@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Logic;
 
 namespace Presentation
 {
@@ -16,7 +17,7 @@ namespace Presentation
         {
             InitializeComponent();
         }
-
+        LLogin login = new LLogin();
         private void label3_Click(object sender, EventArgs e)
         {
             WindowRegister wregister = new WindowRegister();
@@ -27,6 +28,12 @@ namespace Presentation
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            prueba.Text = login.Login(txtUsuarioLogin.Text, txtContraLogin.Text);
         }
     }
 }

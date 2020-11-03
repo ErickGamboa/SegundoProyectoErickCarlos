@@ -49,15 +49,22 @@ namespace Presentation
                 codigo += "CAJ" + Convert.ToString(cedula[6]) + Convert.ToString(cedula[7]) + Convert.ToString(cedula[8]);
 
             }
+            else if (tipo.Equals("Administrador") && cedula.Length == 9)
+            {
+                codigo += "---";
+            }
             else
             {
-                prueba.Text = "La cédula debe tener los 9 dígitos";
                 return null;
             }
 
             return codigo;
         }
-
+        private void limpiarVentanaReg() {
+            txtCedulaReg.Text = "";
+            TxtContraReg.Text = "";
+            txtNombreReg.Text = "";
+        }
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -70,9 +77,15 @@ namespace Presentation
 
         private void btnRegistrarReg_Click(object sender, EventArgs e)
         {
-            if (generarCodigo() != null &&) {
+            if (generarCodigo() != null && txtCedulaReg.Text != "" && TxtContraReg.Text != "" && txtNombreReg.Text != "")
+            {
                 usuario.registrarUsuarios(generarCodigo(), txtNombreReg.Text, TxtContraReg.Text, txtCedulaReg.Text, cbxTipoUsuReg.Text);
-                prueba.Text = "Registro exitoso";
+                lblMensajeRegistrar.Text = "Registro exitoso";
+                limpiarVentanaReg();
+            }
+            else {
+                lblMensajeRegistrar.Text = "Debe llenar correctamente todos los campos";
+                lblEjemploCed.Text = "Ejemplo: 207910145";
             }
 
 
