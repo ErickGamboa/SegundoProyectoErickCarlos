@@ -1,6 +1,6 @@
 ﻿namespace Presentation
 {
-    partial class windowSeller
+    partial class WindowSeller
     {
         /// <summary>
         /// Required designer variable.

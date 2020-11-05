@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Presentation
 {
-    public partial class windowSeller : Form
+    public partial class WindowSeller : Form
     {
         private PedidoCompletoE pc;
         private PedidoCompletoProductoE pcp;
@@ -29,7 +29,7 @@ namespace Presentation
         private double iva;
         private double total;
 
-        public windowSeller(UsuarioE u)
+        public WindowSeller(UsuarioE u)
         {
             InitializeComponent();
             this.u = u;

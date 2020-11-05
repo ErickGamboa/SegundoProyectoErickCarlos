@@ -28,45 +28,71 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button4 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgvPedidos = new System.Windows.Forms.DataGridView();
+            this.btnGenerarFactura = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
             this.SuspendLayout();
             // 
-            // button4
+            // dgvPedidos
             // 
-            this.button4.Location = new System.Drawing.Point(320, 312);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(117, 23);
-            this.button4.TabIndex = 16;
-            this.button4.Text = "No se";
-            this.button4.UseVisualStyleBackColor = true;
+            this.dgvPedidos.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPedidos.Location = new System.Drawing.Point(0, 53);
+            this.dgvPedidos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvPedidos.Name = "dgvPedidos";
+            this.dgvPedidos.RowHeadersVisible = false;
+            this.dgvPedidos.Size = new System.Drawing.Size(838, 388);
+            this.dgvPedidos.TabIndex = 15;
             // 
-            // dataGridView1
+            // btnGenerarFactura
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(106, 32);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(570, 254);
-            this.dataGridView1.TabIndex = 15;
+            this.btnGenerarFactura.Image = global::Presentation.Properties.Resources.receipt_24px;
+            this.btnGenerarFactura.Location = new System.Drawing.Point(420, 13);
+            this.btnGenerarFactura.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGenerarFactura.Name = "btnGenerarFactura";
+            this.btnGenerarFactura.Size = new System.Drawing.Size(180, 32);
+            this.btnGenerarFactura.TabIndex = 16;
+            this.btnGenerarFactura.Text = "Generar Factura";
+            this.btnGenerarFactura.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGenerarFactura.UseVisualStyleBackColor = true;
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.Image = global::Presentation.Properties.Resources.logout_rounded_left_24px;
+            this.btnLogOut.Location = new System.Drawing.Point(230, 13);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(180, 32);
+            this.btnLogOut.TabIndex = 17;
+            this.btnLogOut.Text = "Cerrar Sesión";
+            this.btnLogOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLogOut.UseVisualStyleBackColor = true;
             // 
             // WindowCashier
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(783, 366);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.dataGridView1);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(838, 441);
+            this.ControlBox = false;
+            this.Controls.Add(this.btnLogOut);
+            this.Controls.Add(this.btnGenerarFactura);
+            this.Controls.Add(this.dgvPedidos);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "WindowCashier";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cajero";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnGenerarFactura;
+        private System.Windows.Forms.DataGridView dgvPedidos;
+        private System.Windows.Forms.Button btnLogOut;
     }
 }

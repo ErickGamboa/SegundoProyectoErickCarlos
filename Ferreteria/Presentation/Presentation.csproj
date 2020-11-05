@@ -90,11 +90,11 @@
     <Compile Include="WindowRegister.Designer.cs">
       <DependentUpon>WindowRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="windowSeller.cs">
+    <Compile Include="WindowSeller.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="windowSeller.Designer.cs">
-      <DependentUpon>windowSeller.cs</DependentUpon>
+    <Compile Include="WindowSeller.Designer.cs">
+      <DependentUpon>WindowSeller.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -119,8 +119,8 @@
     <EmbeddedResource Include="WindowRegister.resx">
       <DependentUpon>WindowRegister.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="windowSeller.resx">
-      <DependentUpon>windowSeller.cs</DependentUpon>
+    <EmbeddedResource Include="WindowSeller.resx">
+      <DependentUpon>WindowSeller.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Entities.ProductoE.datasource" />
     <None Include="Properties\Settings.settings">
@@ -166,6 +166,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\shopping_cart_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\receipt_24px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
