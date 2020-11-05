@@ -8,15 +8,15 @@ namespace Entities
 {
     public abstract class VentaE
     {
-        protected int Id { get; set; }
-        protected string Nombre { get; set; }
-        protected string Categoria { get; set; }
-        protected string Descripcion { get; set; }
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Categoria { get; set; }
+        public string Descripcion { get; set; }
         private double precio;
 
-        protected VentaE() { }
+        public VentaE() { }
 
-        protected VentaE(int id, string nombre, string categoria, string descripcion, double precio)
+        public VentaE(int id, string nombre, string categoria, string descripcion, double precio)
         {
             Id = id;
             Nombre = nombre;
@@ -25,7 +25,7 @@ namespace Entities
             Precio = precio;
         }
 
-        protected double Precio
+        public double Precio
         {
             get { return precio; }
             set
