@@ -75,6 +75,7 @@
             this.btnAgregarInicio.Size = new System.Drawing.Size(100, 32);
             this.btnAgregarInicio.TabIndex = 2;
             this.btnAgregarInicio.Text = "Agregar";
+            this.btnAgregarInicio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAgregarInicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAgregarInicio.UseVisualStyleBackColor = true;
             this.btnAgregarInicio.Click += new System.EventHandler(this.btnAgregarInicio_Click);
@@ -88,6 +89,7 @@
             this.btnAgregarFin.Size = new System.Drawing.Size(100, 32);
             this.btnAgregarFin.TabIndex = 5;
             this.btnAgregarFin.Text = "Agregar";
+            this.btnAgregarFin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAgregarFin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAgregarFin.UseVisualStyleBackColor = true;
             this.btnAgregarFin.Click += new System.EventHandler(this.btnAgregarFin_Click);
@@ -166,6 +168,7 @@
             this.btnLogOut.Size = new System.Drawing.Size(132, 53);
             this.btnLogOut.TabIndex = 2;
             this.btnLogOut.Text = "Cerrar Sesión";
+            this.btnLogOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLogOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);

@@ -39,7 +39,6 @@
             this.dgvConsultaServicio = new System.Windows.Forms.DataGridView();
             this.tpgTomarOrden = new System.Windows.Forms.TabPage();
             this.btnLogOut = new System.Windows.Forms.Button();
-            this.btnNuevaOrden = new System.Windows.Forms.Button();
             this.pnlServicio = new System.Windows.Forms.Panel();
             this.lblCantidadServicio = new System.Windows.Forms.Label();
             this.btnAgregarCarritoServicio = new System.Windows.Forms.Button();
@@ -77,6 +76,7 @@
             this.tpgCarritoCompras = new System.Windows.Forms.TabPage();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.dgvCarritoCompras = new System.Windows.Forms.DataGridView();
+            this.btnNuevaOrden = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tpgConsultaProductos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaProducto)).BeginInit();
@@ -213,8 +213,8 @@
             // tpgTomarOrden
             // 
             this.tpgTomarOrden.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tpgTomarOrden.Controls.Add(this.btnLogOut);
             this.tpgTomarOrden.Controls.Add(this.btnNuevaOrden);
+            this.tpgTomarOrden.Controls.Add(this.btnLogOut);
             this.tpgTomarOrden.Controls.Add(this.pnlServicio);
             this.tpgTomarOrden.Controls.Add(this.pnlProducto);
             this.tpgTomarOrden.Controls.Add(this.pnlInformacion);
@@ -234,21 +234,10 @@
             this.btnLogOut.Size = new System.Drawing.Size(190, 32);
             this.btnLogOut.TabIndex = 16;
             this.btnLogOut.Text = "Cerrar Sesión";
+            this.btnLogOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLogOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btoLogOut_Click);
-            // 
-            // btnNuevaOrden
-            // 
-            this.btnNuevaOrden.Image = global::Presentation.Properties.Resources.shopping_cart_24px;
-            this.btnNuevaOrden.Location = new System.Drawing.Point(215, 20);
-            this.btnNuevaOrden.Name = "btnNuevaOrden";
-            this.btnNuevaOrden.Size = new System.Drawing.Size(190, 32);
-            this.btnNuevaOrden.TabIndex = 15;
-            this.btnNuevaOrden.Text = "Nueva Orden";
-            this.btnNuevaOrden.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNuevaOrden.UseVisualStyleBackColor = true;
-            this.btnNuevaOrden.Click += new System.EventHandler(this.btnNuevaOrden_Click);
             // 
             // pnlServicio
             // 
@@ -284,6 +273,7 @@
             this.btnAgregarCarritoServicio.Size = new System.Drawing.Size(170, 32);
             this.btnAgregarCarritoServicio.TabIndex = 20;
             this.btnAgregarCarritoServicio.Text = "Agregar al Carrito";
+            this.btnAgregarCarritoServicio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAgregarCarritoServicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAgregarCarritoServicio.UseVisualStyleBackColor = true;
             this.btnAgregarCarritoServicio.Click += new System.EventHandler(this.btoAgregarCarritoServicio_Click);
@@ -383,6 +373,7 @@
             this.btnAgregarCarritoProducto.Size = new System.Drawing.Size(170, 32);
             this.btnAgregarCarritoProducto.TabIndex = 15;
             this.btnAgregarCarritoProducto.Text = "Agregar al Carrito";
+            this.btnAgregarCarritoProducto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAgregarCarritoProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAgregarCarritoProducto.UseVisualStyleBackColor = true;
             this.btnAgregarCarritoProducto.Click += new System.EventHandler(this.btoAgregarCarritoProducto_Click);
@@ -464,6 +455,7 @@
             this.btnRealizarCompra.Size = new System.Drawing.Size(170, 32);
             this.btnRealizarCompra.TabIndex = 14;
             this.btnRealizarCompra.Text = "Realizar Compra";
+            this.btnRealizarCompra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRealizarCompra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRealizarCompra.UseVisualStyleBackColor = true;
             this.btnRealizarCompra.Click += new System.EventHandler(this.btoRealizarCompra_Click);
@@ -615,6 +607,7 @@
             this.btnEliminar.Size = new System.Drawing.Size(230, 32);
             this.btnEliminar.TabIndex = 1;
             this.btnEliminar.Text = "Eliminar Producto/Servicio";
+            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -635,7 +628,20 @@
             this.dgvCarritoCompras.Size = new System.Drawing.Size(830, 366);
             this.dgvCarritoCompras.TabIndex = 0;
             // 
-            // windowSeller
+            // btnNuevaOrden
+            // 
+            this.btnNuevaOrden.Image = global::Presentation.Properties.Resources.shopping_cart_24px;
+            this.btnNuevaOrden.Location = new System.Drawing.Point(215, 20);
+            this.btnNuevaOrden.Name = "btnNuevaOrden";
+            this.btnNuevaOrden.Size = new System.Drawing.Size(190, 32);
+            this.btnNuevaOrden.TabIndex = 17;
+            this.btnNuevaOrden.Text = "Nueva Orden";
+            this.btnNuevaOrden.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNuevaOrden.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNuevaOrden.UseVisualStyleBackColor = true;
+            this.btnNuevaOrden.Click += new System.EventHandler(this.btnNuevaOrden_Click);
+            // 
+            // WindowSeller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -645,7 +651,7 @@
             this.Controls.Add(this.tabControl);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "windowSeller";
+            this.Name = "WindowSeller";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Vendedor";
             this.tabControl.ResumeLayout(false);

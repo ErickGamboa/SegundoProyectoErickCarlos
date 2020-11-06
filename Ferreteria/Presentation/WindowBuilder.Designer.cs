@@ -34,11 +34,42 @@
             this.cboCategoria = new System.Windows.Forms.ComboBox();
             this.txtBuscarServicio = new System.Windows.Forms.TextBox();
             this.tpgAntencionServicio = new System.Windows.Forms.TabPage();
+            this.pnlObservaciones = new System.Windows.Forms.Panel();
             this.txtObservaciones = new System.Windows.Forms.RichTextBox();
             this.lblObservaciones = new System.Windows.Forms.Label();
-            this.lblNombreConstructorL = new System.Windows.Forms.Label();
+            this.pnlServicio = new System.Windows.Forms.Panel();
+            this.lblCantidadServicio = new System.Windows.Forms.Label();
+            this.btnAgregarCarritoServicio = new System.Windows.Forms.Button();
+            this.txtCantidadServicio = new System.Windows.Forms.TextBox();
+            this.lblCodigoServicio = new System.Windows.Forms.Label();
+            this.txtCodigoServicio = new System.Windows.Forms.TextBox();
+            this.lblNombreServicioT = new System.Windows.Forms.Label();
+            this.btnBuscarServicio = new System.Windows.Forms.Button();
+            this.lblNombreServicioL = new System.Windows.Forms.Label();
+            this.btnNuevaOrden = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
+            this.pnlInformacion = new System.Windows.Forms.Panel();
+            this.lblColon2 = new System.Windows.Forms.Label();
+            this.lblSubtotalT = new System.Windows.Forms.Label();
+            this.lblTotalT = new System.Windows.Forms.Label();
+            this.lblIVAT = new System.Windows.Forms.Label();
+            this.lblColon1 = new System.Windows.Forms.Label();
+            this.txtCedulaCliente = new System.Windows.Forms.TextBox();
+            this.lblCodigoConstructorT = new System.Windows.Forms.Label();
+            this.lblNombreConstructorT = new System.Windows.Forms.Label();
+            this.lblTotalL = new System.Windows.Forms.Label();
+            this.lblIVAL = new System.Windows.Forms.Label();
+            this.lblSubtotalL = new System.Windows.Forms.Label();
+            this.lblCedulaCliente = new System.Windows.Forms.Label();
+            this.btnRealizarCompra = new System.Windows.Forms.Button();
             this.lblCodigoConstructorL = new System.Windows.Forms.Label();
+            this.lblNombreConstructorL = new System.Windows.Forms.Label();
+            this.tpgCarritoCompras = new System.Windows.Forms.TabPage();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.dgvCarritoCompras = new System.Windows.Forms.DataGridView();
             this.tpgBodega = new System.Windows.Forms.TabPage();
+            this.dgvVentas = new System.Windows.Forms.DataGridView();
+            this.dgvPedidos = new System.Windows.Forms.DataGridView();
             this.pnlSalida = new System.Windows.Forms.Panel();
             this.btnSalida = new System.Windows.Forms.Button();
             this.dtpSalida = new System.Windows.Forms.DateTimePicker();
@@ -51,53 +82,22 @@
             this.btnRecibido = new System.Windows.Forms.Button();
             this.dtpRecibido = new System.Windows.Forms.DateTimePicker();
             this.lblRecibido = new System.Windows.Forms.Label();
-            this.dgvPedidos = new System.Windows.Forms.DataGridView();
-            this.dgvVentas = new System.Windows.Forms.DataGridView();
-            this.pnlInformacion = new System.Windows.Forms.Panel();
-            this.btnLogOut = new System.Windows.Forms.Button();
-            this.btnNuevaOrden = new System.Windows.Forms.Button();
-            this.btnRealizarCompra = new System.Windows.Forms.Button();
-            this.lblCedulaCliente = new System.Windows.Forms.Label();
-            this.lblSubtotalL = new System.Windows.Forms.Label();
-            this.lblIVAL = new System.Windows.Forms.Label();
-            this.lblTotalL = new System.Windows.Forms.Label();
-            this.lblNombreConstructorT = new System.Windows.Forms.Label();
-            this.lblCodigoConstructorT = new System.Windows.Forms.Label();
-            this.txtCedulaCliente = new System.Windows.Forms.TextBox();
-            this.lblColon1 = new System.Windows.Forms.Label();
-            this.lblIVAT = new System.Windows.Forms.Label();
-            this.lblTotalT = new System.Windows.Forms.Label();
-            this.lblSubtotalT = new System.Windows.Forms.Label();
-            this.lblColon2 = new System.Windows.Forms.Label();
-            this.tpgCarritoCompras = new System.Windows.Forms.TabPage();
-            this.pnlServicio = new System.Windows.Forms.Panel();
-            this.lblCantidadServicio = new System.Windows.Forms.Label();
-            this.btnAgregarCarritoServicio = new System.Windows.Forms.Button();
-            this.txtCantidadServicio = new System.Windows.Forms.TextBox();
-            this.lblCodigoServicio = new System.Windows.Forms.Label();
-            this.txtCodigoServicio = new System.Windows.Forms.TextBox();
-            this.lblNombreServicioT = new System.Windows.Forms.Label();
-            this.btnBuscarServicio = new System.Windows.Forms.Button();
-            this.lblNombreServicioL = new System.Windows.Forms.Label();
-            this.pnlObservaciones = new System.Windows.Forms.Panel();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.dgvCarritoCompras = new System.Windows.Forms.DataGridView();
             this.tabControl.SuspendLayout();
             this.tpgConsultaServicios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaServicio)).BeginInit();
             this.tpgAntencionServicio.SuspendLayout();
+            this.pnlObservaciones.SuspendLayout();
+            this.pnlServicio.SuspendLayout();
+            this.pnlInformacion.SuspendLayout();
+            this.tpgCarritoCompras.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCompras)).BeginInit();
             this.tpgBodega.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
             this.pnlSalida.SuspendLayout();
             this.pnlTitulo2.SuspendLayout();
             this.pnlTitulo1.SuspendLayout();
             this.pnlRecibido.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
-            this.pnlInformacion.SuspendLayout();
-            this.tpgCarritoCompras.SuspendLayout();
-            this.pnlServicio.SuspendLayout();
-            this.pnlObservaciones.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCompras)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -176,6 +176,16 @@
             this.tpgAntencionServicio.TabIndex = 0;
             this.tpgAntencionServicio.Text = "Atención de Servicio";
             // 
+            // pnlObservaciones
+            // 
+            this.pnlObservaciones.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlObservaciones.Controls.Add(this.txtObservaciones);
+            this.pnlObservaciones.Controls.Add(this.lblObservaciones);
+            this.pnlObservaciones.Location = new System.Drawing.Point(425, 215);
+            this.pnlObservaciones.Name = "pnlObservaciones";
+            this.pnlObservaciones.Size = new System.Drawing.Size(385, 175);
+            this.pnlObservaciones.TabIndex = 28;
+            // 
             // txtObservaciones
             // 
             this.txtObservaciones.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -196,15 +206,270 @@
             this.lblObservaciones.TabIndex = 20;
             this.lblObservaciones.Text = "Observaciones:";
             // 
-            // lblNombreConstructorL
+            // pnlServicio
             // 
-            this.lblNombreConstructorL.AutoSize = true;
-            this.lblNombreConstructorL.Location = new System.Drawing.Point(20, 70);
-            this.lblNombreConstructorL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblNombreConstructorL.Name = "lblNombreConstructorL";
-            this.lblNombreConstructorL.Size = new System.Drawing.Size(149, 18);
-            this.lblNombreConstructorL.TabIndex = 13;
-            this.lblNombreConstructorL.Text = "Nombre Constructor:";
+            this.pnlServicio.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlServicio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlServicio.Controls.Add(this.lblCantidadServicio);
+            this.pnlServicio.Controls.Add(this.btnAgregarCarritoServicio);
+            this.pnlServicio.Controls.Add(this.txtCantidadServicio);
+            this.pnlServicio.Controls.Add(this.lblCodigoServicio);
+            this.pnlServicio.Controls.Add(this.txtCodigoServicio);
+            this.pnlServicio.Controls.Add(this.lblNombreServicioT);
+            this.pnlServicio.Controls.Add(this.btnBuscarServicio);
+            this.pnlServicio.Controls.Add(this.lblNombreServicioL);
+            this.pnlServicio.Location = new System.Drawing.Point(425, 20);
+            this.pnlServicio.Name = "pnlServicio";
+            this.pnlServicio.Size = new System.Drawing.Size(385, 175);
+            this.pnlServicio.TabIndex = 27;
+            // 
+            // lblCantidadServicio
+            // 
+            this.lblCantidadServicio.AutoSize = true;
+            this.lblCantidadServicio.Location = new System.Drawing.Point(20, 90);
+            this.lblCantidadServicio.Name = "lblCantidadServicio";
+            this.lblCantidadServicio.Size = new System.Drawing.Size(70, 18);
+            this.lblCantidadServicio.TabIndex = 27;
+            this.lblCantidadServicio.Text = "Cantidad:";
+            // 
+            // btnAgregarCarritoServicio
+            // 
+            this.btnAgregarCarritoServicio.Image = global::Presentation.Properties.Resources.add_shopping_cart_24px;
+            this.btnAgregarCarritoServicio.Location = new System.Drawing.Point(106, 130);
+            this.btnAgregarCarritoServicio.Name = "btnAgregarCarritoServicio";
+            this.btnAgregarCarritoServicio.Size = new System.Drawing.Size(170, 32);
+            this.btnAgregarCarritoServicio.TabIndex = 20;
+            this.btnAgregarCarritoServicio.Text = "Agregar al Carrito";
+            this.btnAgregarCarritoServicio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAgregarCarritoServicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAgregarCarritoServicio.UseVisualStyleBackColor = true;
+            // 
+            // txtCantidadServicio
+            // 
+            this.txtCantidadServicio.Location = new System.Drawing.Point(160, 87);
+            this.txtCantidadServicio.Name = "txtCantidadServicio";
+            this.txtCantidadServicio.Size = new System.Drawing.Size(160, 24);
+            this.txtCantidadServicio.TabIndex = 26;
+            // 
+            // lblCodigoServicio
+            // 
+            this.lblCodigoServicio.AutoSize = true;
+            this.lblCodigoServicio.Location = new System.Drawing.Point(20, 20);
+            this.lblCodigoServicio.Name = "lblCodigoServicio";
+            this.lblCodigoServicio.Size = new System.Drawing.Size(117, 18);
+            this.lblCodigoServicio.TabIndex = 23;
+            this.lblCodigoServicio.Text = "Código Servicio:";
+            // 
+            // txtCodigoServicio
+            // 
+            this.txtCodigoServicio.Location = new System.Drawing.Point(160, 17);
+            this.txtCodigoServicio.Name = "txtCodigoServicio";
+            this.txtCodigoServicio.Size = new System.Drawing.Size(160, 24);
+            this.txtCodigoServicio.TabIndex = 22;
+            // 
+            // lblNombreServicioT
+            // 
+            this.lblNombreServicioT.AutoSize = true;
+            this.lblNombreServicioT.Location = new System.Drawing.Point(157, 55);
+            this.lblNombreServicioT.Name = "lblNombreServicioT";
+            this.lblNombreServicioT.Size = new System.Drawing.Size(119, 18);
+            this.lblNombreServicioT.TabIndex = 25;
+            this.lblNombreServicioT.Text = "Nombre Servicio";
+            // 
+            // btnBuscarServicio
+            // 
+            this.btnBuscarServicio.Image = global::Presentation.Properties.Resources.search_24px;
+            this.btnBuscarServicio.Location = new System.Drawing.Point(332, 13);
+            this.btnBuscarServicio.Name = "btnBuscarServicio";
+            this.btnBuscarServicio.Size = new System.Drawing.Size(32, 32);
+            this.btnBuscarServicio.TabIndex = 21;
+            this.btnBuscarServicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBuscarServicio.UseVisualStyleBackColor = true;
+            // 
+            // lblNombreServicioL
+            // 
+            this.lblNombreServicioL.AutoSize = true;
+            this.lblNombreServicioL.Location = new System.Drawing.Point(20, 55);
+            this.lblNombreServicioL.Name = "lblNombreServicioL";
+            this.lblNombreServicioL.Size = new System.Drawing.Size(123, 18);
+            this.lblNombreServicioL.TabIndex = 24;
+            this.lblNombreServicioL.Text = "Nombre Servicio:";
+            // 
+            // btnNuevaOrden
+            // 
+            this.btnNuevaOrden.Image = global::Presentation.Properties.Resources.shopping_cart_24px;
+            this.btnNuevaOrden.Location = new System.Drawing.Point(216, 20);
+            this.btnNuevaOrden.Name = "btnNuevaOrden";
+            this.btnNuevaOrden.Size = new System.Drawing.Size(190, 32);
+            this.btnNuevaOrden.TabIndex = 26;
+            this.btnNuevaOrden.Text = "Nueva Orden";
+            this.btnNuevaOrden.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNuevaOrden.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNuevaOrden.UseVisualStyleBackColor = true;
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.Image = global::Presentation.Properties.Resources.logout_rounded_left_24px;
+            this.btnLogOut.Location = new System.Drawing.Point(20, 20);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(190, 32);
+            this.btnLogOut.TabIndex = 25;
+            this.btnLogOut.Text = "Cerrar Sesión";
+            this.btnLogOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLogOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            // 
+            // pnlInformacion
+            // 
+            this.pnlInformacion.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlInformacion.Controls.Add(this.lblColon2);
+            this.pnlInformacion.Controls.Add(this.lblSubtotalT);
+            this.pnlInformacion.Controls.Add(this.lblTotalT);
+            this.pnlInformacion.Controls.Add(this.lblIVAT);
+            this.pnlInformacion.Controls.Add(this.lblColon1);
+            this.pnlInformacion.Controls.Add(this.txtCedulaCliente);
+            this.pnlInformacion.Controls.Add(this.lblCodigoConstructorT);
+            this.pnlInformacion.Controls.Add(this.lblNombreConstructorT);
+            this.pnlInformacion.Controls.Add(this.lblTotalL);
+            this.pnlInformacion.Controls.Add(this.lblIVAL);
+            this.pnlInformacion.Controls.Add(this.lblSubtotalL);
+            this.pnlInformacion.Controls.Add(this.lblCedulaCliente);
+            this.pnlInformacion.Controls.Add(this.btnRealizarCompra);
+            this.pnlInformacion.Controls.Add(this.lblCodigoConstructorL);
+            this.pnlInformacion.Controls.Add(this.lblNombreConstructorL);
+            this.pnlInformacion.Location = new System.Drawing.Point(20, 60);
+            this.pnlInformacion.Name = "pnlInformacion";
+            this.pnlInformacion.Size = new System.Drawing.Size(385, 330);
+            this.pnlInformacion.TabIndex = 24;
+            // 
+            // lblColon2
+            // 
+            this.lblColon2.AutoSize = true;
+            this.lblColon2.Location = new System.Drawing.Point(177, 230);
+            this.lblColon2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblColon2.Name = "lblColon2";
+            this.lblColon2.Size = new System.Drawing.Size(19, 18);
+            this.lblColon2.TabIndex = 39;
+            this.lblColon2.Text = "₡";
+            // 
+            // lblSubtotalT
+            // 
+            this.lblSubtotalT.AutoSize = true;
+            this.lblSubtotalT.Location = new System.Drawing.Point(204, 150);
+            this.lblSubtotalT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSubtotalT.Name = "lblSubtotalT";
+            this.lblSubtotalT.Size = new System.Drawing.Size(36, 18);
+            this.lblSubtotalT.TabIndex = 38;
+            this.lblSubtotalT.Text = "0.00";
+            // 
+            // lblTotalT
+            // 
+            this.lblTotalT.AutoSize = true;
+            this.lblTotalT.Location = new System.Drawing.Point(204, 230);
+            this.lblTotalT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotalT.Name = "lblTotalT";
+            this.lblTotalT.Size = new System.Drawing.Size(36, 18);
+            this.lblTotalT.TabIndex = 37;
+            this.lblTotalT.Text = "0.00";
+            // 
+            // lblIVAT
+            // 
+            this.lblIVAT.AutoSize = true;
+            this.lblIVAT.Location = new System.Drawing.Point(204, 190);
+            this.lblIVAT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIVAT.Name = "lblIVAT";
+            this.lblIVAT.Size = new System.Drawing.Size(37, 18);
+            this.lblIVAT.TabIndex = 36;
+            this.lblIVAT.Text = "13%";
+            // 
+            // lblColon1
+            // 
+            this.lblColon1.AutoSize = true;
+            this.lblColon1.Location = new System.Drawing.Point(177, 150);
+            this.lblColon1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblColon1.Name = "lblColon1";
+            this.lblColon1.Size = new System.Drawing.Size(19, 18);
+            this.lblColon1.TabIndex = 35;
+            this.lblColon1.Text = "₡";
+            // 
+            // txtCedulaCliente
+            // 
+            this.txtCedulaCliente.Location = new System.Drawing.Point(180, 110);
+            this.txtCedulaCliente.Name = "txtCedulaCliente";
+            this.txtCedulaCliente.Size = new System.Drawing.Size(185, 24);
+            this.txtCedulaCliente.TabIndex = 34;
+            // 
+            // lblCodigoConstructorT
+            // 
+            this.lblCodigoConstructorT.AutoSize = true;
+            this.lblCodigoConstructorT.Location = new System.Drawing.Point(177, 30);
+            this.lblCodigoConstructorT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCodigoConstructorT.Name = "lblCodigoConstructorT";
+            this.lblCodigoConstructorT.Size = new System.Drawing.Size(70, 18);
+            this.lblCodigoConstructorT.TabIndex = 33;
+            this.lblCodigoConstructorT.Text = "COS-000";
+            // 
+            // lblNombreConstructorT
+            // 
+            this.lblNombreConstructorT.AutoSize = true;
+            this.lblNombreConstructorT.Location = new System.Drawing.Point(177, 70);
+            this.lblNombreConstructorT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombreConstructorT.Name = "lblNombreConstructorT";
+            this.lblNombreConstructorT.Size = new System.Drawing.Size(145, 18);
+            this.lblNombreConstructorT.TabIndex = 32;
+            this.lblNombreConstructorT.Text = "Nombre Constructor";
+            // 
+            // lblTotalL
+            // 
+            this.lblTotalL.AutoSize = true;
+            this.lblTotalL.Location = new System.Drawing.Point(20, 230);
+            this.lblTotalL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotalL.Name = "lblTotalL";
+            this.lblTotalL.Size = new System.Drawing.Size(45, 18);
+            this.lblTotalL.TabIndex = 31;
+            this.lblTotalL.Text = "Total:";
+            // 
+            // lblIVAL
+            // 
+            this.lblIVAL.AutoSize = true;
+            this.lblIVAL.Location = new System.Drawing.Point(20, 190);
+            this.lblIVAL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIVAL.Name = "lblIVAL";
+            this.lblIVAL.Size = new System.Drawing.Size(33, 18);
+            this.lblIVAL.TabIndex = 30;
+            this.lblIVAL.Text = "IVA:";
+            // 
+            // lblSubtotalL
+            // 
+            this.lblSubtotalL.AutoSize = true;
+            this.lblSubtotalL.Location = new System.Drawing.Point(20, 150);
+            this.lblSubtotalL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSubtotalL.Name = "lblSubtotalL";
+            this.lblSubtotalL.Size = new System.Drawing.Size(66, 18);
+            this.lblSubtotalL.TabIndex = 29;
+            this.lblSubtotalL.Text = "Subtotal:";
+            // 
+            // lblCedulaCliente
+            // 
+            this.lblCedulaCliente.AutoSize = true;
+            this.lblCedulaCliente.Location = new System.Drawing.Point(20, 110);
+            this.lblCedulaCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCedulaCliente.Name = "lblCedulaCliente";
+            this.lblCedulaCliente.Size = new System.Drawing.Size(107, 18);
+            this.lblCedulaCliente.TabIndex = 28;
+            this.lblCedulaCliente.Text = "Cédula Cliente:";
+            // 
+            // btnRealizarCompra
+            // 
+            this.btnRealizarCompra.Image = global::Presentation.Properties.Resources.buy_24px;
+            this.btnRealizarCompra.Location = new System.Drawing.Point(107, 285);
+            this.btnRealizarCompra.Name = "btnRealizarCompra";
+            this.btnRealizarCompra.Size = new System.Drawing.Size(170, 32);
+            this.btnRealizarCompra.TabIndex = 27;
+            this.btnRealizarCompra.Text = "Realizar Compra";
+            this.btnRealizarCompra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRealizarCompra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRealizarCompra.UseVisualStyleBackColor = true;
             // 
             // lblCodigoConstructorL
             // 
@@ -215,6 +480,56 @@
             this.lblCodigoConstructorL.Size = new System.Drawing.Size(143, 18);
             this.lblCodigoConstructorL.TabIndex = 12;
             this.lblCodigoConstructorL.Text = "Código Constructor:";
+            // 
+            // lblNombreConstructorL
+            // 
+            this.lblNombreConstructorL.AutoSize = true;
+            this.lblNombreConstructorL.Location = new System.Drawing.Point(20, 70);
+            this.lblNombreConstructorL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombreConstructorL.Name = "lblNombreConstructorL";
+            this.lblNombreConstructorL.Size = new System.Drawing.Size(149, 18);
+            this.lblNombreConstructorL.TabIndex = 13;
+            this.lblNombreConstructorL.Text = "Nombre Constructor:";
+            // 
+            // tpgCarritoCompras
+            // 
+            this.tpgCarritoCompras.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tpgCarritoCompras.Controls.Add(this.btnEliminar);
+            this.tpgCarritoCompras.Controls.Add(this.dgvCarritoCompras);
+            this.tpgCarritoCompras.Location = new System.Drawing.Point(4, 27);
+            this.tpgCarritoCompras.Name = "tpgCarritoCompras";
+            this.tpgCarritoCompras.Padding = new System.Windows.Forms.Padding(3);
+            this.tpgCarritoCompras.Size = new System.Drawing.Size(830, 410);
+            this.tpgCarritoCompras.TabIndex = 3;
+            this.tpgCarritoCompras.Text = "Ver Carrito de Compras";
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Image = global::Presentation.Properties.Resources.clear_shopping_cart_24px;
+            this.btnEliminar.Location = new System.Drawing.Point(592, 6);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(230, 32);
+            this.btnEliminar.TabIndex = 3;
+            this.btnEliminar.Text = "Eliminar Producto/Servicio";
+            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            // 
+            // dgvCarritoCompras
+            // 
+            this.dgvCarritoCompras.AllowUserToAddRows = false;
+            this.dgvCarritoCompras.AllowUserToDeleteRows = false;
+            this.dgvCarritoCompras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvCarritoCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCarritoCompras.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvCarritoCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCarritoCompras.Location = new System.Drawing.Point(0, 44);
+            this.dgvCarritoCompras.Name = "dgvCarritoCompras";
+            this.dgvCarritoCompras.ReadOnly = true;
+            this.dgvCarritoCompras.RowHeadersVisible = false;
+            this.dgvCarritoCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCarritoCompras.Size = new System.Drawing.Size(830, 366);
+            this.dgvCarritoCompras.TabIndex = 2;
             // 
             // tpgBodega
             // 
@@ -232,6 +547,34 @@
             this.tpgBodega.Size = new System.Drawing.Size(830, 410);
             this.tpgBodega.TabIndex = 1;
             this.tpgBodega.Text = "Bodega";
+            // 
+            // dgvVentas
+            // 
+            this.dgvVentas.AllowUserToAddRows = false;
+            this.dgvVentas.AllowUserToDeleteRows = false;
+            this.dgvVentas.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVentas.Location = new System.Drawing.Point(0, 273);
+            this.dgvVentas.Name = "dgvVentas";
+            this.dgvVentas.ReadOnly = true;
+            this.dgvVentas.RowHeadersVisible = false;
+            this.dgvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvVentas.Size = new System.Drawing.Size(830, 137);
+            this.dgvVentas.TabIndex = 5;
+            // 
+            // dgvPedidos
+            // 
+            this.dgvPedidos.AllowUserToAddRows = false;
+            this.dgvPedidos.AllowUserToDeleteRows = false;
+            this.dgvPedidos.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPedidos.Location = new System.Drawing.Point(0, 100);
+            this.dgvPedidos.Name = "dgvPedidos";
+            this.dgvPedidos.ReadOnly = true;
+            this.dgvPedidos.RowHeadersVisible = false;
+            this.dgvPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPedidos.Size = new System.Drawing.Size(830, 129);
+            this.dgvPedidos.TabIndex = 4;
             // 
             // pnlSalida
             // 
@@ -253,6 +596,7 @@
             this.btnSalida.Size = new System.Drawing.Size(100, 32);
             this.btnSalida.TabIndex = 2;
             this.btnSalida.Text = "Agregar";
+            this.btnSalida.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalida.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSalida.UseVisualStyleBackColor = true;
             // 
@@ -331,6 +675,7 @@
             this.btnRecibido.Size = new System.Drawing.Size(100, 32);
             this.btnRecibido.TabIndex = 2;
             this.btnRecibido.Text = "Agregar";
+            this.btnRecibido.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRecibido.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRecibido.UseVisualStyleBackColor = true;
             // 
@@ -353,344 +698,6 @@
             this.lblRecibido.TabIndex = 0;
             this.lblRecibido.Text = "Hora recibido:";
             // 
-            // dgvPedidos
-            // 
-            this.dgvPedidos.AllowUserToAddRows = false;
-            this.dgvPedidos.AllowUserToDeleteRows = false;
-            this.dgvPedidos.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPedidos.Location = new System.Drawing.Point(0, 100);
-            this.dgvPedidos.Name = "dgvPedidos";
-            this.dgvPedidos.ReadOnly = true;
-            this.dgvPedidos.RowHeadersVisible = false;
-            this.dgvPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPedidos.Size = new System.Drawing.Size(830, 129);
-            this.dgvPedidos.TabIndex = 4;
-            // 
-            // dgvVentas
-            // 
-            this.dgvVentas.AllowUserToAddRows = false;
-            this.dgvVentas.AllowUserToDeleteRows = false;
-            this.dgvVentas.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVentas.Location = new System.Drawing.Point(0, 273);
-            this.dgvVentas.Name = "dgvVentas";
-            this.dgvVentas.ReadOnly = true;
-            this.dgvVentas.RowHeadersVisible = false;
-            this.dgvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVentas.Size = new System.Drawing.Size(830, 137);
-            this.dgvVentas.TabIndex = 5;
-            // 
-            // pnlInformacion
-            // 
-            this.pnlInformacion.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlInformacion.Controls.Add(this.lblColon2);
-            this.pnlInformacion.Controls.Add(this.lblSubtotalT);
-            this.pnlInformacion.Controls.Add(this.lblTotalT);
-            this.pnlInformacion.Controls.Add(this.lblIVAT);
-            this.pnlInformacion.Controls.Add(this.lblColon1);
-            this.pnlInformacion.Controls.Add(this.txtCedulaCliente);
-            this.pnlInformacion.Controls.Add(this.lblCodigoConstructorT);
-            this.pnlInformacion.Controls.Add(this.lblNombreConstructorT);
-            this.pnlInformacion.Controls.Add(this.lblTotalL);
-            this.pnlInformacion.Controls.Add(this.lblIVAL);
-            this.pnlInformacion.Controls.Add(this.lblSubtotalL);
-            this.pnlInformacion.Controls.Add(this.lblCedulaCliente);
-            this.pnlInformacion.Controls.Add(this.btnRealizarCompra);
-            this.pnlInformacion.Controls.Add(this.lblCodigoConstructorL);
-            this.pnlInformacion.Controls.Add(this.lblNombreConstructorL);
-            this.pnlInformacion.Location = new System.Drawing.Point(20, 60);
-            this.pnlInformacion.Name = "pnlInformacion";
-            this.pnlInformacion.Size = new System.Drawing.Size(385, 330);
-            this.pnlInformacion.TabIndex = 24;
-            // 
-            // btnLogOut
-            // 
-            this.btnLogOut.Image = global::Presentation.Properties.Resources.logout_rounded_left_24px;
-            this.btnLogOut.Location = new System.Drawing.Point(20, 20);
-            this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(190, 32);
-            this.btnLogOut.TabIndex = 25;
-            this.btnLogOut.Text = "Cerrar Sesión";
-            this.btnLogOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLogOut.UseVisualStyleBackColor = true;
-            // 
-            // btnNuevaOrden
-            // 
-            this.btnNuevaOrden.Image = global::Presentation.Properties.Resources.shopping_cart_24px;
-            this.btnNuevaOrden.Location = new System.Drawing.Point(216, 20);
-            this.btnNuevaOrden.Name = "btnNuevaOrden";
-            this.btnNuevaOrden.Size = new System.Drawing.Size(190, 32);
-            this.btnNuevaOrden.TabIndex = 26;
-            this.btnNuevaOrden.Text = "Nueva Orden";
-            this.btnNuevaOrden.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNuevaOrden.UseVisualStyleBackColor = true;
-            // 
-            // btnRealizarCompra
-            // 
-            this.btnRealizarCompra.Image = global::Presentation.Properties.Resources.buy_24px;
-            this.btnRealizarCompra.Location = new System.Drawing.Point(107, 285);
-            this.btnRealizarCompra.Name = "btnRealizarCompra";
-            this.btnRealizarCompra.Size = new System.Drawing.Size(170, 32);
-            this.btnRealizarCompra.TabIndex = 27;
-            this.btnRealizarCompra.Text = "Realizar Compra";
-            this.btnRealizarCompra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRealizarCompra.UseVisualStyleBackColor = true;
-            // 
-            // lblCedulaCliente
-            // 
-            this.lblCedulaCliente.AutoSize = true;
-            this.lblCedulaCliente.Location = new System.Drawing.Point(20, 110);
-            this.lblCedulaCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCedulaCliente.Name = "lblCedulaCliente";
-            this.lblCedulaCliente.Size = new System.Drawing.Size(107, 18);
-            this.lblCedulaCliente.TabIndex = 28;
-            this.lblCedulaCliente.Text = "Cédula Cliente:";
-            // 
-            // lblSubtotalL
-            // 
-            this.lblSubtotalL.AutoSize = true;
-            this.lblSubtotalL.Location = new System.Drawing.Point(20, 150);
-            this.lblSubtotalL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSubtotalL.Name = "lblSubtotalL";
-            this.lblSubtotalL.Size = new System.Drawing.Size(66, 18);
-            this.lblSubtotalL.TabIndex = 29;
-            this.lblSubtotalL.Text = "Subtotal:";
-            // 
-            // lblIVAL
-            // 
-            this.lblIVAL.AutoSize = true;
-            this.lblIVAL.Location = new System.Drawing.Point(20, 190);
-            this.lblIVAL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblIVAL.Name = "lblIVAL";
-            this.lblIVAL.Size = new System.Drawing.Size(33, 18);
-            this.lblIVAL.TabIndex = 30;
-            this.lblIVAL.Text = "IVA:";
-            // 
-            // lblTotalL
-            // 
-            this.lblTotalL.AutoSize = true;
-            this.lblTotalL.Location = new System.Drawing.Point(20, 230);
-            this.lblTotalL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTotalL.Name = "lblTotalL";
-            this.lblTotalL.Size = new System.Drawing.Size(45, 18);
-            this.lblTotalL.TabIndex = 31;
-            this.lblTotalL.Text = "Total:";
-            // 
-            // lblNombreConstructorT
-            // 
-            this.lblNombreConstructorT.AutoSize = true;
-            this.lblNombreConstructorT.Location = new System.Drawing.Point(177, 70);
-            this.lblNombreConstructorT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblNombreConstructorT.Name = "lblNombreConstructorT";
-            this.lblNombreConstructorT.Size = new System.Drawing.Size(145, 18);
-            this.lblNombreConstructorT.TabIndex = 32;
-            this.lblNombreConstructorT.Text = "Nombre Constructor";
-            // 
-            // lblCodigoConstructorT
-            // 
-            this.lblCodigoConstructorT.AutoSize = true;
-            this.lblCodigoConstructorT.Location = new System.Drawing.Point(177, 30);
-            this.lblCodigoConstructorT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCodigoConstructorT.Name = "lblCodigoConstructorT";
-            this.lblCodigoConstructorT.Size = new System.Drawing.Size(70, 18);
-            this.lblCodigoConstructorT.TabIndex = 33;
-            this.lblCodigoConstructorT.Text = "COS-000";
-            // 
-            // txtCedulaCliente
-            // 
-            this.txtCedulaCliente.Location = new System.Drawing.Point(180, 110);
-            this.txtCedulaCliente.Name = "txtCedulaCliente";
-            this.txtCedulaCliente.Size = new System.Drawing.Size(185, 24);
-            this.txtCedulaCliente.TabIndex = 34;
-            // 
-            // lblColon1
-            // 
-            this.lblColon1.AutoSize = true;
-            this.lblColon1.Location = new System.Drawing.Point(177, 150);
-            this.lblColon1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblColon1.Name = "lblColon1";
-            this.lblColon1.Size = new System.Drawing.Size(19, 18);
-            this.lblColon1.TabIndex = 35;
-            this.lblColon1.Text = "₡";
-            // 
-            // lblIVAT
-            // 
-            this.lblIVAT.AutoSize = true;
-            this.lblIVAT.Location = new System.Drawing.Point(204, 190);
-            this.lblIVAT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblIVAT.Name = "lblIVAT";
-            this.lblIVAT.Size = new System.Drawing.Size(37, 18);
-            this.lblIVAT.TabIndex = 36;
-            this.lblIVAT.Text = "13%";
-            // 
-            // lblTotalT
-            // 
-            this.lblTotalT.AutoSize = true;
-            this.lblTotalT.Location = new System.Drawing.Point(204, 230);
-            this.lblTotalT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTotalT.Name = "lblTotalT";
-            this.lblTotalT.Size = new System.Drawing.Size(36, 18);
-            this.lblTotalT.TabIndex = 37;
-            this.lblTotalT.Text = "0.00";
-            // 
-            // lblSubtotalT
-            // 
-            this.lblSubtotalT.AutoSize = true;
-            this.lblSubtotalT.Location = new System.Drawing.Point(204, 150);
-            this.lblSubtotalT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSubtotalT.Name = "lblSubtotalT";
-            this.lblSubtotalT.Size = new System.Drawing.Size(36, 18);
-            this.lblSubtotalT.TabIndex = 38;
-            this.lblSubtotalT.Text = "0.00";
-            // 
-            // lblColon2
-            // 
-            this.lblColon2.AutoSize = true;
-            this.lblColon2.Location = new System.Drawing.Point(177, 230);
-            this.lblColon2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblColon2.Name = "lblColon2";
-            this.lblColon2.Size = new System.Drawing.Size(19, 18);
-            this.lblColon2.TabIndex = 39;
-            this.lblColon2.Text = "₡";
-            // 
-            // tpgCarritoCompras
-            // 
-            this.tpgCarritoCompras.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tpgCarritoCompras.Controls.Add(this.btnEliminar);
-            this.tpgCarritoCompras.Controls.Add(this.dgvCarritoCompras);
-            this.tpgCarritoCompras.Location = new System.Drawing.Point(4, 27);
-            this.tpgCarritoCompras.Name = "tpgCarritoCompras";
-            this.tpgCarritoCompras.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgCarritoCompras.Size = new System.Drawing.Size(830, 410);
-            this.tpgCarritoCompras.TabIndex = 3;
-            this.tpgCarritoCompras.Text = "Ver Carrito de Compras";
-            // 
-            // pnlServicio
-            // 
-            this.pnlServicio.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlServicio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlServicio.Controls.Add(this.lblCantidadServicio);
-            this.pnlServicio.Controls.Add(this.btnAgregarCarritoServicio);
-            this.pnlServicio.Controls.Add(this.txtCantidadServicio);
-            this.pnlServicio.Controls.Add(this.lblCodigoServicio);
-            this.pnlServicio.Controls.Add(this.txtCodigoServicio);
-            this.pnlServicio.Controls.Add(this.lblNombreServicioT);
-            this.pnlServicio.Controls.Add(this.btnBuscarServicio);
-            this.pnlServicio.Controls.Add(this.lblNombreServicioL);
-            this.pnlServicio.Location = new System.Drawing.Point(425, 20);
-            this.pnlServicio.Name = "pnlServicio";
-            this.pnlServicio.Size = new System.Drawing.Size(385, 175);
-            this.pnlServicio.TabIndex = 27;
-            // 
-            // lblCantidadServicio
-            // 
-            this.lblCantidadServicio.AutoSize = true;
-            this.lblCantidadServicio.Location = new System.Drawing.Point(20, 90);
-            this.lblCantidadServicio.Name = "lblCantidadServicio";
-            this.lblCantidadServicio.Size = new System.Drawing.Size(70, 18);
-            this.lblCantidadServicio.TabIndex = 27;
-            this.lblCantidadServicio.Text = "Cantidad:";
-            // 
-            // btnAgregarCarritoServicio
-            // 
-            this.btnAgregarCarritoServicio.Image = global::Presentation.Properties.Resources.add_shopping_cart_24px;
-            this.btnAgregarCarritoServicio.Location = new System.Drawing.Point(106, 130);
-            this.btnAgregarCarritoServicio.Name = "btnAgregarCarritoServicio";
-            this.btnAgregarCarritoServicio.Size = new System.Drawing.Size(170, 32);
-            this.btnAgregarCarritoServicio.TabIndex = 20;
-            this.btnAgregarCarritoServicio.Text = "Agregar al Carrito";
-            this.btnAgregarCarritoServicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAgregarCarritoServicio.UseVisualStyleBackColor = true;
-            // 
-            // txtCantidadServicio
-            // 
-            this.txtCantidadServicio.Location = new System.Drawing.Point(160, 87);
-            this.txtCantidadServicio.Name = "txtCantidadServicio";
-            this.txtCantidadServicio.Size = new System.Drawing.Size(160, 24);
-            this.txtCantidadServicio.TabIndex = 26;
-            // 
-            // lblCodigoServicio
-            // 
-            this.lblCodigoServicio.AutoSize = true;
-            this.lblCodigoServicio.Location = new System.Drawing.Point(20, 20);
-            this.lblCodigoServicio.Name = "lblCodigoServicio";
-            this.lblCodigoServicio.Size = new System.Drawing.Size(117, 18);
-            this.lblCodigoServicio.TabIndex = 23;
-            this.lblCodigoServicio.Text = "Código Servicio:";
-            // 
-            // txtCodigoServicio
-            // 
-            this.txtCodigoServicio.Location = new System.Drawing.Point(160, 17);
-            this.txtCodigoServicio.Name = "txtCodigoServicio";
-            this.txtCodigoServicio.Size = new System.Drawing.Size(160, 24);
-            this.txtCodigoServicio.TabIndex = 22;
-            // 
-            // lblNombreServicioT
-            // 
-            this.lblNombreServicioT.AutoSize = true;
-            this.lblNombreServicioT.Location = new System.Drawing.Point(157, 55);
-            this.lblNombreServicioT.Name = "lblNombreServicioT";
-            this.lblNombreServicioT.Size = new System.Drawing.Size(119, 18);
-            this.lblNombreServicioT.TabIndex = 25;
-            this.lblNombreServicioT.Text = "Nombre Servicio";
-            // 
-            // btnBuscarServicio
-            // 
-            this.btnBuscarServicio.Image = global::Presentation.Properties.Resources.search_24px;
-            this.btnBuscarServicio.Location = new System.Drawing.Point(332, 13);
-            this.btnBuscarServicio.Name = "btnBuscarServicio";
-            this.btnBuscarServicio.Size = new System.Drawing.Size(32, 32);
-            this.btnBuscarServicio.TabIndex = 21;
-            this.btnBuscarServicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnBuscarServicio.UseVisualStyleBackColor = true;
-            // 
-            // lblNombreServicioL
-            // 
-            this.lblNombreServicioL.AutoSize = true;
-            this.lblNombreServicioL.Location = new System.Drawing.Point(20, 55);
-            this.lblNombreServicioL.Name = "lblNombreServicioL";
-            this.lblNombreServicioL.Size = new System.Drawing.Size(123, 18);
-            this.lblNombreServicioL.TabIndex = 24;
-            this.lblNombreServicioL.Text = "Nombre Servicio:";
-            // 
-            // pnlObservaciones
-            // 
-            this.pnlObservaciones.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlObservaciones.Controls.Add(this.txtObservaciones);
-            this.pnlObservaciones.Controls.Add(this.lblObservaciones);
-            this.pnlObservaciones.Location = new System.Drawing.Point(425, 215);
-            this.pnlObservaciones.Name = "pnlObservaciones";
-            this.pnlObservaciones.Size = new System.Drawing.Size(385, 175);
-            this.pnlObservaciones.TabIndex = 28;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Image = global::Presentation.Properties.Resources.clear_shopping_cart_24px;
-            this.btnEliminar.Location = new System.Drawing.Point(592, 6);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(230, 32);
-            this.btnEliminar.TabIndex = 3;
-            this.btnEliminar.Text = "Eliminar Producto/Servicio";
-            this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            // 
-            // dgvCarritoCompras
-            // 
-            this.dgvCarritoCompras.AllowUserToAddRows = false;
-            this.dgvCarritoCompras.AllowUserToDeleteRows = false;
-            this.dgvCarritoCompras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dgvCarritoCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCarritoCompras.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvCarritoCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCarritoCompras.Location = new System.Drawing.Point(0, 44);
-            this.dgvCarritoCompras.Name = "dgvCarritoCompras";
-            this.dgvCarritoCompras.ReadOnly = true;
-            this.dgvCarritoCompras.RowHeadersVisible = false;
-            this.dgvCarritoCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCarritoCompras.Size = new System.Drawing.Size(830, 366);
-            this.dgvCarritoCompras.TabIndex = 2;
-            // 
             // WindowBuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -709,7 +716,17 @@
             this.tpgConsultaServicios.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaServicio)).EndInit();
             this.tpgAntencionServicio.ResumeLayout(false);
+            this.pnlObservaciones.ResumeLayout(false);
+            this.pnlObservaciones.PerformLayout();
+            this.pnlServicio.ResumeLayout(false);
+            this.pnlServicio.PerformLayout();
+            this.pnlInformacion.ResumeLayout(false);
+            this.pnlInformacion.PerformLayout();
+            this.tpgCarritoCompras.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCompras)).EndInit();
             this.tpgBodega.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
             this.pnlSalida.ResumeLayout(false);
             this.pnlSalida.PerformLayout();
             this.pnlTitulo2.ResumeLayout(false);
@@ -718,16 +735,6 @@
             this.pnlTitulo1.PerformLayout();
             this.pnlRecibido.ResumeLayout(false);
             this.pnlRecibido.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
-            this.pnlInformacion.ResumeLayout(false);
-            this.pnlInformacion.PerformLayout();
-            this.tpgCarritoCompras.ResumeLayout(false);
-            this.pnlServicio.ResumeLayout(false);
-            this.pnlServicio.PerformLayout();
-            this.pnlObservaciones.ResumeLayout(false);
-            this.pnlObservaciones.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCompras)).EndInit();
             this.ResumeLayout(false);
 
         }
