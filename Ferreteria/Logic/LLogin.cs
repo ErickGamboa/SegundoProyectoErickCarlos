@@ -7,6 +7,7 @@ using Data;
 using Entities;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
 
 namespace Logic
 {
@@ -25,17 +26,22 @@ namespace Logic
                     conexion.Open();
                     using (SqlCommand cmd = new SqlCommand("SELECT cedula, contrasena, tipo FROM usuario Where cedula ='" + usuario + "' AND contrasena ='" + contra + "'", conexion))
                     {
+                        SqlDataAdapter data = new SqlDataAdapter(cmd);
+                        DataTable res = new DataTable();
+                        data.Fill(res);
                         SqlDataReader dr = cmd.ExecuteReader();
-
+                        
                         if (dr.Read())
                         {
-                            
-                            return "entrooo";
+                            string tipo = Convert.ToString(res.Rows[0]["tipo"]);
+                            return tipo  ;
                         }
-                        else {
-                            return "NOOO";
+                        else
+                        {
+                            return "Credenciales no validos";
                         }
                     }
+
                 }
             }
             catch (Exception ex) {

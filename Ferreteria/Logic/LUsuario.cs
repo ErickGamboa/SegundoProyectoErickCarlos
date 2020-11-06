@@ -20,9 +20,9 @@ namespace Logic
                 usuario.tipo = tipo;
                 db.usuario.Add(usuario);
                 db.SaveChanges();
-                }
-
             }
+
+        }
 
     }
 

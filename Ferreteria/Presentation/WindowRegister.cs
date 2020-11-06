@@ -19,6 +19,7 @@ namespace Presentation
         LUsuario usuario = new LUsuario();
 
 
+
         private string generarCodigo()
         {
 

@@ -32,8 +32,31 @@ namespace Presentation
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            prueba.Text = login.Login(txtUsuarioLogin.Text, txtContraLogin.Text);
+            if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Equals("Administrador"))
+            {
+                WindowManager wmanager = new WindowManager();
+                wmanager.Show(this);
+                this.Hide();
+            }
+            else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Equals("Cajero"))
+            {
+                prueba.Text = "caje";
+            }
+            else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Equals("Constructor"))
+            {
+                prueba.Text = "constructor";
+            }
+            else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Equals("Conductor"))
+            {
+                prueba.Text = "conductor";
+            }
+            else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Equals("Venedor"))
+            {
+                prueba.Text = "vendedor";
+            }
+            else {
+                prueba.Text = login.Login(txtUsuarioLogin.Text, txtContraLogin.Text);
+            }
         }
     }
 }
