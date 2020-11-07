@@ -35,11 +35,11 @@ namespace Logic
                 foreach (var i in lst)
                 {
                     ServicioE servi = new ServicioE();
-                    servi.id = i.id;
-                    servi.nombre = i.nombre;
-                    servi.categoria = i.categoria;
-                    servi.descripcion = i.descripcion;
-                    servi.precio = Convert.ToDouble(i.precio);
+                    servi.Id = i.id;
+                    servi.Nombre = i.nombre;
+                    servi.Categoria = i.categoria;
+                    servi.Descripcion = i.descripcion;
+                    servi.Precio = Convert.ToDouble(i.precio);
                     lista.Add(servi);
                 }
                 return lista;

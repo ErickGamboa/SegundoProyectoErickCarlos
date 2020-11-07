@@ -39,7 +39,7 @@ namespace Presentation
                 }
 
             }
-            catch (Exception ex) {
+            catch (Exception) {
             }
 
 

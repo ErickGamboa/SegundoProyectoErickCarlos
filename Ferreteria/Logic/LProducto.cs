@@ -35,7 +35,7 @@ namespace Logic
                 foreach (var i in lst)
                 {
                     ProductoE produ = new ProductoE();
-                    produ.id = i.id;
+                    produ.Id = i.id;
                     produ.Nombre = i.nombre;
                     produ.Categoria = i.categoria;
                     produ.Descripcion = i.descripcion;

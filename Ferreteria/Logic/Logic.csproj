@@ -59,6 +59,7 @@
     <Compile Include="LServicio.cs" />
     <Compile Include="LTransporte.cs" />
     <Compile Include="LUsuario.cs" />
+    <Compile Include="PedidoL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UtilitiesL.cs" />
   </ItemGroup>

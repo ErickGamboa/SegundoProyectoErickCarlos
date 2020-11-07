@@ -349,4 +349,4 @@ bin/
 obj/
 
 # Omitir el archivo App.config
-App.config
+*.config

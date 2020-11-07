@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FerreteriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="FerreteriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="pedido_cliente">
           <Key>
             <PropertyRef Name="id" />
@@ -152,14 +152,16 @@
           <Property Name="codigo" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="contrasena" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="cedula" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="tipo" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__pedido_cl__codig__395884C4' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__pedido_cl__codig__395884C4" />-->
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__pedido_cl__codig__3A4CA8FD' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__pedido_cl__codig__3A4CA8FD" />-->
-        <Association Name="FK__pedido_cl__id_pe__3D2915A8">
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_cl__codig__5CD6CB2B' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_cl__codig__5CD6CB2B" />-->
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_cl__codig__5DCAEF64' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_cl__codig__5DCAEF64" />-->
+        <Association Name="FK__pedido_cl__id_pe__60A75C0F">
           <End Role="pedido_cliente" Type="Self.pedido_cliente" Multiplicity="1" />
           <End Role="pedido_cliente_producto" Type="Self.pedido_cliente_producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -171,7 +173,7 @@ warning 6035: The relationship 'FK__pedido_cl__codig__3A4CA8FD' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_cl__id_pe__40F9A68C">
+        <Association Name="FK__pedido_cl__id_pe__6477ECF3">
           <End Role="pedido_cliente" Type="Self.pedido_cliente" Multiplicity="1" />
           <End Role="pedido_cliente_servicio" Type="Self.pedido_cliente_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -183,7 +185,7 @@ warning 6035: The relationship 'FK__pedido_cl__codig__3A4CA8FD' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_cl__id_pr__3E1D39E1">
+        <Association Name="FK__pedido_cl__id_pr__619B8048">
           <End Role="producto" Type="Self.producto" Multiplicity="1" />
           <End Role="pedido_cliente_producto" Type="Self.pedido_cliente_producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -195,7 +197,7 @@ warning 6035: The relationship 'FK__pedido_cl__codig__3A4CA8FD' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_cl__id_se__41EDCAC5">
+        <Association Name="FK__pedido_cl__id_se__656C112C">
           <End Role="servicio" Type="Self.servicio" Multiplicity="1" />
           <End Role="pedido_cliente_servicio" Type="Self.pedido_cliente_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -207,16 +209,16 @@ warning 6035: The relationship 'FK__pedido_cl__codig__3A4CA8FD' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__pedido_co__codig__245D67DE' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__pedido_co__codig__245D67DE" />-->
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__pedido_co__codig__25518C17' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__pedido_co__codig__25518C17" />-->
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__pedido_co__codig__2645B050' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__pedido_co__codig__2645B050" />-->
-        <Association Name="FK__pedido_co__id_pe__29221CFB">
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_co__codig__47DBAE45' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_co__codig__47DBAE45" />-->
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_co__codig__48CFD27E' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_co__codig__48CFD27E" />-->
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_co__codig__49C3F6B7' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_co__codig__49C3F6B7" />-->
+        <Association Name="FK__pedido_co__id_pe__4CA06362">
           <End Role="pedido_completo" Type="Self.pedido_completo" Multiplicity="1" />
           <End Role="pedido_completo_producto" Type="Self.pedido_completo_producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -228,7 +230,7 @@ warning 6035: The relationship 'FK__pedido_co__codig__2645B050' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_co__id_pe__2CF2ADDF">
+        <Association Name="FK__pedido_co__id_pe__5070F446">
           <End Role="pedido_completo" Type="Self.pedido_completo" Multiplicity="1" />
           <End Role="pedido_completo_servicio" Type="Self.pedido_completo_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -240,7 +242,7 @@ warning 6035: The relationship 'FK__pedido_co__codig__2645B050' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_co__id_pr__2A164134">
+        <Association Name="FK__pedido_co__id_pr__4D94879B">
           <End Role="producto" Type="Self.producto" Multiplicity="1" />
           <End Role="pedido_completo_producto" Type="Self.pedido_completo_producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -252,7 +254,7 @@ warning 6035: The relationship 'FK__pedido_co__codig__2645B050' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_co__id_se__2DE6D218">
+        <Association Name="FK__pedido_co__id_se__5165187F">
           <End Role="servicio" Type="Self.servicio" Multiplicity="1" />
           <End Role="pedido_completo_servicio" Type="Self.pedido_completo_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -264,16 +266,16 @@ warning 6035: The relationship 'FK__pedido_co__codig__2645B050' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__pedido_so__codig__30C33EC3' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__pedido_so__codig__30C33EC3" />-->
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__pedido_so__codig__31B762FC' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__pedido_so__codig__31B762FC" />-->
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__pedido_so__codig__32AB8735' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__pedido_so__codig__32AB8735" />-->
-        <Association Name="FK__pedido_so__id_pe__3587F3E0">
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_so__codig__5441852A' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_so__codig__5441852A" />-->
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_so__codig__5535A963' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_so__codig__5535A963" />-->
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_so__codig__5629CD9C' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_so__codig__5629CD9C" />-->
+        <Association Name="FK__pedido_so__id_pe__59063A47">
           <End Role="pedido_solo_servicio" Type="Self.pedido_solo_servicio" Multiplicity="1" />
           <End Role="pedido_solo_servicio_servicio" Type="Self.pedido_solo_servicio_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -285,7 +287,7 @@ warning 6035: The relationship 'FK__pedido_so__codig__32AB8735' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_so__id_se__367C1819">
+        <Association Name="FK__pedido_so__id_se__59FA5E80">
           <End Role="servicio" Type="Self.servicio" Multiplicity="1" />
           <End Role="pedido_solo_servicio_servicio" Type="Self.pedido_solo_servicio_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -297,112 +299,9 @@ warning 6035: The relationship 'FK__pedido_so__codig__32AB8735' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__transport__codig__2C3393D0" />-->
-        <Function Name="sp_ipedido_cliente_cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="cedula_cliente" Type="nvarchar" Mode="In" />
-          <Parameter Name="nombre_cliente" Type="nvarchar" Mode="In" />
-          <Parameter Name="fecha" Type="datetime" Mode="In" />
-          <Parameter Name="subtotal" Type="numeric" Mode="In" />
-          <Parameter Name="iva" Type="numeric" Mode="In" />
-          <Parameter Name="total" Type="numeric" Mode="In" />
-        </Function>
-        <Function Name="sp_ipedido_cliente_producto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id_pedido_cliente" Type="int" Mode="In" />
-          <Parameter Name="id_producto" Type="int" Mode="In" />
-          <Parameter Name="cantidad" Type="numeric" Mode="In" />
-          <Parameter Name="precio_total" Type="numeric" Mode="In" />
-        </Function>
-        <Function Name="sp_ipedido_cliente_servicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id_pedido_cliente" Type="int" Mode="In" />
-          <Parameter Name="id_servicio" Type="int" Mode="In" />
-          <Parameter Name="cantidad" Type="numeric" Mode="In" />
-          <Parameter Name="precio_total" Type="numeric" Mode="In" />
-        </Function>
-        <Function Name="sp_ipedido_completo_producto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id_pedido_completo" Type="int" Mode="In" />
-          <Parameter Name="id_producto" Type="int" Mode="In" />
-          <Parameter Name="cantidad" Type="numeric" Mode="In" />
-          <Parameter Name="precio_total" Type="numeric" Mode="In" />
-        </Function>
-        <Function Name="sp_ipedido_completo_servicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id_pedido_completo" Type="int" Mode="In" />
-          <Parameter Name="id_servicio" Type="int" Mode="In" />
-          <Parameter Name="cantidad" Type="numeric" Mode="In" />
-          <Parameter Name="precio_total" Type="numeric" Mode="In" />
-        </Function>
-        <Function Name="sp_ipedido_completo_vendedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="codigo_vendedor" Type="nvarchar" Mode="In" />
-          <Parameter Name="cedula_cliente" Type="nvarchar" Mode="In" />
-          <Parameter Name="hora_atencion" Type="datetime" Mode="In" />
-          <Parameter Name="hora_venta" Type="datetime" Mode="In" />
-          <Parameter Name="subtotal" Type="numeric" Mode="In" />
-          <Parameter Name="iva" Type="numeric" Mode="In" />
-          <Parameter Name="total" Type="numeric" Mode="In" />
-        </Function>
-        <Function Name="sp_ipedido_solo_servicio_constructor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="cedula_cliente" Type="nvarchar" Mode="In" />
-          <Parameter Name="codigo_constructor" Type="nvarchar" Mode="In" />
-          <Parameter Name="observaciones" Type="nvarchar" Mode="In" />
-          <Parameter Name="subtotal" Type="numeric" Mode="In" />
-          <Parameter Name="iva" Type="numeric" Mode="In" />
-          <Parameter Name="total" Type="numeric" Mode="In" />
-        </Function>
-        <Function Name="sp_ipedido_solo_servicio_servicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id_pedido_solo_servicio" Type="int" Mode="In" />
-          <Parameter Name="id_servicio" Type="int" Mode="In" />
-          <Parameter Name="cantidad" Type="numeric" Mode="In" />
-          <Parameter Name="precio_total" Type="numeric" Mode="In" />
-        </Function>
-        <Function Name="sp_upedido_cliente_bodega" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="hora_recibido_bodega" Type="datetime" Mode="In" />
-          <Parameter Name="hora_salida_bodega" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="sp_upedido_cliente_factura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="fecha_factura" Type="datetime" Mode="In" />
-          <Parameter Name="codigo_cajero" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upedido_cliente_transporte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="codigo_conductor" Type="nvarchar" Mode="In" />
-          <Parameter Name="hora_inicia_transporte" Type="datetime" Mode="In" />
-          <Parameter Name="hora_finaliza_transporte" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="sp_upedido_completo_bodega" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="hora_recibido_bodega" Type="datetime" Mode="In" />
-          <Parameter Name="hora_salida_bodega" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="sp_upedido_completo_factura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="fecha_factura" Type="datetime" Mode="In" />
-          <Parameter Name="codigo_cajero" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upedido_completo_transporte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="codigo_conductor" Type="nvarchar" Mode="In" />
-          <Parameter Name="hora_inicia_transporte" Type="datetime" Mode="In" />
-          <Parameter Name="hora_finaliza_transporte" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="sp_upedido_solo_servicio_bodega" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="hora_recibido_bodega" Type="datetime" Mode="In" />
-          <Parameter Name="hora_salida_bodega" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="sp_upedido_solo_servicio_factura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="fecha_factura" Type="datetime" Mode="In" />
-          <Parameter Name="codigo_cajero" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upedido_solo_servicio_transporte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="codigo_conductor" Type="nvarchar" Mode="In" />
-          <Parameter Name="hora_inicia_transporte" Type="datetime" Mode="In" />
-          <Parameter Name="hora_finaliza_transporte" Type="datetime" Mode="In" />
-        </Function>
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__transport__codig__44FF419A' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__transport__codig__44FF419A" />-->
         <EntityContainer Name="FerreteriaModelStoreContainer">
           <EntitySet Name="pedido_cliente" EntityType="Self.pedido_cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pedido_cliente_producto" EntityType="Self.pedido_cliente_producto" Schema="dbo" store:Type="Tables" />
@@ -416,48 +315,49 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <EntitySet Name="servicio" EntityType="Self.servicio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="transporte" EntityType="Self.transporte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__pedido_cl__id_pe__3D2915A8" Association="Self.FK__pedido_cl__id_pe__3D2915A8">
+          <AssociationSet Name="FK__pedido_cl__id_pe__60A75C0F" Association="Self.FK__pedido_cl__id_pe__60A75C0F">
             <End Role="pedido_cliente" EntitySet="pedido_cliente" />
             <End Role="pedido_cliente_producto" EntitySet="pedido_cliente_producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_cl__id_pe__40F9A68C" Association="Self.FK__pedido_cl__id_pe__40F9A68C">
+          <AssociationSet Name="FK__pedido_cl__id_pe__6477ECF3" Association="Self.FK__pedido_cl__id_pe__6477ECF3">
             <End Role="pedido_cliente" EntitySet="pedido_cliente" />
             <End Role="pedido_cliente_servicio" EntitySet="pedido_cliente_servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_cl__id_pr__3E1D39E1" Association="Self.FK__pedido_cl__id_pr__3E1D39E1">
+          <AssociationSet Name="FK__pedido_cl__id_pr__619B8048" Association="Self.FK__pedido_cl__id_pr__619B8048">
             <End Role="producto" EntitySet="producto" />
             <End Role="pedido_cliente_producto" EntitySet="pedido_cliente_producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_cl__id_se__41EDCAC5" Association="Self.FK__pedido_cl__id_se__41EDCAC5">
+          <AssociationSet Name="FK__pedido_cl__id_se__656C112C" Association="Self.FK__pedido_cl__id_se__656C112C">
             <End Role="servicio" EntitySet="servicio" />
             <End Role="pedido_cliente_servicio" EntitySet="pedido_cliente_servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_co__id_pe__29221CFB" Association="Self.FK__pedido_co__id_pe__29221CFB">
+          <AssociationSet Name="FK__pedido_co__id_pe__4CA06362" Association="Self.FK__pedido_co__id_pe__4CA06362">
             <End Role="pedido_completo" EntitySet="pedido_completo" />
             <End Role="pedido_completo_producto" EntitySet="pedido_completo_producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_co__id_pe__2CF2ADDF" Association="Self.FK__pedido_co__id_pe__2CF2ADDF">
+          <AssociationSet Name="FK__pedido_co__id_pe__5070F446" Association="Self.FK__pedido_co__id_pe__5070F446">
             <End Role="pedido_completo" EntitySet="pedido_completo" />
             <End Role="pedido_completo_servicio" EntitySet="pedido_completo_servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_co__id_pr__2A164134" Association="Self.FK__pedido_co__id_pr__2A164134">
+          <AssociationSet Name="FK__pedido_co__id_pr__4D94879B" Association="Self.FK__pedido_co__id_pr__4D94879B">
             <End Role="producto" EntitySet="producto" />
             <End Role="pedido_completo_producto" EntitySet="pedido_completo_producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_co__id_se__2DE6D218" Association="Self.FK__pedido_co__id_se__2DE6D218">
+          <AssociationSet Name="FK__pedido_co__id_se__5165187F" Association="Self.FK__pedido_co__id_se__5165187F">
             <End Role="servicio" EntitySet="servicio" />
             <End Role="pedido_completo_servicio" EntitySet="pedido_completo_servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_so__id_pe__3587F3E0" Association="Self.FK__pedido_so__id_pe__3587F3E0">
+          <AssociationSet Name="FK__pedido_so__id_pe__59063A47" Association="Self.FK__pedido_so__id_pe__59063A47">
             <End Role="pedido_solo_servicio" EntitySet="pedido_solo_servicio" />
             <End Role="pedido_solo_servicio_servicio" EntitySet="pedido_solo_servicio_servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_so__id_se__367C1819" Association="Self.FK__pedido_so__id_se__367C1819">
+          <AssociationSet Name="FK__pedido_so__id_se__59FA5E80" Association="Self.FK__pedido_so__id_se__59FA5E80">
             <End Role="servicio" EntitySet="servicio" />
             <End Role="pedido_solo_servicio_servicio" EntitySet="pedido_solo_servicio_servicio" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FerreteriaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -480,8 +380,8 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Property Name="iva" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="total" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="estado" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="pedido_cliente_producto" Relationship="Self.FK__pedido_cl__id_pe__1CBC4616" FromRole="pedido_cliente" ToRole="pedido_cliente_producto" />
-          <NavigationProperty Name="pedido_cliente_servicio" Relationship="Self.FK__pedido_cl__id_pe__208CD6FA" FromRole="pedido_cliente" ToRole="pedido_cliente_servicio" />
+          <NavigationProperty Name="pedido_cliente_producto" Relationship="Self.FK__pedido_cl__id_pe__60A75C0F" FromRole="pedido_cliente" ToRole="pedido_cliente_producto" />
+          <NavigationProperty Name="pedido_cliente_servicio" Relationship="Self.FK__pedido_cl__id_pe__6477ECF3" FromRole="pedido_cliente" ToRole="pedido_cliente_servicio" />
         </EntityType>
         <EntityType Name="pedido_cliente_producto">
           <Key>
@@ -492,8 +392,8 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Property Name="id_producto" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
           <Property Name="precio_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="pedido_cliente" Relationship="Self.FK__pedido_cl__id_pe__1CBC4616" FromRole="pedido_cliente_producto" ToRole="pedido_cliente" />
-          <NavigationProperty Name="producto" Relationship="Self.FK__pedido_cl__id_pr__1DB06A4F" FromRole="pedido_cliente_producto" ToRole="producto" />
+          <NavigationProperty Name="pedido_cliente" Relationship="Self.FK__pedido_cl__id_pe__60A75C0F" FromRole="pedido_cliente_producto" ToRole="pedido_cliente" />
+          <NavigationProperty Name="producto" Relationship="Self.FK__pedido_cl__id_pr__619B8048" FromRole="pedido_cliente_producto" ToRole="producto" />
         </EntityType>
         <EntityType Name="pedido_cliente_servicio">
           <Key>
@@ -504,8 +404,8 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Property Name="id_servicio" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
           <Property Name="precio_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="pedido_cliente" Relationship="Self.FK__pedido_cl__id_pe__208CD6FA" FromRole="pedido_cliente_servicio" ToRole="pedido_cliente" />
-          <NavigationProperty Name="servicio" Relationship="Self.FK__pedido_cl__id_se__2180FB33" FromRole="pedido_cliente_servicio" ToRole="servicio" />
+          <NavigationProperty Name="pedido_cliente" Relationship="Self.FK__pedido_cl__id_pe__6477ECF3" FromRole="pedido_cliente_servicio" ToRole="pedido_cliente" />
+          <NavigationProperty Name="servicio" Relationship="Self.FK__pedido_cl__id_se__656C112C" FromRole="pedido_cliente_servicio" ToRole="servicio" />
         </EntityType>
         <EntityType Name="pedido_completo">
           <Key>
@@ -526,8 +426,8 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Property Name="subtotal" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="iva" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="total" Type="Decimal" Precision="10" Scale="2" />
-          <NavigationProperty Name="pedido_completo_producto" Relationship="Self.FK__pedido_co__id_pe__6EF57B66" FromRole="pedido_completo" ToRole="pedido_completo_producto" />
-          <NavigationProperty Name="pedido_completo_servicio" Relationship="Self.FK__pedido_co__id_pe__72C60C4A" FromRole="pedido_completo" ToRole="pedido_completo_servicio" />
+          <NavigationProperty Name="pedido_completo_producto" Relationship="Self.FK__pedido_co__id_pe__4CA06362" FromRole="pedido_completo" ToRole="pedido_completo_producto" />
+          <NavigationProperty Name="pedido_completo_servicio" Relationship="Self.FK__pedido_co__id_pe__5070F446" FromRole="pedido_completo" ToRole="pedido_completo_servicio" />
         </EntityType>
         <EntityType Name="pedido_completo_producto">
           <Key>
@@ -538,8 +438,8 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Property Name="id_producto" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
           <Property Name="precio_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="pedido_completo" Relationship="Self.FK__pedido_co__id_pe__6EF57B66" FromRole="pedido_completo_producto" ToRole="pedido_completo" />
-          <NavigationProperty Name="producto" Relationship="Self.FK__pedido_co__id_pr__6FE99F9F" FromRole="pedido_completo_producto" ToRole="producto" />
+          <NavigationProperty Name="pedido_completo" Relationship="Self.FK__pedido_co__id_pe__4CA06362" FromRole="pedido_completo_producto" ToRole="pedido_completo" />
+          <NavigationProperty Name="producto" Relationship="Self.FK__pedido_co__id_pr__4D94879B" FromRole="pedido_completo_producto" ToRole="producto" />
         </EntityType>
         <EntityType Name="pedido_completo_servicio">
           <Key>
@@ -550,8 +450,8 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Property Name="id_servicio" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
           <Property Name="precio_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="pedido_completo" Relationship="Self.FK__pedido_co__id_pe__72C60C4A" FromRole="pedido_completo_servicio" ToRole="pedido_completo" />
-          <NavigationProperty Name="servicio" Relationship="Self.FK__pedido_co__id_se__73BA3083" FromRole="pedido_completo_servicio" ToRole="servicio" />
+          <NavigationProperty Name="pedido_completo" Relationship="Self.FK__pedido_co__id_pe__5070F446" FromRole="pedido_completo_servicio" ToRole="pedido_completo" />
+          <NavigationProperty Name="servicio" Relationship="Self.FK__pedido_co__id_se__5165187F" FromRole="pedido_completo_servicio" ToRole="servicio" />
         </EntityType>
         <EntityType Name="pedido_solo_servicio">
           <Key>
@@ -571,7 +471,7 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Property Name="subtotal" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="iva" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="total" Type="Decimal" Precision="10" Scale="2" />
-          <NavigationProperty Name="pedido_solo_servicio_servicio" Relationship="Self.FK__pedido_so__id_pe__07C12930" FromRole="pedido_solo_servicio" ToRole="pedido_solo_servicio_servicio" />
+          <NavigationProperty Name="pedido_solo_servicio_servicio" Relationship="Self.FK__pedido_so__id_pe__59063A47" FromRole="pedido_solo_servicio" ToRole="pedido_solo_servicio_servicio" />
         </EntityType>
         <EntityType Name="pedido_solo_servicio_servicio">
           <Key>
@@ -582,8 +482,8 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Property Name="id_servicio" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
           <Property Name="precio_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="pedido_solo_servicio" Relationship="Self.FK__pedido_so__id_pe__07C12930" FromRole="pedido_solo_servicio_servicio" ToRole="pedido_solo_servicio" />
-          <NavigationProperty Name="servicio" Relationship="Self.FK__pedido_so__id_se__08B54D69" FromRole="pedido_solo_servicio_servicio" ToRole="servicio" />
+          <NavigationProperty Name="pedido_solo_servicio" Relationship="Self.FK__pedido_so__id_pe__59063A47" FromRole="pedido_solo_servicio_servicio" ToRole="pedido_solo_servicio" />
+          <NavigationProperty Name="servicio" Relationship="Self.FK__pedido_so__id_se__59FA5E80" FromRole="pedido_solo_servicio_servicio" ToRole="servicio" />
         </EntityType>
         <EntityType Name="producto">
           <Key>
@@ -595,8 +495,8 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
-          <NavigationProperty Name="pedido_cliente_producto" Relationship="Self.FK__pedido_cl__id_pr__1DB06A4F" FromRole="producto" ToRole="pedido_cliente_producto" />
-          <NavigationProperty Name="pedido_completo_producto" Relationship="Self.FK__pedido_co__id_pr__6FE99F9F" FromRole="producto" ToRole="pedido_completo_producto" />
+          <NavigationProperty Name="pedido_cliente_producto" Relationship="Self.FK__pedido_cl__id_pr__619B8048" FromRole="producto" ToRole="pedido_cliente_producto" />
+          <NavigationProperty Name="pedido_completo_producto" Relationship="Self.FK__pedido_co__id_pr__4D94879B" FromRole="producto" ToRole="pedido_completo_producto" />
         </EntityType>
         <EntityType Name="servicio">
           <Key>
@@ -607,9 +507,9 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Property Name="categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="pedido_cliente_servicio" Relationship="Self.FK__pedido_cl__id_se__2180FB33" FromRole="servicio" ToRole="pedido_cliente_servicio" />
-          <NavigationProperty Name="pedido_completo_servicio" Relationship="Self.FK__pedido_co__id_se__73BA3083" FromRole="servicio" ToRole="pedido_completo_servicio" />
-          <NavigationProperty Name="pedido_solo_servicio_servicio" Relationship="Self.FK__pedido_so__id_se__08B54D69" FromRole="servicio" ToRole="pedido_solo_servicio_servicio" />
+          <NavigationProperty Name="pedido_cliente_servicio" Relationship="Self.FK__pedido_cl__id_se__656C112C" FromRole="servicio" ToRole="pedido_cliente_servicio" />
+          <NavigationProperty Name="pedido_completo_servicio" Relationship="Self.FK__pedido_co__id_se__5165187F" FromRole="servicio" ToRole="pedido_completo_servicio" />
+          <NavigationProperty Name="pedido_solo_servicio_servicio" Relationship="Self.FK__pedido_so__id_se__59FA5E80" FromRole="servicio" ToRole="pedido_solo_servicio_servicio" />
         </EntityType>
         <EntityType Name="transporte">
           <Key>
@@ -628,8 +528,10 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Property Name="codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="contrasena" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cedula" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <Association Name="FK__pedido_cl__id_pe__1CBC4616">
+        <Association Name="FK__pedido_cl__id_pe__60A75C0F">
           <End Role="pedido_cliente" Type="Self.pedido_cliente" Multiplicity="1" />
           <End Role="pedido_cliente_producto" Type="Self.pedido_cliente_producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -641,7 +543,7 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_cl__id_pe__208CD6FA">
+        <Association Name="FK__pedido_cl__id_pe__6477ECF3">
           <End Role="pedido_cliente" Type="Self.pedido_cliente" Multiplicity="1" />
           <End Role="pedido_cliente_servicio" Type="Self.pedido_cliente_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -653,7 +555,7 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_cl__id_pr__1DB06A4F">
+        <Association Name="FK__pedido_cl__id_pr__619B8048">
           <End Role="producto" Type="Self.producto" Multiplicity="1" />
           <End Role="pedido_cliente_producto" Type="Self.pedido_cliente_producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -665,7 +567,7 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_cl__id_se__2180FB33">
+        <Association Name="FK__pedido_cl__id_se__656C112C">
           <End Role="servicio" Type="Self.servicio" Multiplicity="1" />
           <End Role="pedido_cliente_servicio" Type="Self.pedido_cliente_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -677,7 +579,7 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_co__id_pe__6EF57B66">
+        <Association Name="FK__pedido_co__id_pe__4CA06362">
           <End Role="pedido_completo" Type="Self.pedido_completo" Multiplicity="1" />
           <End Role="pedido_completo_producto" Type="Self.pedido_completo_producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -689,7 +591,7 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_co__id_pe__72C60C4A">
+        <Association Name="FK__pedido_co__id_pe__5070F446">
           <End Role="pedido_completo" Type="Self.pedido_completo" Multiplicity="1" />
           <End Role="pedido_completo_servicio" Type="Self.pedido_completo_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -701,7 +603,7 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_co__id_pr__6FE99F9F">
+        <Association Name="FK__pedido_co__id_pr__4D94879B">
           <End Role="producto" Type="Self.producto" Multiplicity="1" />
           <End Role="pedido_completo_producto" Type="Self.pedido_completo_producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -713,7 +615,7 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_co__id_se__73BA3083">
+        <Association Name="FK__pedido_co__id_se__5165187F">
           <End Role="servicio" Type="Self.servicio" Multiplicity="1" />
           <End Role="pedido_completo_servicio" Type="Self.pedido_completo_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -725,7 +627,7 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_so__id_pe__07C12930">
+        <Association Name="FK__pedido_so__id_pe__59063A47">
           <End Role="pedido_solo_servicio" Type="Self.pedido_solo_servicio" Multiplicity="1" />
           <End Role="pedido_solo_servicio_servicio" Type="Self.pedido_solo_servicio_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -737,7 +639,7 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_so__id_se__08B54D69">
+        <Association Name="FK__pedido_so__id_se__59FA5E80">
           <End Role="servicio" Type="Self.servicio" Multiplicity="1" />
           <End Role="pedido_solo_servicio_servicio" Type="Self.pedido_solo_servicio_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -762,149 +664,46 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <EntitySet Name="servicio" EntityType="Self.servicio" />
           <EntitySet Name="transporte" EntityType="Self.transporte" />
           <EntitySet Name="usuario" EntityType="Self.usuario" />
-          <AssociationSet Name="FK__pedido_cl__id_pe__1CBC4616" Association="Self.FK__pedido_cl__id_pe__1CBC4616">
+          <AssociationSet Name="FK__pedido_cl__id_pe__60A75C0F" Association="Self.FK__pedido_cl__id_pe__60A75C0F">
             <End Role="pedido_cliente" EntitySet="pedido_cliente" />
             <End Role="pedido_cliente_producto" EntitySet="pedido_cliente_producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_cl__id_pe__208CD6FA" Association="Self.FK__pedido_cl__id_pe__208CD6FA">
+          <AssociationSet Name="FK__pedido_cl__id_pe__6477ECF3" Association="Self.FK__pedido_cl__id_pe__6477ECF3">
             <End Role="pedido_cliente" EntitySet="pedido_cliente" />
             <End Role="pedido_cliente_servicio" EntitySet="pedido_cliente_servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_cl__id_pr__1DB06A4F" Association="Self.FK__pedido_cl__id_pr__1DB06A4F">
+          <AssociationSet Name="FK__pedido_cl__id_pr__619B8048" Association="Self.FK__pedido_cl__id_pr__619B8048">
             <End Role="producto" EntitySet="producto" />
             <End Role="pedido_cliente_producto" EntitySet="pedido_cliente_producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_cl__id_se__2180FB33" Association="Self.FK__pedido_cl__id_se__2180FB33">
+          <AssociationSet Name="FK__pedido_cl__id_se__656C112C" Association="Self.FK__pedido_cl__id_se__656C112C">
             <End Role="servicio" EntitySet="servicio" />
             <End Role="pedido_cliente_servicio" EntitySet="pedido_cliente_servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_co__id_pe__6EF57B66" Association="Self.FK__pedido_co__id_pe__6EF57B66">
+          <AssociationSet Name="FK__pedido_co__id_pe__4CA06362" Association="Self.FK__pedido_co__id_pe__4CA06362">
             <End Role="pedido_completo" EntitySet="pedido_completo" />
             <End Role="pedido_completo_producto" EntitySet="pedido_completo_producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_co__id_pe__72C60C4A" Association="Self.FK__pedido_co__id_pe__72C60C4A">
+          <AssociationSet Name="FK__pedido_co__id_pe__5070F446" Association="Self.FK__pedido_co__id_pe__5070F446">
             <End Role="pedido_completo" EntitySet="pedido_completo" />
             <End Role="pedido_completo_servicio" EntitySet="pedido_completo_servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_co__id_pr__6FE99F9F" Association="Self.FK__pedido_co__id_pr__6FE99F9F">
+          <AssociationSet Name="FK__pedido_co__id_pr__4D94879B" Association="Self.FK__pedido_co__id_pr__4D94879B">
             <End Role="producto" EntitySet="producto" />
             <End Role="pedido_completo_producto" EntitySet="pedido_completo_producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_co__id_se__73BA3083" Association="Self.FK__pedido_co__id_se__73BA3083">
+          <AssociationSet Name="FK__pedido_co__id_se__5165187F" Association="Self.FK__pedido_co__id_se__5165187F">
             <End Role="servicio" EntitySet="servicio" />
             <End Role="pedido_completo_servicio" EntitySet="pedido_completo_servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_so__id_pe__07C12930" Association="Self.FK__pedido_so__id_pe__07C12930">
+          <AssociationSet Name="FK__pedido_so__id_pe__59063A47" Association="Self.FK__pedido_so__id_pe__59063A47">
             <End Role="pedido_solo_servicio" EntitySet="pedido_solo_servicio" />
             <End Role="pedido_solo_servicio_servicio" EntitySet="pedido_solo_servicio_servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_so__id_se__08B54D69" Association="Self.FK__pedido_so__id_se__08B54D69">
+          <AssociationSet Name="FK__pedido_so__id_se__59FA5E80" Association="Self.FK__pedido_so__id_se__59FA5E80">
             <End Role="servicio" EntitySet="servicio" />
             <End Role="pedido_solo_servicio_servicio" EntitySet="pedido_solo_servicio_servicio" />
           </AssociationSet>
-          <FunctionImport Name="sp_ipedido_cliente_cliente">
-            <Parameter Name="cedula_cliente" Mode="In" Type="String" />
-            <Parameter Name="nombre_cliente" Mode="In" Type="String" />
-            <Parameter Name="fecha" Mode="In" Type="DateTime" />
-            <Parameter Name="subtotal" Mode="In" Type="Decimal" />
-            <Parameter Name="iva" Mode="In" Type="Decimal" />
-            <Parameter Name="total" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="sp_ipedido_cliente_producto">
-            <Parameter Name="id_pedido_cliente" Mode="In" Type="Int32" />
-            <Parameter Name="id_producto" Mode="In" Type="Int32" />
-            <Parameter Name="cantidad" Mode="In" Type="Decimal" />
-            <Parameter Name="precio_total" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="sp_ipedido_cliente_servicio">
-            <Parameter Name="id_pedido_cliente" Mode="In" Type="Int32" />
-            <Parameter Name="id_servicio" Mode="In" Type="Int32" />
-            <Parameter Name="cantidad" Mode="In" Type="Decimal" />
-            <Parameter Name="precio_total" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="sp_ipedido_completo_producto">
-            <Parameter Name="id_pedido_completo" Mode="In" Type="Int32" />
-            <Parameter Name="id_producto" Mode="In" Type="Int32" />
-            <Parameter Name="cantidad" Mode="In" Type="Decimal" />
-            <Parameter Name="precio_total" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="sp_ipedido_completo_servicio">
-            <Parameter Name="id_pedido_completo" Mode="In" Type="Int32" />
-            <Parameter Name="id_servicio" Mode="In" Type="Int32" />
-            <Parameter Name="cantidad" Mode="In" Type="Decimal" />
-            <Parameter Name="precio_total" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="sp_ipedido_completo_vendedor">
-            <Parameter Name="codigo_vendedor" Mode="In" Type="String" />
-            <Parameter Name="cedula_cliente" Mode="In" Type="String" />
-            <Parameter Name="hora_atencion" Mode="In" Type="DateTime" />
-            <Parameter Name="hora_venta" Mode="In" Type="DateTime" />
-            <Parameter Name="subtotal" Mode="In" Type="Decimal" />
-            <Parameter Name="iva" Mode="In" Type="Decimal" />
-            <Parameter Name="total" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="sp_ipedido_solo_servicio_constructor">
-            <Parameter Name="cedula_cliente" Mode="In" Type="String" />
-            <Parameter Name="codigo_constructor" Mode="In" Type="String" />
-            <Parameter Name="observaciones" Mode="In" Type="String" />
-            <Parameter Name="subtotal" Mode="In" Type="Decimal" />
-            <Parameter Name="iva" Mode="In" Type="Decimal" />
-            <Parameter Name="total" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="sp_ipedido_solo_servicio_servicio">
-            <Parameter Name="id_pedido_solo_servicio" Mode="In" Type="Int32" />
-            <Parameter Name="id_servicio" Mode="In" Type="Int32" />
-            <Parameter Name="cantidad" Mode="In" Type="Decimal" />
-            <Parameter Name="precio_total" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upedido_cliente_bodega">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="hora_recibido_bodega" Mode="In" Type="DateTime" />
-            <Parameter Name="hora_salida_bodega" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upedido_cliente_factura">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="fecha_factura" Mode="In" Type="DateTime" />
-            <Parameter Name="codigo_cajero" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upedido_cliente_transporte">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="codigo_conductor" Mode="In" Type="String" />
-            <Parameter Name="hora_inicia_transporte" Mode="In" Type="DateTime" />
-            <Parameter Name="hora_finaliza_transporte" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upedido_completo_bodega">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="hora_recibido_bodega" Mode="In" Type="DateTime" />
-            <Parameter Name="hora_salida_bodega" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upedido_completo_factura">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="fecha_factura" Mode="In" Type="DateTime" />
-            <Parameter Name="codigo_cajero" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upedido_completo_transporte">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="codigo_conductor" Mode="In" Type="String" />
-            <Parameter Name="hora_inicia_transporte" Mode="In" Type="DateTime" />
-            <Parameter Name="hora_finaliza_transporte" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upedido_solo_servicio_bodega">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="hora_recibido_bodega" Mode="In" Type="DateTime" />
-            <Parameter Name="hora_salida_bodega" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upedido_solo_servicio_factura">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="fecha_factura" Mode="In" Type="DateTime" />
-            <Parameter Name="codigo_cajero" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upedido_solo_servicio_transporte">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="codigo_conductor" Mode="In" Type="String" />
-            <Parameter Name="hora_inicia_transporte" Mode="In" Type="DateTime" />
-            <Parameter Name="hora_finaliza_transporte" Mode="In" Type="DateTime" />
-          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1069,26 +868,11 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_ipedido_cliente_cliente" FunctionName="FerreteriaModel.Store.sp_ipedido_cliente_cliente" />
-          <FunctionImportMapping FunctionImportName="sp_ipedido_cliente_producto" FunctionName="FerreteriaModel.Store.sp_ipedido_cliente_producto" />
-          <FunctionImportMapping FunctionImportName="sp_ipedido_cliente_servicio" FunctionName="FerreteriaModel.Store.sp_ipedido_cliente_servicio" />
-          <FunctionImportMapping FunctionImportName="sp_ipedido_completo_producto" FunctionName="FerreteriaModel.Store.sp_ipedido_completo_producto" />
-          <FunctionImportMapping FunctionImportName="sp_ipedido_completo_servicio" FunctionName="FerreteriaModel.Store.sp_ipedido_completo_servicio" />
-          <FunctionImportMapping FunctionImportName="sp_ipedido_completo_vendedor" FunctionName="FerreteriaModel.Store.sp_ipedido_completo_vendedor" />
-          <FunctionImportMapping FunctionImportName="sp_ipedido_solo_servicio_constructor" FunctionName="FerreteriaModel.Store.sp_ipedido_solo_servicio_constructor" />
-          <FunctionImportMapping FunctionImportName="sp_ipedido_solo_servicio_servicio" FunctionName="FerreteriaModel.Store.sp_ipedido_solo_servicio_servicio" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_cliente_bodega" FunctionName="FerreteriaModel.Store.sp_upedido_cliente_bodega" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_cliente_factura" FunctionName="FerreteriaModel.Store.sp_upedido_cliente_factura" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_cliente_transporte" FunctionName="FerreteriaModel.Store.sp_upedido_cliente_transporte" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_completo_bodega" FunctionName="FerreteriaModel.Store.sp_upedido_completo_bodega" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_completo_factura" FunctionName="FerreteriaModel.Store.sp_upedido_completo_factura" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_completo_transporte" FunctionName="FerreteriaModel.Store.sp_upedido_completo_transporte" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_solo_servicio_bodega" FunctionName="FerreteriaModel.Store.sp_upedido_solo_servicio_bodega" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_solo_servicio_factura" FunctionName="FerreteriaModel.Store.sp_upedido_solo_servicio_factura" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_solo_servicio_transporte" FunctionName="FerreteriaModel.Store.sp_upedido_solo_servicio_transporte" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1106,7 +890,7 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
