@@ -38,6 +38,7 @@
             this.cboCategoriaServicio = new System.Windows.Forms.ComboBox();
             this.dgvConsultaServicio = new System.Windows.Forms.DataGridView();
             this.tpgTomarOrden = new System.Windows.Forms.TabPage();
+            this.btnNuevaOrden = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.pnlServicio = new System.Windows.Forms.Panel();
             this.lblCantidadServicio = new System.Windows.Forms.Label();
@@ -74,9 +75,12 @@
             this.lblCodigoVendedorT = new System.Windows.Forms.Label();
             this.lblCodigoVendedorL = new System.Windows.Forms.Label();
             this.tpgCarritoCompras = new System.Windows.Forms.TabPage();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.dgvCarritoCompras = new System.Windows.Forms.DataGridView();
-            this.btnNuevaOrden = new System.Windows.Forms.Button();
+            this.dgvCarritoComprasServicios = new System.Windows.Forms.DataGridView();
+            this.lblEliminarServicios = new System.Windows.Forms.Label();
+            this.btnEliminarServicio = new System.Windows.Forms.Button();
+            this.lblEliminarProductos = new System.Windows.Forms.Label();
+            this.btnEliminarProducto = new System.Windows.Forms.Button();
+            this.dgvCarritoComprasProductos = new System.Windows.Forms.DataGridView();
             this.tabControl.SuspendLayout();
             this.tpgConsultaProductos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaProducto)).BeginInit();
@@ -87,7 +91,8 @@
             this.pnlProducto.SuspendLayout();
             this.pnlInformacion.SuspendLayout();
             this.tpgCarritoCompras.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCompras)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoComprasServicios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoComprasProductos)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -225,6 +230,19 @@
             this.tpgTomarOrden.Size = new System.Drawing.Size(830, 410);
             this.tpgTomarOrden.TabIndex = 1;
             this.tpgTomarOrden.Text = "Tomar Orden";
+            // 
+            // btnNuevaOrden
+            // 
+            this.btnNuevaOrden.Image = global::Presentation.Properties.Resources.shopping_cart_24px;
+            this.btnNuevaOrden.Location = new System.Drawing.Point(215, 20);
+            this.btnNuevaOrden.Name = "btnNuevaOrden";
+            this.btnNuevaOrden.Size = new System.Drawing.Size(190, 32);
+            this.btnNuevaOrden.TabIndex = 17;
+            this.btnNuevaOrden.Text = "Nueva Orden";
+            this.btnNuevaOrden.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNuevaOrden.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNuevaOrden.UseVisualStyleBackColor = true;
+            this.btnNuevaOrden.Click += new System.EventHandler(this.btnNuevaOrden_Click);
             // 
             // btnLogOut
             // 
@@ -590,8 +608,12 @@
             // tpgCarritoCompras
             // 
             this.tpgCarritoCompras.BackColor = System.Drawing.SystemColors.Control;
-            this.tpgCarritoCompras.Controls.Add(this.btnEliminar);
-            this.tpgCarritoCompras.Controls.Add(this.dgvCarritoCompras);
+            this.tpgCarritoCompras.Controls.Add(this.dgvCarritoComprasServicios);
+            this.tpgCarritoCompras.Controls.Add(this.lblEliminarServicios);
+            this.tpgCarritoCompras.Controls.Add(this.btnEliminarServicio);
+            this.tpgCarritoCompras.Controls.Add(this.lblEliminarProductos);
+            this.tpgCarritoCompras.Controls.Add(this.btnEliminarProducto);
+            this.tpgCarritoCompras.Controls.Add(this.dgvCarritoComprasProductos);
             this.tpgCarritoCompras.Location = new System.Drawing.Point(4, 27);
             this.tpgCarritoCompras.Name = "tpgCarritoCompras";
             this.tpgCarritoCompras.Padding = new System.Windows.Forms.Padding(3);
@@ -599,47 +621,82 @@
             this.tpgCarritoCompras.TabIndex = 3;
             this.tpgCarritoCompras.Text = "Ver Carrito de Compras";
             // 
-            // btnEliminar
+            // dgvCarritoComprasServicios
             // 
-            this.btnEliminar.Image = global::Presentation.Properties.Resources.clear_shopping_cart_24px;
-            this.btnEliminar.Location = new System.Drawing.Point(592, 6);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(230, 32);
-            this.btnEliminar.TabIndex = 1;
-            this.btnEliminar.Text = "Eliminar Producto/Servicio";
-            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            this.dgvCarritoComprasServicios.AllowUserToAddRows = false;
+            this.dgvCarritoComprasServicios.AllowUserToDeleteRows = false;
+            this.dgvCarritoComprasServicios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvCarritoComprasServicios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCarritoComprasServicios.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvCarritoComprasServicios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCarritoComprasServicios.Location = new System.Drawing.Point(0, 250);
+            this.dgvCarritoComprasServicios.Name = "dgvCarritoComprasServicios";
+            this.dgvCarritoComprasServicios.ReadOnly = true;
+            this.dgvCarritoComprasServicios.RowHeadersVisible = false;
+            this.dgvCarritoComprasServicios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCarritoComprasServicios.Size = new System.Drawing.Size(830, 160);
+            this.dgvCarritoComprasServicios.TabIndex = 5;
             // 
-            // dgvCarritoCompras
+            // lblEliminarServicios
             // 
-            this.dgvCarritoCompras.AllowUserToAddRows = false;
-            this.dgvCarritoCompras.AllowUserToDeleteRows = false;
-            this.dgvCarritoCompras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dgvCarritoCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCarritoCompras.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvCarritoCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCarritoCompras.Location = new System.Drawing.Point(0, 44);
-            this.dgvCarritoCompras.Name = "dgvCarritoCompras";
-            this.dgvCarritoCompras.ReadOnly = true;
-            this.dgvCarritoCompras.RowHeadersVisible = false;
-            this.dgvCarritoCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCarritoCompras.Size = new System.Drawing.Size(830, 366);
-            this.dgvCarritoCompras.TabIndex = 0;
+            this.lblEliminarServicios.AutoSize = true;
+            this.lblEliminarServicios.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEliminarServicios.Location = new System.Drawing.Point(8, 216);
+            this.lblEliminarServicios.Name = "lblEliminarServicios";
+            this.lblEliminarServicios.Size = new System.Drawing.Size(86, 24);
+            this.lblEliminarServicios.TabIndex = 4;
+            this.lblEliminarServicios.Text = "Servicios";
             // 
-            // btnNuevaOrden
+            // btnEliminarServicio
             // 
-            this.btnNuevaOrden.Image = global::Presentation.Properties.Resources.shopping_cart_24px;
-            this.btnNuevaOrden.Location = new System.Drawing.Point(215, 20);
-            this.btnNuevaOrden.Name = "btnNuevaOrden";
-            this.btnNuevaOrden.Size = new System.Drawing.Size(190, 32);
-            this.btnNuevaOrden.TabIndex = 17;
-            this.btnNuevaOrden.Text = "Nueva Orden";
-            this.btnNuevaOrden.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNuevaOrden.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNuevaOrden.UseVisualStyleBackColor = true;
-            this.btnNuevaOrden.Click += new System.EventHandler(this.btnNuevaOrden_Click);
+            this.btnEliminarServicio.Image = global::Presentation.Properties.Resources.clear_shopping_cart_24px;
+            this.btnEliminarServicio.Location = new System.Drawing.Point(642, 212);
+            this.btnEliminarServicio.Name = "btnEliminarServicio";
+            this.btnEliminarServicio.Size = new System.Drawing.Size(180, 32);
+            this.btnEliminarServicio.TabIndex = 3;
+            this.btnEliminarServicio.Text = "Eliminar Servicio";
+            this.btnEliminarServicio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEliminarServicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEliminarServicio.UseVisualStyleBackColor = true;
+            this.btnEliminarServicio.Click += new System.EventHandler(this.btnEliminarServicio_Click);
+            // 
+            // lblEliminarProductos
+            // 
+            this.lblEliminarProductos.AutoSize = true;
+            this.lblEliminarProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEliminarProductos.Location = new System.Drawing.Point(6, 10);
+            this.lblEliminarProductos.Name = "lblEliminarProductos";
+            this.lblEliminarProductos.Size = new System.Drawing.Size(95, 24);
+            this.lblEliminarProductos.TabIndex = 2;
+            this.lblEliminarProductos.Text = "Productos";
+            // 
+            // btnEliminarProducto
+            // 
+            this.btnEliminarProducto.Image = global::Presentation.Properties.Resources.clear_shopping_cart_24px;
+            this.btnEliminarProducto.Location = new System.Drawing.Point(642, 6);
+            this.btnEliminarProducto.Name = "btnEliminarProducto";
+            this.btnEliminarProducto.Size = new System.Drawing.Size(180, 32);
+            this.btnEliminarProducto.TabIndex = 1;
+            this.btnEliminarProducto.Text = "Eliminar Producto";
+            this.btnEliminarProducto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEliminarProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEliminarProducto.UseVisualStyleBackColor = true;
+            this.btnEliminarProducto.Click += new System.EventHandler(this.btnEliminarProducto_Click);
+            // 
+            // dgvCarritoComprasProductos
+            // 
+            this.dgvCarritoComprasProductos.AllowUserToAddRows = false;
+            this.dgvCarritoComprasProductos.AllowUserToDeleteRows = false;
+            this.dgvCarritoComprasProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCarritoComprasProductos.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvCarritoComprasProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCarritoComprasProductos.Location = new System.Drawing.Point(0, 44);
+            this.dgvCarritoComprasProductos.Name = "dgvCarritoComprasProductos";
+            this.dgvCarritoComprasProductos.ReadOnly = true;
+            this.dgvCarritoComprasProductos.RowHeadersVisible = false;
+            this.dgvCarritoComprasProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCarritoComprasProductos.Size = new System.Drawing.Size(830, 160);
+            this.dgvCarritoComprasProductos.TabIndex = 0;
             // 
             // WindowSeller
             // 
@@ -669,7 +726,9 @@
             this.pnlInformacion.ResumeLayout(false);
             this.pnlInformacion.PerformLayout();
             this.tpgCarritoCompras.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCompras)).EndInit();
+            this.tpgCarritoCompras.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoComprasServicios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoComprasProductos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -687,7 +746,7 @@
         private System.Windows.Forms.DataGridView dgvConsultaServicio;
         private System.Windows.Forms.TextBox txtBuscarServicio;
         private System.Windows.Forms.ComboBox cboCategoriaServicio;
-        private System.Windows.Forms.DataGridView dgvCarritoCompras;
+        private System.Windows.Forms.DataGridView dgvCarritoComprasProductos;
         private System.Windows.Forms.Panel pnlServicio;
         private System.Windows.Forms.Panel pnlProducto;
         private System.Windows.Forms.Panel pnlInformacion;
@@ -722,8 +781,12 @@
         private System.Windows.Forms.Button btnBuscarServicio;
         private System.Windows.Forms.Label lblNombreServicioL;
         private System.Windows.Forms.TextBox txtCodigoProducto;
-        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnEliminarProducto;
         private System.Windows.Forms.Button btnLogOut;
         private System.Windows.Forms.Button btnNuevaOrden;
+        private System.Windows.Forms.Button btnEliminarServicio;
+        private System.Windows.Forms.Label lblEliminarProductos;
+        private System.Windows.Forms.DataGridView dgvCarritoComprasServicios;
+        private System.Windows.Forms.Label lblEliminarServicios;
     }
 }

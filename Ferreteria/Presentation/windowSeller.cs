@@ -57,7 +57,7 @@ namespace Presentation
             txtCodigoServicio.Clear();
             lblNombreServicioT.Text = "";
             txtCantidadServicio.Clear();
-            dgvCarritoCompras.Rows.Clear();
+            dgvCarritoComprasProductos.Rows.Clear();
         }
 
         private void Activar(bool activo)
@@ -72,21 +72,33 @@ namespace Presentation
             txtCodigoServicio.Enabled = activo;
             btnAgregarCarritoServicio.Enabled = activo;
             txtCantidadServicio.Enabled = activo;
-            btnEliminar.Enabled = activo;
+            btnEliminarProducto.Enabled = activo;
         }
 
-        private void CargarCarrito()
+        private void CargarCarritoProductos()
         {
-            dgvCarritoCompras.Rows.Clear();
+            dgvCarritoComprasProductos.Rows.Clear();
             foreach (PedidoCompletoProductoE p in productos)
             {
-
+                dgvCarritoComprasProductos.Rows.Add(p, p.Cantidad, p.PrecioTotal);
             }
+            dgvCarritoComprasProductos.Columns[0].Visible = false;
         }
 
         private void CargarCostos()
         {
-
+            subtotal = 0;
+            foreach (PedidoCompletoProductoE p in productos)
+            {
+                subtotal += p.PrecioTotal;
+            }
+            foreach (PedidoCompletoServicioE s in servicios)
+            {
+                subtotal += s.PrecioTotal;
+            }
+            total = subtotal * (iva / 100);
+            lblSubtotalT.Text = subtotal.ToString();
+            lblTotalT.Text = total.ToString();
         }
 
         private void btnNuevaOrden_Click(object sender, EventArgs e)
@@ -98,12 +110,19 @@ namespace Presentation
         private void btoAgregarCarritoProducto_Click(object sender, EventArgs e)
         {
             pcp = new PedidoCompletoProductoE();
-            
+            pcp.IdPedido = pc.Id;
+            pcp.IdVenta = int.Parse(txtCodigoProducto.Text);
+            pcp.Cantidad = int.Parse(txtCantidadProducto.Text);
+
         }
 
         private void btoAgregarCarritoServicio_Click(object sender, EventArgs e)
         {
-
+            pcs = new PedidoCompletoServicioE();
+            pcs.IdPedido = pc.Id;
+            pcs.IdVenta = int.Parse(txtCodigoServicio.Text);
+            pcs.Cantidad = int.Parse(txtCantidadServicio.Text);
+            
         }
 
         private void btoRealizarCompra_Click(object sender, EventArgs e)
@@ -125,11 +144,6 @@ namespace Presentation
         private void btoLogOut_Click(object sender, EventArgs e)
         {
             Dispose();
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void txtBuscarProducto_Enter(object sender, EventArgs e)
@@ -230,6 +244,48 @@ namespace Presentation
         private void txtCantidadServicio_KeyPress(object sender, KeyPressEventArgs e)
         {
             utilities.SoloNumeros(e);
+        }
+
+        private void btnEliminarProducto_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Seguro que desea eliminar el producto seleccionado?",
+                "Eliminando Producto", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                if (productos.Remove((PedidoCompletoProductoE)dgvCarritoComprasProductos.CurrentRow.Cells[0].Value))
+                {
+                    MessageBox.Show("Producto eliminado.", "Eliminando Producto",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar el producto seleccionado.\nInténtelo nuevamente.",
+                        "Eliminando Producto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            CargarCarritoProductos();
+        }
+
+        private void btnEliminarServicio_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Seguro que desea eliminar el servicio seleccionado?",
+                "Eliminando Servicio", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                if (servicios.Remove((PedidoCompletoServicioE)dgvCarritoComprasServicios.CurrentRow.Cells[0].Value))
+                {
+                    MessageBox.Show("Servicio eliminado.", "Eliminando Servicio",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar el servicio seleccionado.\nInténtelo nuevamente.",
+                        "Eliminando Servicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            CargarCarritoProductos();
         }
     }
 }
