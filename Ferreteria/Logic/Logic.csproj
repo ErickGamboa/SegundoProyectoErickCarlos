@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="LLogin.cs" />
     <Compile Include="LProducto.cs" />
+    <Compile Include="LServicio.cs" />
+    <Compile Include="LTransporte.cs" />
     <Compile Include="LUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

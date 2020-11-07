@@ -10,7 +10,7 @@ namespace Logic
 {
     public class LProducto
     {
-        public void RegistrarProducto (string nombre, string categoria, string descripcion, decimal precio, decimal cantidad)
+        public void RegistrarProducto(string nombre, string categoria, string descripcion, decimal precio, decimal cantidad)
         {
             using (FerreteriaEntities db = new FerreteriaEntities())
             {
@@ -25,8 +25,10 @@ namespace Logic
             }
 
         }
-        public List<ProductoE> CargarProducto() {
-            using (FerreteriaEntities db = new FerreteriaEntities()) {
+        public List<ProductoE> CargarProducto()
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
                 List<ProductoE> lista = new List<ProductoE>();
                 var lst = from producto in db.producto
                           select producto;
@@ -39,14 +41,15 @@ namespace Logic
                     produ.Descripcion = i.descripcion;
                     produ.Precio = Convert.ToDouble(i.precio);
                     produ.Cantidad = Convert.ToDouble(i.cantidad);
-                    lista.Add (produ);
+                    lista.Add(produ);
                 }
                 return lista;
             }
 
         }
-        public void EditarProducto(string nombre, string categoria, string descripcion, decimal precio, decimal cantidad, int id) {
-            
+        public void EditarProducto(string nombre, string categoria, string descripcion, decimal precio, decimal cantidad, int id)
+        {
+
             using (FerreteriaEntities db = new FerreteriaEntities())
             {
                 producto producto = null;
@@ -63,8 +66,9 @@ namespace Logic
             }
 
 
-            }
-        public void EliminarProducto(int id) {
+        }
+        public void EliminarProducto(int id)
+        {
             using (FerreteriaEntities db = new FerreteriaEntities())
             {
                 producto producto;
@@ -73,6 +77,6 @@ namespace Logic
                 db.SaveChanges();
             }
 
-            }
+        }
     }
 }

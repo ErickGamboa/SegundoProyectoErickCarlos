@@ -19,6 +19,8 @@ namespace Presentation
             InitializeComponent();
         }
         LProducto producto = new LProducto();
+        LServicio servicio = new LServicio();
+        LTransporte transporte = new LTransporte();
 
         public void soloNumeros(KeyPressEventArgs e)
         {
@@ -42,7 +44,7 @@ namespace Presentation
 
 
         }
-        public void limpiarDatosProducto() {
+        public void LimpiarDatosProducto() {
             txtNombreProducto.Text = "";
             txtCatProducto.Text = "";
             txtDescripProducto.Text = "";
@@ -51,9 +53,36 @@ namespace Presentation
             mensajeSeleccion.Text = "";
             idSelecionado.Text = "";
         }
-        public void cargarProductos() {
+        public void CargarProductos() {
             dtgvProductos.DataSource = null;
             dtgvProductos.DataSource = producto.CargarProducto();
+        }
+        public void LimpiarDatosServicio()
+        {
+            txtNombreServicio.Text = "";
+            txtCategoriaServicio.Text = "";
+            txtDescripcionServicio.Text = "";
+            txtPrecioServicio.Text = "";
+            mensajeSeleccionServicio.Text = "";
+            idSeleccionadoServicio.Text = "";
+        }
+
+        public void CargarServicios()
+        {
+            dtgvServicios.DataSource = null;
+            dtgvServicios.DataSource = servicio.CargarServicio();
+        }
+
+        public void LimpiarDatosTransporte()
+        {
+            txtNumeroVehiculo.Text = "";
+            txtIdConductor.Text = "";
+        }
+
+        public void CargarTransportes()
+        {
+            dtgvTransportes.DataSource = null;
+            dtgvTransportes.DataSource = transporte.CargarTransportes();
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,11 +93,30 @@ namespace Presentation
         private void button10_Click(object sender, EventArgs e)
         {
 
+            if (idSeleccionadoServicio.Text != "")
+            {
+                servicio.EditarServicio(txtNombreServicio.Text, txtCategoriaServicio.Text, txtDescripcionServicio.Text, Convert.ToDecimal(txtPrecioServicio.Text), Convert.ToInt32(idSeleccionadoServicio.Text));
+                CargarServicios();
+                lblMensajeServicio.Text = "Edición exitosa";
+                LimpiarDatosServicio();
+
+
+            }
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-
+            if (txtNombreServicio.Text != "" && txtCategoriaServicio.Text != "" && txtPrecioServicio.Text != "" && txtDescripcionServicio.Text != "")
+            {
+                servicio.RegistrarServicio(txtNombreServicio.Text, txtCategoriaServicio.Text, txtDescripcionServicio.Text, Convert.ToDecimal(txtPrecioServicio.Text));
+                lblMensajeServicio.Text = "Registro exitoso";
+                LimpiarDatosServicio();
+                CargarServicios();
+            }
+            else
+            {
+                lblMensajeProducto.Text = "Debe completar todos los espacios";
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -78,12 +126,28 @@ namespace Presentation
 
         private void button8_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                mensajeSeleccionServicio.Text = "Servicio seleccionado:";
+                idSeleccionadoServicio.Text = dtgvServicios.CurrentRow.Cells[0].Value.ToString();
+                txtNombreServicio.Text = dtgvServicios.CurrentRow.Cells[1].Value.ToString();
+                txtCategoriaServicio.Text = dtgvServicios.CurrentRow.Cells[2].Value.ToString();
+                txtPrecioServicio.Text = dtgvServicios.CurrentRow.Cells[4].Value.ToString();
+                txtDescripcionServicio.Text = dtgvServicios.CurrentRow.Cells[3].Value.ToString();
+            }
+            catch
+            {
+                mensajeSeleccion.Text = "Error al seleccionar";
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            if (dtgvServicios.CurrentRow.Cells[0].Value.ToString() != "")
+            {
+                servicio.EliminarServicio(Convert.ToInt32(dtgvServicios.CurrentRow.Cells[0].Value.ToString()));
+                CargarServicios();
+            }
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -107,8 +171,8 @@ namespace Presentation
             {
                 producto.RegistrarProducto(txtNombreProducto.Text, txtCatProducto.Text, txtDescripProducto.Text, Convert.ToDecimal(txtPreProducto.Text), Convert.ToDecimal(txtCantProducto.Text));
                 lblMensajeProducto.Text = "Registro exitoso";
-                limpiarDatosProducto();
-                cargarProductos();
+                LimpiarDatosProducto();
+                CargarProductos();
             }
             else {
                 lblMensajeProducto.Text = "Debe completar todos los espacios";
@@ -132,13 +196,14 @@ namespace Presentation
 
         private void button4_Click(object sender, EventArgs e)
         {
-            cargarProductos();
+            CargarProductos();
 
         }
 
         private void WindowManager_Load(object sender, EventArgs e)
         {
-            cargarProductos();
+            CargarProductos();
+            CargarServicios();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -155,7 +220,7 @@ namespace Presentation
             }
             catch
             {
-                mensajeSeleccion.Text = "fllo";
+                mensajeSeleccion.Text = "Error al seleccionar";
             }
         }
 
@@ -169,9 +234,9 @@ namespace Presentation
         {
             if (idSelecionado.Text != "") {
                 producto.EditarProducto(txtNombreProducto.Text, txtCatProducto.Text, txtDescripProducto.Text, Convert.ToDecimal(txtPreProducto.Text), Convert.ToDecimal(txtCantProducto.Text), Convert.ToInt32(idSelecionado.Text));
-                cargarProductos();
+                CargarProductos();
                 lblMensajeProducto.Text = "Edición exitosa";
-                limpiarDatosProducto();
+                LimpiarDatosProducto();
                 
 
             }
@@ -182,9 +247,39 @@ namespace Presentation
             if (dtgvProductos.CurrentRow.Cells[0].Value.ToString() != "")
             {
                 producto.EliminarProducto(Convert.ToInt32(dtgvProductos.CurrentRow.Cells[0].Value.ToString()));
-                cargarProductos();
+                CargarProductos();
             }
 
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPrecioServicio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloNumeros(e);
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            if (txtNumeroVehiculo.Text != "" && txtIdConductor.Text != "")
+            {
+                transporte.RegistrarTransporte(txtNumeroVehiculo.Text, txtIdConductor.Text, true);
+                lblMensajeTransporte.Text = "Registro exitoso";
+                LimpiarDatosTransporte();
+                CargarTransportes();
+            }
+            else
+            {
+                lblMensajeProducto.Text = "Debe completar todos los espacios";
+            }
         }
     }
 }

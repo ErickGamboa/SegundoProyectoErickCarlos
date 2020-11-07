@@ -31,9 +31,17 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.idSelecionado = new System.Windows.Forms.Label();
+            this.mensajeSeleccion = new System.Windows.Forms.Label();
             this.dtgvProductos = new System.Windows.Forms.DataGridView();
-            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ferreteriaDataSet = new Presentation.FerreteriaDataSet();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoriaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productoBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.ferreteriaDataSet3 = new Presentation.FerreteriaDataSet3();
             this.lblMensajeProducto = new System.Windows.Forms.Label();
             this.txtCantProducto = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -55,14 +63,13 @@
             this.button17 = new System.Windows.Forms.Button();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.dtgvServicios = new System.Windows.Forms.DataGridView();
+            this.txtPrecioServicio = new System.Windows.Forms.TextBox();
+            this.txtCategoriaServicio = new System.Windows.Forms.TextBox();
+            this.txtNombreServicio = new System.Windows.Forms.TextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -71,16 +78,18 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.button18 = new System.Windows.Forms.Button();
             this.textBox11 = new System.Windows.Forms.TextBox();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dtgvTransportes = new System.Windows.Forms.DataGridView();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtIdConductor = new System.Windows.Forms.TextBox();
+            this.txtNumeroVehiculo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ferreteriaDataSet = new Presentation.FerreteriaDataSet();
             this.productoTableAdapter = new Presentation.FerreteriaDataSetTableAdapters.productoTableAdapter();
             this.ferreteriaDataSet1 = new Presentation.FerreteriaDataSet1();
             this.productoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -88,35 +97,33 @@
             this.ferreteriaDataSet2 = new Presentation.FerreteriaDataSet2();
             this.productoBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.productoTableAdapter2 = new Presentation.FerreteriaDataSet2TableAdapters.productoTableAdapter();
-            this.ferreteriaDataSet3 = new Presentation.FerreteriaDataSet3();
-            this.productoBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.productoTableAdapter3 = new Presentation.FerreteriaDataSet3TableAdapters.productoTableAdapter();
+            this.mensajeSeleccionServicio = new System.Windows.Forms.Label();
+            this.idSeleccionadoServicio = new System.Windows.Forms.Label();
+            this.lblMensajeServicio = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtDescripcionServicio = new System.Windows.Forms.RichTextBox();
             this.productoEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productoEBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.productoEBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoriaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mensajeSeleccion = new System.Windows.Forms.Label();
-            this.idSelecionado = new System.Windows.Forms.Label();
+            this.mensajeSeleccionTransporte = new System.Windows.Forms.Label();
+            this.idSeleccionadoTransporte = new System.Windows.Forms.Label();
+            this.lblMensajeTransporte = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvProductos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet3)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvServicios)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvTransportes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoEBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoEBindingSource2)).BeginInit();
@@ -164,6 +171,22 @@
             this.tabPage1.Text = "CRUD Productos";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // idSelecionado
+            // 
+            this.idSelecionado.AutoSize = true;
+            this.idSelecionado.Location = new System.Drawing.Point(149, 14);
+            this.idSelecionado.Name = "idSelecionado";
+            this.idSelecionado.Size = new System.Drawing.Size(0, 13);
+            this.idSelecionado.TabIndex = 21;
+            // 
+            // mensajeSeleccion
+            // 
+            this.mensajeSeleccion.AutoSize = true;
+            this.mensajeSeleccion.Location = new System.Drawing.Point(24, 13);
+            this.mensajeSeleccion.Name = "mensajeSeleccion";
+            this.mensajeSeleccion.Size = new System.Drawing.Size(0, 13);
+            this.mensajeSeleccion.TabIndex = 20;
+            // 
             // dtgvProductos
             // 
             this.dtgvProductos.AutoGenerateColumns = false;
@@ -182,15 +205,52 @@
             this.dtgvProductos.TabIndex = 19;
             this.dtgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvProductos_CellContentClick);
             // 
-            // productoBindingSource
+            // id
             // 
-            this.productoBindingSource.DataMember = "producto";
-            this.productoBindingSource.DataSource = this.ferreteriaDataSet;
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
             // 
-            // ferreteriaDataSet
+            // nombreDataGridViewTextBoxColumn
             // 
-            this.ferreteriaDataSet.DataSetName = "FerreteriaDataSet";
-            this.ferreteriaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
+            this.nombreDataGridViewTextBoxColumn.HeaderText = "nombre";
+            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            // 
+            // categoriaDataGridViewTextBoxColumn
+            // 
+            this.categoriaDataGridViewTextBoxColumn.DataPropertyName = "categoria";
+            this.categoriaDataGridViewTextBoxColumn.HeaderText = "categoria";
+            this.categoriaDataGridViewTextBoxColumn.Name = "categoriaDataGridViewTextBoxColumn";
+            // 
+            // precioDataGridViewTextBoxColumn
+            // 
+            this.precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
+            this.precioDataGridViewTextBoxColumn.HeaderText = "precio";
+            this.precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
+            // 
+            // cantidadDataGridViewTextBoxColumn
+            // 
+            this.cantidadDataGridViewTextBoxColumn.DataPropertyName = "cantidad";
+            this.cantidadDataGridViewTextBoxColumn.HeaderText = "cantidad";
+            this.cantidadDataGridViewTextBoxColumn.Name = "cantidadDataGridViewTextBoxColumn";
+            // 
+            // descripcionDataGridViewTextBoxColumn
+            // 
+            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "descripcion";
+            this.descripcionDataGridViewTextBoxColumn.HeaderText = "descripcion";
+            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            // 
+            // productoBindingSource3
+            // 
+            this.productoBindingSource3.DataMember = "producto";
+            this.productoBindingSource3.DataSource = this.ferreteriaDataSet3;
+            // 
+            // ferreteriaDataSet3
+            // 
+            this.ferreteriaDataSet3.DataSetName = "FerreteriaDataSet3";
+            this.ferreteriaDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lblMensajeProducto
             // 
@@ -342,17 +402,21 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lblMensajeServicio);
+            this.tabPage2.Controls.Add(this.idSeleccionadoServicio);
+            this.tabPage2.Controls.Add(this.mensajeSeleccionServicio);
             this.tabPage2.Controls.Add(this.button17);
             this.tabPage2.Controls.Add(this.textBox10);
             this.tabPage2.Controls.Add(this.button6);
-            this.tabPage2.Controls.Add(this.button7);
             this.tabPage2.Controls.Add(this.button8);
             this.tabPage2.Controls.Add(this.button9);
             this.tabPage2.Controls.Add(this.button10);
-            this.tabPage2.Controls.Add(this.dataGridView2);
-            this.tabPage2.Controls.Add(this.textBox4);
-            this.tabPage2.Controls.Add(this.textBox5);
-            this.tabPage2.Controls.Add(this.textBox6);
+            this.tabPage2.Controls.Add(this.dtgvServicios);
+            this.tabPage2.Controls.Add(this.txtPrecioServicio);
+            this.tabPage2.Controls.Add(this.txtCategoriaServicio);
+            this.tabPage2.Controls.Add(this.txtNombreServicio);
+            this.tabPage2.Controls.Add(this.txtDescripcionServicio);
+            this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.richTextBox2);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label6);
@@ -378,14 +442,14 @@
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(215, 6);
+            this.textBox10.Location = new System.Drawing.Point(252, 6);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(440, 20);
+            this.textBox10.Size = new System.Drawing.Size(403, 20);
             this.textBox10.TabIndex = 28;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(616, 305);
+            this.button6.Location = new System.Drawing.Point(546, 302);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(88, 23);
             this.button6.TabIndex = 27;
@@ -393,19 +457,9 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(353, 305);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(88, 23);
-            this.button7.TabIndex = 26;
-            this.button7.Text = "Cargar lista";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(488, 305);
+            this.button8.Location = new System.Drawing.Point(418, 302);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(88, 23);
             this.button8.TabIndex = 25;
@@ -415,7 +469,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(124, 302);
+            this.button9.Location = new System.Drawing.Point(139, 302);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(88, 23);
             this.button9.TabIndex = 24;
@@ -425,7 +479,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(16, 302);
+            this.button10.Location = new System.Drawing.Point(31, 302);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(88, 23);
             this.button10.TabIndex = 23;
@@ -433,39 +487,41 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
-            // dataGridView2
+            // dtgvServicios
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(215, 33);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(570, 254);
-            this.dataGridView2.TabIndex = 22;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            this.dtgvServicios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvServicios.Location = new System.Drawing.Point(252, 33);
+            this.dtgvServicios.Name = "dtgvServicios";
+            this.dtgvServicios.Size = new System.Drawing.Size(533, 254);
+            this.dtgvServicios.TabIndex = 22;
+            this.dtgvServicios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
-            // textBox4
+            // txtPrecioServicio
             // 
-            this.textBox4.Location = new System.Drawing.Point(81, 112);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(113, 20);
-            this.textBox4.TabIndex = 21;
+            this.txtPrecioServicio.Location = new System.Drawing.Point(96, 131);
+            this.txtPrecioServicio.Name = "txtPrecioServicio";
+            this.txtPrecioServicio.Size = new System.Drawing.Size(113, 20);
+            this.txtPrecioServicio.TabIndex = 21;
+            this.txtPrecioServicio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioServicio_KeyPress);
             // 
-            // textBox5
+            // txtCategoriaServicio
             // 
-            this.textBox5.Location = new System.Drawing.Point(81, 66);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(113, 20);
-            this.textBox5.TabIndex = 20;
+            this.txtCategoriaServicio.Location = new System.Drawing.Point(96, 89);
+            this.txtCategoriaServicio.Name = "txtCategoriaServicio";
+            this.txtCategoriaServicio.Size = new System.Drawing.Size(113, 20);
+            this.txtCategoriaServicio.TabIndex = 20;
             // 
-            // textBox6
+            // txtNombreServicio
             // 
-            this.textBox6.Location = new System.Drawing.Point(81, 19);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(113, 20);
-            this.textBox6.TabIndex = 19;
+            this.txtNombreServicio.Location = new System.Drawing.Point(96, 48);
+            this.txtNombreServicio.Name = "txtNombreServicio";
+            this.txtNombreServicio.Size = new System.Drawing.Size(113, 20);
+            this.txtNombreServicio.TabIndex = 19;
+            this.txtNombreServicio.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(16, 185);
+            this.richTextBox2.Location = new System.Drawing.Point(31, 179);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(187, 88);
             this.richTextBox2.TabIndex = 18;
@@ -474,7 +530,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 155);
+            this.label5.Location = new System.Drawing.Point(28, 163);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 13);
             this.label5.TabIndex = 17;
@@ -483,7 +539,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 112);
+            this.label6.Location = new System.Drawing.Point(28, 131);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 16;
@@ -492,7 +548,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 66);
+            this.label7.Location = new System.Drawing.Point(28, 89);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(52, 13);
             this.label7.TabIndex = 15;
@@ -501,24 +557,28 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 19);
+            this.label8.Location = new System.Drawing.Point(28, 48);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 13);
             this.label8.TabIndex = 14;
             this.label8.Text = "Nombre";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.lblMensajeTransporte);
+            this.tabPage3.Controls.Add(this.idSeleccionadoTransporte);
+            this.tabPage3.Controls.Add(this.mensajeSeleccionTransporte);
             this.tabPage3.Controls.Add(this.button18);
             this.tabPage3.Controls.Add(this.textBox11);
-            this.tabPage3.Controls.Add(this.dataGridView3);
+            this.tabPage3.Controls.Add(this.dtgvTransportes);
             this.tabPage3.Controls.Add(this.button11);
             this.tabPage3.Controls.Add(this.button12);
             this.tabPage3.Controls.Add(this.button13);
             this.tabPage3.Controls.Add(this.button14);
             this.tabPage3.Controls.Add(this.button15);
-            this.tabPage3.Controls.Add(this.textBox7);
-            this.tabPage3.Controls.Add(this.textBox8);
+            this.tabPage3.Controls.Add(this.txtIdConductor);
+            this.tabPage3.Controls.Add(this.txtNumeroVehiculo);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -545,13 +605,13 @@
             this.textBox11.Size = new System.Drawing.Size(440, 20);
             this.textBox11.TabIndex = 34;
             // 
-            // dataGridView3
+            // dtgvTransportes
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(212, 45);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(576, 239);
-            this.dataGridView3.TabIndex = 33;
+            this.dtgvTransportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvTransportes.Location = new System.Drawing.Point(212, 45);
+            this.dtgvTransportes.Name = "dtgvTransportes";
+            this.dtgvTransportes.Size = new System.Drawing.Size(576, 239);
+            this.dtgvTransportes.TabIndex = 33;
             // 
             // button11
             // 
@@ -582,35 +642,36 @@
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(118, 229);
+            this.button14.Location = new System.Drawing.Point(114, 245);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(88, 23);
             this.button14.TabIndex = 29;
             this.button14.Text = "Registrar";
             this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(10, 229);
+            this.button15.Location = new System.Drawing.Point(6, 245);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(88, 23);
             this.button15.TabIndex = 28;
             this.button15.Text = "Editar";
             this.button15.UseVisualStyleBackColor = true;
             // 
-            // textBox7
+            // txtIdConductor
             // 
-            this.textBox7.Location = new System.Drawing.Point(42, 169);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(127, 20);
-            this.textBox7.TabIndex = 25;
+            this.txtIdConductor.Location = new System.Drawing.Point(42, 169);
+            this.txtIdConductor.Name = "txtIdConductor";
+            this.txtIdConductor.Size = new System.Drawing.Size(127, 20);
+            this.txtIdConductor.TabIndex = 25;
             // 
-            // textBox8
+            // txtNumeroVehiculo
             // 
-            this.textBox8.Location = new System.Drawing.Point(42, 99);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(127, 20);
-            this.textBox8.TabIndex = 24;
+            this.txtNumeroVehiculo.Location = new System.Drawing.Point(42, 99);
+            this.txtNumeroVehiculo.Name = "txtNumeroVehiculo";
+            this.txtNumeroVehiculo.Size = new System.Drawing.Size(127, 20);
+            this.txtNumeroVehiculo.TabIndex = 24;
             // 
             // label9
             // 
@@ -629,6 +690,16 @@
             this.label10.Size = new System.Drawing.Size(105, 13);
             this.label10.TabIndex = 22;
             this.label10.Text = "Número de Vehículo";
+            // 
+            // productoBindingSource
+            // 
+            this.productoBindingSource.DataMember = "producto";
+            this.productoBindingSource.DataSource = this.ferreteriaDataSet;
+            // 
+            // ferreteriaDataSet
+            // 
+            this.ferreteriaDataSet.DataSetName = "FerreteriaDataSet";
+            this.ferreteriaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // productoTableAdapter
             // 
@@ -662,19 +733,50 @@
             // 
             this.productoTableAdapter2.ClearBeforeFill = true;
             // 
-            // ferreteriaDataSet3
-            // 
-            this.ferreteriaDataSet3.DataSetName = "FerreteriaDataSet3";
-            this.ferreteriaDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // productoBindingSource3
-            // 
-            this.productoBindingSource3.DataMember = "producto";
-            this.productoBindingSource3.DataSource = this.ferreteriaDataSet3;
-            // 
             // productoTableAdapter3
             // 
             this.productoTableAdapter3.ClearBeforeFill = true;
+            // 
+            // mensajeSeleccionServicio
+            // 
+            this.mensajeSeleccionServicio.AutoSize = true;
+            this.mensajeSeleccionServicio.Location = new System.Drawing.Point(50, 15);
+            this.mensajeSeleccionServicio.Name = "mensajeSeleccionServicio";
+            this.mensajeSeleccionServicio.Size = new System.Drawing.Size(0, 13);
+            this.mensajeSeleccionServicio.TabIndex = 30;
+            // 
+            // idSeleccionadoServicio
+            // 
+            this.idSeleccionadoServicio.AutoSize = true;
+            this.idSeleccionadoServicio.Location = new System.Drawing.Point(172, 15);
+            this.idSeleccionadoServicio.Name = "idSeleccionadoServicio";
+            this.idSeleccionadoServicio.Size = new System.Drawing.Size(0, 13);
+            this.idSeleccionadoServicio.TabIndex = 31;
+            // 
+            // lblMensajeServicio
+            // 
+            this.lblMensajeServicio.AutoSize = true;
+            this.lblMensajeServicio.Location = new System.Drawing.Point(28, 274);
+            this.lblMensajeServicio.Name = "lblMensajeServicio";
+            this.lblMensajeServicio.Size = new System.Drawing.Size(0, 13);
+            this.lblMensajeServicio.TabIndex = 32;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(28, 163);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(69, 13);
+            this.label13.TabIndex = 17;
+            this.label13.Text = "Descripción :";
+            // 
+            // txtDescripcionServicio
+            // 
+            this.txtDescripcionServicio.Location = new System.Drawing.Point(31, 179);
+            this.txtDescripcionServicio.Name = "txtDescripcionServicio";
+            this.txtDescripcionServicio.Size = new System.Drawing.Size(196, 92);
+            this.txtDescripcionServicio.TabIndex = 18;
+            this.txtDescripcionServicio.Text = "";
             // 
             // productoEBindingSource
             // 
@@ -688,58 +790,29 @@
             // 
             this.productoEBindingSource2.DataSource = typeof(Entities.ProductoE);
             // 
-            // id
+            // mensajeSeleccionTransporte
             // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
+            this.mensajeSeleccionTransporte.AutoSize = true;
+            this.mensajeSeleccionTransporte.Location = new System.Drawing.Point(27, 35);
+            this.mensajeSeleccionTransporte.Name = "mensajeSeleccionTransporte";
+            this.mensajeSeleccionTransporte.Size = new System.Drawing.Size(0, 13);
+            this.mensajeSeleccionTransporte.TabIndex = 36;
             // 
-            // nombreDataGridViewTextBoxColumn
+            // idSeleccionadoTransporte
             // 
-            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "nombre";
-            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            this.idSeleccionadoTransporte.AutoSize = true;
+            this.idSeleccionadoTransporte.Location = new System.Drawing.Point(142, 35);
+            this.idSeleccionadoTransporte.Name = "idSeleccionadoTransporte";
+            this.idSeleccionadoTransporte.Size = new System.Drawing.Size(0, 13);
+            this.idSeleccionadoTransporte.TabIndex = 37;
             // 
-            // categoriaDataGridViewTextBoxColumn
+            // lblMensajeTransporte
             // 
-            this.categoriaDataGridViewTextBoxColumn.DataPropertyName = "categoria";
-            this.categoriaDataGridViewTextBoxColumn.HeaderText = "categoria";
-            this.categoriaDataGridViewTextBoxColumn.Name = "categoriaDataGridViewTextBoxColumn";
-            // 
-            // precioDataGridViewTextBoxColumn
-            // 
-            this.precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
-            this.precioDataGridViewTextBoxColumn.HeaderText = "precio";
-            this.precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
-            // 
-            // cantidadDataGridViewTextBoxColumn
-            // 
-            this.cantidadDataGridViewTextBoxColumn.DataPropertyName = "cantidad";
-            this.cantidadDataGridViewTextBoxColumn.HeaderText = "cantidad";
-            this.cantidadDataGridViewTextBoxColumn.Name = "cantidadDataGridViewTextBoxColumn";
-            // 
-            // descripcionDataGridViewTextBoxColumn
-            // 
-            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "descripcion";
-            this.descripcionDataGridViewTextBoxColumn.HeaderText = "descripcion";
-            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            // 
-            // mensajeSeleccion
-            // 
-            this.mensajeSeleccion.AutoSize = true;
-            this.mensajeSeleccion.Location = new System.Drawing.Point(24, 13);
-            this.mensajeSeleccion.Name = "mensajeSeleccion";
-            this.mensajeSeleccion.Size = new System.Drawing.Size(0, 13);
-            this.mensajeSeleccion.TabIndex = 20;
-            // 
-            // idSelecionado
-            // 
-            this.idSelecionado.AutoSize = true;
-            this.idSelecionado.Location = new System.Drawing.Point(149, 14);
-            this.idSelecionado.Name = "idSelecionado";
-            this.idSelecionado.Size = new System.Drawing.Size(0, 13);
-            this.idSelecionado.TabIndex = 21;
+            this.lblMensajeTransporte.AutoSize = true;
+            this.lblMensajeTransporte.Location = new System.Drawing.Point(39, 207);
+            this.lblMensajeTransporte.Name = "lblMensajeTransporte";
+            this.lblMensajeTransporte.Size = new System.Drawing.Size(0, 13);
+            this.lblMensajeTransporte.TabIndex = 38;
             // 
             // WindowManager
             // 
@@ -755,20 +828,20 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvProductos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet3)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvServicios)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvTransportes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoEBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoEBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoEBindingSource2)).EndInit();
@@ -795,24 +868,23 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.DataGridView dtgvServicios;
+        private System.Windows.Forms.TextBox txtPrecioServicio;
+        private System.Windows.Forms.TextBox txtCategoriaServicio;
+        private System.Windows.Forms.TextBox txtNombreServicio;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtIdConductor;
+        private System.Windows.Forms.TextBox txtNumeroVehiculo;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dtgvTransportes;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
@@ -851,5 +923,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label idSelecionado;
         private System.Windows.Forms.Label mensajeSeleccion;
+        private System.Windows.Forms.Label lblMensajeServicio;
+        private System.Windows.Forms.Label idSeleccionadoServicio;
+        private System.Windows.Forms.Label mensajeSeleccionServicio;
+        private System.Windows.Forms.RichTextBox txtDescripcionServicio;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblMensajeTransporte;
+        private System.Windows.Forms.Label idSeleccionadoTransporte;
+        private System.Windows.Forms.Label mensajeSeleccionTransporte;
     }
 }
