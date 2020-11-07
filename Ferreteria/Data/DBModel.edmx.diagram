@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bdf698cd9c674a6bad784dff2fa56931" Name="Diagram1">
+        <EntityTypeShape EntityType="FerreteriaModel.pedido_cliente" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.pedido_cliente_producto" Width="1.5" PointX="9" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.pedido_cliente_servicio" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.pedido_completo" Width="1.5" PointX="3.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.pedido_completo_producto" Width="1.5" PointX="8" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.pedido_completo_servicio" Width="1.5" PointX="6" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.pedido_solo_servicio" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.pedido_solo_servicio_servicio" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.producto" Width="1.5" PointX="5.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.servicio" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.transporte" Width="1.5" PointX="5.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.usuario" Width="1.5" PointX="7.75" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_cl__id_pe__1CBC4616" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_cl__id_pe__208CD6FA" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_cl__id_pr__1DB06A4F" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_cl__id_se__2180FB33" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_co__id_pe__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_co__id_pe__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_co__id_pr__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_co__id_se__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_so__id_pe__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_so__id_se__08B54D69" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

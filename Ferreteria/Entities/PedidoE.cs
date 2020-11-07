@@ -8,30 +8,27 @@ namespace Entities
 {
     public abstract class PedidoE
     {
-        protected int Id { get; set; }
-        protected string CedulaCliente { get; set; }
-        protected LinkedList<LinkedList<object>> Servicios { get; set; }
-        protected DateTime HoraRecibidoBodega { get; set; }
-        protected DateTime HoraSalidaBodega { get; set; }
-        protected string CodigoConductor { get; set; }
-        protected DateTime HoraIniciaTransporte { get; set; }
-        protected DateTime HoraFinalizaTransporte { get; set; }
-        protected DateTime FechaFactura { get; set; }
-        protected string CodigoCajero { get; set; }
-        protected double SubTotal { get; set; }
-        protected double IVA { get; set; }
-        protected double Total { get; set; }
+        public int Id { get; set; }
+        public string CedulaCliente { get; set; }
+        public DateTime HoraRecibidoBodega { get; set; }
+        public DateTime HoraSalidaBodega { get; set; }
+        public string CodigoConductor { get; set; }
+        public DateTime HoraIniciaTransporte { get; set; }
+        public DateTime HoraFinalizaTransporte { get; set; }
+        public DateTime FechaFactura { get; set; }
+        public string CodigoCajero { get; set; }
+        public double SubTotal { get; set; }
+        public double IVA { get; set; }
+        public double Total { get; set; }
 
-        protected PedidoE() { }
+        public PedidoE() { }
 
-        protected PedidoE(int id, string cedulaCliente, LinkedList<LinkedList<object>> servicios,
-            DateTime horaRecibidoBodega, DateTime horaSalidaBodega, string codigoConductor,
-            DateTime horaIniciaTransporte, DateTime horaFinalizaTransporte, DateTime fechaFactura,
-            string codigoCajero, double subTotal, double iva, double total)
+        public PedidoE(int id, string cedulaCliente, DateTime horaRecibidoBodega, DateTime horaSalidaBodega,
+            string codigoConductor, DateTime horaIniciaTransporte, DateTime horaFinalizaTransporte,
+            DateTime fechaFactura, string codigoCajero, double subTotal, double iva, double total)
         {
             Id = id;
             CedulaCliente = cedulaCliente;
-            Servicios = servicios;
             HoraRecibidoBodega = horaRecibidoBodega;
             HoraSalidaBodega = horaSalidaBodega;
             CodigoConductor = codigoConductor;

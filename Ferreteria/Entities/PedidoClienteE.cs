@@ -10,17 +10,19 @@ namespace Entities
     {
         public string NombreCliente { get; set; }
         public DateTime Fecha { get; set; }
-        public LinkedList<LinkedList<object>> Productos { get; set; }
+        public LinkedList<LinkedList<PedidoClienteProductoE>> Productos { get; set; }
+        public LinkedList<LinkedList<PedidoClienteServicioE>> Servicios { get; set; }
         public string Estado { get; set; }
 
         public PedidoClienteE() { }
 
         public PedidoClienteE(int id, string cedulaCliente, string nombreCliente, DateTime fecha,
-            LinkedList<LinkedList<object>> productos, LinkedList<LinkedList<object>> servicios,
+            LinkedList<LinkedList<PedidoClienteProductoE>> productos,
+            LinkedList<LinkedList<PedidoClienteServicioE>> servicios,
             DateTime horaRecibidoBodega, DateTime horaSalidaBodega, string codigoConductor,
             DateTime horaIniciaTransporte, DateTime horaFinalizaTransporte, DateTime fechaFactura,
             string codigoCajero, double subTotal, double iva, double total, string estado)
-            : base(id, cedulaCliente, servicios, horaRecibidoBodega, horaSalidaBodega, codigoConductor,
+            : base(id, cedulaCliente, horaRecibidoBodega, horaSalidaBodega, codigoConductor,
                   horaIniciaTransporte, horaFinalizaTransporte, fechaFactura, codigoCajero, subTotal, iva, total)
         {
             Id = id;

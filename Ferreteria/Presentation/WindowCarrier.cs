@@ -16,5 +16,20 @@ namespace Presentation
         {
             InitializeComponent();
         }
+
+        private void btnAgregarInicio_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgregarFin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
     }
 }
