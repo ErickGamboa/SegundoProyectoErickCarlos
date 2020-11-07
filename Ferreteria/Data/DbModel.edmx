@@ -1,0 +1,899 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FerreteriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="pedido_cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cedula_cliente" Type="nvarchar" MaxLength="12" />
+          <Property Name="nombre_cliente" Type="nvarchar" MaxLength="50" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="hora_recibido_bodega" Type="datetime" />
+          <Property Name="hora_salida_bodega" Type="datetime" />
+          <Property Name="codigo_conductor" Type="nvarchar" MaxLength="10" />
+          <Property Name="hora_inicia_transporte" Type="datetime" />
+          <Property Name="hora_finaliza_transporte" Type="datetime" />
+          <Property Name="fecha_factura" Type="datetime" />
+          <Property Name="codigo_cajero" Type="nvarchar" MaxLength="10" />
+          <Property Name="subtotal" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="iva" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="total" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="estado" Type="nvarchar" MaxLength="9" />
+        </EntityType>
+        <EntityType Name="pedido_cliente_producto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_pedido_cliente" Type="int" Nullable="false" />
+          <Property Name="id_producto" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="precio_total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pedido_cliente_servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_pedido_cliente" Type="int" Nullable="false" />
+          <Property Name="id_servicio" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="precio_total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pedido_completo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_vendedor" Type="nvarchar" MaxLength="10" />
+          <Property Name="cedula_cliente" Type="nvarchar" MaxLength="12" />
+          <Property Name="hora_atencion" Type="datetime" />
+          <Property Name="hora_venta" Type="datetime" />
+          <Property Name="hora_recibido_bodega" Type="datetime" />
+          <Property Name="hora_salida_bodega" Type="datetime" />
+          <Property Name="codigo_conductor" Type="nvarchar" MaxLength="10" />
+          <Property Name="hora_inicia_transporte" Type="datetime" />
+          <Property Name="hora_finaliza_transporte" Type="datetime" />
+          <Property Name="fecha_factura" Type="datetime" />
+          <Property Name="codigo_cajero" Type="nvarchar" MaxLength="10" />
+          <Property Name="subtotal" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="iva" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="total" Type="numeric" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="pedido_completo_producto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_pedido_completo" Type="int" Nullable="false" />
+          <Property Name="id_producto" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="precio_total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pedido_completo_servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_pedido_completo" Type="int" Nullable="false" />
+          <Property Name="id_servicio" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="precio_total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pedido_solo_servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cedula_cliente" Type="nvarchar" MaxLength="12" />
+          <Property Name="codigo_constructor" Type="nvarchar" MaxLength="10" />
+          <Property Name="observaciones" Type="nvarchar" MaxLength="80" />
+          <Property Name="hora_recibido_bodega" Type="datetime" />
+          <Property Name="hora_salida_bodega" Type="datetime" />
+          <Property Name="codigo_conductor" Type="nvarchar" MaxLength="10" />
+          <Property Name="hora_inicia_transporte" Type="datetime" />
+          <Property Name="hora_finaliza_transporte" Type="datetime" />
+          <Property Name="fecha_factura" Type="datetime" />
+          <Property Name="codigo_cajero" Type="nvarchar" MaxLength="10" />
+          <Property Name="subtotal" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="iva" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="total" Type="numeric" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="pedido_solo_servicio_servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_pedido_solo_servicio" Type="int" Nullable="false" />
+          <Property Name="id_servicio" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="precio_total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="producto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="categoria" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="50" />
+          <Property Name="precio" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="cantidad" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="categoria" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="50" />
+          <Property Name="precio" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="transporte">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numero_vehiculo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="codigo_conductor" Type="nvarchar" MaxLength="10" />
+          <Property Name="disponible" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="contrasena" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="cedula" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="tipo" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_cl__codig__5CD6CB2B' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_cl__codig__5CD6CB2B" />-->
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_cl__codig__5DCAEF64' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_cl__codig__5DCAEF64" />-->
+        <Association Name="FK__pedido_cl__id_pe__60A75C0F">
+          <End Role="pedido_cliente" Type="Self.pedido_cliente" Multiplicity="1" />
+          <End Role="pedido_cliente_producto" Type="Self.pedido_cliente_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido_cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_cliente_producto">
+              <PropertyRef Name="id_pedido_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido_cl__id_pe__6477ECF3">
+          <End Role="pedido_cliente" Type="Self.pedido_cliente" Multiplicity="1" />
+          <End Role="pedido_cliente_servicio" Type="Self.pedido_cliente_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido_cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_cliente_servicio">
+              <PropertyRef Name="id_pedido_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido_cl__id_pr__619B8048">
+          <End Role="producto" Type="Self.producto" Multiplicity="1" />
+          <End Role="pedido_cliente_producto" Type="Self.pedido_cliente_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="producto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_cliente_producto">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido_cl__id_se__656C112C">
+          <End Role="servicio" Type="Self.servicio" Multiplicity="1" />
+          <End Role="pedido_cliente_servicio" Type="Self.pedido_cliente_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_cliente_servicio">
+              <PropertyRef Name="id_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_co__codig__47DBAE45' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_co__codig__47DBAE45" />-->
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_co__codig__48CFD27E' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_co__codig__48CFD27E" />-->
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_co__codig__49C3F6B7' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_co__codig__49C3F6B7" />-->
+        <Association Name="FK__pedido_co__id_pe__4CA06362">
+          <End Role="pedido_completo" Type="Self.pedido_completo" Multiplicity="1" />
+          <End Role="pedido_completo_producto" Type="Self.pedido_completo_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido_completo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_completo_producto">
+              <PropertyRef Name="id_pedido_completo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido_co__id_pe__5070F446">
+          <End Role="pedido_completo" Type="Self.pedido_completo" Multiplicity="1" />
+          <End Role="pedido_completo_servicio" Type="Self.pedido_completo_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido_completo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_completo_servicio">
+              <PropertyRef Name="id_pedido_completo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido_co__id_pr__4D94879B">
+          <End Role="producto" Type="Self.producto" Multiplicity="1" />
+          <End Role="pedido_completo_producto" Type="Self.pedido_completo_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="producto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_completo_producto">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido_co__id_se__5165187F">
+          <End Role="servicio" Type="Self.servicio" Multiplicity="1" />
+          <End Role="pedido_completo_servicio" Type="Self.pedido_completo_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_completo_servicio">
+              <PropertyRef Name="id_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_so__codig__5441852A' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_so__codig__5441852A" />-->
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_so__codig__5535A963' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_so__codig__5535A963" />-->
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_so__codig__5629CD9C' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_so__codig__5629CD9C" />-->
+        <Association Name="FK__pedido_so__id_pe__59063A47">
+          <End Role="pedido_solo_servicio" Type="Self.pedido_solo_servicio" Multiplicity="1" />
+          <End Role="pedido_solo_servicio_servicio" Type="Self.pedido_solo_servicio_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido_solo_servicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_solo_servicio_servicio">
+              <PropertyRef Name="id_pedido_solo_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido_so__id_se__59FA5E80">
+          <End Role="servicio" Type="Self.servicio" Multiplicity="1" />
+          <End Role="pedido_solo_servicio_servicio" Type="Self.pedido_solo_servicio_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_solo_servicio_servicio">
+              <PropertyRef Name="id_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__transport__codig__44FF419A' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__transport__codig__44FF419A" />-->
+        <EntityContainer Name="FerreteriaModelStoreContainer">
+          <EntitySet Name="pedido_cliente" EntityType="Self.pedido_cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pedido_cliente_producto" EntityType="Self.pedido_cliente_producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pedido_cliente_servicio" EntityType="Self.pedido_cliente_servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pedido_completo" EntityType="Self.pedido_completo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pedido_completo_producto" EntityType="Self.pedido_completo_producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pedido_completo_servicio" EntityType="Self.pedido_completo_servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pedido_solo_servicio" EntityType="Self.pedido_solo_servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pedido_solo_servicio_servicio" EntityType="Self.pedido_solo_servicio_servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="producto" EntityType="Self.producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="servicio" EntityType="Self.servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="transporte" EntityType="Self.transporte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__pedido_cl__id_pe__60A75C0F" Association="Self.FK__pedido_cl__id_pe__60A75C0F">
+            <End Role="pedido_cliente" EntitySet="pedido_cliente" />
+            <End Role="pedido_cliente_producto" EntitySet="pedido_cliente_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_cl__id_pe__6477ECF3" Association="Self.FK__pedido_cl__id_pe__6477ECF3">
+            <End Role="pedido_cliente" EntitySet="pedido_cliente" />
+            <End Role="pedido_cliente_servicio" EntitySet="pedido_cliente_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_cl__id_pr__619B8048" Association="Self.FK__pedido_cl__id_pr__619B8048">
+            <End Role="producto" EntitySet="producto" />
+            <End Role="pedido_cliente_producto" EntitySet="pedido_cliente_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_cl__id_se__656C112C" Association="Self.FK__pedido_cl__id_se__656C112C">
+            <End Role="servicio" EntitySet="servicio" />
+            <End Role="pedido_cliente_servicio" EntitySet="pedido_cliente_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_co__id_pe__4CA06362" Association="Self.FK__pedido_co__id_pe__4CA06362">
+            <End Role="pedido_completo" EntitySet="pedido_completo" />
+            <End Role="pedido_completo_producto" EntitySet="pedido_completo_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_co__id_pe__5070F446" Association="Self.FK__pedido_co__id_pe__5070F446">
+            <End Role="pedido_completo" EntitySet="pedido_completo" />
+            <End Role="pedido_completo_servicio" EntitySet="pedido_completo_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_co__id_pr__4D94879B" Association="Self.FK__pedido_co__id_pr__4D94879B">
+            <End Role="producto" EntitySet="producto" />
+            <End Role="pedido_completo_producto" EntitySet="pedido_completo_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_co__id_se__5165187F" Association="Self.FK__pedido_co__id_se__5165187F">
+            <End Role="servicio" EntitySet="servicio" />
+            <End Role="pedido_completo_servicio" EntitySet="pedido_completo_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_so__id_pe__59063A47" Association="Self.FK__pedido_so__id_pe__59063A47">
+            <End Role="pedido_solo_servicio" EntitySet="pedido_solo_servicio" />
+            <End Role="pedido_solo_servicio_servicio" EntitySet="pedido_solo_servicio_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_so__id_se__59FA5E80" Association="Self.FK__pedido_so__id_se__59FA5E80">
+            <End Role="servicio" EntitySet="servicio" />
+            <End Role="pedido_solo_servicio_servicio" EntitySet="pedido_solo_servicio_servicio" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FerreteriaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="pedido_cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cedula_cliente" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="nombre_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="hora_recibido_bodega" Type="DateTime" Precision="3" />
+          <Property Name="hora_salida_bodega" Type="DateTime" Precision="3" />
+          <Property Name="codigo_conductor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="hora_inicia_transporte" Type="DateTime" Precision="3" />
+          <Property Name="hora_finaliza_transporte" Type="DateTime" Precision="3" />
+          <Property Name="fecha_factura" Type="DateTime" Precision="3" />
+          <Property Name="codigo_cajero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="subtotal" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="iva" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="total" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="estado" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="pedido_cliente_producto" Relationship="Self.FK__pedido_cl__id_pe__60A75C0F" FromRole="pedido_cliente" ToRole="pedido_cliente_producto" />
+          <NavigationProperty Name="pedido_cliente_servicio" Relationship="Self.FK__pedido_cl__id_pe__6477ECF3" FromRole="pedido_cliente" ToRole="pedido_cliente_servicio" />
+        </EntityType>
+        <EntityType Name="pedido_cliente_producto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido_cliente" Type="Int32" Nullable="false" />
+          <Property Name="id_producto" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="precio_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="pedido_cliente" Relationship="Self.FK__pedido_cl__id_pe__60A75C0F" FromRole="pedido_cliente_producto" ToRole="pedido_cliente" />
+          <NavigationProperty Name="producto" Relationship="Self.FK__pedido_cl__id_pr__619B8048" FromRole="pedido_cliente_producto" ToRole="producto" />
+        </EntityType>
+        <EntityType Name="pedido_cliente_servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido_cliente" Type="Int32" Nullable="false" />
+          <Property Name="id_servicio" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="precio_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="pedido_cliente" Relationship="Self.FK__pedido_cl__id_pe__6477ECF3" FromRole="pedido_cliente_servicio" ToRole="pedido_cliente" />
+          <NavigationProperty Name="servicio" Relationship="Self.FK__pedido_cl__id_se__656C112C" FromRole="pedido_cliente_servicio" ToRole="servicio" />
+        </EntityType>
+        <EntityType Name="pedido_completo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_vendedor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cedula_cliente" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="hora_atencion" Type="DateTime" Precision="3" />
+          <Property Name="hora_venta" Type="DateTime" Precision="3" />
+          <Property Name="hora_recibido_bodega" Type="DateTime" Precision="3" />
+          <Property Name="hora_salida_bodega" Type="DateTime" Precision="3" />
+          <Property Name="codigo_conductor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="hora_inicia_transporte" Type="DateTime" Precision="3" />
+          <Property Name="hora_finaliza_transporte" Type="DateTime" Precision="3" />
+          <Property Name="fecha_factura" Type="DateTime" Precision="3" />
+          <Property Name="codigo_cajero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="subtotal" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="iva" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="total" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="pedido_completo_producto" Relationship="Self.FK__pedido_co__id_pe__4CA06362" FromRole="pedido_completo" ToRole="pedido_completo_producto" />
+          <NavigationProperty Name="pedido_completo_servicio" Relationship="Self.FK__pedido_co__id_pe__5070F446" FromRole="pedido_completo" ToRole="pedido_completo_servicio" />
+        </EntityType>
+        <EntityType Name="pedido_completo_producto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido_completo" Type="Int32" Nullable="false" />
+          <Property Name="id_producto" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="precio_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="pedido_completo" Relationship="Self.FK__pedido_co__id_pe__4CA06362" FromRole="pedido_completo_producto" ToRole="pedido_completo" />
+          <NavigationProperty Name="producto" Relationship="Self.FK__pedido_co__id_pr__4D94879B" FromRole="pedido_completo_producto" ToRole="producto" />
+        </EntityType>
+        <EntityType Name="pedido_completo_servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido_completo" Type="Int32" Nullable="false" />
+          <Property Name="id_servicio" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="precio_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="pedido_completo" Relationship="Self.FK__pedido_co__id_pe__5070F446" FromRole="pedido_completo_servicio" ToRole="pedido_completo" />
+          <NavigationProperty Name="servicio" Relationship="Self.FK__pedido_co__id_se__5165187F" FromRole="pedido_completo_servicio" ToRole="servicio" />
+        </EntityType>
+        <EntityType Name="pedido_solo_servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cedula_cliente" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_constructor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="observaciones" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="hora_recibido_bodega" Type="DateTime" Precision="3" />
+          <Property Name="hora_salida_bodega" Type="DateTime" Precision="3" />
+          <Property Name="codigo_conductor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="hora_inicia_transporte" Type="DateTime" Precision="3" />
+          <Property Name="hora_finaliza_transporte" Type="DateTime" Precision="3" />
+          <Property Name="fecha_factura" Type="DateTime" Precision="3" />
+          <Property Name="codigo_cajero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="subtotal" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="iva" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="total" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="pedido_solo_servicio_servicio" Relationship="Self.FK__pedido_so__id_pe__59063A47" FromRole="pedido_solo_servicio" ToRole="pedido_solo_servicio_servicio" />
+        </EntityType>
+        <EntityType Name="pedido_solo_servicio_servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido_solo_servicio" Type="Int32" Nullable="false" />
+          <Property Name="id_servicio" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="precio_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="pedido_solo_servicio" Relationship="Self.FK__pedido_so__id_pe__59063A47" FromRole="pedido_solo_servicio_servicio" ToRole="pedido_solo_servicio" />
+          <NavigationProperty Name="servicio" Relationship="Self.FK__pedido_so__id_se__59FA5E80" FromRole="pedido_solo_servicio_servicio" ToRole="servicio" />
+        </EntityType>
+        <EntityType Name="producto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <NavigationProperty Name="pedido_cliente_producto" Relationship="Self.FK__pedido_cl__id_pr__619B8048" FromRole="producto" ToRole="pedido_cliente_producto" />
+          <NavigationProperty Name="pedido_completo_producto" Relationship="Self.FK__pedido_co__id_pr__4D94879B" FromRole="producto" ToRole="pedido_completo_producto" />
+        </EntityType>
+        <EntityType Name="servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="pedido_cliente_servicio" Relationship="Self.FK__pedido_cl__id_se__656C112C" FromRole="servicio" ToRole="pedido_cliente_servicio" />
+          <NavigationProperty Name="pedido_completo_servicio" Relationship="Self.FK__pedido_co__id_se__5165187F" FromRole="servicio" ToRole="pedido_completo_servicio" />
+          <NavigationProperty Name="pedido_solo_servicio_servicio" Relationship="Self.FK__pedido_so__id_se__59FA5E80" FromRole="servicio" ToRole="pedido_solo_servicio_servicio" />
+        </EntityType>
+        <EntityType Name="transporte">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numero_vehiculo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="codigo_conductor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="disponible" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contrasena" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cedula" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__pedido_cl__id_pe__60A75C0F">
+          <End Role="pedido_cliente" Type="Self.pedido_cliente" Multiplicity="1" />
+          <End Role="pedido_cliente_producto" Type="Self.pedido_cliente_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido_cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_cliente_producto">
+              <PropertyRef Name="id_pedido_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido_cl__id_pe__6477ECF3">
+          <End Role="pedido_cliente" Type="Self.pedido_cliente" Multiplicity="1" />
+          <End Role="pedido_cliente_servicio" Type="Self.pedido_cliente_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido_cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_cliente_servicio">
+              <PropertyRef Name="id_pedido_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido_cl__id_pr__619B8048">
+          <End Role="producto" Type="Self.producto" Multiplicity="1" />
+          <End Role="pedido_cliente_producto" Type="Self.pedido_cliente_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="producto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_cliente_producto">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido_cl__id_se__656C112C">
+          <End Role="servicio" Type="Self.servicio" Multiplicity="1" />
+          <End Role="pedido_cliente_servicio" Type="Self.pedido_cliente_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_cliente_servicio">
+              <PropertyRef Name="id_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido_co__id_pe__4CA06362">
+          <End Role="pedido_completo" Type="Self.pedido_completo" Multiplicity="1" />
+          <End Role="pedido_completo_producto" Type="Self.pedido_completo_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido_completo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_completo_producto">
+              <PropertyRef Name="id_pedido_completo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido_co__id_pe__5070F446">
+          <End Role="pedido_completo" Type="Self.pedido_completo" Multiplicity="1" />
+          <End Role="pedido_completo_servicio" Type="Self.pedido_completo_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido_completo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_completo_servicio">
+              <PropertyRef Name="id_pedido_completo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido_co__id_pr__4D94879B">
+          <End Role="producto" Type="Self.producto" Multiplicity="1" />
+          <End Role="pedido_completo_producto" Type="Self.pedido_completo_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="producto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_completo_producto">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido_co__id_se__5165187F">
+          <End Role="servicio" Type="Self.servicio" Multiplicity="1" />
+          <End Role="pedido_completo_servicio" Type="Self.pedido_completo_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_completo_servicio">
+              <PropertyRef Name="id_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido_so__id_pe__59063A47">
+          <End Role="pedido_solo_servicio" Type="Self.pedido_solo_servicio" Multiplicity="1" />
+          <End Role="pedido_solo_servicio_servicio" Type="Self.pedido_solo_servicio_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido_solo_servicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_solo_servicio_servicio">
+              <PropertyRef Name="id_pedido_solo_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido_so__id_se__59FA5E80">
+          <End Role="servicio" Type="Self.servicio" Multiplicity="1" />
+          <End Role="pedido_solo_servicio_servicio" Type="Self.pedido_solo_servicio_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_solo_servicio_servicio">
+              <PropertyRef Name="id_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FerreteriaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="pedido_cliente" EntityType="Self.pedido_cliente" />
+          <EntitySet Name="pedido_cliente_producto" EntityType="Self.pedido_cliente_producto" />
+          <EntitySet Name="pedido_cliente_servicio" EntityType="Self.pedido_cliente_servicio" />
+          <EntitySet Name="pedido_completo" EntityType="Self.pedido_completo" />
+          <EntitySet Name="pedido_completo_producto" EntityType="Self.pedido_completo_producto" />
+          <EntitySet Name="pedido_completo_servicio" EntityType="Self.pedido_completo_servicio" />
+          <EntitySet Name="pedido_solo_servicio" EntityType="Self.pedido_solo_servicio" />
+          <EntitySet Name="pedido_solo_servicio_servicio" EntityType="Self.pedido_solo_servicio_servicio" />
+          <EntitySet Name="producto" EntityType="Self.producto" />
+          <EntitySet Name="servicio" EntityType="Self.servicio" />
+          <EntitySet Name="transporte" EntityType="Self.transporte" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <AssociationSet Name="FK__pedido_cl__id_pe__60A75C0F" Association="Self.FK__pedido_cl__id_pe__60A75C0F">
+            <End Role="pedido_cliente" EntitySet="pedido_cliente" />
+            <End Role="pedido_cliente_producto" EntitySet="pedido_cliente_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_cl__id_pe__6477ECF3" Association="Self.FK__pedido_cl__id_pe__6477ECF3">
+            <End Role="pedido_cliente" EntitySet="pedido_cliente" />
+            <End Role="pedido_cliente_servicio" EntitySet="pedido_cliente_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_cl__id_pr__619B8048" Association="Self.FK__pedido_cl__id_pr__619B8048">
+            <End Role="producto" EntitySet="producto" />
+            <End Role="pedido_cliente_producto" EntitySet="pedido_cliente_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_cl__id_se__656C112C" Association="Self.FK__pedido_cl__id_se__656C112C">
+            <End Role="servicio" EntitySet="servicio" />
+            <End Role="pedido_cliente_servicio" EntitySet="pedido_cliente_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_co__id_pe__4CA06362" Association="Self.FK__pedido_co__id_pe__4CA06362">
+            <End Role="pedido_completo" EntitySet="pedido_completo" />
+            <End Role="pedido_completo_producto" EntitySet="pedido_completo_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_co__id_pe__5070F446" Association="Self.FK__pedido_co__id_pe__5070F446">
+            <End Role="pedido_completo" EntitySet="pedido_completo" />
+            <End Role="pedido_completo_servicio" EntitySet="pedido_completo_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_co__id_pr__4D94879B" Association="Self.FK__pedido_co__id_pr__4D94879B">
+            <End Role="producto" EntitySet="producto" />
+            <End Role="pedido_completo_producto" EntitySet="pedido_completo_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_co__id_se__5165187F" Association="Self.FK__pedido_co__id_se__5165187F">
+            <End Role="servicio" EntitySet="servicio" />
+            <End Role="pedido_completo_servicio" EntitySet="pedido_completo_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_so__id_pe__59063A47" Association="Self.FK__pedido_so__id_pe__59063A47">
+            <End Role="pedido_solo_servicio" EntitySet="pedido_solo_servicio" />
+            <End Role="pedido_solo_servicio_servicio" EntitySet="pedido_solo_servicio_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido_so__id_se__59FA5E80" Association="Self.FK__pedido_so__id_se__59FA5E80">
+            <End Role="servicio" EntitySet="servicio" />
+            <End Role="pedido_solo_servicio_servicio" EntitySet="pedido_solo_servicio_servicio" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FerreteriaModelStoreContainer" CdmEntityContainer="FerreteriaEntities">
+          <EntitySetMapping Name="pedido_cliente">
+            <EntityTypeMapping TypeName="FerreteriaModel.pedido_cliente">
+              <MappingFragment StoreEntitySet="pedido_cliente">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cedula_cliente" ColumnName="cedula_cliente" />
+                <ScalarProperty Name="nombre_cliente" ColumnName="nombre_cliente" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora_recibido_bodega" ColumnName="hora_recibido_bodega" />
+                <ScalarProperty Name="hora_salida_bodega" ColumnName="hora_salida_bodega" />
+                <ScalarProperty Name="codigo_conductor" ColumnName="codigo_conductor" />
+                <ScalarProperty Name="hora_inicia_transporte" ColumnName="hora_inicia_transporte" />
+                <ScalarProperty Name="hora_finaliza_transporte" ColumnName="hora_finaliza_transporte" />
+                <ScalarProperty Name="fecha_factura" ColumnName="fecha_factura" />
+                <ScalarProperty Name="codigo_cajero" ColumnName="codigo_cajero" />
+                <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+                <ScalarProperty Name="iva" ColumnName="iva" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedido_cliente_producto">
+            <EntityTypeMapping TypeName="FerreteriaModel.pedido_cliente_producto">
+              <MappingFragment StoreEntitySet="pedido_cliente_producto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_pedido_cliente" ColumnName="id_pedido_cliente" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precio_total" ColumnName="precio_total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedido_cliente_servicio">
+            <EntityTypeMapping TypeName="FerreteriaModel.pedido_cliente_servicio">
+              <MappingFragment StoreEntitySet="pedido_cliente_servicio">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_pedido_cliente" ColumnName="id_pedido_cliente" />
+                <ScalarProperty Name="id_servicio" ColumnName="id_servicio" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precio_total" ColumnName="precio_total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedido_completo">
+            <EntityTypeMapping TypeName="FerreteriaModel.pedido_completo">
+              <MappingFragment StoreEntitySet="pedido_completo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigo_vendedor" ColumnName="codigo_vendedor" />
+                <ScalarProperty Name="cedula_cliente" ColumnName="cedula_cliente" />
+                <ScalarProperty Name="hora_atencion" ColumnName="hora_atencion" />
+                <ScalarProperty Name="hora_venta" ColumnName="hora_venta" />
+                <ScalarProperty Name="hora_recibido_bodega" ColumnName="hora_recibido_bodega" />
+                <ScalarProperty Name="hora_salida_bodega" ColumnName="hora_salida_bodega" />
+                <ScalarProperty Name="codigo_conductor" ColumnName="codigo_conductor" />
+                <ScalarProperty Name="hora_inicia_transporte" ColumnName="hora_inicia_transporte" />
+                <ScalarProperty Name="hora_finaliza_transporte" ColumnName="hora_finaliza_transporte" />
+                <ScalarProperty Name="fecha_factura" ColumnName="fecha_factura" />
+                <ScalarProperty Name="codigo_cajero" ColumnName="codigo_cajero" />
+                <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+                <ScalarProperty Name="iva" ColumnName="iva" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedido_completo_producto">
+            <EntityTypeMapping TypeName="FerreteriaModel.pedido_completo_producto">
+              <MappingFragment StoreEntitySet="pedido_completo_producto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_pedido_completo" ColumnName="id_pedido_completo" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precio_total" ColumnName="precio_total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedido_completo_servicio">
+            <EntityTypeMapping TypeName="FerreteriaModel.pedido_completo_servicio">
+              <MappingFragment StoreEntitySet="pedido_completo_servicio">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_pedido_completo" ColumnName="id_pedido_completo" />
+                <ScalarProperty Name="id_servicio" ColumnName="id_servicio" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precio_total" ColumnName="precio_total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedido_solo_servicio">
+            <EntityTypeMapping TypeName="FerreteriaModel.pedido_solo_servicio">
+              <MappingFragment StoreEntitySet="pedido_solo_servicio">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cedula_cliente" ColumnName="cedula_cliente" />
+                <ScalarProperty Name="codigo_constructor" ColumnName="codigo_constructor" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="hora_recibido_bodega" ColumnName="hora_recibido_bodega" />
+                <ScalarProperty Name="hora_salida_bodega" ColumnName="hora_salida_bodega" />
+                <ScalarProperty Name="codigo_conductor" ColumnName="codigo_conductor" />
+                <ScalarProperty Name="hora_inicia_transporte" ColumnName="hora_inicia_transporte" />
+                <ScalarProperty Name="hora_finaliza_transporte" ColumnName="hora_finaliza_transporte" />
+                <ScalarProperty Name="fecha_factura" ColumnName="fecha_factura" />
+                <ScalarProperty Name="codigo_cajero" ColumnName="codigo_cajero" />
+                <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+                <ScalarProperty Name="iva" ColumnName="iva" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedido_solo_servicio_servicio">
+            <EntityTypeMapping TypeName="FerreteriaModel.pedido_solo_servicio_servicio">
+              <MappingFragment StoreEntitySet="pedido_solo_servicio_servicio">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_pedido_solo_servicio" ColumnName="id_pedido_solo_servicio" />
+                <ScalarProperty Name="id_servicio" ColumnName="id_servicio" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precio_total" ColumnName="precio_total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="producto">
+            <EntityTypeMapping TypeName="FerreteriaModel.producto">
+              <MappingFragment StoreEntitySet="producto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="servicio">
+            <EntityTypeMapping TypeName="FerreteriaModel.servicio">
+              <MappingFragment StoreEntitySet="servicio">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transporte">
+            <EntityTypeMapping TypeName="FerreteriaModel.transporte">
+              <MappingFragment StoreEntitySet="transporte">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="numero_vehiculo" ColumnName="numero_vehiculo" />
+                <ScalarProperty Name="codigo_conductor" ColumnName="codigo_conductor" />
+                <ScalarProperty Name="disponible" ColumnName="disponible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="FerreteriaModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

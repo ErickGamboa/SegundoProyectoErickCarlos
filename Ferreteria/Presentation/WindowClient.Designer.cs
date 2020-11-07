@@ -666,7 +666,6 @@
         }
 
         #endregion
-
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tpgRealizarPedido;
         private System.Windows.Forms.Panel pnlProducto;

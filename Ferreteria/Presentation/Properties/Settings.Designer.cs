@@ -22,5 +22,15 @@ namespace Presentation.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-R9OGT38;Initial Catalog=Ferreteria;Integrated Security=True")]
+        public string FerreteriaConnectionString {
+            get {
+                return ((string)(this["FerreteriaConnectionString"]));
+            }
+        }
     }
 }

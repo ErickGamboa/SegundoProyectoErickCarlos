@@ -8,7 +8,18 @@ namespace Entities
 {
     public class ServicioE : VentaE
     {
-        public ServicioE() { }
+        public int id { get; set; }
+        public string nombre { get; set; }
+        public string categoria { get; set; }
+        public string descripcion { get; set; }
+        public double precio { get; set; }
+
+
+
+        public ServicioE()
+        {
+
+        }
 
         public ServicioE(int id, string nombre, string categoria, string descripcion, double precio)
             : base(id, nombre, categoria, descripcion, precio)
@@ -21,3 +32,4 @@ namespace Entities
         }
     }
 }
+
