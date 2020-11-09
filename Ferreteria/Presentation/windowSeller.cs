@@ -50,6 +50,8 @@ namespace Presentation
             CargarCategoriaServicio();
             Limpiar();
             Activar(false);
+            dgvCarritoComprasProductos.Columns[0].ValueType = typeof(ProductoE);
+            dgvCarritoComprasServicios.Columns[0].ValueType = typeof(ServicioE);
         }
 
         private void Limpiar()
@@ -69,6 +71,7 @@ namespace Presentation
             lblNombreServicioT.Text = "";
             txtCantidadServicio.Clear();
             dgvCarritoComprasProductos.Rows.Clear();
+            dgvCarritoComprasServicios.Rows.Clear();
         }
 
         private void Activar(bool activo)
@@ -253,13 +256,13 @@ namespace Presentation
         {
             foreach (ServicioE i in sel.CargarServicio("",""))
             {
-                if (i.Id == int.Parse(txtCodigoProducto.Text))
+                if (i.Id == int.Parse(txtCodigoServicio.Text))
                 {
                     pcs = new PedidoCompletoServicioE();
                     pcs.IdPedido = pc.Id;
                     pcs.IdVenta = int.Parse(txtCodigoServicio.Text);
                     pcs.Cantidad = decimal.Parse(txtCantidadServicio.Text);
-                    pcs.PrecioTotal = i.Precio * pcp.Cantidad;
+                    pcs.PrecioTotal = i.Precio * pcs.Cantidad;
 
                     servicios.AddLast(pcs);
 
