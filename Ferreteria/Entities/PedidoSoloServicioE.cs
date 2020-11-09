@@ -18,7 +18,7 @@ namespace Entities
             LinkedList<LinkedList<PedidoSoloServicioServicioE>> servicios,
             string codigoConstructor, string observaciones, DateTime horaRecibidoBodega, DateTime horaSalidaBodega,
             string codigoConductor, DateTime horaIniciaTransporte, DateTime horaFinalizaTransporte,
-            DateTime fechaFactura, string codigoCajero, double subTotal, double iva, double total)
+            DateTime fechaFactura, string codigoCajero, decimal subTotal, decimal iva, decimal total)
             : base(id, cedulaCliente, horaRecibidoBodega, horaSalidaBodega, codigoConductor,
                   horaIniciaTransporte, horaFinalizaTransporte, fechaFactura, codigoCajero, subTotal, iva, total)
         {

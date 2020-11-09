@@ -25,12 +25,13 @@ namespace Logic
 
         }
 
-        public List<ServicioE> CargarServicio()
+        public List<ServicioE> CargarServicio(string nombre, string categoria)
         {
             using (FerreteriaEntities db = new FerreteriaEntities())
             {
                 List<ServicioE> lista = new List<ServicioE>();
                 var lst = from servicio in db.servicio
+                          where servicio.nombre.Contains(nombre) && servicio.categoria.Contains(categoria)
                           select servicio;
                 foreach (var i in lst)
                 {
@@ -39,12 +40,20 @@ namespace Logic
                     servi.Nombre = i.nombre;
                     servi.Categoria = i.categoria;
                     servi.Descripcion = i.descripcion;
-                    servi.Precio = Convert.ToDouble(i.precio);
+                    servi.Precio = Convert.ToDecimal(i.precio);
                     lista.Add(servi);
                 }
                 return lista;
             }
 
+        }
+
+        public List<string> CargarCategoriaServicio()
+        {
+            using (var i = new FerreteriaEntities())
+            {
+                return i.Database.SqlQuery<string>("SELECT * FROM v_categoria_servicio").ToList();
+            }
         }
 
         public void EditarServicio(string nombre, string categoria, string descripcion, decimal precio, int id)

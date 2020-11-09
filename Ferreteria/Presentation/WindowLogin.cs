@@ -7,15 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Entities;
 using Logic;
 
 namespace Presentation
 {
     public partial class WindowLogin : Form
     {
+        private UsuarioE u;
         public WindowLogin()
         {
             InitializeComponent();
+            u = new UsuarioE();
         }
         LLogin login = new LLogin();
         private void label3_Click(object sender, EventArgs e)
@@ -32,31 +35,41 @@ namespace Presentation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Equals("Administrador"))
+            if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Administrador"))
             {
                 WindowManager wmanager = new WindowManager();
                 wmanager.Show(this);
                 this.Hide();
             }
-            else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Equals("Cajero"))
+            else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Cajero"))
             {
-                prueba.Text = "caje";
+                WindowCashier frm = new WindowCashier();
+                frm.ShowDialog();
             }
-            else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Equals("Constructor"))
+            else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Constructor"))
             {
-                prueba.Text = "constructor";
+                WindowBuilder frm = new WindowBuilder();
+                frm.ShowDialog();
             }
-            else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Equals("Conductor"))
+            else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Conductor"))
             {
-                prueba.Text = "conductor";
+                WindowCarrier frm = new WindowCarrier();
+                frm.ShowDialog();
             }
-            else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Equals("Venedor"))
+            else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Vendedor"))
             {
-                prueba.Text = "vendedor";
+                u = login.Login(txtUsuarioLogin.Text, txtContraLogin.Text);
+                WindowSeller frm = new WindowSeller(u);
+                frm.ShowDialog();
             }
             else {
-                prueba.Text = login.Login(txtUsuarioLogin.Text, txtContraLogin.Text);
+                prueba.Text = login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo;
             }
+        }
+
+        private void WindowLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

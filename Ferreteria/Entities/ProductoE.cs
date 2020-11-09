@@ -13,15 +13,12 @@ namespace Entities
         //public string Categoria { get; set; }
         //public string Descripcion { get; set; }
         //public double Precio { get; set; }
-        public double Cantidad { get; set; }
+        public decimal cantidad;
         
-
-        public ProductoE() {
-
-        }
+        public ProductoE() { }
 
         public ProductoE(int id, string nombre, string categoria, string descripcion,
-            double precio, double cantidad) : base(id, nombre, categoria, descripcion, precio)
+            decimal precio, decimal cantidad) : base(id, nombre, categoria, descripcion, precio)
         {
             Id = id;
             Nombre = nombre;
@@ -31,6 +28,20 @@ namespace Entities
             Cantidad = cantidad;
         }
 
-
+        public decimal Cantidad
+        {
+            get { return cantidad; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("La cantidad no puede ser menor a 0 (cero)");
+                }
+                else
+                {
+                    cantidad = value;
+                }
+            }
+        }
     }
 }

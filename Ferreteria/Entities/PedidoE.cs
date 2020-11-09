@@ -17,15 +17,15 @@ namespace Entities
         public DateTime HoraFinalizaTransporte { get; set; }
         public DateTime FechaFactura { get; set; }
         public string CodigoCajero { get; set; }
-        public double SubTotal { get; set; }
-        public double IVA { get; set; }
-        public double Total { get; set; }
+        public decimal SubTotal { get; set; }
+        public decimal IVA { get; set; }
+        public decimal Total { get; set; }
 
         public PedidoE() { }
 
         public PedidoE(int id, string cedulaCliente, DateTime horaRecibidoBodega, DateTime horaSalidaBodega,
             string codigoConductor, DateTime horaIniciaTransporte, DateTime horaFinalizaTransporte,
-            DateTime fechaFactura, string codigoCajero, double subTotal, double iva, double total)
+            DateTime fechaFactura, string codigoCajero, decimal subTotal, decimal iva, decimal total)
         {
             Id = id;
             CedulaCliente = cedulaCliente;

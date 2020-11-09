@@ -55,7 +55,7 @@ namespace Presentation
         }
         public void CargarProductos() {
             dtgvProductos.DataSource = null;
-            dtgvProductos.DataSource = producto.CargarProducto();
+            dtgvProductos.DataSource = producto.CargarProducto("", "");
         }
         public void LimpiarDatosServicio()
         {
@@ -70,7 +70,7 @@ namespace Presentation
         public void CargarServicios()
         {
             dtgvServicios.DataSource = null;
-            dtgvServicios.DataSource = servicio.CargarServicio();
+            dtgvServicios.DataSource = servicio.CargarServicio("","");
         }
 
         public void LimpiarDatosTransporte()
