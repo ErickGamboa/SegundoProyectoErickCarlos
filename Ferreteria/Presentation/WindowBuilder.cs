@@ -43,8 +43,8 @@ namespace Presentation
             CargarCategoria();
             Limpiar();
             Activar(false);
-            CargarPedidos();
             dgvPedidos.Columns[0].ValueType = typeof(object);
+            CargarPedidos();
         }
 
         private void Limpiar()
@@ -359,6 +359,7 @@ namespace Presentation
                 p.HoraRecibidoBodega = dtpRecibido.Value;
                 pl.GuardarPedidoClienteBodega(p);
             }
+            CargarPedidos();
         }
 
         private void btoSalida_Click(object sender, EventArgs e)
@@ -381,6 +382,7 @@ namespace Presentation
                 p.HoraSalidaBodega = dtpSalida.Value;
                 pl.GuardarPedidoClienteBodega(p);
             }
+            CargarPedidos();
         }
 
         private void dgvPedidos_SelectionChanged(object sender, EventArgs e)

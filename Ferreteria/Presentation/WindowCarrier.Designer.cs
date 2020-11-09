@@ -40,6 +40,11 @@
             this.pnlInicia = new System.Windows.Forms.Panel();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.dgvTransportes = new System.Windows.Forms.DataGridView();
+            this.clmpePedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmpeTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmpeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmpeInicia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmpeFinaliza = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTitulo.SuspendLayout();
             this.pnlFinaliza.SuspendLayout();
             this.pnlInicia.SuspendLayout();
@@ -177,8 +182,15 @@
             // 
             this.dgvTransportes.AllowUserToAddRows = false;
             this.dgvTransportes.AllowUserToDeleteRows = false;
+            this.dgvTransportes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTransportes.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvTransportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTransportes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmpePedido,
+            this.clmpeTipo,
+            this.clmpeId,
+            this.clmpeInicia,
+            this.clmpeFinaliza});
             this.dgvTransportes.Location = new System.Drawing.Point(12, 115);
             this.dgvTransportes.Name = "dgvTransportes";
             this.dgvTransportes.ReadOnly = true;
@@ -186,6 +198,45 @@
             this.dgvTransportes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTransportes.Size = new System.Drawing.Size(814, 314);
             this.dgvTransportes.TabIndex = 9;
+            // 
+            // clmpePedido
+            // 
+            this.clmpePedido.HeaderText = "Pedido";
+            this.clmpePedido.Name = "clmpePedido";
+            this.clmpePedido.ReadOnly = true;
+            this.clmpePedido.Visible = false;
+            // 
+            // clmpeTipo
+            // 
+            this.clmpeTipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.clmpeTipo.FillWeight = 140F;
+            this.clmpeTipo.HeaderText = "Tipo";
+            this.clmpeTipo.Name = "clmpeTipo";
+            this.clmpeTipo.ReadOnly = true;
+            this.clmpeTipo.Width = 140;
+            // 
+            // clmpeId
+            // 
+            this.clmpeId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.clmpeId.HeaderText = "Id";
+            this.clmpeId.Name = "clmpeId";
+            this.clmpeId.ReadOnly = true;
+            // 
+            // clmpeInicia
+            // 
+            this.clmpeInicia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmpeInicia.FillWeight = 15.46391F;
+            this.clmpeInicia.HeaderText = "Hora Inicia";
+            this.clmpeInicia.Name = "clmpeInicia";
+            this.clmpeInicia.ReadOnly = true;
+            // 
+            // clmpeFinaliza
+            // 
+            this.clmpeFinaliza.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmpeFinaliza.FillWeight = 15.46391F;
+            this.clmpeFinaliza.HeaderText = "Hora Finaliza";
+            this.clmpeFinaliza.Name = "clmpeFinaliza";
+            this.clmpeFinaliza.ReadOnly = true;
             // 
             // WindowCarrier
             // 
@@ -229,5 +280,10 @@
         private System.Windows.Forms.Panel pnlInicia;
         private System.Windows.Forms.Button btnLogOut;
         private System.Windows.Forms.DataGridView dgvTransportes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmpePedido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmpeTipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmpeId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmpeInicia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmpeFinaliza;
     }
 }
