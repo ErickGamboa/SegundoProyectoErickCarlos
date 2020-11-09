@@ -27,7 +27,6 @@ namespace Presentation
         private LServicio sel;
         private UtilitiesL utilities;
         private DateTime horaAtencion;
-        private DateTime horaVenta;
         private decimal subtotal;
         private decimal iva;
         private decimal total;
@@ -49,7 +48,6 @@ namespace Presentation
             CargarServicios();
             CargarCategoriaProducto();
             CargarCategoriaServicio();
-            
             Limpiar();
             Activar(false);
         }
@@ -223,12 +221,12 @@ namespace Presentation
             {
                 if (i.Id == int.Parse(txtCodigoProducto.Text))
                 {
-                    if (i.Cantidad > int.Parse(txtCantidadProducto.Text))
+                    if (i.Cantidad >= int.Parse(txtCantidadProducto.Text))
                     {
                         pcp = new PedidoCompletoProductoE();
                         pcp.IdPedido = 0;
                         pcp.IdVenta = int.Parse(txtCodigoProducto.Text);
-                        pcp.Cantidad = int.Parse(txtCantidadProducto.Text);
+                        pcp.Cantidad = decimal.Parse(txtCantidadProducto.Text);
                         pcp.PrecioTotal = i.Precio * pcp.Cantidad;
 
                         productos.AddLast(pcp);
@@ -260,7 +258,7 @@ namespace Presentation
                     pcs = new PedidoCompletoServicioE();
                     pcs.IdPedido = pc.Id;
                     pcs.IdVenta = int.Parse(txtCodigoServicio.Text);
-                    pcs.Cantidad = int.Parse(txtCantidadServicio.Text);
+                    pcs.Cantidad = decimal.Parse(txtCantidadServicio.Text);
                     pcs.PrecioTotal = i.Precio * pcp.Cantidad;
 
                     servicios.AddLast(pcs);
@@ -277,12 +275,11 @@ namespace Presentation
 
         private void btoRealizarCompra_Click(object sender, EventArgs e)
         {
-            horaVenta = DateTime.Now;
             pc = new PedidoCompletoE();
             pc.CodigoVendedor = u.Codigo;
             pc.CedulaCliente = txtCedulaCliente.Text;
             pc.HoraAtencion = horaAtencion;
-            pc.HoraVenta = horaVenta;
+            pc.HoraVenta = DateTime.Now;
             pc.SubTotal = subtotal;
             pc.IVA = iva;
             pc.Total = total;
@@ -406,7 +403,6 @@ namespace Presentation
                 {
                     MessageBox.Show("Producto eliminado.", "Eliminando Producto",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
                 else
                 {
@@ -428,7 +424,6 @@ namespace Presentation
                 {
                     MessageBox.Show("Servicio eliminado.", "Eliminando Servicio",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
                 else
                 {
@@ -437,7 +432,7 @@ namespace Presentation
                 }
             }
             CargarCostos();
-            CargarCarritoProductos();
+            CargarCarritoServicios();
         }
 
         private void btnBuscarProducto_Click(object sender, EventArgs e)

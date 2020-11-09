@@ -42,7 +42,7 @@
             this.cboCategoriaServicio = new System.Windows.Forms.ComboBox();
             this.lblCantidadServicio = new System.Windows.Forms.Label();
             this.txtCantidadServicio = new System.Windows.Forms.TextBox();
-            this.btnAgregarCarritoServicio = new System.Windows.Forms.Button();
+            this.btoAgregarCarritoServicio = new System.Windows.Forms.Button();
             this.lblNombreServicio = new System.Windows.Forms.Label();
             this.lblCategoriaServicio = new System.Windows.Forms.Label();
             this.pnlProducto = new System.Windows.Forms.Panel();
@@ -54,10 +54,10 @@
             this.lblPrecioUnidadProductoL = new System.Windows.Forms.Label();
             this.cboNombreProducto = new System.Windows.Forms.ComboBox();
             this.lblProducto = new System.Windows.Forms.Label();
-            this.cboCategoríaProducto = new System.Windows.Forms.ComboBox();
+            this.cboCategoriaProducto = new System.Windows.Forms.ComboBox();
             this.lblCantidadProducto = new System.Windows.Forms.Label();
             this.txtCantidadProducto = new System.Windows.Forms.TextBox();
-            this.btnAgregarCarritoProducto = new System.Windows.Forms.Button();
+            this.btoAgregarCarritoProducto = new System.Windows.Forms.Button();
             this.lblNombreProducto = new System.Windows.Forms.Label();
             this.lblCodigoProducto = new System.Windows.Forms.Label();
             this.pnlInformacion = new System.Windows.Forms.Panel();
@@ -73,8 +73,8 @@
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtCedula = new System.Windows.Forms.TextBox();
-            this.btnLogOut = new System.Windows.Forms.Button();
-            this.btnRealizarCompra = new System.Windows.Forms.Button();
+            this.btoLogOut = new System.Windows.Forms.Button();
+            this.btoRealizarCompra = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblCedulaCliente = new System.Windows.Forms.Label();
             this.lblNombreVendedorL = new System.Windows.Forms.Label();
@@ -89,9 +89,9 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblEliminarServicios = new System.Windows.Forms.Label();
-            this.btnEliminarServicio = new System.Windows.Forms.Button();
+            this.btoEliminarServicio = new System.Windows.Forms.Button();
             this.lblEliminarProductos = new System.Windows.Forms.Label();
-            this.btnEliminarProducto = new System.Windows.Forms.Button();
+            this.btoEliminarProducto = new System.Windows.Forms.Button();
             this.dgvCarritoComprasProductos = new System.Windows.Forms.DataGridView();
             this.clmcpProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmcpId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -153,7 +153,7 @@
             this.panel1.Controls.Add(this.cboCategoriaServicio);
             this.panel1.Controls.Add(this.lblCantidadServicio);
             this.panel1.Controls.Add(this.txtCantidadServicio);
-            this.panel1.Controls.Add(this.btnAgregarCarritoServicio);
+            this.panel1.Controls.Add(this.btoAgregarCarritoServicio);
             this.panel1.Controls.Add(this.lblNombreServicio);
             this.panel1.Controls.Add(this.lblCategoriaServicio);
             this.panel1.Location = new System.Drawing.Point(420, 160);
@@ -260,19 +260,21 @@
             this.txtCantidadServicio.Name = "txtCantidadServicio";
             this.txtCantidadServicio.Size = new System.Drawing.Size(75, 24);
             this.txtCantidadServicio.TabIndex = 18;
+            this.txtCantidadServicio.TextChanged += new System.EventHandler(this.txtCantidadServicio_TextChanged);
+            this.txtCantidadServicio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidadServicio_KeyPress);
             // 
-            // btnAgregarCarritoServicio
+            // btoAgregarCarritoServicio
             // 
-            this.btnAgregarCarritoServicio.Image = global::Presentation.Properties.Resources.add_shopping_cart_24px;
-            this.btnAgregarCarritoServicio.Location = new System.Drawing.Point(106, 190);
-            this.btnAgregarCarritoServicio.Name = "btnAgregarCarritoServicio";
-            this.btnAgregarCarritoServicio.Size = new System.Drawing.Size(170, 32);
-            this.btnAgregarCarritoServicio.TabIndex = 15;
-            this.btnAgregarCarritoServicio.Text = "Agregar al Carrito";
-            this.btnAgregarCarritoServicio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAgregarCarritoServicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAgregarCarritoServicio.UseVisualStyleBackColor = true;
-            this.btnAgregarCarritoServicio.Click += new System.EventHandler(this.btnAgregarCarritoServicio_Click);
+            this.btoAgregarCarritoServicio.Image = global::Presentation.Properties.Resources.add_shopping_cart_24px;
+            this.btoAgregarCarritoServicio.Location = new System.Drawing.Point(106, 190);
+            this.btoAgregarCarritoServicio.Name = "btoAgregarCarritoServicio";
+            this.btoAgregarCarritoServicio.Size = new System.Drawing.Size(170, 32);
+            this.btoAgregarCarritoServicio.TabIndex = 15;
+            this.btoAgregarCarritoServicio.Text = "Agregar al Carrito";
+            this.btoAgregarCarritoServicio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btoAgregarCarritoServicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btoAgregarCarritoServicio.UseVisualStyleBackColor = true;
+            this.btoAgregarCarritoServicio.Click += new System.EventHandler(this.btoAgregarCarritoServicio_Click);
             // 
             // lblNombreServicio
             // 
@@ -304,10 +306,10 @@
             this.pnlProducto.Controls.Add(this.lblPrecioUnidadProductoL);
             this.pnlProducto.Controls.Add(this.cboNombreProducto);
             this.pnlProducto.Controls.Add(this.lblProducto);
-            this.pnlProducto.Controls.Add(this.cboCategoríaProducto);
+            this.pnlProducto.Controls.Add(this.cboCategoriaProducto);
             this.pnlProducto.Controls.Add(this.lblCantidadProducto);
             this.pnlProducto.Controls.Add(this.txtCantidadProducto);
-            this.pnlProducto.Controls.Add(this.btnAgregarCarritoProducto);
+            this.pnlProducto.Controls.Add(this.btoAgregarCarritoProducto);
             this.pnlProducto.Controls.Add(this.lblNombreProducto);
             this.pnlProducto.Controls.Add(this.lblCodigoProducto);
             this.pnlProducto.Location = new System.Drawing.Point(10, 160);
@@ -389,15 +391,15 @@
             this.lblProducto.TabIndex = 21;
             this.lblProducto.Text = "Productos";
             // 
-            // cboCategoríaProducto
+            // cboCategoriaProducto
             // 
-            this.cboCategoríaProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCategoríaProducto.FormattingEnabled = true;
-            this.cboCategoríaProducto.Location = new System.Drawing.Point(134, 51);
-            this.cboCategoríaProducto.Name = "cboCategoríaProducto";
-            this.cboCategoríaProducto.Size = new System.Drawing.Size(245, 26);
-            this.cboCategoríaProducto.TabIndex = 20;
-            this.cboCategoríaProducto.SelectionChangeCommitted += new System.EventHandler(this.cboCategoríaProducto_SelectionChangeCommitted);
+            this.cboCategoriaProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCategoriaProducto.FormattingEnabled = true;
+            this.cboCategoriaProducto.Location = new System.Drawing.Point(134, 51);
+            this.cboCategoriaProducto.Name = "cboCategoriaProducto";
+            this.cboCategoriaProducto.Size = new System.Drawing.Size(245, 26);
+            this.cboCategoriaProducto.TabIndex = 20;
+            this.cboCategoriaProducto.SelectionChangeCommitted += new System.EventHandler(this.cboCategoriaProducto_SelectionChangeCommitted);
             // 
             // lblCantidadProducto
             // 
@@ -414,19 +416,21 @@
             this.txtCantidadProducto.Name = "txtCantidadProducto";
             this.txtCantidadProducto.Size = new System.Drawing.Size(75, 24);
             this.txtCantidadProducto.TabIndex = 18;
+            this.txtCantidadProducto.TextChanged += new System.EventHandler(this.txtCantidadProducto_TextChanged);
+            this.txtCantidadProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidadProducto_KeyPress);
             // 
-            // btnAgregarCarritoProducto
+            // btoAgregarCarritoProducto
             // 
-            this.btnAgregarCarritoProducto.Image = global::Presentation.Properties.Resources.add_shopping_cart_24px;
-            this.btnAgregarCarritoProducto.Location = new System.Drawing.Point(106, 190);
-            this.btnAgregarCarritoProducto.Name = "btnAgregarCarritoProducto";
-            this.btnAgregarCarritoProducto.Size = new System.Drawing.Size(170, 32);
-            this.btnAgregarCarritoProducto.TabIndex = 15;
-            this.btnAgregarCarritoProducto.Text = "Agregar al Carrito";
-            this.btnAgregarCarritoProducto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAgregarCarritoProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAgregarCarritoProducto.UseVisualStyleBackColor = true;
-            this.btnAgregarCarritoProducto.Click += new System.EventHandler(this.btnAgregarCarritoProducto_Click);
+            this.btoAgregarCarritoProducto.Image = global::Presentation.Properties.Resources.add_shopping_cart_24px;
+            this.btoAgregarCarritoProducto.Location = new System.Drawing.Point(106, 190);
+            this.btoAgregarCarritoProducto.Name = "btoAgregarCarritoProducto";
+            this.btoAgregarCarritoProducto.Size = new System.Drawing.Size(170, 32);
+            this.btoAgregarCarritoProducto.TabIndex = 15;
+            this.btoAgregarCarritoProducto.Text = "Agregar al Carrito";
+            this.btoAgregarCarritoProducto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btoAgregarCarritoProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btoAgregarCarritoProducto.UseVisualStyleBackColor = true;
+            this.btoAgregarCarritoProducto.Click += new System.EventHandler(this.btoAgregarCarritoProducto_Click);
             // 
             // lblNombreProducto
             // 
@@ -454,8 +458,8 @@
             this.pnlInformacion.Controls.Add(this.txtApellido);
             this.pnlInformacion.Controls.Add(this.lblApellido);
             this.pnlInformacion.Controls.Add(this.txtCedula);
-            this.pnlInformacion.Controls.Add(this.btnLogOut);
-            this.pnlInformacion.Controls.Add(this.btnRealizarCompra);
+            this.pnlInformacion.Controls.Add(this.btoLogOut);
+            this.pnlInformacion.Controls.Add(this.btoRealizarCompra);
             this.pnlInformacion.Controls.Add(this.txtNombre);
             this.pnlInformacion.Controls.Add(this.lblCedulaCliente);
             this.pnlInformacion.Controls.Add(this.lblNombreVendedorL);
@@ -554,10 +558,12 @@
             // 
             // txtApellido
             // 
+            this.txtApellido.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtApellido.Location = new System.Drawing.Point(609, 10);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(190, 24);
             this.txtApellido.TabIndex = 19;
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // lblApellido
             // 
@@ -578,38 +584,40 @@
             this.txtCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedula_KeyPress);
             this.txtCedula.Leave += new System.EventHandler(this.txtCedula_Leave);
             // 
-            // btnLogOut
+            // btoLogOut
             // 
-            this.btnLogOut.Image = global::Presentation.Properties.Resources.logout_rounded_left_24px;
-            this.btnLogOut.Location = new System.Drawing.Point(194, 95);
-            this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(205, 32);
-            this.btnLogOut.TabIndex = 16;
-            this.btnLogOut.Text = "Salir";
-            this.btnLogOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLogOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLogOut.UseVisualStyleBackColor = true;
-            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            this.btoLogOut.Image = global::Presentation.Properties.Resources.logout_rounded_left_24px;
+            this.btoLogOut.Location = new System.Drawing.Point(194, 95);
+            this.btoLogOut.Name = "btoLogOut";
+            this.btoLogOut.Size = new System.Drawing.Size(205, 32);
+            this.btoLogOut.TabIndex = 16;
+            this.btoLogOut.Text = "Salir";
+            this.btoLogOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btoLogOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btoLogOut.UseVisualStyleBackColor = true;
+            this.btoLogOut.Click += new System.EventHandler(this.btoLogOut_Click);
             // 
-            // btnRealizarCompra
+            // btoRealizarCompra
             // 
-            this.btnRealizarCompra.Image = global::Presentation.Properties.Resources.buy_24px;
-            this.btnRealizarCompra.Location = new System.Drawing.Point(409, 95);
-            this.btnRealizarCompra.Name = "btnRealizarCompra";
-            this.btnRealizarCompra.Size = new System.Drawing.Size(205, 32);
-            this.btnRealizarCompra.TabIndex = 14;
-            this.btnRealizarCompra.Text = "Realizar Compra";
-            this.btnRealizarCompra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRealizarCompra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRealizarCompra.UseVisualStyleBackColor = true;
-            this.btnRealizarCompra.Click += new System.EventHandler(this.btnRealizarCompra_Click);
+            this.btoRealizarCompra.Image = global::Presentation.Properties.Resources.buy_24px;
+            this.btoRealizarCompra.Location = new System.Drawing.Point(409, 95);
+            this.btoRealizarCompra.Name = "btoRealizarCompra";
+            this.btoRealizarCompra.Size = new System.Drawing.Size(205, 32);
+            this.btoRealizarCompra.TabIndex = 14;
+            this.btoRealizarCompra.Text = "Realizar Compra";
+            this.btoRealizarCompra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btoRealizarCompra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btoRealizarCompra.UseVisualStyleBackColor = true;
+            this.btoRealizarCompra.Click += new System.EventHandler(this.btoRealizarCompra_Click);
             // 
             // txtNombre
             // 
+            this.txtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNombre.Location = new System.Drawing.Point(318, 10);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(190, 24);
             this.txtNombre.TabIndex = 5;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // lblCedulaCliente
             // 
@@ -634,9 +642,9 @@
             this.tpgCarritoCompras.BackColor = System.Drawing.SystemColors.Control;
             this.tpgCarritoCompras.Controls.Add(this.dgvCarritoComprasServicios);
             this.tpgCarritoCompras.Controls.Add(this.lblEliminarServicios);
-            this.tpgCarritoCompras.Controls.Add(this.btnEliminarServicio);
+            this.tpgCarritoCompras.Controls.Add(this.btoEliminarServicio);
             this.tpgCarritoCompras.Controls.Add(this.lblEliminarProductos);
-            this.tpgCarritoCompras.Controls.Add(this.btnEliminarProducto);
+            this.tpgCarritoCompras.Controls.Add(this.btoEliminarProducto);
             this.tpgCarritoCompras.Controls.Add(this.dgvCarritoComprasProductos);
             this.tpgCarritoCompras.Location = new System.Drawing.Point(4, 27);
             this.tpgCarritoCompras.Name = "tpgCarritoCompras";
@@ -740,18 +748,18 @@
             this.lblEliminarServicios.TabIndex = 10;
             this.lblEliminarServicios.Text = "Servicios";
             // 
-            // btnEliminarServicio
+            // btoEliminarServicio
             // 
-            this.btnEliminarServicio.Image = global::Presentation.Properties.Resources.clear_shopping_cart_24px;
-            this.btnEliminarServicio.Location = new System.Drawing.Point(642, 212);
-            this.btnEliminarServicio.Name = "btnEliminarServicio";
-            this.btnEliminarServicio.Size = new System.Drawing.Size(180, 32);
-            this.btnEliminarServicio.TabIndex = 9;
-            this.btnEliminarServicio.Text = "Eliminar Servicio";
-            this.btnEliminarServicio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEliminarServicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEliminarServicio.UseVisualStyleBackColor = true;
-            this.btnEliminarServicio.Click += new System.EventHandler(this.btnEliminarServicio_Click);
+            this.btoEliminarServicio.Image = global::Presentation.Properties.Resources.clear_shopping_cart_24px;
+            this.btoEliminarServicio.Location = new System.Drawing.Point(642, 212);
+            this.btoEliminarServicio.Name = "btoEliminarServicio";
+            this.btoEliminarServicio.Size = new System.Drawing.Size(180, 32);
+            this.btoEliminarServicio.TabIndex = 9;
+            this.btoEliminarServicio.Text = "Eliminar Servicio";
+            this.btoEliminarServicio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btoEliminarServicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btoEliminarServicio.UseVisualStyleBackColor = true;
+            this.btoEliminarServicio.Click += new System.EventHandler(this.btoEliminarServicio_Click);
             // 
             // lblEliminarProductos
             // 
@@ -763,18 +771,18 @@
             this.lblEliminarProductos.TabIndex = 8;
             this.lblEliminarProductos.Text = "Productos";
             // 
-            // btnEliminarProducto
+            // btoEliminarProducto
             // 
-            this.btnEliminarProducto.Image = global::Presentation.Properties.Resources.clear_shopping_cart_24px;
-            this.btnEliminarProducto.Location = new System.Drawing.Point(642, 6);
-            this.btnEliminarProducto.Name = "btnEliminarProducto";
-            this.btnEliminarProducto.Size = new System.Drawing.Size(180, 32);
-            this.btnEliminarProducto.TabIndex = 7;
-            this.btnEliminarProducto.Text = "Eliminar Producto";
-            this.btnEliminarProducto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEliminarProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEliminarProducto.UseVisualStyleBackColor = true;
-            this.btnEliminarProducto.Click += new System.EventHandler(this.btnEliminarProducto_Click);
+            this.btoEliminarProducto.Image = global::Presentation.Properties.Resources.clear_shopping_cart_24px;
+            this.btoEliminarProducto.Location = new System.Drawing.Point(642, 6);
+            this.btoEliminarProducto.Name = "btoEliminarProducto";
+            this.btoEliminarProducto.Size = new System.Drawing.Size(180, 32);
+            this.btoEliminarProducto.TabIndex = 7;
+            this.btoEliminarProducto.Text = "Eliminar Producto";
+            this.btoEliminarProducto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btoEliminarProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btoEliminarProducto.UseVisualStyleBackColor = true;
+            this.btoEliminarProducto.Click += new System.EventHandler(this.btoEliminarProducto_Click);
             // 
             // dgvCarritoComprasProductos
             // 
@@ -896,11 +904,11 @@
         private System.Windows.Forms.Panel pnlProducto;
         private System.Windows.Forms.Label lblCantidadProducto;
         private System.Windows.Forms.TextBox txtCantidadProducto;
-        private System.Windows.Forms.Button btnAgregarCarritoProducto;
+        private System.Windows.Forms.Button btoAgregarCarritoProducto;
         private System.Windows.Forms.Label lblNombreProducto;
         private System.Windows.Forms.Label lblCodigoProducto;
         private System.Windows.Forms.Panel pnlInformacion;
-        private System.Windows.Forms.Button btnRealizarCompra;
+        private System.Windows.Forms.Button btoRealizarCompra;
         private System.Windows.Forms.Label lblTotalT;
         private System.Windows.Forms.Label lblSubtotalT;
         private System.Windows.Forms.Label lblColon2;
@@ -913,7 +921,7 @@
         private System.Windows.Forms.Label lblCedulaCliente;
         private System.Windows.Forms.Label lblNombreVendedorL;
         private System.Windows.Forms.TabPage tpgCarritoCompras;
-        private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.Button btoLogOut;
         private System.Windows.Forms.TextBox txtCedula;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Label lblApellido;
@@ -923,7 +931,7 @@
         private System.Windows.Forms.Label lblPrecioUnidadProductoL;
         private System.Windows.Forms.ComboBox cboNombreProducto;
         private System.Windows.Forms.Label lblProducto;
-        private System.Windows.Forms.ComboBox cboCategoríaProducto;
+        private System.Windows.Forms.ComboBox cboCategoriaProducto;
         private System.Windows.Forms.Label lblTotalProductoL;
         private System.Windows.Forms.Label lblColon4;
         private System.Windows.Forms.Label lblTotalProductoT;
@@ -939,7 +947,7 @@
         private System.Windows.Forms.ComboBox cboCategoriaServicio;
         private System.Windows.Forms.Label lblCantidadServicio;
         private System.Windows.Forms.TextBox txtCantidadServicio;
-        private System.Windows.Forms.Button btnAgregarCarritoServicio;
+        private System.Windows.Forms.Button btoAgregarCarritoServicio;
         private System.Windows.Forms.Label lblNombreServicio;
         private System.Windows.Forms.Label lblCategoriaServicio;
         private System.Windows.Forms.DataGridView dgvCarritoComprasServicios;
@@ -952,9 +960,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.Label lblEliminarServicios;
-        private System.Windows.Forms.Button btnEliminarServicio;
+        private System.Windows.Forms.Button btoEliminarServicio;
         private System.Windows.Forms.Label lblEliminarProductos;
-        private System.Windows.Forms.Button btnEliminarProducto;
+        private System.Windows.Forms.Button btoEliminarProducto;
         private System.Windows.Forms.DataGridView dgvCarritoComprasProductos;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmcpProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmcpId;
