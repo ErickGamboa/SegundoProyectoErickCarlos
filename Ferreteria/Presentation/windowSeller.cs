@@ -1,5 +1,6 @@
 ﻿using Entities;
 using Logic;
+using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,34 +23,47 @@ namespace Presentation
         private LinkedList<PedidoCompletoServicioE> servicios;
 
         private UsuarioE u;
+        private LProducto prl;
+        private LServicio sel;
         private UtilitiesL utilities;
         private DateTime horaAtencion;
-        private DateTime horaVenta;
-        private double subtotal;
-        private double iva;
-        private double total;
+        private decimal subtotal;
+        private decimal iva;
+        private decimal total;
 
         public WindowSeller(UsuarioE u)
         {
             InitializeComponent();
+            pcp = new PedidoCompletoProductoE();
+            pcs = new PedidoCompletoServicioE();
+            pl = new PedidoL();
+            productos = new LinkedList<PedidoCompletoProductoE>();
+            servicios = new LinkedList<PedidoCompletoServicioE>();
             this.u = u;
+            prl = new LProducto();
+            sel = new LServicio();
             utilities = new UtilitiesL();
-            iva = 13;
+            lblCodigoVendedorT.Text = u.Codigo;
+            lblNombreVendedorT.Text = u.Nombre;
+            CargarProductos();
+            CargarServicios();
+            CargarCategoriaProducto();
+            CargarCategoriaServicio();
             Limpiar();
             Activar(false);
-            lblCodigoVendedorT.Text = u.Codigo;
-            lblNombreVendedorT.Text = u.Nombre.Substring(0, 22);
+            dgvCarritoComprasProductos.Columns[0].ValueType = typeof(ProductoE);
+            dgvCarritoComprasServicios.Columns[0].ValueType = typeof(ServicioE);
         }
 
         private void Limpiar()
         {
-            txtBuscarProducto.Clear();
-            cboCategoriaProducto.SelectedIndex = 0;
-            txtBuscarServicio.Clear();
-            cboCategoriaServicio.SelectedIndex = 0;
-            txtCedulaCliente.Clear();
+            txtBuscarProducto.Text = "";
+            cboCategoriaProducto.SelectedItem = "PRODUCTOS";
+            txtBuscarServicio.Text = "";
+            cboCategoriaServicio.SelectedItem = "SERVICIOS";
+            txtCedulaCliente.Text = "";
             lblSubtotalT.Text = "0.00";
-            lblIVAT.Text = iva + "%";
+            lblIVAT.Text = "0.00";
             lblTotalT.Text = "0.00";
             txtCodigoProducto.Clear();
             lblNombreProductoT.Text = "";
@@ -58,6 +72,7 @@ namespace Presentation
             lblNombreServicioT.Text = "";
             txtCantidadServicio.Clear();
             dgvCarritoComprasProductos.Rows.Clear();
+            dgvCarritoComprasServicios.Rows.Clear();
         }
 
         private void Activar(bool activo)
@@ -73,6 +88,55 @@ namespace Presentation
             btnAgregarCarritoServicio.Enabled = activo;
             txtCantidadServicio.Enabled = activo;
             btnEliminarProducto.Enabled = activo;
+            btnEliminarServicio.Enabled = activo;
+        }
+
+        private void CargarProductos()
+        {
+            if (cboCategoriaProducto.SelectedItem == "PRODUCTOS")
+            {
+                List<ProductoE> lstpro = prl.CargarProducto(txtBuscarProducto.Text, "");
+                dgvConsultaProducto.DataSource = lstpro;
+            }
+            else
+            {
+                List<ProductoE> lstpro = prl.CargarProducto(txtBuscarProducto.Text, cboCategoriaProducto.Text);
+                dgvConsultaProducto.DataSource = lstpro;
+            }
+        }
+
+        private void CargarServicios()
+        {
+            if (cboCategoriaServicio.SelectedItem == "SERVICIOS")
+            {
+                List<ServicioE> lstser = sel.CargarServicio(txtBuscarServicio.Text, "");
+                dgvConsultaServicio.DataSource = lstser;
+            }
+            else
+            {
+                List<ServicioE> lstser = sel.CargarServicio(txtBuscarServicio.Text, cboCategoriaServicio.Text);
+                dgvConsultaServicio.DataSource = lstser;
+            }
+        }
+
+        private void CargarCategoriaProducto()
+        {
+            cboCategoriaProducto.Items.Clear();
+            cboCategoriaProducto.Items.Add("PRODUCTOS");
+            foreach (string i in prl.CargarCategoriaProducto())
+            {
+                cboCategoriaProducto.Items.Add(i);
+            }
+        }
+
+        private void CargarCategoriaServicio()
+        {
+            cboCategoriaServicio.Items.Clear();
+            cboCategoriaServicio.Items.Add("SERVICIOS");
+            foreach (string i in sel.CargarCategoriaServicio())
+            {
+                cboCategoriaServicio.Items.Add(i);
+            }
         }
 
         private void CargarCarritoProductos()
@@ -80,9 +144,57 @@ namespace Presentation
             dgvCarritoComprasProductos.Rows.Clear();
             foreach (PedidoCompletoProductoE p in productos)
             {
-                dgvCarritoComprasProductos.Rows.Add(p, p.Cantidad, p.PrecioTotal);
+                foreach (ProductoE i in prl.CargarProducto("", ""))
+                {
+                    if (p.IdVenta == i.Id)
+                    {
+                        dgvCarritoComprasProductos.Rows.Add(p, i.Id, i.Nombre, i.Categoria, i.Descripcion,
+                            i.Precio, p.Cantidad, p.PrecioTotal);
+                        break;
+                    }
+                }
             }
-            dgvCarritoComprasProductos.Columns[0].Visible = false;
+        }
+
+        private void CargarCarritoServicios()
+        {
+            dgvCarritoComprasServicios.Rows.Clear();
+            foreach (PedidoCompletoServicioE s in servicios)
+            {
+                foreach (ServicioE i in sel.CargarServicio("",""))
+                {
+                    if (s.IdVenta == i.Id)
+                    {
+                        dgvCarritoComprasServicios.Rows.Add(s, i.Id, i.Nombre, i.Categoria, i.Descripcion,
+                            i.Precio, s.Cantidad, s.PrecioTotal);
+                        break;
+                    }
+                }
+            }
+        }
+
+        public string BuscarProducto(int id)
+        {
+            foreach (ProductoE i in prl.CargarProducto("", ""))
+            {
+                if (i.Id == id)
+                {
+                    return i.Nombre;
+                }
+            }
+            return "";
+        }
+
+        public string BuscarServicio(int id)
+        {
+            foreach (ServicioE i in sel.CargarServicio("", ""))
+            {
+                if (i.Id == id)
+                {
+                    return i.Nombre;
+                }
+            }
+            return "";
         }
 
         private void CargarCostos()
@@ -96,9 +208,11 @@ namespace Presentation
             {
                 subtotal += s.PrecioTotal;
             }
-            total = subtotal * (iva / 100);
-            lblSubtotalT.Text = subtotal.ToString();
-            lblTotalT.Text = total.ToString();
+            iva = subtotal * (decimal) 0.13;
+            total = subtotal + iva;
+            lblSubtotalT.Text = subtotal.ToString("0.00");
+            lblIVAT.Text = iva.ToString("0.00");
+            lblTotalT.Text = total.ToString("0.00");
         }
 
         private void btnNuevaOrden_Click(object sender, EventArgs e)
@@ -109,34 +223,86 @@ namespace Presentation
 
         private void btoAgregarCarritoProducto_Click(object sender, EventArgs e)
         {
-            pcp = new PedidoCompletoProductoE();
-            pcp.IdPedido = pc.Id;
-            pcp.IdVenta = int.Parse(txtCodigoProducto.Text);
-            pcp.Cantidad = int.Parse(txtCantidadProducto.Text);
+            foreach (ProductoE i in prl.CargarProducto("", ""))
+            {
+                if (i.Id == int.Parse(txtCodigoProducto.Text))
+                {
+                    if (i.Cantidad >= int.Parse(txtCantidadProducto.Text))
+                    {
+                        pcp.IdVenta = int.Parse(txtCodigoProducto.Text);
+                        pcp.Cantidad = decimal.Parse(txtCantidadProducto.Text);
+                        pcp.PrecioTotal = i.Precio * pcp.Cantidad;
 
+                        productos.AddLast(pcp);
+
+                        txtCodigoProducto.Clear();
+                        lblNombreProductoT.Text = "";
+                        txtCantidadProducto.Clear();
+
+                        CargarCostos();
+                        CargarCarritoProductos();
+                        break;
+                    }
+                    else
+                    {
+                        MessageBox.Show("La cantidad solicitada es mayor que\nla cantidad disponible ("
+                            + i.Cantidad + ").", "Agregando Producto",
+                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+            }
         }
 
         private void btoAgregarCarritoServicio_Click(object sender, EventArgs e)
         {
-            pcs = new PedidoCompletoServicioE();
-            pcs.IdPedido = pc.Id;
-            pcs.IdVenta = int.Parse(txtCodigoServicio.Text);
-            pcs.Cantidad = int.Parse(txtCantidadServicio.Text);
-            
+            foreach (ServicioE i in sel.CargarServicio("",""))
+            {
+                if (i.Id == int.Parse(txtCodigoServicio.Text))
+                {
+                    pcs.IdVenta = int.Parse(txtCodigoServicio.Text);
+                    pcs.Cantidad = decimal.Parse(txtCantidadServicio.Text);
+                    pcs.PrecioTotal = i.Precio * pcs.Cantidad;
+
+                    servicios.AddLast(pcs);
+
+                    txtCodigoServicio.Clear();
+                    lblNombreServicioT.Text = "";
+                    txtCantidadServicio.Clear();
+
+                    CargarCostos();
+                    CargarCarritoServicios();
+                }
+            }
         }
 
         private void btoRealizarCompra_Click(object sender, EventArgs e)
         {
-            horaVenta = DateTime.Now;
             pc = new PedidoCompletoE();
             pc.CodigoVendedor = u.Codigo;
             pc.CedulaCliente = txtCedulaCliente.Text;
             pc.HoraAtencion = horaAtencion;
-            pc.HoraVenta = horaVenta;
+            pc.HoraVenta = DateTime.Now;
             pc.SubTotal = subtotal;
             pc.IVA = iva;
             pc.Total = total;
             pl.GuardarPedidoCompletoVendedor(pc);
+
+            List<PedidoCompletoE> pedidos = pl.CargarPedidoCompleto();
+            int last = pedidos.Count - 1;
+            pc.Id = pedidos[last].Id;
+
+            foreach (PedidoCompletoProductoE p in productos)
+            {
+                pcp.IdPedido = pc.Id;
+                pl.GuardarPedidoCompletoProducto(pcp);
+            }
+
+            foreach (PedidoCompletoServicioE p in servicios)
+            {
+                pcs.IdPedido = pc.Id;
+                pl.GuardarPedidoCompletoServicio(pcs);
+            }
+
             Limpiar();
             Activar(false);
         }
@@ -168,12 +334,12 @@ namespace Presentation
 
         private void txtBuscarProducto_TextChanged(object sender, EventArgs e)
         {
-
+            CargarProductos();
         }
 
         private void cboCategoriaProducto_SelectionChangeCommitted(object sender, EventArgs e)
         {
-
+            CargarProductos();
         }
 
         private void txtBuscarServicio_Enter(object sender, EventArgs e)
@@ -198,12 +364,12 @@ namespace Presentation
 
         private void txtBuscarServicio_TextChanged(object sender, EventArgs e)
         {
-
+            CargarServicios();
         }
 
         private void cboCategoriaServicio_SelectionChangeCommitted(object sender, EventArgs e)
         {
-
+            CargarServicios();
         }
 
         private void txtCedulaCliente_Enter(object sender, EventArgs e)
@@ -256,7 +422,6 @@ namespace Presentation
                 {
                     MessageBox.Show("Producto eliminado.", "Eliminando Producto",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
                 else
                 {
@@ -264,6 +429,7 @@ namespace Presentation
                         "Eliminando Producto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            CargarCostos();
             CargarCarritoProductos();
         }
 
@@ -277,7 +443,6 @@ namespace Presentation
                 {
                     MessageBox.Show("Servicio eliminado.", "Eliminando Servicio",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
                 else
                 {
@@ -285,7 +450,24 @@ namespace Presentation
                         "Eliminando Servicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            CargarCarritoProductos();
+            CargarCostos();
+            CargarCarritoServicios();
+        }
+
+        private void btnBuscarProducto_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtCodigoProducto.Text))
+            {
+                lblNombreProductoT.Text = BuscarProducto(int.Parse(txtCodigoProducto.Text));
+            }
+        }
+
+        private void btnBuscarServicio_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtCodigoServicio.Text))
+            {
+                lblNombreServicioT.Text = BuscarServicio(int.Parse(txtCodigoServicio.Text)); 
+            }
         }
     }
 }

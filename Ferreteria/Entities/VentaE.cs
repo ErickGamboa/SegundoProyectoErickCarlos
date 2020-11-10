@@ -12,11 +12,11 @@ namespace Entities
         public string Nombre { get; set; }
         public string Categoria { get; set; }
         public string Descripcion { get; set; }
-        private double precio;
+        private decimal precio;
 
         public VentaE() { }
 
-        public VentaE(int id, string nombre, string categoria, string descripcion, double precio)
+        public VentaE(int id, string nombre, string categoria, string descripcion, decimal precio)
         {
             Id = id;
             Nombre = nombre;
@@ -25,7 +25,7 @@ namespace Entities
             Precio = precio;
         }
 
-        public double Precio
+        public decimal Precio
         {
             get { return precio; }
             set

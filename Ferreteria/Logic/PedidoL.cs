@@ -10,6 +10,14 @@ namespace Logic
 {
     public class PedidoL
     {
+        public List<PedidoCompletoE> CargarPedidoCompleto()
+        {
+            using (var i = new FerreteriaEntities())
+            {
+                return i.Database.SqlQuery<PedidoCompletoE>("SELECT * FROM v_spedido_completo").ToList();
+            }
+        }
+
         public bool GuardarPedidoCompletoVendedor(PedidoCompletoE pc)
         {
             using (var i = new FerreteriaEntities())
@@ -47,6 +55,14 @@ namespace Logic
             }
         }
 
+        public List<PedidoCompletoProductoE> CargarPedidoCompletoProducto()
+        {
+            using (var i = new FerreteriaEntities())
+            {
+                return i.Database.SqlQuery<PedidoCompletoProductoE>("SELECT * FROM v_spedido_completo_producto").ToList();
+            }
+        }
+
         public bool GuardarPedidoCompletoProducto(PedidoCompletoProductoE pcp)
         {
             using (var i = new FerreteriaEntities())
@@ -56,12 +72,28 @@ namespace Logic
             }
         }
 
+        public List<PedidoCompletoServicioE> CargarPedidoCompletoServicio()
+        {
+            using (var i = new FerreteriaEntities())
+            {
+                return i.Database.SqlQuery<PedidoCompletoServicioE>("SELECT * FROM v_spedido_completo_servicio").ToList();
+            }
+        }
+
         public bool GuardarPedidoCompletoServicio(PedidoCompletoServicioE pcs)
         {
             using (var i = new FerreteriaEntities())
             {
                 return i.Database.ExecuteSqlCommand("sp_ipedido_completo_servicio ?, ?, ?, ?",
                     pcs.IdPedido, pcs.IdVenta, pcs.Cantidad, pcs.PrecioTotal) > 0;
+            }
+        }
+
+        public List<PedidoSoloServicioE> CargarPedidoSoloServicio()
+        {
+            using (var i = new FerreteriaEntities())
+            {
+                return i.Database.SqlQuery<PedidoSoloServicioE>("SELECT * FROM v_spedido_solo_servicio").ToList();
             }
         }
 
@@ -102,12 +134,28 @@ namespace Logic
             }
         }
 
+        public List<PedidoSoloServicioServicioE> CargarPedidoSoloServicioServicio()
+        {
+            using (var i = new FerreteriaEntities())
+            {
+                return i.Database.SqlQuery<PedidoSoloServicioServicioE>("SELECT * FROM v_spedido_solo_servicio_servicio").ToList();
+            }
+        }
+
         public bool GuardarPedidoSoloServicioServicio(PedidoSoloServicioServicioE psss)
         {
             using (var i = new FerreteriaEntities())
             {
                 return i.Database.ExecuteSqlCommand("sp_ipedido_solo_servicio_servicio ?, ?, ?, ?",
                     psss.IdPedido, psss.IdVenta, psss.Cantidad, psss.PrecioTotal) > 0;
+            }
+        }
+
+        public List<PedidoClienteE> CargarPedidoCliente()
+        {
+            using (var i = new FerreteriaEntities())
+            {
+                return i.Database.SqlQuery<PedidoClienteE>("SELECT * FROM v_spedido_cliente").ToList();
             }
         }
 
@@ -148,12 +196,28 @@ namespace Logic
             }
         }
 
+        public List<PedidoClienteProductoE> CargarPedidoClienteProducto()
+        {
+            using (var i = new FerreteriaEntities())
+            {
+                return i.Database.SqlQuery<PedidoClienteProductoE>("SELECT * FROM v_spedido_cliente_producto").ToList();
+            }
+        }
+
         public bool GuardarPedidoClienteProducto(PedidoClienteProductoE pcp)
         {
             using (var i = new FerreteriaEntities())
             {
                 return i.Database.ExecuteSqlCommand("sp_ipedido_cliente_producto ?, ?, ?, ?",
                     pcp.IdPedido, pcp.IdVenta, pcp.Cantidad, pcp.PrecioTotal) > 0;
+            }
+        }
+
+        public List<PedidoClienteServicioE> CargarPedidoClienteServicio()
+        {
+            using (var i = new FerreteriaEntities())
+            {
+                return i.Database.SqlQuery<PedidoClienteServicioE>("SELECT * FROM v_spedido_cliente_servicio").ToList();
             }
         }
 

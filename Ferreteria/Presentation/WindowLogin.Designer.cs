@@ -130,6 +130,7 @@
             this.Name = "WindowLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio de sesión";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WindowLogin_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

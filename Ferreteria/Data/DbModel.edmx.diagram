@@ -16,7 +16,6 @@
         <EntityTypeShape EntityType="FerreteriaModel.producto" Width="1.5" PointX="5.75" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FerreteriaModel.servicio" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="FerreteriaModel.transporte" Width="1.5" PointX="5.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.usuario" Width="1.5" PointX="7.75" PointY="3.125" IsExpanded="true" />
         <AssociationConnector Association="FerreteriaModel.FK__pedido_cl__id_pe__60A75C0F" ManuallyRouted="false" />
         <AssociationConnector Association="FerreteriaModel.FK__pedido_cl__id_pe__6477ECF3" ManuallyRouted="false" />
         <AssociationConnector Association="FerreteriaModel.FK__pedido_cl__id_pr__619B8048" ManuallyRouted="false" />
@@ -27,6 +26,9 @@
         <AssociationConnector Association="FerreteriaModel.FK__pedido_co__id_se__5165187F" ManuallyRouted="false" />
         <AssociationConnector Association="FerreteriaModel.FK__pedido_so__id_pe__59063A47" ManuallyRouted="false" />
         <AssociationConnector Association="FerreteriaModel.FK__pedido_so__id_se__59FA5E80" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FerreteriaModel.usuario" Width="1.5" PointX="8" PointY="2.75" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_categoria_producto" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_categoria_servicio" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

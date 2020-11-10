@@ -120,6 +120,12 @@
     <Compile Include="WindowManager.Designer.cs">
       <DependentUpon>WindowManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="WindowReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowReceipt.Designer.cs">
+      <DependentUpon>WindowReceipt.cs</DependentUpon>
+    </Compile>
     <Compile Include="WindowRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WindowManager.resx">
       <DependentUpon>WindowManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowReceipt.resx">
+      <DependentUpon>WindowReceipt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowRegister.resx">
       <DependentUpon>WindowRegister.cs</DependentUpon>

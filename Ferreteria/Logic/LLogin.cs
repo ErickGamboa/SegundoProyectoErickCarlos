@@ -13,42 +13,41 @@ namespace Logic
 {
     public class LLogin
     {
-        public string Login(string usuario, string contra) {
-            try
+        public UsuarioE Login(string usuario, string contra) {
+            UsuarioE u = new UsuarioE();
+            var builder = new SqlConnectionStringBuilder();
+            builder.DataSource = "ASUS-X412FA-CAR";
+            builder.InitialCatalog = "Ferreteria";
+            builder.IntegratedSecurity = true;
+            var connectionString = builder.ToString();
+            using (SqlConnection conexion = new SqlConnection(connectionString))
             {
-                var builder = new SqlConnectionStringBuilder();
-                builder.DataSource = "DESKTOP-R9OGT38";
-                builder.InitialCatalog = "Ferreteria";
-                builder.IntegratedSecurity = true;
-                var connectionString = builder.ToString();
-                using (SqlConnection conexion = new SqlConnection(connectionString))
+                conexion.Open();
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM usuario WHERE cedula ='" + usuario + "' AND contrasena ='" + contra + "'", conexion))
                 {
-                    conexion.Open();
-                    using (SqlCommand cmd = new SqlCommand("SELECT cedula, contrasena, tipo FROM usuario Where cedula ='" + usuario + "' AND contrasena ='" + contra + "'", conexion))
+                    SqlDataAdapter data = new SqlDataAdapter(cmd);
+                    DataTable res = new DataTable();
+                    data.Fill(res);
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    if (dr.Read())
                     {
-                        SqlDataAdapter data = new SqlDataAdapter(cmd);
-                        DataTable res = new DataTable();
-                        data.Fill(res);
-                        SqlDataReader dr = cmd.ExecuteReader();
-                        
-                        if (dr.Read())
-                        {
-                            string tipo = Convert.ToString(res.Rows[0]["tipo"]);
-                            return tipo  ;
-                        }
-                        else
-                        {
-                            return "Credenciales no validos";
-                        }
+                        u.Id = Convert.ToInt32(res.Rows[0]["id"]);
+                        u.Codigo = Convert.ToString(res.Rows[0]["codigo"]);
+                        u.Nombre = Convert.ToString(res.Rows[0]["nombre"]);
+                        u.Contrasena = Convert.ToString(res.Rows[0]["contrasena"]);
+                        u.Cedula = Convert.ToString(res.Rows[0]["cedula"]);
+                        u.Tipo = Convert.ToString(res.Rows[0]["tipo"]);
+                        dr.Close();
+                        return u;
                     }
-
+                    else
+                    {
+                        throw new Exception("Credenciales no válidos");
+                    }
                 }
-            }
-            catch (Exception ex) {
 
-                return ex.ToString();
             }
-
         }
     }
 }

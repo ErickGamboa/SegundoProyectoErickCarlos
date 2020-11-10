@@ -11,7 +11,7 @@ namespace Entities
         public PedidoCompletoProductoE() { }
 
         public PedidoCompletoProductoE(int id, int idPedidoCompleto, int idProducto,
-            double cantidad, double precioTotal)
+            decimal cantidad, decimal precioTotal)
             : base(id, idPedidoCompleto, idProducto, cantidad, precioTotal)
         {
             Id = id;

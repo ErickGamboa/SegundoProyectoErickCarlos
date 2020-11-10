@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,12 +26,13 @@ namespace Logic
             }
 
         }
-        public List<ProductoE> CargarProducto()
+        public List<ProductoE> CargarProducto(string nombre, string categoria)
         {
             using (FerreteriaEntities db = new FerreteriaEntities())
             {
                 List<ProductoE> lista = new List<ProductoE>();
                 var lst = from producto in db.producto
+                          where producto.nombre.Contains(nombre) && producto.categoria.Contains(categoria)
                           select producto;
                 foreach (var i in lst)
                 {
@@ -39,14 +41,23 @@ namespace Logic
                     produ.Nombre = i.nombre;
                     produ.Categoria = i.categoria;
                     produ.Descripcion = i.descripcion;
-                    produ.Precio = Convert.ToDouble(i.precio);
-                    produ.Cantidad = Convert.ToDouble(i.cantidad);
+                    produ.Precio = Convert.ToDecimal(i.precio);
+                    produ.Cantidad = Convert.ToDecimal(i.cantidad);
                     lista.Add(produ);
                 }
                 return lista;
             }
 
         }
+
+        public List<string> CargarCategoriaProducto()
+        {
+            using (var i = new FerreteriaEntities())
+            {
+                return i.Database.SqlQuery<string>("SELECT * FROM v_categoria_producto").ToList();
+            }
+        }
+
         public void EditarProducto(string nombre, string categoria, string descripcion, decimal precio, decimal cantidad, int id)
         {
 
