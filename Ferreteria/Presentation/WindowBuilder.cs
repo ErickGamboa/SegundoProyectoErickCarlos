@@ -380,6 +380,7 @@ namespace Presentation
             {
                 PedidoClienteE p = (PedidoClienteE)dgvPedidos.CurrentRow.Cells[0].Value;
                 p.HoraSalidaBodega = dtpSalida.Value;
+                p.Estado = "ENVIADO";
                 pl.GuardarPedidoClienteBodega(p);
             }
             CargarPedidos();
