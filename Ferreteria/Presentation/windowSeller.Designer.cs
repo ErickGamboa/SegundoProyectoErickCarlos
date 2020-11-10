@@ -75,22 +75,20 @@
             this.lblCodigoVendedorT = new System.Windows.Forms.Label();
             this.lblCodigoVendedorL = new System.Windows.Forms.Label();
             this.tpgCarritoCompras = new System.Windows.Forms.TabPage();
+            this.dgvCarritoComprasServicios = new System.Windows.Forms.DataGridView();
             this.lblEliminarServicios = new System.Windows.Forms.Label();
             this.btnEliminarServicio = new System.Windows.Forms.Button();
             this.lblEliminarProductos = new System.Windows.Forms.Label();
             this.btnEliminarProducto = new System.Windows.Forms.Button();
             this.dgvCarritoComprasProductos = new System.Windows.Forms.DataGridView();
             this.clmcpProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmcpId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmcpNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmcpCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmcpDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmcpPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmcpCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmcpPrecioTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvCarritoComprasServicios = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -107,8 +105,8 @@
             this.pnlProducto.SuspendLayout();
             this.pnlInformacion.SuspendLayout();
             this.tpgCarritoCompras.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoComprasProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoComprasServicios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoComprasProductos)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -639,6 +637,30 @@
             this.tpgCarritoCompras.TabIndex = 3;
             this.tpgCarritoCompras.Text = "Ver Carrito de Compras";
             // 
+            // dgvCarritoComprasServicios
+            // 
+            this.dgvCarritoComprasServicios.AllowUserToAddRows = false;
+            this.dgvCarritoComprasServicios.AllowUserToDeleteRows = false;
+            this.dgvCarritoComprasServicios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvCarritoComprasServicios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCarritoComprasServicios.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvCarritoComprasServicios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCarritoComprasServicios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8});
+            this.dgvCarritoComprasServicios.Location = new System.Drawing.Point(0, 250);
+            this.dgvCarritoComprasServicios.Name = "dgvCarritoComprasServicios";
+            this.dgvCarritoComprasServicios.ReadOnly = true;
+            this.dgvCarritoComprasServicios.RowHeadersVisible = false;
+            this.dgvCarritoComprasServicios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCarritoComprasServicios.Size = new System.Drawing.Size(830, 160);
+            this.dgvCarritoComprasServicios.TabIndex = 5;
+            // 
             // lblEliminarServicios
             // 
             this.lblEliminarServicios.AutoSize = true;
@@ -694,7 +716,6 @@
             this.dgvCarritoComprasProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCarritoComprasProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmcpProducto,
-            this.clmcpId,
             this.clmcpNombre,
             this.clmcpCategoria,
             this.clmcpDescripcion,
@@ -715,14 +736,6 @@
             this.clmcpProducto.Name = "clmcpProducto";
             this.clmcpProducto.ReadOnly = true;
             this.clmcpProducto.Visible = false;
-            // 
-            // clmcpId
-            // 
-            this.clmcpId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.clmcpId.HeaderText = "Id";
-            this.clmcpId.Name = "clmcpId";
-            this.clmcpId.ReadOnly = true;
-            this.clmcpId.Width = 80;
             // 
             // clmcpNombre
             // 
@@ -769,45 +782,12 @@
             this.clmcpPrecioTotal.ReadOnly = true;
             this.clmcpPrecioTotal.Width = 120;
             // 
-            // dgvCarritoComprasServicios
-            // 
-            this.dgvCarritoComprasServicios.AllowUserToAddRows = false;
-            this.dgvCarritoComprasServicios.AllowUserToDeleteRows = false;
-            this.dgvCarritoComprasServicios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dgvCarritoComprasServicios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCarritoComprasServicios.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvCarritoComprasServicios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCarritoComprasServicios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8});
-            this.dgvCarritoComprasServicios.Location = new System.Drawing.Point(0, 250);
-            this.dgvCarritoComprasServicios.Name = "dgvCarritoComprasServicios";
-            this.dgvCarritoComprasServicios.ReadOnly = true;
-            this.dgvCarritoComprasServicios.RowHeadersVisible = false;
-            this.dgvCarritoComprasServicios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCarritoComprasServicios.Size = new System.Drawing.Size(830, 160);
-            this.dgvCarritoComprasServicios.TabIndex = 5;
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Producto";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 80;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -883,8 +863,8 @@
             this.pnlInformacion.PerformLayout();
             this.tpgCarritoCompras.ResumeLayout(false);
             this.tpgCarritoCompras.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoComprasProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoComprasServicios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoComprasProductos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -945,7 +925,6 @@
         private System.Windows.Forms.Label lblEliminarServicios;
         private System.Windows.Forms.DataGridView dgvCarritoComprasServicios;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
@@ -953,7 +932,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmcpProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmcpId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmcpNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmcpCategoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmcpDescripcion;

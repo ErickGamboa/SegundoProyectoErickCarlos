@@ -34,6 +34,8 @@ namespace Presentation
         public WindowSeller(UsuarioE u)
         {
             InitializeComponent();
+            pcp = new PedidoCompletoProductoE();
+            pcs = new PedidoCompletoServicioE();
             pl = new PedidoL();
             productos = new LinkedList<PedidoCompletoProductoE>();
             servicios = new LinkedList<PedidoCompletoServicioE>();
@@ -41,7 +43,6 @@ namespace Presentation
             prl = new LProducto();
             sel = new LServicio();
             utilities = new UtilitiesL();
-            iva = 13;
             lblCodigoVendedorT.Text = u.Codigo;
             lblNombreVendedorT.Text = u.Nombre;
             CargarProductos();
@@ -62,7 +63,7 @@ namespace Presentation
             cboCategoriaServicio.SelectedItem = "SERVICIOS";
             txtCedulaCliente.Text = "";
             lblSubtotalT.Text = "0.00";
-            lblIVAT.Text = iva + "%";
+            lblIVAT.Text = "0.00";
             lblTotalT.Text = "0.00";
             txtCodigoProducto.Clear();
             lblNombreProductoT.Text = "";
@@ -207,8 +208,10 @@ namespace Presentation
             {
                 subtotal += s.PrecioTotal;
             }
-            total = subtotal * (1 + iva / 100);
+            iva = subtotal * (decimal) 0.13;
+            total = subtotal + iva;
             lblSubtotalT.Text = subtotal.ToString("0.00");
+            lblIVAT.Text = iva.ToString("0.00");
             lblTotalT.Text = total.ToString("0.00");
         }
 
@@ -226,8 +229,6 @@ namespace Presentation
                 {
                     if (i.Cantidad >= int.Parse(txtCantidadProducto.Text))
                     {
-                        pcp = new PedidoCompletoProductoE();
-                        pcp.IdPedido = 0;
                         pcp.IdVenta = int.Parse(txtCodigoProducto.Text);
                         pcp.Cantidad = decimal.Parse(txtCantidadProducto.Text);
                         pcp.PrecioTotal = i.Precio * pcp.Cantidad;
@@ -258,8 +259,6 @@ namespace Presentation
             {
                 if (i.Id == int.Parse(txtCodigoServicio.Text))
                 {
-                    pcs = new PedidoCompletoServicioE();
-                    pcs.IdPedido = pc.Id;
                     pcs.IdVenta = int.Parse(txtCodigoServicio.Text);
                     pcs.Cantidad = decimal.Parse(txtCantidadServicio.Text);
                     pcs.PrecioTotal = i.Precio * pcs.Cantidad;
@@ -287,6 +286,23 @@ namespace Presentation
             pc.IVA = iva;
             pc.Total = total;
             pl.GuardarPedidoCompletoVendedor(pc);
+
+            List<PedidoCompletoE> pedidos = pl.CargarPedidoCompleto();
+            int last = pedidos.Count - 1;
+            pc.Id = pedidos[last].Id;
+
+            foreach (PedidoCompletoProductoE p in productos)
+            {
+                pcp.IdPedido = pc.Id;
+                pl.GuardarPedidoCompletoProducto(pcp);
+            }
+
+            foreach (PedidoCompletoServicioE p in servicios)
+            {
+                pcs.IdPedido = pc.Id;
+                pl.GuardarPedidoCompletoServicio(pcs);
+            }
+
             Limpiar();
             Activar(false);
         }

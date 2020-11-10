@@ -35,35 +35,41 @@ namespace Presentation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Administrador"))
+            try
             {
-                WindowManager wmanager = new WindowManager();
-                wmanager.Show(this);
-                this.Hide();
+                if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Administrador"))
+                {
+                    WindowManager wmanager = new WindowManager();
+                    wmanager.Show(this);
+                    this.Hide();
+                }
+                else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Cajero"))
+                {
+                    u = login.Login(txtUsuarioLogin.Text, txtContraLogin.Text);
+                    WindowCashier frm = new WindowCashier(u);
+                    frm.ShowDialog();
+                }
+                else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Constructor"))
+                {
+                    u = login.Login(txtUsuarioLogin.Text, txtContraLogin.Text);
+                    WindowBuilder frm = new WindowBuilder(u);
+                    frm.ShowDialog();
+                }
+                else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Conductor"))
+                {
+                    u = login.Login(txtUsuarioLogin.Text, txtContraLogin.Text);
+                    WindowCarrier frm = new WindowCarrier(u);
+                    frm.ShowDialog();
+                }
+                else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Vendedor"))
+                {
+                    u = login.Login(txtUsuarioLogin.Text, txtContraLogin.Text);
+                    WindowSeller frm = new WindowSeller(u);
+                    frm.ShowDialog();
+                }
             }
-            else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Cajero"))
-            {
-                WindowCashier frm = new WindowCashier();
-                frm.ShowDialog();
-            }
-            else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Constructor"))
-            {
-                WindowBuilder frm = new WindowBuilder();
-                frm.ShowDialog();
-            }
-            else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Conductor"))
-            {
-                WindowCarrier frm = new WindowCarrier();
-                frm.ShowDialog();
-            }
-            else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Vendedor"))
-            {
-                u = login.Login(txtUsuarioLogin.Text, txtContraLogin.Text);
-                WindowSeller frm = new WindowSeller(u);
-                frm.ShowDialog();
-            }
-            else {
-                prueba.Text = login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo;
+            catch (Exception ex) {
+                prueba.Text = ex.Message;
             }
         }
 
