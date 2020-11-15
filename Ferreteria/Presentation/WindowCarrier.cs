@@ -31,44 +31,44 @@ namespace Presentation
             dgvTransportes.Rows.Clear();
             foreach (PedidoCompletoE p in pl.CargarPedidoCompleto())
             {
-                if (p.HoraFinalizaTransporte != null)
+                if (p.HoraFinalizaTransporte == null)
                 {
-                    dgvTransportes.Rows.Add(p, "COMPLETO", p.Id, p.HoraRecibidoBodega, p.HoraSalidaBodega);
+                    dgvTransportes.Rows.Add(p, "COMPLETO", p.Id, p.HoraIniciaTransporte, p.HoraFinalizaTransporte);
                 }
             }
             foreach (PedidoSoloServicioE p in pl.CargarPedidoSoloServicio())
             {
-                if (p.HoraFinalizaTransporte != null)
+                if (p.HoraFinalizaTransporte == null)
                 {
-                    dgvTransportes.Rows.Add(p, "SOLO SERVICIO", p.Id, p.HoraRecibidoBodega, p.HoraSalidaBodega);
+                    dgvTransportes.Rows.Add(p, "SOLO SERVICIO", p.Id, p.HoraIniciaTransporte, p.HoraFinalizaTransporte);
                 }
             }
             foreach (PedidoClienteE p in pl.CargarPedidoCliente())
             {
-                if (p.HoraFinalizaTransporte != null)
+                if (p.HoraFinalizaTransporte == null)
                 {
-                    dgvTransportes.Rows.Add(p, "CLIENTE", p.Id, p.HoraRecibidoBodega, p.HoraSalidaBodega);
+                    dgvTransportes.Rows.Add(p, "CLIENTE", p.Id, p.HoraIniciaTransporte, p.HoraFinalizaTransporte);
                 }
             }
         }
 
         private void btnAgregarInicio_Click(object sender, EventArgs e)
         {
-            if (dgvTransportes.SelectedRows[1].Equals("COMPLETO"))
+            if (dgvTransportes.CurrentRow.Cells[1].Value.Equals("COMPLETO"))
             {
                 PedidoCompletoE p = (PedidoCompletoE)dgvTransportes.CurrentRow.Cells[0].Value;
                 p.CodigoConductor = u.Codigo;
                 p.HoraIniciaTransporte = dtpInicia.Value;
                 pl.GuardarPedidoCompletoTransporte(p);
             }
-            else if (dgvTransportes.SelectedRows[1].Equals("SOLO SERVICIO"))
+            else if (dgvTransportes.CurrentRow.Cells[1].Value.Equals("SOLO SERVICIO"))
             {
                 PedidoSoloServicioE p = (PedidoSoloServicioE)dgvTransportes.CurrentRow.Cells[0].Value;
                 p.CodigoConductor = u.Codigo;
                 p.HoraIniciaTransporte = dtpInicia.Value;
                 pl.GuardarPedidoSoloServicioTransporte(p);
             }
-            else if (dgvTransportes.SelectedRows[1].Equals("CLIENTE"))
+            else if (dgvTransportes.CurrentRow.Cells[1].Value.Equals("CLIENTE"))
             {
                 PedidoClienteE p = (PedidoClienteE)dgvTransportes.CurrentRow.Cells[0].Value;
                 p.CodigoConductor = u.Codigo;
@@ -80,19 +80,19 @@ namespace Presentation
 
         private void btnAgregarFin_Click(object sender, EventArgs e)
         {
-            if (dgvTransportes.SelectedRows[1].Equals("COMPLETO"))
+            if (dgvTransportes.CurrentRow.Cells[1].Value.Equals("COMPLETO"))
             {
                 PedidoCompletoE p = (PedidoCompletoE)dgvTransportes.CurrentRow.Cells[0].Value;
                 p.HoraFinalizaTransporte = dtpFinaliza.Value;
                 pl.GuardarPedidoCompletoTransporte(p);
             }
-            else if (dgvTransportes.SelectedRows[1].Equals("SOLO SERVICIO"))
+            else if (dgvTransportes.CurrentRow.Cells[1].Value.Equals("SOLO SERVICIO"))
             {
                 PedidoSoloServicioE p = (PedidoSoloServicioE)dgvTransportes.CurrentRow.Cells[0].Value;
                 p.HoraFinalizaTransporte = dtpFinaliza.Value;
                 pl.GuardarPedidoSoloServicioTransporte(p);
             }
-            else if (dgvTransportes.SelectedRows[1].Equals("CLIENTE"))
+            else if (dgvTransportes.CurrentRow.Cells[1].Value.Equals("CLIENTE"))
             {
                 PedidoClienteE p = (PedidoClienteE)dgvTransportes.CurrentRow.Cells[0].Value;
                 p.HoraFinalizaTransporte = dtpFinaliza.Value;

@@ -34,8 +34,6 @@ namespace Presentation
         public WindowSeller(UsuarioE u)
         {
             InitializeComponent();
-            pcp = new PedidoCompletoProductoE();
-            pcs = new PedidoCompletoServicioE();
             pl = new PedidoL();
             productos = new LinkedList<PedidoCompletoProductoE>();
             servicios = new LinkedList<PedidoCompletoServicioE>();
@@ -45,10 +43,10 @@ namespace Presentation
             utilities = new UtilitiesL();
             lblCodigoVendedorT.Text = u.Codigo;
             lblNombreVendedorT.Text = u.Nombre;
-            CargarProductos();
-            CargarServicios();
             CargarCategoriaProducto();
             CargarCategoriaServicio();
+            CargarProductos();
+            CargarServicios();
             Limpiar();
             Activar(false);
             dgvCarritoComprasProductos.Columns[0].ValueType = typeof(ProductoE);
@@ -93,7 +91,7 @@ namespace Presentation
 
         private void CargarProductos()
         {
-            if (cboCategoriaProducto.SelectedItem == "PRODUCTOS")
+            if (cboCategoriaProducto.Text.Equals("PRODUCTOS"))
             {
                 List<ProductoE> lstpro = prl.CargarProducto(txtBuscarProducto.Text, "");
                 dgvConsultaProducto.DataSource = lstpro;
@@ -107,7 +105,7 @@ namespace Presentation
 
         private void CargarServicios()
         {
-            if (cboCategoriaServicio.SelectedItem == "SERVICIOS")
+            if (cboCategoriaServicio.Text.Equals("SERVICIOS"))
             {
                 List<ServicioE> lstser = sel.CargarServicio(txtBuscarServicio.Text, "");
                 dgvConsultaServicio.DataSource = lstser;
@@ -146,9 +144,9 @@ namespace Presentation
             {
                 foreach (ProductoE i in prl.CargarProducto("", ""))
                 {
-                    if (p.IdVenta == i.Id)
+                    if (i.Id == p.IdVenta)
                     {
-                        dgvCarritoComprasProductos.Rows.Add(p, i.Id, i.Nombre, i.Categoria, i.Descripcion,
+                        dgvCarritoComprasProductos.Rows.Add(p, i.Nombre, i.Categoria, i.Descripcion,
                             i.Precio, p.Cantidad, p.PrecioTotal);
                         break;
                     }
@@ -163,9 +161,9 @@ namespace Presentation
             {
                 foreach (ServicioE i in sel.CargarServicio("",""))
                 {
-                    if (s.IdVenta == i.Id)
+                    if (i.Id == s.IdVenta)
                     {
-                        dgvCarritoComprasServicios.Rows.Add(s, i.Id, i.Nombre, i.Categoria, i.Descripcion,
+                        dgvCarritoComprasServicios.Rows.Add(s, i.Nombre, i.Categoria, i.Descripcion,
                             i.Precio, s.Cantidad, s.PrecioTotal);
                         break;
                     }
@@ -223,16 +221,17 @@ namespace Presentation
 
         private void btoAgregarCarritoProducto_Click(object sender, EventArgs e)
         {
+            pcp = new PedidoCompletoProductoE();
             foreach (ProductoE i in prl.CargarProducto("", ""))
             {
                 if (i.Id == int.Parse(txtCodigoProducto.Text))
                 {
-                    if (i.Cantidad >= int.Parse(txtCantidadProducto.Text))
+                    if (i.Cantidad >= decimal.Parse(txtCantidadProducto.Text))
                     {
                         pcp.IdVenta = int.Parse(txtCodigoProducto.Text);
                         pcp.Cantidad = decimal.Parse(txtCantidadProducto.Text);
                         pcp.PrecioTotal = i.Precio * pcp.Cantidad;
-
+                        
                         productos.AddLast(pcp);
 
                         txtCodigoProducto.Clear();
@@ -255,6 +254,7 @@ namespace Presentation
 
         private void btoAgregarCarritoServicio_Click(object sender, EventArgs e)
         {
+            pcs = new PedidoCompletoServicioE();
             foreach (ServicioE i in sel.CargarServicio("",""))
             {
                 if (i.Id == int.Parse(txtCodigoServicio.Text))
@@ -271,6 +271,7 @@ namespace Presentation
 
                     CargarCostos();
                     CargarCarritoServicios();
+                    break;
                 }
             }
         }
@@ -293,14 +294,14 @@ namespace Presentation
 
             foreach (PedidoCompletoProductoE p in productos)
             {
-                pcp.IdPedido = pc.Id;
-                pl.GuardarPedidoCompletoProducto(pcp);
+                p.IdPedido = pc.Id;
+                pl.GuardarPedidoCompletoProducto(p);
             }
 
             foreach (PedidoCompletoServicioE p in servicios)
             {
-                pcs.IdPedido = pc.Id;
-                pl.GuardarPedidoCompletoServicio(pcs);
+                p.IdPedido = pc.Id;
+                pl.GuardarPedidoCompletoServicio(p);
             }
 
             Limpiar();

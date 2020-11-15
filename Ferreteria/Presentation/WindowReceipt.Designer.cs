@@ -189,9 +189,9 @@
             this.lblColumnas.AutoSize = true;
             this.lblColumnas.Location = new System.Drawing.Point(20, 140);
             this.lblColumnas.Name = "lblColumnas";
-            this.lblColumnas.Size = new System.Drawing.Size(93, 18);
+            this.lblColumnas.Size = new System.Drawing.Size(196, 18);
             this.lblColumnas.TabIndex = 15;
-            this.lblColumnas.Text = "COLUMNAS";
+            this.lblColumnas.Text = "CANT   PRECIO        TOTAL";
             // 
             // txtVentas
             // 
@@ -225,7 +225,7 @@
             this.Controls.Add(this.btoOk);
             this.Controls.Add(this.lblNumeroFacturaL);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "WindowReceipt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Factura";

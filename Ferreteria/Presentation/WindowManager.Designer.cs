@@ -60,6 +60,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblMensajeServicio = new System.Windows.Forms.Label();
+            this.idSeleccionadoServicio = new System.Windows.Forms.Label();
+            this.mensajeSeleccionServicio = new System.Windows.Forms.Label();
             this.button17 = new System.Windows.Forms.Button();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -70,12 +73,17 @@
             this.txtPrecioServicio = new System.Windows.Forms.TextBox();
             this.txtCategoriaServicio = new System.Windows.Forms.TextBox();
             this.txtNombreServicio = new System.Windows.Forms.TextBox();
+            this.txtDescripcionServicio = new System.Windows.Forms.RichTextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lblMensajeTransporte = new System.Windows.Forms.Label();
+            this.idSeleccionadoTransporte = new System.Windows.Forms.Label();
+            this.mensajeSeleccionTransporte = new System.Windows.Forms.Label();
             this.button18 = new System.Windows.Forms.Button();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.dtgvTransportes = new System.Windows.Forms.DataGridView();
@@ -98,17 +106,9 @@
             this.productoBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.productoTableAdapter2 = new Presentation.FerreteriaDataSet2TableAdapters.productoTableAdapter();
             this.productoTableAdapter3 = new Presentation.FerreteriaDataSet3TableAdapters.productoTableAdapter();
-            this.mensajeSeleccionServicio = new System.Windows.Forms.Label();
-            this.idSeleccionadoServicio = new System.Windows.Forms.Label();
-            this.lblMensajeServicio = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtDescripcionServicio = new System.Windows.Forms.RichTextBox();
             this.productoEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productoEBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.productoEBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.mensajeSeleccionTransporte = new System.Windows.Forms.Label();
-            this.idSeleccionadoTransporte = new System.Windows.Forms.Label();
-            this.lblMensajeTransporte = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvProductos)).BeginInit();
@@ -430,6 +430,30 @@
             this.tabPage2.Text = "CRUD servicios";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // lblMensajeServicio
+            // 
+            this.lblMensajeServicio.AutoSize = true;
+            this.lblMensajeServicio.Location = new System.Drawing.Point(28, 274);
+            this.lblMensajeServicio.Name = "lblMensajeServicio";
+            this.lblMensajeServicio.Size = new System.Drawing.Size(0, 13);
+            this.lblMensajeServicio.TabIndex = 32;
+            // 
+            // idSeleccionadoServicio
+            // 
+            this.idSeleccionadoServicio.AutoSize = true;
+            this.idSeleccionadoServicio.Location = new System.Drawing.Point(172, 15);
+            this.idSeleccionadoServicio.Name = "idSeleccionadoServicio";
+            this.idSeleccionadoServicio.Size = new System.Drawing.Size(0, 13);
+            this.idSeleccionadoServicio.TabIndex = 31;
+            // 
+            // mensajeSeleccionServicio
+            // 
+            this.mensajeSeleccionServicio.AutoSize = true;
+            this.mensajeSeleccionServicio.Location = new System.Drawing.Point(50, 15);
+            this.mensajeSeleccionServicio.Name = "mensajeSeleccionServicio";
+            this.mensajeSeleccionServicio.Size = new System.Drawing.Size(0, 13);
+            this.mensajeSeleccionServicio.TabIndex = 30;
+            // 
             // button17
             // 
             this.button17.Location = new System.Drawing.Point(691, 4);
@@ -519,6 +543,23 @@
             this.txtNombreServicio.TabIndex = 19;
             this.txtNombreServicio.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
+            // txtDescripcionServicio
+            // 
+            this.txtDescripcionServicio.Location = new System.Drawing.Point(31, 179);
+            this.txtDescripcionServicio.Name = "txtDescripcionServicio";
+            this.txtDescripcionServicio.Size = new System.Drawing.Size(196, 92);
+            this.txtDescripcionServicio.TabIndex = 18;
+            this.txtDescripcionServicio.Text = "";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(28, 163);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(69, 13);
+            this.label13.TabIndex = 17;
+            this.label13.Text = "Descripción :";
+            // 
             // richTextBox2
             // 
             this.richTextBox2.Location = new System.Drawing.Point(31, 179);
@@ -589,6 +630,30 @@
             this.tabPage3.Text = "CRUD Transporte";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // lblMensajeTransporte
+            // 
+            this.lblMensajeTransporte.AutoSize = true;
+            this.lblMensajeTransporte.Location = new System.Drawing.Point(39, 207);
+            this.lblMensajeTransporte.Name = "lblMensajeTransporte";
+            this.lblMensajeTransporte.Size = new System.Drawing.Size(0, 13);
+            this.lblMensajeTransporte.TabIndex = 38;
+            // 
+            // idSeleccionadoTransporte
+            // 
+            this.idSeleccionadoTransporte.AutoSize = true;
+            this.idSeleccionadoTransporte.Location = new System.Drawing.Point(142, 35);
+            this.idSeleccionadoTransporte.Name = "idSeleccionadoTransporte";
+            this.idSeleccionadoTransporte.Size = new System.Drawing.Size(0, 13);
+            this.idSeleccionadoTransporte.TabIndex = 37;
+            // 
+            // mensajeSeleccionTransporte
+            // 
+            this.mensajeSeleccionTransporte.AutoSize = true;
+            this.mensajeSeleccionTransporte.Location = new System.Drawing.Point(27, 35);
+            this.mensajeSeleccionTransporte.Name = "mensajeSeleccionTransporte";
+            this.mensajeSeleccionTransporte.Size = new System.Drawing.Size(0, 13);
+            this.mensajeSeleccionTransporte.TabIndex = 36;
+            // 
             // button18
             // 
             this.button18.Location = new System.Drawing.Point(694, 16);
@@ -621,6 +686,7 @@
             this.button11.TabIndex = 32;
             this.button11.Text = "Eliminar";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button12
             // 
@@ -639,6 +705,7 @@
             this.button13.TabIndex = 30;
             this.button13.Text = "Seleccionar";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // button14
             // 
@@ -658,6 +725,7 @@
             this.button15.TabIndex = 28;
             this.button15.Text = "Editar";
             this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // txtIdConductor
             // 
@@ -737,47 +805,6 @@
             // 
             this.productoTableAdapter3.ClearBeforeFill = true;
             // 
-            // mensajeSeleccionServicio
-            // 
-            this.mensajeSeleccionServicio.AutoSize = true;
-            this.mensajeSeleccionServicio.Location = new System.Drawing.Point(50, 15);
-            this.mensajeSeleccionServicio.Name = "mensajeSeleccionServicio";
-            this.mensajeSeleccionServicio.Size = new System.Drawing.Size(0, 13);
-            this.mensajeSeleccionServicio.TabIndex = 30;
-            // 
-            // idSeleccionadoServicio
-            // 
-            this.idSeleccionadoServicio.AutoSize = true;
-            this.idSeleccionadoServicio.Location = new System.Drawing.Point(172, 15);
-            this.idSeleccionadoServicio.Name = "idSeleccionadoServicio";
-            this.idSeleccionadoServicio.Size = new System.Drawing.Size(0, 13);
-            this.idSeleccionadoServicio.TabIndex = 31;
-            // 
-            // lblMensajeServicio
-            // 
-            this.lblMensajeServicio.AutoSize = true;
-            this.lblMensajeServicio.Location = new System.Drawing.Point(28, 274);
-            this.lblMensajeServicio.Name = "lblMensajeServicio";
-            this.lblMensajeServicio.Size = new System.Drawing.Size(0, 13);
-            this.lblMensajeServicio.TabIndex = 32;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(28, 163);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 13);
-            this.label13.TabIndex = 17;
-            this.label13.Text = "Descripción :";
-            // 
-            // txtDescripcionServicio
-            // 
-            this.txtDescripcionServicio.Location = new System.Drawing.Point(31, 179);
-            this.txtDescripcionServicio.Name = "txtDescripcionServicio";
-            this.txtDescripcionServicio.Size = new System.Drawing.Size(196, 92);
-            this.txtDescripcionServicio.TabIndex = 18;
-            this.txtDescripcionServicio.Text = "";
-            // 
             // productoEBindingSource
             // 
             this.productoEBindingSource.DataSource = typeof(Entities.ProductoE);
@@ -789,30 +816,6 @@
             // productoEBindingSource2
             // 
             this.productoEBindingSource2.DataSource = typeof(Entities.ProductoE);
-            // 
-            // mensajeSeleccionTransporte
-            // 
-            this.mensajeSeleccionTransporte.AutoSize = true;
-            this.mensajeSeleccionTransporte.Location = new System.Drawing.Point(27, 35);
-            this.mensajeSeleccionTransporte.Name = "mensajeSeleccionTransporte";
-            this.mensajeSeleccionTransporte.Size = new System.Drawing.Size(0, 13);
-            this.mensajeSeleccionTransporte.TabIndex = 36;
-            // 
-            // idSeleccionadoTransporte
-            // 
-            this.idSeleccionadoTransporte.AutoSize = true;
-            this.idSeleccionadoTransporte.Location = new System.Drawing.Point(142, 35);
-            this.idSeleccionadoTransporte.Name = "idSeleccionadoTransporte";
-            this.idSeleccionadoTransporte.Size = new System.Drawing.Size(0, 13);
-            this.idSeleccionadoTransporte.TabIndex = 37;
-            // 
-            // lblMensajeTransporte
-            // 
-            this.lblMensajeTransporte.AutoSize = true;
-            this.lblMensajeTransporte.Location = new System.Drawing.Point(39, 207);
-            this.lblMensajeTransporte.Name = "lblMensajeTransporte";
-            this.lblMensajeTransporte.Size = new System.Drawing.Size(0, 13);
-            this.lblMensajeTransporte.TabIndex = 38;
             // 
             // WindowManager
             // 

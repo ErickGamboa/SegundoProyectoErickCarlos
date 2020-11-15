@@ -12,13 +12,8 @@ namespace Data
     using System;
     using System.Collections.Generic;
     
-    public partial class usuario
+    public partial class v_categoria_producto
     {
-        public int id { get; set; }
-        public string codigo { get; set; }
-        public string nombre { get; set; }
-        public string contrasena { get; set; }
-        public string cedula { get; set; }
-        public string tipo { get; set; }
+        public string categoria { get; set; }
     }
 }

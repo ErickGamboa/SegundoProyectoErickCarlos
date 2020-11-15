@@ -12,15 +12,8 @@ namespace Data
     using System;
     using System.Collections.Generic;
     
-    public partial class pedido_completo
+    public partial class v_spedido_completo
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public pedido_completo()
-        {
-            this.pedido_completo_producto = new HashSet<pedido_completo_producto>();
-            this.pedido_completo_servicio = new HashSet<pedido_completo_servicio>();
-        }
-    
         public int id { get; set; }
         public string codigo_vendedor { get; set; }
         public string cedula_cliente { get; set; }
@@ -36,10 +29,5 @@ namespace Data
         public Nullable<decimal> subtotal { get; set; }
         public Nullable<decimal> iva { get; set; }
         public Nullable<decimal> total { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<pedido_completo_producto> pedido_completo_producto { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<pedido_completo_servicio> pedido_completo_servicio { get; set; }
     }
 }

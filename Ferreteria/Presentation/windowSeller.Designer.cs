@@ -339,6 +339,7 @@
             // 
             this.lblNombreServicioT.AutoSize = true;
             this.lblNombreServicioT.Location = new System.Drawing.Point(157, 55);
+            this.lblNombreServicioT.MaximumSize = new System.Drawing.Size(206, 18);
             this.lblNombreServicioT.Name = "lblNombreServicioT";
             this.lblNombreServicioT.Size = new System.Drawing.Size(119, 18);
             this.lblNombreServicioT.TabIndex = 25;
@@ -415,6 +416,7 @@
             // 
             this.lblNombreProductoT.AutoSize = true;
             this.lblNombreProductoT.Location = new System.Drawing.Point(157, 55);
+            this.lblNombreProductoT.MaximumSize = new System.Drawing.Size(206, 18);
             this.lblNombreProductoT.Name = "lblNombreProductoT";
             this.lblNombreProductoT.Size = new System.Drawing.Size(127, 18);
             this.lblNombreProductoT.TabIndex = 17;
@@ -589,6 +591,7 @@
             // 
             this.lblNombreVendedorT.AutoSize = true;
             this.lblNombreVendedorT.Location = new System.Drawing.Point(159, 70);
+            this.lblNombreVendedorT.MaximumSize = new System.Drawing.Size(200, 18);
             this.lblNombreVendedorT.Name = "lblNombreVendedorT";
             this.lblNombreVendedorT.Size = new System.Drawing.Size(129, 18);
             this.lblNombreVendedorT.TabIndex = 3;
@@ -784,7 +787,7 @@
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Producto";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Servicio";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Visible = false;
@@ -924,13 +927,6 @@
         private System.Windows.Forms.Label lblEliminarProductos;
         private System.Windows.Forms.Label lblEliminarServicios;
         private System.Windows.Forms.DataGridView dgvCarritoComprasServicios;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmcpProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmcpNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmcpCategoria;
@@ -938,5 +934,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmcpPrecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmcpCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmcpPrecioTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
     }
 }

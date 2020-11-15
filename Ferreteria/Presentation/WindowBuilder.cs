@@ -36,13 +36,13 @@ namespace Presentation
             prl = new LProducto();
             sel = new LServicio();
             utilities = new UtilitiesL();
-            iva = 13;
             lblCodigoConstructorT.Text = u.Codigo;
             lblNombreConstructorT.Text = u.Nombre;
-            CargarServicios();
             CargarCategoria();
+            CargarServicios();
             Limpiar();
             Activar(false);
+            dgvCarritoCompras.Columns[0].ValueType = typeof(ServicioE);
             dgvPedidos.Columns[0].ValueType = typeof(object);
             CargarPedidos();
         }
@@ -53,7 +53,7 @@ namespace Presentation
             cboCategoria.SelectedItem = "SERVICIOS";
             txtCedulaCliente.Text = "";
             lblSubtotalT.Text = "0.00";
-            lblIVAT.Text = iva + "%";
+            lblIVAT.Text = "0.00";
             lblTotalT.Text = "0.00";
             txtCodigoServicio.Clear();
             lblNombreServicioT.Text = "";
@@ -74,7 +74,7 @@ namespace Presentation
 
         private void CargarServicios()
         {
-            if (cboCategoria.SelectedItem == "SERVICIOS")
+            if (cboCategoria.Text.Equals("SERVICIOS"))
             {
                 List<ServicioE> lstser = sel.CargarServicio(txtBuscarServicio.Text, "");
                 dgvConsultaServicio.DataSource = lstser;
@@ -103,9 +103,9 @@ namespace Presentation
             {
                 foreach (ServicioE i in sel.CargarServicio("", ""))
                 {
-                    if (s.IdVenta == i.Id)
+                    if (i.Id == s.IdVenta)
                     {
-                        dgvCarritoCompras.Rows.Add(s, i.Id, i.Nombre, i.Categoria, i.Descripcion,
+                        dgvCarritoCompras.Rows.Add(s, i.Nombre, i.Categoria, i.Descripcion,
                             i.Precio, s.Cantidad, s.PrecioTotal);
                         break;
                     }
@@ -132,8 +132,11 @@ namespace Presentation
             {
                 subtotal += s.PrecioTotal;
             }
+            iva = subtotal * (decimal)0.13;
+            total = subtotal + iva;
             total = subtotal * (1 + iva / 100);
             lblSubtotalT.Text = subtotal.ToString("0.00");
+            lblIVAT.Text = iva.ToString("0.00");
             lblTotalT.Text = total.ToString("0.00");
         }
 
@@ -142,21 +145,21 @@ namespace Presentation
             dgvPedidos.Rows.Clear();
             foreach (PedidoCompletoE p in pl.CargarPedidoCompleto())
             {
-                if (p.HoraSalidaBodega != null)
+                if (p.HoraSalidaBodega == null)
                 {
                     dgvPedidos.Rows.Add(p, "COMPLETO", p.Id, p.HoraRecibidoBodega, p.HoraSalidaBodega);
                 }
             }
             foreach (PedidoSoloServicioE p in pl.CargarPedidoSoloServicio())
             {
-                if (p.HoraSalidaBodega != null)
+                if (p.HoraSalidaBodega == null)
                 {
                     dgvPedidos.Rows.Add(p, "SOLO SERVICIO", p.Id, p.HoraRecibidoBodega, p.HoraSalidaBodega);
                 }
             }
             foreach (PedidoClienteE p in pl.CargarPedidoCliente())
             {
-                if (p.HoraSalidaBodega != null)
+                if (p.HoraSalidaBodega == null)
                 {
                     dgvPedidos.Rows.Add(p, "CLIENTE", p.Id, p.HoraRecibidoBodega, p.HoraSalidaBodega);
                 }
@@ -166,69 +169,87 @@ namespace Presentation
         private void CargarVentas()
         {
             dgvVentas.Rows.Clear();
-            if (dgvPedidos.SelectedRows[1].Equals("COMPLETO"))
+            if (dgvPedidos.SelectedRows.Count > 0 && dgvPedidos.CurrentRow != null)
             {
-                foreach (PedidoCompletoProductoE p in pl.CargarPedidoCompletoProducto())
+                if (dgvPedidos.CurrentRow.Cells[1].Value.Equals("COMPLETO"))
                 {
-                    foreach (ProductoE i in prl.CargarProducto("", ""))
+                    foreach (PedidoCompletoProductoE p in pl.CargarPedidoCompletoProducto())
                     {
-                        if (p.IdVenta == i.Id)
+                        if (p.IdPedido == (int) dgvPedidos.CurrentRow.Cells[2].Value)
                         {
-                            dgvVentas.Rows.Add("PRODUCTO", i.Id, i.Nombre, i.Categoria, i.Descripcion, p.Cantidad);
-                            break;
+                            foreach (ProductoE i in prl.CargarProducto("", ""))
+                            {
+                                if (i.Id == p.IdVenta)
+                                {
+                                    dgvVentas.Rows.Add("PRODUCTO", i.Id, i.Nombre, i.Categoria, i.Descripcion, p.Cantidad);
+                                    break;
+                                }
+                            } 
+                        }
+                    }
+                    foreach (PedidoCompletoServicioE s in pl.CargarPedidoCompletoServicio())
+                    {
+                        if (s.IdPedido == (int) dgvPedidos.CurrentRow.Cells[2].Value)
+                        {
+                            foreach (ServicioE i in sel.CargarServicio("", ""))
+                            {
+                                if (i.Id == s.IdVenta)
+                                {
+                                    dgvVentas.Rows.Add("SERVICIO", i.Id, i.Nombre, i.Categoria, i.Descripcion, s.Cantidad);
+                                    break;
+                                }
+                            } 
                         }
                     }
                 }
-                foreach (PedidoCompletoServicioE s in pl.CargarPedidoCompletoServicio())
+                else if (dgvPedidos.CurrentRow.Cells[1].Value.Equals("SOLO SERVICIO"))
                 {
-                    foreach (ServicioE i in sel.CargarServicio("", ""))
+                    foreach (PedidoSoloServicioServicioE s in pl.CargarPedidoSoloServicioServicio())
                     {
-                        if (s.IdVenta == i.Id)
+                        if (s.IdPedido == (int)dgvPedidos.CurrentRow.Cells[2].Value)
                         {
-                            dgvVentas.Rows.Add("SERVICIO", i.Id, i.Nombre, i.Categoria, i.Descripcion, s.Cantidad);
-                            break;
+                            foreach (ServicioE i in sel.CargarServicio("", ""))
+                            {
+                                if (i.Id == s.IdVenta)
+                                {
+                                    dgvVentas.Rows.Add("SERVICIO", i.Id, i.Nombre, i.Categoria, i.Descripcion, s.Cantidad);
+                                    break;
+                                }
+                            } 
                         }
                     }
                 }
-            }
-            else if (dgvPedidos.SelectedRows[1].Equals("SOLO SERVICIO"))
-            {
-                foreach (PedidoSoloServicioServicioE s in pl.CargarPedidoSoloServicioServicio())
+                else if (dgvPedidos.CurrentRow.Cells[1].Value.Equals("CLIENTE"))
                 {
-                    foreach (ServicioE i in sel.CargarServicio("", ""))
+                    foreach (PedidoClienteProductoE p in pl.CargarPedidoClienteProducto())
                     {
-                        if (s.IdVenta == i.Id)
+                        if (p.IdPedido == (int)dgvPedidos.CurrentRow.Cells[2].Value)
                         {
-                            dgvVentas.Rows.Add("SERVICIO", i.Id, i.Nombre, i.Categoria, i.Descripcion, s.Cantidad);
-                            break;
+                            foreach (ProductoE i in prl.CargarProducto("", ""))
+                            {
+                                if (i.Id == p.IdVenta)
+                                {
+                                    dgvVentas.Rows.Add("PRODUCTO", i.Id, i.Nombre, i.Categoria, i.Descripcion, p.Cantidad);
+                                    break;
+                                }
+                            } 
                         }
                     }
-                }
-            }
-            else if (dgvPedidos.SelectedRows[1].Equals("CLIENTE"))
-            {
-                foreach (PedidoClienteProductoE p in pl.CargarPedidoClienteProducto())
-                {
-                    foreach (ProductoE i in prl.CargarProducto("", ""))
+                    foreach (PedidoClienteServicioE s in pl.CargarPedidoClienteServicio())
                     {
-                        if (p.IdVenta == i.Id)
+                        if (s.IdPedido == (int)dgvPedidos.CurrentRow.Cells[2].Value)
                         {
-                            dgvVentas.Rows.Add("PRODUCTO", i.Id, i.Nombre, i.Categoria, i.Descripcion, p.Cantidad);
-                            break;
+                            foreach (ServicioE i in sel.CargarServicio("", ""))
+                            {
+                                if (i.Id == s.IdVenta)
+                                {
+                                    dgvVentas.Rows.Add("SERVICIO", i.Id, i.Nombre, i.Categoria, i.Descripcion, s.Cantidad);
+                                    break;
+                                }
+                            } 
                         }
                     }
-                }
-                foreach (PedidoClienteServicioE s in pl.CargarPedidoClienteServicio())
-                {
-                    foreach (ServicioE i in sel.CargarServicio("", ""))
-                    {
-                        if (s.IdVenta == i.Id)
-                        {
-                            dgvVentas.Rows.Add("SERVICIO", i.Id, i.Nombre, i.Categoria, i.Descripcion, s.Cantidad);
-                            break;
-                        }
-                    }
-                }
+                } 
             }
         }
 
@@ -274,12 +295,11 @@ namespace Presentation
 
         private void btoAgregarCarritoServicio_Click(object sender, EventArgs e)
         {
+            pss = new PedidoSoloServicioServicioE();
             foreach (ServicioE i in sel.CargarServicio("", ""))
             {
                 if (i.Id == int.Parse(txtCodigoServicio.Text))
                 {
-                    pss = new PedidoSoloServicioServicioE();
-                    pss.IdPedido = ps.Id;
                     pss.IdVenta = int.Parse(txtCodigoServicio.Text);
                     pss.Cantidad = decimal.Parse(txtCantidadServicio.Text);
                     pss.PrecioTotal = i.Precio * pss.Cantidad;
@@ -292,6 +312,7 @@ namespace Presentation
 
                     CargarCostos();
                     CargarCarritoServicios();
+                    break;
                 }
             }
         }
@@ -300,12 +321,23 @@ namespace Presentation
         {
             ps = new PedidoSoloServicioE();
             ps.CedulaCliente = txtCedulaCliente.Text;
-            ps.CodigoConductor = u.Codigo;
+            ps.CodigoConstructor = u.Codigo;
             ps.Observaciones = txtObservaciones.Text;
             ps.SubTotal = subtotal;
             ps.IVA = iva;
             ps.Total = total;
             pl.GuardarPedidoSoloServicioConstructor(ps);
+
+            List<PedidoSoloServicioE> pedidos = pl.CargarPedidoSoloServicio();
+            int last = pedidos.Count - 1;
+            ps.Id = pedidos[last].Id;
+
+            foreach (PedidoSoloServicioServicioE p in servicios)
+            {
+                p.IdPedido = ps.Id;
+                pl.GuardarPedidoSoloServicioServicio(p);
+            }
+
             Limpiar();
             Activar(false);
         }
@@ -341,19 +373,19 @@ namespace Presentation
 
         private void btoRecibido_Click(object sender, EventArgs e)
         {
-            if (dgvPedidos.SelectedRows[1].Equals("COMPLETO"))
+            if (dgvPedidos.CurrentRow.Cells[1].Value.Equals("COMPLETO"))
             {
                 PedidoCompletoE p = (PedidoCompletoE) dgvPedidos.CurrentRow.Cells[0].Value;
                 p.HoraRecibidoBodega = dtpRecibido.Value;
                 pl.GuardarPedidoCompletoBodega(p);
             }
-            else if (dgvPedidos.SelectedRows[1].Equals("SOLO SERVICIO"))
+            else if (dgvPedidos.CurrentRow.Cells[1].Value.Equals("SOLO SERVICIO"))
             {
                 PedidoSoloServicioE p = (PedidoSoloServicioE)dgvPedidos.CurrentRow.Cells[0].Value;
                 p.HoraRecibidoBodega = dtpRecibido.Value;
                 pl.GuardarPedidoSoloServicioBodega(p);
             }
-            else if (dgvPedidos.SelectedRows[1].Equals("CLIENTE"))
+            else if (dgvPedidos.CurrentRow.Cells[1].Value.Equals("CLIENTE"))
             {
                 PedidoClienteE p = (PedidoClienteE)dgvPedidos.CurrentRow.Cells[0].Value;
                 p.HoraRecibidoBodega = dtpRecibido.Value;
@@ -364,19 +396,19 @@ namespace Presentation
 
         private void btoSalida_Click(object sender, EventArgs e)
         {
-            if (dgvPedidos.SelectedRows[1].Equals("COMPLETO"))
+            if (dgvPedidos.CurrentRow.Cells[1].Value.Equals("COMPLETO"))
             {
                 PedidoCompletoE p = (PedidoCompletoE)dgvPedidos.CurrentRow.Cells[0].Value;
                 p.HoraSalidaBodega = dtpSalida.Value;
                 pl.GuardarPedidoCompletoBodega(p);
             }
-            else if (dgvPedidos.SelectedRows[1].Equals("SOLO SERVICIO"))
+            else if (dgvPedidos.CurrentRow.Cells[1].Value.Equals("SOLO SERVICIO"))
             {
                 PedidoSoloServicioE p = (PedidoSoloServicioE)dgvPedidos.CurrentRow.Cells[0].Value;
                 p.HoraSalidaBodega = dtpSalida.Value;
                 pl.GuardarPedidoSoloServicioBodega(p);
             }
-            else if (dgvPedidos.SelectedRows[1].Equals("CLIENTE"))
+            else if (dgvPedidos.CurrentRow.Cells[1].Value.Equals("CLIENTE"))
             {
                 PedidoClienteE p = (PedidoClienteE)dgvPedidos.CurrentRow.Cells[0].Value;
                 p.HoraSalidaBodega = dtpSalida.Value;
