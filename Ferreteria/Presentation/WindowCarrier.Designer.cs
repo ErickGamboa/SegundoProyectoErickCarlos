@@ -34,8 +34,6 @@
             this.btnAgregarFin = new System.Windows.Forms.Button();
             this.lblFinaliza = new System.Windows.Forms.Label();
             this.dtpFinaliza = new System.Windows.Forms.DateTimePicker();
-            this.pnlTitulo = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlFinaliza = new System.Windows.Forms.Panel();
             this.pnlInicia = new System.Windows.Forms.Panel();
             this.btnLogOut = new System.Windows.Forms.Button();
@@ -45,7 +43,6 @@
             this.clmpeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmpeInicia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmpeFinaliza = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pnlTitulo.SuspendLayout();
             this.pnlFinaliza.SuspendLayout();
             this.pnlInicia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransportes)).BeginInit();
@@ -119,27 +116,6 @@
             this.dtpFinaliza.TabIndex = 3;
             this.dtpFinaliza.Value = new System.DateTime(2020, 11, 1, 14, 32, 50, 0);
             // 
-            // pnlTitulo
-            // 
-            this.pnlTitulo.BackColor = System.Drawing.Color.DarkMagenta;
-            this.pnlTitulo.Controls.Add(this.lblTitulo);
-            this.pnlTitulo.Location = new System.Drawing.Point(0, 0);
-            this.pnlTitulo.Name = "pnlTitulo";
-            this.pnlTitulo.Size = new System.Drawing.Size(838, 50);
-            this.pnlTitulo.TabIndex = 6;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblTitulo.Location = new System.Drawing.Point(287, 13);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(264, 25);
-            this.lblTitulo.TabIndex = 7;
-            this.lblTitulo.Text = "ESTADO TRANSPORTE";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // pnlFinaliza
             // 
             this.pnlFinaliza.BackColor = System.Drawing.SystemColors.Control;
@@ -147,9 +123,9 @@
             this.pnlFinaliza.Controls.Add(this.dtpFinaliza);
             this.pnlFinaliza.Controls.Add(this.lblFinaliza);
             this.pnlFinaliza.Controls.Add(this.btnAgregarFin);
-            this.pnlFinaliza.Location = new System.Drawing.Point(486, 56);
+            this.pnlFinaliza.Location = new System.Drawing.Point(486, 12);
             this.pnlFinaliza.Name = "pnlFinaliza";
-            this.pnlFinaliza.Size = new System.Drawing.Size(340, 53);
+            this.pnlFinaliza.Size = new System.Drawing.Size(340, 46);
             this.pnlFinaliza.TabIndex = 7;
             // 
             // pnlInicia
@@ -159,18 +135,18 @@
             this.pnlInicia.Controls.Add(this.lblInicia);
             this.pnlInicia.Controls.Add(this.dtpInicia);
             this.pnlInicia.Controls.Add(this.btnAgregarInicio);
-            this.pnlInicia.Location = new System.Drawing.Point(150, 56);
+            this.pnlInicia.Location = new System.Drawing.Point(150, 12);
             this.pnlInicia.Name = "pnlInicia";
-            this.pnlInicia.Size = new System.Drawing.Size(330, 53);
+            this.pnlInicia.Size = new System.Drawing.Size(330, 46);
             this.pnlInicia.TabIndex = 8;
             // 
             // btnLogOut
             // 
             this.btnLogOut.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnLogOut.Image = global::Presentation.Properties.Resources.logout_rounded_left_24px;
-            this.btnLogOut.Location = new System.Drawing.Point(12, 56);
+            this.btnLogOut.Location = new System.Drawing.Point(12, 12);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(132, 53);
+            this.btnLogOut.Size = new System.Drawing.Size(132, 46);
             this.btnLogOut.TabIndex = 2;
             this.btnLogOut.Text = "Cerrar Sesión";
             this.btnLogOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -191,12 +167,12 @@
             this.clmpeId,
             this.clmpeInicia,
             this.clmpeFinaliza});
-            this.dgvTransportes.Location = new System.Drawing.Point(12, 115);
+            this.dgvTransportes.Location = new System.Drawing.Point(12, 64);
             this.dgvTransportes.Name = "dgvTransportes";
             this.dgvTransportes.ReadOnly = true;
             this.dgvTransportes.RowHeadersVisible = false;
             this.dgvTransportes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTransportes.Size = new System.Drawing.Size(814, 314);
+            this.dgvTransportes.Size = new System.Drawing.Size(814, 365);
             this.dgvTransportes.TabIndex = 9;
             // 
             // clmpePedido
@@ -249,14 +225,11 @@
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.pnlInicia);
             this.Controls.Add(this.pnlFinaliza);
-            this.Controls.Add(this.pnlTitulo);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "WindowCarrier";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Transportista";
-            this.pnlTitulo.ResumeLayout(false);
-            this.pnlTitulo.PerformLayout();
             this.pnlFinaliza.ResumeLayout(false);
             this.pnlFinaliza.PerformLayout();
             this.pnlInicia.ResumeLayout(false);
@@ -274,8 +247,6 @@
         private System.Windows.Forms.Button btnAgregarFin;
         private System.Windows.Forms.Label lblFinaliza;
         private System.Windows.Forms.DateTimePicker dtpFinaliza;
-        private System.Windows.Forms.Panel pnlTitulo;
-        private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel pnlFinaliza;
         private System.Windows.Forms.Panel pnlInicia;
         private System.Windows.Forms.Button btnLogOut;

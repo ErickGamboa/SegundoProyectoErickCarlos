@@ -204,6 +204,7 @@ namespace Presentation
         {
             CargarProductos();
             CargarServicios();
+            CargarTransportes();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -279,6 +280,43 @@ namespace Presentation
             else
             {
                 lblMensajeProducto.Text = "Debe completar todos los espacios";
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            if (idSeleccionadoTransporte.Text != "")
+            {
+                transporte.EditarTransporte(txtNumeroVehiculo.Text, txtIdConductor.Text, true, Convert.ToInt32(idSeleccionadoTransporte.Text));
+                CargarTransportes();
+                lblMensajeTransporte.Text = "Edición exitosa";
+                LimpiarDatosTransporte();
+
+
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                mensajeSeleccionTransporte.Text = "Transporte seleccionado:";
+                idSeleccionadoTransporte.Text = dtgvTransportes.CurrentRow.Cells[0].Value.ToString();
+                txtIdConductor.Text = dtgvTransportes.CurrentRow.Cells[1].Value.ToString();
+                txtNumeroVehiculo.Text = dtgvTransportes.CurrentRow.Cells[3].Value.ToString();
+            }
+            catch
+            {
+                mensajeSeleccion.Text = "Error al seleccionar";
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (dtgvTransportes.CurrentRow.Cells[0].Value.ToString() != "")
+            {
+                transporte.EliminarTransporte(Convert.ToInt32(dtgvTransportes.CurrentRow.Cells[0].Value.ToString()));
+                CargarTransportes();
             }
         }
     }

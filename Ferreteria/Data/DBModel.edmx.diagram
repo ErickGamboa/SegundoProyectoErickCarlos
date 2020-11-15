@@ -29,6 +29,14 @@
         <EntityTypeShape EntityType="FerreteriaModel.usuario" Width="1.5" PointX="8" PointY="2.75" />
         <EntityTypeShape EntityType="FerreteriaModel.v_categoria_producto" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="FerreteriaModel.v_categoria_servicio" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_cliente" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_cliente_producto" Width="1.5" PointX="10.375" PointY="9.75" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_cliente_servicio" Width="1.5" PointX="11.375" PointY="5.75" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_completo" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_completo_producto" Width="1.5" PointX="12.375" PointY="8.75" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_completo_servicio" Width="1.5" PointX="10.375" PointY="12.75" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_solo_servicio" Width="1.5" PointX="12.375" PointY="11.75" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_solo_servicio_servicio" Width="1.5" PointX="13.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

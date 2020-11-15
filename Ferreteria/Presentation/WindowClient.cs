@@ -24,11 +24,9 @@ namespace Presentation
         private LProducto prl;
         private LServicio sel;
         private UtilitiesL utilities;
-        private DateTime fecha;
         private decimal subtotal;
         private decimal iva;
         private decimal total;
-        private bool estado;
 
         public WindowClient()
         {
@@ -42,6 +40,8 @@ namespace Presentation
             iva = 13;
             CargarCategoriaProducto();
             CargarCategoriaServicio();
+            CargarNombreProducto();
+            CargarNombreServicio();
             Limpiar();
         }
 
@@ -102,9 +102,9 @@ namespace Presentation
             {
                 foreach (ProductoE i in prl.CargarProducto("", ""))
                 {
-                    if (p.IdVenta == i.Id)
+                    if (i.Id == p.IdVenta)
                     {
-                        dgvCarritoComprasProductos.Rows.Add(p, i.Id, i.Nombre, i.Categoria, i.Descripcion,
+                        dgvCarritoComprasProductos.Rows.Add(p, i.Nombre, i.Categoria, i.Descripcion,
                             i.Precio, p.Cantidad, p.PrecioTotal);
                         break;
                     }
@@ -119,9 +119,9 @@ namespace Presentation
             {
                 foreach (ServicioE i in sel.CargarServicio("", ""))
                 {
-                    if (s.IdVenta == i.Id)
+                    if (i.Id == s.IdVenta)
                     {
-                        dgvCarritoComprasServicios.Rows.Add(s, i.Id, i.Nombre, i.Categoria, i.Descripcion,
+                        dgvCarritoComprasServicios.Rows.Add(s, i.Nombre, i.Categoria, i.Descripcion,
                             i.Precio, s.Cantidad, s.PrecioTotal);
                         break;
                     }
@@ -152,8 +152,10 @@ namespace Presentation
             {
                 subtotal += s.PrecioTotal;
             }
-            total = subtotal * (1 + iva / 100);
+            iva = subtotal * (decimal)0.13;
+            total = subtotal + iva;
             lblSubtotalT.Text = subtotal.ToString("0.00");
+            lblIVAT.Text = iva.ToString("0.00");
             lblTotalT.Text = total.ToString("0.00");
         }
 
@@ -184,11 +186,10 @@ namespace Presentation
 
         private void btoAgregarCarritoProducto_Click(object sender, EventArgs e)
         {
+            pcp = new PedidoClienteProductoE();
             ProductoE p = prl.CargarProducto(cboNombreProducto.Text, cboCategoriaProducto.Text)[0];
-            if (p.Cantidad >= int.Parse(txtCantidadProducto.Text))
+            if (p.Cantidad >= decimal.Parse(txtCantidadProducto.Text))
             {
-                pcp = new PedidoClienteProductoE();
-                pcp.IdPedido = 0;
                 pcp.IdVenta = p.Id;
                 pcp.Cantidad = decimal.Parse(txtCantidadProducto.Text);
                 pcp.PrecioTotal = p.Precio * pcp.Cantidad;
@@ -223,9 +224,8 @@ namespace Presentation
 
         private void btoAgregarCarritoServicio_Click(object sender, EventArgs e)
         {
-            ServicioE s = sel.CargarServicio(cboNombreServicio.Text, cboCategoriaServicio.Text)[0];
             pcs = new PedidoClienteServicioE();
-            pcs.IdPedido = pc.Id;
+            ServicioE s = sel.CargarServicio(cboNombreServicio.Text, cboCategoriaServicio.Text)[0];
             pcs.IdVenta = s.Id;
             pcs.Cantidad = int.Parse(txtCantidadServicio.Text);
             pcs.PrecioTotal = s.Precio * pcp.Cantidad;
@@ -300,8 +300,11 @@ namespace Presentation
 
         private void txtCantidadProducto_TextChanged(object sender, EventArgs e)
         {
-            lblTotalProductoT.Text = (prl.CargarProducto(cboNombreProducto.Text, cboCategoriaProducto.Text)[0].Precio
-                * decimal.Parse(txtCantidadProducto.Text)).ToString();
+            if (!string.IsNullOrEmpty(txtCantidadProducto.Text))
+            {
+                lblTotalProductoT.Text = (prl.CargarProducto(cboNombreProducto.Text, cboCategoriaProducto.Text)[0].Precio
+                        * decimal.Parse(txtCantidadProducto.Text)).ToString(); 
+            }
         }
 
         private void txtCantidadServicio_KeyPress(object sender, KeyPressEventArgs e)
@@ -311,8 +314,11 @@ namespace Presentation
 
         private void txtCantidadServicio_TextChanged(object sender, EventArgs e)
         {
-            lblTotalServicioT.Text = (sel.CargarServicio(cboNombreServicio.Text, cboCategoriaServicio.Text)[0].Precio
-                * decimal.Parse(txtCantidadServicio.Text)).ToString();
+            if (!string.IsNullOrEmpty(txtCantidadServicio.Text))
+            {
+                lblTotalServicioT.Text = (sel.CargarServicio(cboNombreServicio.Text, cboCategoriaServicio.Text)[0].Precio
+                        * decimal.Parse(txtCantidadServicio.Text)).ToString(); 
+            }
         }
 
         private void btoRealizarCompra_Click(object sender, EventArgs e)
@@ -326,6 +332,23 @@ namespace Presentation
             pc.Total = total;
             pc.Estado = "PENDIENTE";
             pl.GuardarPedidoClienteCliente(pc);
+
+            List<PedidoClienteE> pedidos = pl.CargarPedidoCliente();
+            int last = pedidos.Count - 1;
+            pc.Id = pedidos[last].Id;
+
+            foreach (PedidoClienteProductoE p in productos)
+            {
+                p.IdPedido = pc.Id;
+                pl.GuardarPedidoClienteProducto(p);
+            }
+
+            foreach (PedidoClienteServicioE p in servicios)
+            {
+                p.IdPedido = pc.Id;
+                pl.GuardarPedidoClienteServicio(p);
+            }
+
             Limpiar();
         }
 

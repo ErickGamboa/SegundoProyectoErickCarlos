@@ -66,10 +66,20 @@
             this.lblNombreConstructorL = new System.Windows.Forms.Label();
             this.tpgCarritoCompras = new System.Windows.Forms.TabPage();
             this.btoEliminar = new System.Windows.Forms.Button();
-            this.dgvCarritoCompras = new System.Windows.Forms.DataGridView();
             this.tpgBodega = new System.Windows.Forms.TabPage();
             this.dgvVentas = new System.Windows.Forms.DataGridView();
+            this.clmvTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmvId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmvNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmvCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmvDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmvCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
+            this.clmpePedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmpeTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmpeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmpeRecibido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmpeSalida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlSalida = new System.Windows.Forms.Panel();
             this.btoSalida = new System.Windows.Forms.Button();
             this.dtpSalida = new System.Windows.Forms.DateTimePicker();
@@ -82,17 +92,15 @@
             this.btoRecibido = new System.Windows.Forms.Button();
             this.dtpRecibido = new System.Windows.Forms.DateTimePicker();
             this.lblRecibido = new System.Windows.Forms.Label();
-            this.clmpePedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmpeTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmpeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmpeRecibido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmpeSalida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmvTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmvId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmvNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmvCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmvDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmvCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCarritoCompras = new System.Windows.Forms.DataGridView();
+            this.lblEliminar = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.tpgConsultaServicios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaServicio)).BeginInit();
@@ -101,7 +109,6 @@
             this.pnlServicio.SuspendLayout();
             this.pnlInformacion.SuspendLayout();
             this.tpgCarritoCompras.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCompras)).BeginInit();
             this.tpgBodega.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
@@ -109,6 +116,7 @@
             this.pnlTitulo2.SuspendLayout();
             this.pnlTitulo1.SuspendLayout();
             this.pnlRecibido.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCompras)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -143,6 +151,7 @@
             this.dgvConsultaServicio.AllowUserToAddRows = false;
             this.dgvConsultaServicio.AllowUserToDeleteRows = false;
             this.dgvConsultaServicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvConsultaServicio.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvConsultaServicio.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvConsultaServicio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConsultaServicio.Location = new System.Drawing.Point(0, 38);
@@ -515,8 +524,9 @@
             // tpgCarritoCompras
             // 
             this.tpgCarritoCompras.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tpgCarritoCompras.Controls.Add(this.btoEliminar);
             this.tpgCarritoCompras.Controls.Add(this.dgvCarritoCompras);
+            this.tpgCarritoCompras.Controls.Add(this.lblEliminar);
+            this.tpgCarritoCompras.Controls.Add(this.btoEliminar);
             this.tpgCarritoCompras.Location = new System.Drawing.Point(4, 27);
             this.tpgCarritoCompras.Name = "tpgCarritoCompras";
             this.tpgCarritoCompras.Padding = new System.Windows.Forms.Padding(3);
@@ -537,22 +547,6 @@
             this.btoEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btoEliminar.UseVisualStyleBackColor = true;
             this.btoEliminar.Click += new System.EventHandler(this.btoEliminar_Click);
-            // 
-            // dgvCarritoCompras
-            // 
-            this.dgvCarritoCompras.AllowUserToAddRows = false;
-            this.dgvCarritoCompras.AllowUserToDeleteRows = false;
-            this.dgvCarritoCompras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dgvCarritoCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCarritoCompras.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvCarritoCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCarritoCompras.Location = new System.Drawing.Point(0, 44);
-            this.dgvCarritoCompras.Name = "dgvCarritoCompras";
-            this.dgvCarritoCompras.ReadOnly = true;
-            this.dgvCarritoCompras.RowHeadersVisible = false;
-            this.dgvCarritoCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCarritoCompras.Size = new System.Drawing.Size(830, 366);
-            this.dgvCarritoCompras.TabIndex = 2;
             // 
             // tpgBodega
             // 
@@ -586,12 +580,56 @@
             this.clmvDescripcion,
             this.clmvCantidad});
             this.dgvVentas.Location = new System.Drawing.Point(0, 273);
+            this.dgvVentas.MultiSelect = false;
             this.dgvVentas.Name = "dgvVentas";
             this.dgvVentas.ReadOnly = true;
             this.dgvVentas.RowHeadersVisible = false;
             this.dgvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVentas.Size = new System.Drawing.Size(830, 137);
             this.dgvVentas.TabIndex = 5;
+            // 
+            // clmvTipo
+            // 
+            this.clmvTipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.clmvTipo.HeaderText = "Tipo";
+            this.clmvTipo.Name = "clmvTipo";
+            this.clmvTipo.ReadOnly = true;
+            // 
+            // clmvId
+            // 
+            this.clmvId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.clmvId.HeaderText = "Id";
+            this.clmvId.Name = "clmvId";
+            this.clmvId.ReadOnly = true;
+            this.clmvId.Width = 120;
+            // 
+            // clmvNombre
+            // 
+            this.clmvNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmvNombre.HeaderText = "Nombre";
+            this.clmvNombre.Name = "clmvNombre";
+            this.clmvNombre.ReadOnly = true;
+            // 
+            // clmvCategoria
+            // 
+            this.clmvCategoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmvCategoria.HeaderText = "Categoría";
+            this.clmvCategoria.Name = "clmvCategoria";
+            this.clmvCategoria.ReadOnly = true;
+            // 
+            // clmvDescripcion
+            // 
+            this.clmvDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmvDescripcion.HeaderText = "Descripción";
+            this.clmvDescripcion.Name = "clmvDescripcion";
+            this.clmvDescripcion.ReadOnly = true;
+            // 
+            // clmvCantidad
+            // 
+            this.clmvCantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.clmvCantidad.HeaderText = "Cantidad";
+            this.clmvCantidad.Name = "clmvCantidad";
+            this.clmvCantidad.ReadOnly = true;
             // 
             // dgvPedidos
             // 
@@ -607,6 +645,7 @@
             this.clmpeRecibido,
             this.clmpeSalida});
             this.dgvPedidos.Location = new System.Drawing.Point(0, 100);
+            this.dgvPedidos.MultiSelect = false;
             this.dgvPedidos.Name = "dgvPedidos";
             this.dgvPedidos.ReadOnly = true;
             this.dgvPedidos.RowHeadersVisible = false;
@@ -614,6 +653,45 @@
             this.dgvPedidos.Size = new System.Drawing.Size(830, 129);
             this.dgvPedidos.TabIndex = 4;
             this.dgvPedidos.SelectionChanged += new System.EventHandler(this.dgvPedidos_SelectionChanged);
+            // 
+            // clmpePedido
+            // 
+            this.clmpePedido.HeaderText = "Pedido";
+            this.clmpePedido.Name = "clmpePedido";
+            this.clmpePedido.ReadOnly = true;
+            this.clmpePedido.Visible = false;
+            // 
+            // clmpeTipo
+            // 
+            this.clmpeTipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.clmpeTipo.FillWeight = 140F;
+            this.clmpeTipo.HeaderText = "Tipo";
+            this.clmpeTipo.Name = "clmpeTipo";
+            this.clmpeTipo.ReadOnly = true;
+            this.clmpeTipo.Width = 140;
+            // 
+            // clmpeId
+            // 
+            this.clmpeId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.clmpeId.HeaderText = "Id";
+            this.clmpeId.Name = "clmpeId";
+            this.clmpeId.ReadOnly = true;
+            // 
+            // clmpeRecibido
+            // 
+            this.clmpeRecibido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmpeRecibido.FillWeight = 15.46391F;
+            this.clmpeRecibido.HeaderText = "Hora Recibido";
+            this.clmpeRecibido.Name = "clmpeRecibido";
+            this.clmpeRecibido.ReadOnly = true;
+            // 
+            // clmpeSalida
+            // 
+            this.clmpeSalida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmpeSalida.FillWeight = 15.46391F;
+            this.clmpeSalida.HeaderText = "Hora Salida";
+            this.clmpeSalida.Name = "clmpeSalida";
+            this.clmpeSalida.ReadOnly = true;
             // 
             // pnlSalida
             // 
@@ -739,87 +817,91 @@
             this.lblRecibido.TabIndex = 0;
             this.lblRecibido.Text = "Hora recibido:";
             // 
-            // clmpePedido
+            // dgvCarritoCompras
             // 
-            this.clmpePedido.HeaderText = "Pedido";
-            this.clmpePedido.Name = "clmpePedido";
-            this.clmpePedido.ReadOnly = true;
-            this.clmpePedido.Visible = false;
+            this.dgvCarritoCompras.AllowUserToAddRows = false;
+            this.dgvCarritoCompras.AllowUserToDeleteRows = false;
+            this.dgvCarritoCompras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvCarritoCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCarritoCompras.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvCarritoCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCarritoCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8});
+            this.dgvCarritoCompras.Location = new System.Drawing.Point(0, 44);
+            this.dgvCarritoCompras.Name = "dgvCarritoCompras";
+            this.dgvCarritoCompras.ReadOnly = true;
+            this.dgvCarritoCompras.RowHeadersVisible = false;
+            this.dgvCarritoCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCarritoCompras.Size = new System.Drawing.Size(830, 366);
+            this.dgvCarritoCompras.TabIndex = 7;
             // 
-            // clmpeTipo
+            // lblEliminar
             // 
-            this.clmpeTipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.clmpeTipo.FillWeight = 140F;
-            this.clmpeTipo.HeaderText = "Tipo";
-            this.clmpeTipo.Name = "clmpeTipo";
-            this.clmpeTipo.ReadOnly = true;
-            this.clmpeTipo.Width = 140;
+            this.lblEliminar.AutoSize = true;
+            this.lblEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEliminar.Location = new System.Drawing.Point(8, 10);
+            this.lblEliminar.Name = "lblEliminar";
+            this.lblEliminar.Size = new System.Drawing.Size(86, 24);
+            this.lblEliminar.TabIndex = 6;
+            this.lblEliminar.Text = "Servicios";
             // 
-            // clmpeId
+            // dataGridViewTextBoxColumn1
             // 
-            this.clmpeId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.clmpeId.HeaderText = "Id";
-            this.clmpeId.Name = "clmpeId";
-            this.clmpeId.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Servicio";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
             // 
-            // clmpeRecibido
+            // dataGridViewTextBoxColumn3
             // 
-            this.clmpeRecibido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmpeRecibido.FillWeight = 15.46391F;
-            this.clmpeRecibido.HeaderText = "Hora Recibido";
-            this.clmpeRecibido.Name = "clmpeRecibido";
-            this.clmpeRecibido.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
-            // clmpeSalida
+            // dataGridViewTextBoxColumn4
             // 
-            this.clmpeSalida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmpeSalida.FillWeight = 15.46391F;
-            this.clmpeSalida.HeaderText = "Hora Salida";
-            this.clmpeSalida.Name = "clmpeSalida";
-            this.clmpeSalida.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Categoría";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // clmvTipo
+            // dataGridViewTextBoxColumn5
             // 
-            this.clmvTipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.clmvTipo.HeaderText = "Tipo";
-            this.clmvTipo.Name = "clmvTipo";
-            this.clmvTipo.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Descripción";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
-            // clmvId
+            // dataGridViewTextBoxColumn6
             // 
-            this.clmvId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.clmvId.HeaderText = "Id";
-            this.clmvId.Name = "clmvId";
-            this.clmvId.ReadOnly = true;
-            this.clmvId.Width = 120;
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Precio";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 120;
             // 
-            // clmvNombre
+            // dataGridViewTextBoxColumn7
             // 
-            this.clmvNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmvNombre.HeaderText = "Nombre";
-            this.clmvNombre.Name = "clmvNombre";
-            this.clmvNombre.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Cantidad";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 75;
             // 
-            // clmvCategoria
+            // dataGridViewTextBoxColumn8
             // 
-            this.clmvCategoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmvCategoria.HeaderText = "Categoría";
-            this.clmvCategoria.Name = "clmvCategoria";
-            this.clmvCategoria.ReadOnly = true;
-            // 
-            // clmvDescripcion
-            // 
-            this.clmvDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmvDescripcion.HeaderText = "Descripción";
-            this.clmvDescripcion.Name = "clmvDescripcion";
-            this.clmvDescripcion.ReadOnly = true;
-            // 
-            // clmvCantidad
-            // 
-            this.clmvCantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.clmvCantidad.HeaderText = "Cantidad";
-            this.clmvCantidad.Name = "clmvCantidad";
-            this.clmvCantidad.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn8.HeaderText = "Precio Total";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 120;
             // 
             // WindowBuilder
             // 
@@ -846,7 +928,7 @@
             this.pnlInformacion.ResumeLayout(false);
             this.pnlInformacion.PerformLayout();
             this.tpgCarritoCompras.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCompras)).EndInit();
+            this.tpgCarritoCompras.PerformLayout();
             this.tpgBodega.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
@@ -858,6 +940,7 @@
             this.pnlTitulo1.PerformLayout();
             this.pnlRecibido.ResumeLayout(false);
             this.pnlRecibido.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCompras)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -917,7 +1000,6 @@
         private System.Windows.Forms.Label lblNombreServicioL;
         private System.Windows.Forms.Panel pnlObservaciones;
         private System.Windows.Forms.Button btoEliminar;
-        private System.Windows.Forms.DataGridView dgvCarritoCompras;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmpePedido;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmpeTipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmpeId;
@@ -929,5 +1011,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmvCategoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmvDescripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmvCantidad;
+        private System.Windows.Forms.DataGridView dgvCarritoCompras;
+        private System.Windows.Forms.Label lblEliminar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
     }
 }

@@ -43,5 +43,36 @@ namespace Logic
             }
 
         }
+
+        public void EditarTransporte(string numeroVehiculo, string idConductor, Boolean estado, int id)
+        {
+
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                transporte trans = null;
+
+                trans = db.transporte.Find(id);
+                trans.numero_vehiculo = numeroVehiculo;
+                trans.codigo_conductor = idConductor;
+                trans.disponible = estado;
+                db.Entry(trans).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+            }
+
+
+        }
+
+        public void EliminarTransporte(int id)
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                transporte trans;
+                trans = db.transporte.Find(id);
+                db.transporte.Remove(trans);
+                db.SaveChanges();
+            }
+
+        }
     }
 }

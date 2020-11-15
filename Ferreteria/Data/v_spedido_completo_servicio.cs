@@ -12,13 +12,12 @@ namespace Data
     using System;
     using System.Collections.Generic;
     
-    public partial class usuario
+    public partial class v_spedido_completo_servicio
     {
         public int id { get; set; }
-        public string codigo { get; set; }
-        public string nombre { get; set; }
-        public string contrasena { get; set; }
-        public string cedula { get; set; }
-        public string tipo { get; set; }
+        public int id_pedido_completo { get; set; }
+        public int id_servicio { get; set; }
+        public decimal cantidad { get; set; }
+        public decimal precio_total { get; set; }
     }
 }
