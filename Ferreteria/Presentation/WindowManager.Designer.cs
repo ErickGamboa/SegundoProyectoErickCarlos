@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.idSelecionado = new System.Windows.Forms.Label();
@@ -96,6 +100,8 @@
             this.txtNumeroVehiculo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ferreteriaDataSet = new Presentation.FerreteriaDataSet();
             this.productoTableAdapter = new Presentation.FerreteriaDataSetTableAdapters.productoTableAdapter();
@@ -109,6 +115,8 @@
             this.productoEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productoEBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.productoEBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.cmbReportes = new System.Windows.Forms.ComboBox();
+            this.dtpDia = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvProductos)).BeginInit();
@@ -118,6 +126,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgvServicios)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvTransportes)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet1)).BeginInit();
@@ -134,6 +144,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -759,6 +770,38 @@
             this.label10.TabIndex = 22;
             this.label10.Text = "Número de Vehículo";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.dtpDia);
+            this.tabPage4.Controls.Add(this.cmbReportes);
+            this.tabPage4.Controls.Add(this.chart);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(791, 331);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Reportes";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // chart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
+            this.chart.Location = new System.Drawing.Point(6, 6);
+            this.chart.Name = "chart";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series";
+            this.chart.Series.Add(series1);
+            this.chart.Size = new System.Drawing.Size(300, 300);
+            this.chart.TabIndex = 0;
+            this.chart.Text = "chart";
+            title1.Name = "Titulo";
+            title1.Text = "Titulo";
+            this.chart.Titles.Add(title1);
+            // 
             // productoBindingSource
             // 
             this.productoBindingSource.DataMember = "producto";
@@ -817,6 +860,35 @@
             // 
             this.productoEBindingSource2.DataSource = typeof(Entities.ProductoE);
             // 
+            // cmbReportes
+            // 
+            this.cmbReportes.FormattingEnabled = true;
+            this.cmbReportes.Items.AddRange(new object[] {
+            "Ventas realizadas por productos y servicios",
+            "Cantidad de ventas por categoría de productos",
+            "Cantidad de ventas por categoría de servicios",
+            "Detalle y resumen de las ventas de cada vendedor",
+            "Detalle y resumen de los servicios realizados por el constructor y conductor",
+            "Cantidad de clientes que realizaron compras, según las facturas generadas",
+            "Resumen de ventas según cuanto fue lo facturado y los impuestos que deben pagarse" +
+                " a tributación directa",
+            "Lista de servicios solicitados en un día específico",
+            "Lista de los empleados que realizaron ventas y cuáles no, durante un día específi" +
+                "co"});
+            this.cmbReportes.Location = new System.Drawing.Point(312, 7);
+            this.cmbReportes.Name = "cmbReportes";
+            this.cmbReportes.Size = new System.Drawing.Size(470, 21);
+            this.cmbReportes.TabIndex = 1;
+            this.cmbReportes.SelectionChangeCommitted += new System.EventHandler(this.cmbReportes_SelectionChangeCommitted);
+            // 
+            // dtpDia
+            // 
+            this.dtpDia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDia.Location = new System.Drawing.Point(631, 35);
+            this.dtpDia.Name = "dtpDia";
+            this.dtpDia.Size = new System.Drawing.Size(150, 20);
+            this.dtpDia.TabIndex = 2;
+            // 
             // WindowManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -839,6 +911,8 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvTransportes)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet1)).EndInit();
@@ -934,5 +1008,9 @@
         private System.Windows.Forms.Label lblMensajeTransporte;
         private System.Windows.Forms.Label idSeleccionadoTransporte;
         private System.Windows.Forms.Label mensajeSeleccionTransporte;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
+        private System.Windows.Forms.ComboBox cmbReportes;
+        private System.Windows.Forms.DateTimePicker dtpDia;
     }
 }

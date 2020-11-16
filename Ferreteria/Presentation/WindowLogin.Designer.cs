@@ -64,6 +64,7 @@
             this.txtUsuarioLogin.Name = "txtUsuarioLogin";
             this.txtUsuarioLogin.Size = new System.Drawing.Size(173, 20);
             this.txtUsuarioLogin.TabIndex = 2;
+            this.txtUsuarioLogin.Text = "101110111";
             // 
             // txtContraLogin
             // 
@@ -72,6 +73,7 @@
             this.txtContraLogin.PasswordChar = '*';
             this.txtContraLogin.Size = new System.Drawing.Size(173, 20);
             this.txtContraLogin.TabIndex = 3;
+            this.txtContraLogin.Text = "Admin123";
             // 
             // label3
             // 
