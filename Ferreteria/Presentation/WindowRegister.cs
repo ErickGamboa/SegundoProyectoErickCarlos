@@ -64,6 +64,10 @@ namespace Presentation
 
             return codigo;
         }
+
+        /*
+         This method clean the Register window. Null values are saved to the components of window 
+             */
         private void limpiarVentanaReg() {
             txtCedulaReg.Text = "";
             TxtContraReg.Text = "";
