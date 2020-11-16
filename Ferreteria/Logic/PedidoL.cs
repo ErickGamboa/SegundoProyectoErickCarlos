@@ -392,5 +392,21 @@ namespace Logic
                     pcs.IdPedido, pcs.IdVenta, pcs.Cantidad, pcs.PrecioTotal) > 0;
             }
         }
+
+        //public List<string> CargarCantidadPedidoCompletoProductoCategoria()
+        //{
+        //    using (FerreteriaEntities db = new FerreteriaEntities())
+        //    {
+        //        return db.Database.SqlQuery<string>("SELECT * FROM v_scantidad_pcp_categoria").ToList();
+        //    }
+        //}
+
+        //public List<object> CargarCantidadPedidoClienteProductoCategoria()
+        //{
+        //    using (FerreteriaEntities db = new FerreteriaEntities())
+        //    {
+        //        return db.Database.SqlQuery<object>("SELECT * FROM v_scantidad_pedido_cliente_producto_categoria").ToList();
+        //    }
+        //}
     }
 }

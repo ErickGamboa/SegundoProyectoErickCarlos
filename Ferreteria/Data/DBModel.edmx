@@ -172,6 +172,34 @@ warning 6002: The table/view 'Ferreteria.dbo.v_categoria_servicio' does not have
           <Property Name="categoria" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'Ferreteria.dbo.v_scantidad_pcp_categoria' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_scantidad_pcp_categoria">
+          <Key>
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="cantidades" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="categoria" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Ferreteria.dbo.v_scantidad_pedido_cliente_producto_categoria' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_scantidad_pedido_cliente_producto_categoria">
+          <Key>
+            <PropertyRef Name="cantidad" />
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="cantidad" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="categoria" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Ferreteria.dbo.v_scantidad_pedido_completo_producto_categoria' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_scantidad_pedido_completo_producto_categoria">
+          <Key>
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="cantidades" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="categoria" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'Ferreteria.dbo.v_spedido_cliente' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_spedido_cliente">
           <Key>
@@ -518,6 +546,7 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Parameter Name="cantidad" Type="numeric" Mode="In" />
           <Parameter Name="precio_total" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="sp_scantidad_pcp_categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_upedido_cliente_bodega" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="hora_recibido_bodega" Type="datetime" Mode="In" />
@@ -588,6 +617,24 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
             <DefiningQuery>SELECT 
     [v_categoria_servicio].[categoria] AS [categoria]
     FROM [dbo].[v_categoria_servicio] AS [v_categoria_servicio]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_scantidad_pcp_categoria" EntityType="Self.v_scantidad_pcp_categoria" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_scantidad_pcp_categoria].[cantidades] AS [cantidades], 
+    [v_scantidad_pcp_categoria].[categoria] AS [categoria]
+    FROM [dbo].[v_scantidad_pcp_categoria] AS [v_scantidad_pcp_categoria]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_scantidad_pedido_cliente_producto_categoria" EntityType="Self.v_scantidad_pedido_cliente_producto_categoria" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_scantidad_pedido_cliente_producto_categoria].[cantidad] AS [cantidad], 
+    [v_scantidad_pedido_cliente_producto_categoria].[categoria] AS [categoria]
+    FROM [dbo].[v_scantidad_pedido_cliente_producto_categoria] AS [v_scantidad_pedido_cliente_producto_categoria]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_scantidad_pedido_completo_producto_categoria" EntityType="Self.v_scantidad_pedido_completo_producto_categoria" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_scantidad_pedido_completo_producto_categoria].[cantidades] AS [cantidades], 
+    [v_scantidad_pedido_completo_producto_categoria].[categoria] AS [categoria]
+    FROM [dbo].[v_scantidad_pedido_completo_producto_categoria] AS [v_scantidad_pedido_completo_producto_categoria]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_spedido_cliente" EntityType="Self.v_spedido_cliente" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1182,6 +1229,10 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <EntitySet Name="v_spedido_completo_servicio" EntityType="FerreteriaModel.v_spedido_completo_servicio" />
           <EntitySet Name="v_spedido_solo_servicio" EntityType="FerreteriaModel.v_spedido_solo_servicio" />
           <EntitySet Name="v_spedido_solo_servicio_servicio" EntityType="FerreteriaModel.v_spedido_solo_servicio_servicio" />
+          <EntitySet Name="v_scantidad_pedido_cliente_producto_categoria" EntityType="FerreteriaModel.v_scantidad_pedido_cliente_producto_categoria" />
+          <EntitySet Name="v_scantidad_pedido_completo_producto_categoria" EntityType="FerreteriaModel.v_scantidad_pedido_completo_producto_categoria" />
+          <EntitySet Name="v_scantidad_pcp_categoria" EntityType="FerreteriaModel.v_scantidad_pcp_categoria" />
+          <FunctionImport Name="sp_scantidad_pcp_categoria" ReturnType="Collection(FerreteriaModel.sp_scantidad_pcp_categoria_Result)" />
         </EntityContainer>
         <EntityType Name="usuario">
           <Key>
@@ -1335,6 +1386,32 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Property Name="cantidad" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
           <Property Name="precio_total" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
         </EntityType>
+        <EntityType Name="v_scantidad_pedido_cliente_producto_categoria">
+          <Key>
+            <PropertyRef Name="cantidad" />
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="cantidad" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="categoria" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_scantidad_pedido_completo_producto_categoria">
+          <Key>
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="cantidades" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="categoria" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_scantidad_pcp_categoria">
+          <Key>
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="cantidades" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="categoria" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="sp_scantidad_pcp_categoria_Result">
+          <Property Type="Decimal" Name="cantidades" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="categoria" Nullable="false" MaxLength="30" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1651,6 +1728,38 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="v_scantidad_pedido_cliente_producto_categoria">
+            <EntityTypeMapping TypeName="FerreteriaModel.v_scantidad_pedido_cliente_producto_categoria">
+              <MappingFragment StoreEntitySet="v_scantidad_pedido_cliente_producto_categoria">
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_scantidad_pedido_completo_producto_categoria">
+            <EntityTypeMapping TypeName="FerreteriaModel.v_scantidad_pedido_completo_producto_categoria">
+              <MappingFragment StoreEntitySet="v_scantidad_pedido_completo_producto_categoria">
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="cantidades" ColumnName="cantidades" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_scantidad_pcp_categoria">
+            <EntityTypeMapping TypeName="FerreteriaModel.v_scantidad_pcp_categoria">
+              <MappingFragment StoreEntitySet="v_scantidad_pcp_categoria">
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="cantidades" ColumnName="cantidades" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_scantidad_pcp_categoria" FunctionName="FerreteriaModel.Store.sp_scantidad_pcp_categoria">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FerreteriaModel.sp_scantidad_pcp_categoria_Result">
+                <ScalarProperty Name="cantidades" ColumnName="cantidades" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

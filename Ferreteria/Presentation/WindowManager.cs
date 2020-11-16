@@ -21,6 +21,7 @@ namespace Presentation
         LProducto producto = new LProducto();
         LServicio servicio = new LServicio();
         LTransporte transporte = new LTransporte();
+        PedidoL pedido = new PedidoL();
 
         public void soloNumeros(KeyPressEventArgs e)
         {
@@ -319,5 +320,68 @@ namespace Presentation
                 CargarTransportes();
             }
         }
+
+        private void cmbReportes_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (cmbReportes.SelectedIndex == 0)
+            {
+                dtpDia.Visible = false;
+                Reporte1();
+            }
+            else if (cmbReportes.SelectedIndex == 1)
+            {
+                dtpDia.Visible = false;
+                //Reporte2();
+            }
+        }
+
+        private void LimpiarGrafico()
+        {
+            foreach (var series in chart.Series)
+            {
+                series.Points.Clear();
+            }
+        }
+
+        private void Reporte1()
+        {
+            LimpiarGrafico();
+            int productos = 0;
+            int servicios = 0;
+
+            productos += pedido.CargarPedidoCompletoProducto().Count;
+            productos += pedido.CargarPedidoClienteProducto().Count;
+            
+            servicios += pedido.CargarPedidoCompletoServicio().Count;
+            servicios += pedido.CargarPedidoSoloServicioServicio().Count;
+            servicios += pedido.CargarPedidoClienteServicio().Count;
+
+            chart.Titles[0].Text = "Reporte Ventas Productos y Servicios";
+            chart.Series["Series"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            chart.Series["Series"].IsValueShownAsLabel = true;
+            chart.Series["Series"].Points.AddXY("Productos", productos);
+            chart.Series["Series"].Points.AddXY("Servicios", servicios);
+        }
+
+        //private void Reporte2()
+        //{
+        //    LimpiarGrafico();
+
+        //    chart.Titles[0].Text = "Cantidad de ventas por categoría de productos";
+        //    chart.Series["Series"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+        //    chart.Series["Series"].IsValueShownAsLabel = true;
+
+        //    foreach (string i in producto.CargarCategoriaProducto())
+        //    {
+        //        chart.Series["Series"].Points.AddXY(i, 0);
+        //        foreach (var j in pedido.CargarCantidadPedidoCompletoProductoCategoria())
+        //        {
+        //            if (j == i)
+        //            {
+        //                //chart.Series["Series"].Points[0].YValues += j;
+        //            }
+        //        }
+        //    }
+        //}
     }
 }
