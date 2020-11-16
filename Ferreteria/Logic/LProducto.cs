@@ -11,6 +11,11 @@ namespace Logic
 {
     public class LProducto
     {
+        /*
+         This method receives all the information of a Product in the parameters. This information is saved on an object of type
+         producto. After that the object is saved in the data base
+             */
+
         public void RegistrarProducto(string nombre, string categoria, string descripcion, decimal precio, decimal cantidad)
         {
             using (FerreteriaEntities db = new FerreteriaEntities())

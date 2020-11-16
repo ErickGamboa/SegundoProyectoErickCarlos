@@ -10,6 +10,12 @@ namespace Logic
 {
     public class LServicio
     {
+
+        /*
+         This method receives all the information of a Service in the parameters. This information is saved on an object of type
+         servicio. After that the object is saved in the data base
+             */
+
         public void RegistrarServicio(string nombre, string categoria, string descripcion, decimal precio)
         {
             using (FerreteriaEntities db = new FerreteriaEntities())

@@ -103,5 +103,10 @@ namespace Presentation
 
             
         }
+
+        private void WindowRegister_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

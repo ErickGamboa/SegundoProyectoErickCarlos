@@ -10,6 +10,12 @@ namespace Logic
 {
     public class LTransporte
     {
+
+        /*
+         This method receives all the information of a Transport in the parameters. This information is saved on an object of type
+         transporte. After that the object is saved in the data base
+             */
+
         public void RegistrarTransporte(string numeroVehiculo, string idConductor, Boolean estado)
         {
             using (FerreteriaEntities db = new FerreteriaEntities())

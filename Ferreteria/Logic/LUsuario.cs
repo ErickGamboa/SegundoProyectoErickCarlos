@@ -33,6 +33,11 @@ namespace Logic
 
         }
 
+        /*
+         This method receives all the information of a user in the parameters. This information is saved on an object of type
+         usuario. After that the object is saved in the data base
+             */
+
         public void registrarUsuarios(string codigo, string nombre, string contra, string cedula, string tipo) {
             using (FerreteriaEntities db = new FerreteriaEntities()) {
                 usuario usuario = new usuario();

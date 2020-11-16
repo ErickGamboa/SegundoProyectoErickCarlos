@@ -165,6 +165,7 @@
             this.Name = "WindowRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro";
+            this.Load += new System.EventHandler(this.WindowRegister_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
