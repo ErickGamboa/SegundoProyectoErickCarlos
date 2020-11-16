@@ -31,6 +31,13 @@ namespace Logic
             }
 
         }
+
+        /*
+         This method receives name and a category of a product in the parameters. With these parameters is consulted the products 
+         in the data bases. When there is a product with this information, it is saved in a list.
+         The method returns the list with objects. 
+             */
+
         public List<ProductoE> CargarProducto(string nombre, string categoria)
         {
             using (FerreteriaEntities db = new FerreteriaEntities())
@@ -63,6 +70,11 @@ namespace Logic
             }
         }
 
+        /*
+         This method receives all the information of a Product in the parameters. Data base find this product with the id and 
+         edit the necessary information
+             */
+
         public void EditarProducto(string nombre, string categoria, string descripcion, decimal precio, decimal cantidad, int id)
         {
 
@@ -83,6 +95,12 @@ namespace Logic
 
 
         }
+
+        /*
+         This method receives the id of a Product in the parameters. Data base find this product with the id and 
+         delete the register
+             */
+
         public void EliminarProducto(int id)
         {
             using (FerreteriaEntities db = new FerreteriaEntities())
