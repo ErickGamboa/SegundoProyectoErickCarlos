@@ -101,6 +101,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.dtpDia = new System.Windows.Forms.DateTimePicker();
+            this.cmbReportes = new System.Windows.Forms.ComboBox();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ferreteriaDataSet = new Presentation.FerreteriaDataSet();
@@ -115,8 +117,6 @@
             this.productoEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productoEBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.productoEBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.cmbReportes = new System.Windows.Forms.ComboBox();
-            this.dtpDia = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvProductos)).BeginInit();
@@ -783,6 +783,36 @@
             this.tabPage4.Text = "Reportes";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // dtpDia
+            // 
+            this.dtpDia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDia.Location = new System.Drawing.Point(631, 35);
+            this.dtpDia.Name = "dtpDia";
+            this.dtpDia.Size = new System.Drawing.Size(150, 20);
+            this.dtpDia.TabIndex = 2;
+            this.dtpDia.ValueChanged += new System.EventHandler(this.dtpDia_ValueChanged);
+            // 
+            // cmbReportes
+            // 
+            this.cmbReportes.FormattingEnabled = true;
+            this.cmbReportes.Items.AddRange(new object[] {
+            "Ventas realizadas por productos y servicios",
+            "Cantidad de ventas por categoría de productos",
+            "Cantidad de ventas por categoría de servicios",
+            "Detalle y resumen de las ventas de cada vendedor",
+            "Detalle y resumen de los servicios realizados por el constructor y conductor",
+            "Cantidad de clientes que realizaron compras, según las facturas generadas",
+            "Resumen de ventas según cuanto fue lo facturado y los impuestos que deben pagarse" +
+                " a tributación directa",
+            "Lista de servicios solicitados en un día específico",
+            "Lista de los empleados que realizaron ventas y cuáles no, durante un día específi" +
+                "co"});
+            this.cmbReportes.Location = new System.Drawing.Point(312, 7);
+            this.cmbReportes.Name = "cmbReportes";
+            this.cmbReportes.Size = new System.Drawing.Size(470, 21);
+            this.cmbReportes.TabIndex = 1;
+            this.cmbReportes.SelectionChangeCommitted += new System.EventHandler(this.cmbReportes_SelectionChangeCommitted);
+            // 
             // chart
             // 
             chartArea1.Name = "ChartArea1";
@@ -859,35 +889,6 @@
             // productoEBindingSource2
             // 
             this.productoEBindingSource2.DataSource = typeof(Entities.ProductoE);
-            // 
-            // cmbReportes
-            // 
-            this.cmbReportes.FormattingEnabled = true;
-            this.cmbReportes.Items.AddRange(new object[] {
-            "Ventas realizadas por productos y servicios",
-            "Cantidad de ventas por categoría de productos",
-            "Cantidad de ventas por categoría de servicios",
-            "Detalle y resumen de las ventas de cada vendedor",
-            "Detalle y resumen de los servicios realizados por el constructor y conductor",
-            "Cantidad de clientes que realizaron compras, según las facturas generadas",
-            "Resumen de ventas según cuanto fue lo facturado y los impuestos que deben pagarse" +
-                " a tributación directa",
-            "Lista de servicios solicitados en un día específico",
-            "Lista de los empleados que realizaron ventas y cuáles no, durante un día específi" +
-                "co"});
-            this.cmbReportes.Location = new System.Drawing.Point(312, 7);
-            this.cmbReportes.Name = "cmbReportes";
-            this.cmbReportes.Size = new System.Drawing.Size(470, 21);
-            this.cmbReportes.TabIndex = 1;
-            this.cmbReportes.SelectionChangeCommitted += new System.EventHandler(this.cmbReportes_SelectionChangeCommitted);
-            // 
-            // dtpDia
-            // 
-            this.dtpDia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDia.Location = new System.Drawing.Point(631, 35);
-            this.dtpDia.Name = "dtpDia";
-            this.dtpDia.Size = new System.Drawing.Size(150, 20);
-            this.dtpDia.TabIndex = 2;
             // 
             // WindowManager
             // 

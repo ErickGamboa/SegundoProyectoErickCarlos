@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Logic;
 using Entities;
+using Entities.Reportes;
 
 namespace Presentation
 {
@@ -22,6 +23,7 @@ namespace Presentation
         LServicio servicio = new LServicio();
         LTransporte transporte = new LTransporte();
         PedidoL pedido = new PedidoL();
+        LUsuario usuario = new LUsuario();
 
         public void soloNumeros(KeyPressEventArgs e)
         {
@@ -358,7 +360,17 @@ namespace Presentation
             else if (cmbReportes.SelectedIndex == 1)
             {
                 dtpDia.Visible = false;
-                //Reporte2();
+                Reporte2();
+            }
+            else if (cmbReportes.SelectedIndex == 7)
+            {
+                dtpDia.Visible = true;
+                Reporte8(dtpDia.Value.Date);
+            }
+            else if (cmbReportes.SelectedIndex == 8)
+            {
+                dtpDia.Visible = true;
+                Reporte9(dtpDia.Value.Date);
             }
         }
 
@@ -373,8 +385,8 @@ namespace Presentation
         private void Reporte1()
         {
             LimpiarGrafico();
-            int productos = 0;
-            int servicios = 0;
+            decimal productos = 0;
+            decimal servicios = 0;
 
             productos += pedido.CargarPedidoCompletoProducto().Count;
             productos += pedido.CargarPedidoClienteProducto().Count;
@@ -390,25 +402,136 @@ namespace Presentation
             chart.Series["Series"].Points.AddXY("Servicios", servicios);
         }
 
-        //private void Reporte2()
-        //{
-        //    LimpiarGrafico();
+        private void Reporte2()
+        {
+            LimpiarGrafico();
+            List<Reporte2E> reporte = new List<Reporte2E>();
 
-        //    chart.Titles[0].Text = "Cantidad de ventas por categoría de productos";
-        //    chart.Series["Series"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-        //    chart.Series["Series"].IsValueShownAsLabel = true;
+            foreach (string s in producto.CargarCategoriaProducto())
+            {
+                reporte.Add(new Reporte2E(0, s));
+            }
 
-        //    foreach (string i in producto.CargarCategoriaProducto())
-        //    {
-        //        chart.Series["Series"].Points.AddXY(i, 0);
-        //        foreach (var j in pedido.CargarCantidadPedidoCompletoProductoCategoria())
-        //        {
-        //            if (j == i)
-        //            {
-        //                //chart.Series["Series"].Points[0].YValues += j;
-        //            }
-        //        }
-        //    }
-        //}
+            foreach (Reporte2E r1 in pedido.CargarCantidadPCoPCategoria())
+            {
+                foreach (Reporte2E r2 in reporte)
+                {
+                    if (r1.Categoria == r2.Categoria)
+                    {
+                        r2.Cantidad += r1.Cantidad;
+                        break;
+                    }
+                }
+            }
+
+            foreach (Reporte2E r1 in pedido.CargarCantidadPClPCategoria())
+            {
+                foreach (Reporte2E r2 in reporte)
+                {
+                    if (r1.Categoria == r2.Categoria)
+                    {
+                        r2.Cantidad += r1.Cantidad;
+                        break;
+                    }
+                }
+            }
+
+            chart.Titles[0].Text = "Cantidad de ventas por categoría de productos";
+            chart.Series["Series"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            chart.Series["Series"].IsValueShownAsLabel = true;
+
+            foreach (Reporte2E r in reporte)
+            {
+                chart.Series["Series"].Points.AddXY(r.Categoria, r.Cantidad);
+            }
+        }
+
+        private void Reporte8(DateTime dia)
+        {
+            LimpiarGrafico();
+            List<string> reporte = new List<string>();
+
+            foreach (string s in pedido.CargarPCOServiciosDia(dia))
+            {
+                reporte.Add(s);
+            }
+
+            foreach (string s in pedido.CargarPSServiciosDia(dia))
+            {
+                reporte.Add(s);
+            }
+
+            foreach (string s in pedido.CargarPCLServiciosDia(dia))
+            {
+                reporte.Add(s);
+            }
+
+            chart.Titles[0].Text = "Servicios solicitados en un día específico";
+            chart.Series["Series"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            chart.Series["Series"].IsValueShownAsLabel = false;
+
+            foreach (string r in reporte)
+            {
+                chart.Series["Series"].Points.AddXY(r, 1);
+            }
+        }
+
+        private void Reporte9(DateTime dia)
+        {
+            LimpiarGrafico();
+            List<Reporte9E> reporte = new List<Reporte9E>();
+
+            foreach (UsuarioE u in usuario.CargarUsuario())
+            {
+                if (!u.Codigo.Substring(0,3).Equals("ADM") || !u.Codigo.Substring(0, 3).Equals("CAJ"))
+                {
+                    reporte.Add(new Reporte9E(u.Codigo, 0));
+                }
+            }
+
+            foreach (string s in pedido.CargarPCOEmpleadosDia(dia))
+            {
+                foreach (Reporte9E r in reporte)
+                {
+                    if (s.Equals(r.CodigoUsuario))
+                    {
+                        r.RealizoVentas = 1;
+                    }
+                }
+            }
+
+            foreach (string s in pedido.CargarPSEmpleadosDia(dia))
+            {
+                foreach (Reporte9E r in reporte)
+                {
+                    if (s.Equals(r.CodigoUsuario))
+                    {
+                        r.RealizoVentas = 1;
+                    }
+                }
+            }
+
+            chart.Titles[0].Text = "Servicios solicitados en un día específico";
+            chart.Series["Series"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            chart.Series["Series"].IsValueShownAsLabel = false;
+
+            foreach (Reporte9E r in reporte)
+            {
+                chart.Series["Series"].Points.AddXY(r.CodigoUsuario, r.RealizoVentas);
+            }
+        }
+
+        private void dtpDia_ValueChanged(object sender, EventArgs e)
+        {
+            if (cmbReportes.SelectedIndex == 7)
+            {
+                Reporte8(dtpDia.Value.Date);
+            }
+            else if (cmbReportes.SelectedIndex == 8)
+            {
+                dtpDia.Visible = true;
+                Reporte9(dtpDia.Value.Date);
+            }
+        }
     }
 }
