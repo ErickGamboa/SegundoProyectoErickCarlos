@@ -8,12 +8,12 @@ namespace Entities
 {
     public class PedidoSoloServicioE : PedidoE
     {
-        public string CodigoConstructor { get; set; }
+        public string CodigoUsuario { get; set; }
         public string Observaciones { get; set; }
 
         public PedidoSoloServicioE() { }
 
-        public PedidoSoloServicioE(int id, string cedulaCliente, string codigoConstructor,
+        public PedidoSoloServicioE(int id, string cedulaCliente, string codigoUsuario,
             string observaciones, DateTime? horaRecibidoBodega, DateTime? horaSalidaBodega,
             string codigoConductor, DateTime? horaIniciaTransporte, DateTime? horaFinalizaTransporte,
             DateTime? fechaFactura, string codigoCajero, decimal? subTotal, decimal? iva, decimal? total)
@@ -22,7 +22,7 @@ namespace Entities
         {
             Id = id;
             CedulaCliente = cedulaCliente;
-            CodigoConstructor = codigoConstructor;
+            CodigoUsuario = codigoUsuario;
             Observaciones = observaciones;
             HoraRecibidoBodega = horaRecibidoBodega;
             HoraSalidaBodega = horaSalidaBodega;

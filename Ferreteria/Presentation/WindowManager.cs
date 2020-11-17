@@ -57,6 +57,7 @@ namespace Presentation
             txtCantProducto.Text = "";
             mensajeSeleccion.Text = "";
             idSelecionado.Text = "";
+            checkBox1.Checked = true;
         }
 
         /*
@@ -81,6 +82,7 @@ namespace Presentation
             txtPrecioServicio.Text = "";
             mensajeSeleccionServicio.Text = "";
             idSeleccionadoServicio.Text = "";
+            checkBox2.Checked = true;
         }
 
         /*
@@ -101,7 +103,8 @@ namespace Presentation
         public void LimpiarDatosTransporte()
         {
             txtNumeroVehiculo.Text = "";
-            txtIdConductor.Text = "";
+            CargarConductores();
+            checkBox3.Checked = true;
         }
 
         /*
@@ -115,6 +118,20 @@ namespace Presentation
             dtgvTransportes.DataSource = transporte.CargarTransportes();
         }
 
+        private void CargarConductores()
+        {
+            foreach (TransporteE t in transporte.CargarTransportes())
+            {
+                foreach (UsuarioE u in usuario.CargarUsuario())
+                {
+                    if (u.Codigo.Substring(0, 3).Equals("CON") && t.CodigoConductor != u.Codigo)
+                    {
+                        cmbConductor.Items.Add(u.Codigo);
+                    }
+                }
+            }
+        }
+
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -125,7 +142,7 @@ namespace Presentation
 
             if (idSeleccionadoServicio.Text != "")
             {
-                servicio.EditarServicio(txtNombreServicio.Text, txtCategoriaServicio.Text, txtDescripcionServicio.Text, Convert.ToDecimal(txtPrecioServicio.Text), Convert.ToInt32(idSeleccionadoServicio.Text));
+                servicio.EditarServicio(txtNombreServicio.Text, txtCategoriaServicio.Text, txtDescripcionServicio.Text.ToUpper(), Convert.ToDecimal(txtPrecioServicio.Text), checkBox2.Checked, Convert.ToInt32(idSeleccionadoServicio.Text));
                 CargarServicios();
                 lblMensajeServicio.Text = "Edición exitosa";
                 LimpiarDatosServicio();
@@ -138,7 +155,7 @@ namespace Presentation
         {
             if (txtNombreServicio.Text != "" && txtCategoriaServicio.Text != "" && txtPrecioServicio.Text != "" && txtDescripcionServicio.Text != "")
             {
-                servicio.RegistrarServicio(txtNombreServicio.Text, txtCategoriaServicio.Text, txtDescripcionServicio.Text, Convert.ToDecimal(txtPrecioServicio.Text));
+                servicio.RegistrarServicio(txtNombreServicio.Text, txtCategoriaServicio.Text, txtDescripcionServicio.Text.ToUpper(), Convert.ToDecimal(txtPrecioServicio.Text));
                 lblMensajeServicio.Text = "Registro exitoso";
                 LimpiarDatosServicio();
                 CargarServicios();
@@ -162,8 +179,10 @@ namespace Presentation
                 idSeleccionadoServicio.Text = dtgvServicios.CurrentRow.Cells[0].Value.ToString();
                 txtNombreServicio.Text = dtgvServicios.CurrentRow.Cells[1].Value.ToString();
                 txtCategoriaServicio.Text = dtgvServicios.CurrentRow.Cells[2].Value.ToString();
-                txtPrecioServicio.Text = dtgvServicios.CurrentRow.Cells[4].Value.ToString();
+                txtPrecioServicio.Text = dtgvServicios.CurrentRow.Cells[5].Value.ToString();
                 txtDescripcionServicio.Text = dtgvServicios.CurrentRow.Cells[3].Value.ToString();
+                checkBox2.Checked = Convert.ToBoolean(dtgvServicios.CurrentRow.Cells[4].Value);
+
             }
             catch
             {
@@ -199,7 +218,7 @@ namespace Presentation
         {
             if (txtNombreProducto.Text != "" && txtCatProducto.Text != "" && txtPreProducto.Text != "" && txtCantProducto.Text != "" && txtDescripProducto.Text != "")
             {
-                producto.RegistrarProducto(txtNombreProducto.Text, txtCatProducto.Text, txtDescripProducto.Text, Convert.ToDecimal(txtPreProducto.Text), Convert.ToDecimal(txtCantProducto.Text));
+                producto.RegistrarProducto(txtNombreProducto.Text, txtCatProducto.Text, txtDescripProducto.Text.ToUpper(), Convert.ToDecimal(txtPreProducto.Text), Convert.ToDecimal(txtCantProducto.Text));
                 lblMensajeProducto.Text = "Registro exitoso";
                 LimpiarDatosProducto();
                 CargarProductos();
@@ -235,6 +254,7 @@ namespace Presentation
             CargarProductos();
             CargarServicios();
             CargarTransportes();
+            CargarConductores();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -242,12 +262,13 @@ namespace Presentation
             try
             {
                 mensajeSeleccion.Text = "Producto seleccionado:";
-                idSelecionado.Text = dtgvProductos.CurrentRow.Cells[0].Value.ToString();
-                txtNombreProducto.Text = dtgvProductos.CurrentRow.Cells[1].Value.ToString();
-                txtCatProducto.Text = dtgvProductos.CurrentRow.Cells[2].Value.ToString();
-                txtPreProducto.Text = dtgvProductos.CurrentRow.Cells[3].Value.ToString();
-                txtCantProducto.Text = dtgvProductos.CurrentRow.Cells[4].Value.ToString();
-                txtDescripProducto.Text = dtgvProductos.CurrentRow.Cells[5].Value.ToString();
+                idSelecionado.Text = dtgvProductos.CurrentRow.Cells[1].Value.ToString();
+                txtNombreProducto.Text = dtgvProductos.CurrentRow.Cells[2].Value.ToString();
+                txtCatProducto.Text = dtgvProductos.CurrentRow.Cells[3].Value.ToString();
+                txtPreProducto.Text = dtgvProductos.CurrentRow.Cells[6].Value.ToString();
+                txtCantProducto.Text = dtgvProductos.CurrentRow.Cells[0].Value.ToString();
+                txtDescripProducto.Text = dtgvProductos.CurrentRow.Cells[4].Value.ToString();
+                checkBox1.Checked = Convert.ToBoolean(dtgvProductos.CurrentRow.Cells[5].Value);
             }
             catch
             {
@@ -264,7 +285,7 @@ namespace Presentation
         private void button1_Click(object sender, EventArgs e)
         {
             if (idSelecionado.Text != "") {
-                producto.EditarProducto(txtNombreProducto.Text, txtCatProducto.Text, txtDescripProducto.Text, Convert.ToDecimal(txtPreProducto.Text), Convert.ToDecimal(txtCantProducto.Text), Convert.ToInt32(idSelecionado.Text));
+                producto.EditarProducto(txtNombreProducto.Text, txtCatProducto.Text, txtDescripProducto.Text.ToUpper(), Convert.ToDecimal(txtPreProducto.Text), Convert.ToDecimal(txtCantProducto.Text), checkBox1.Checked, Convert.ToInt32(idSelecionado.Text));
                 CargarProductos();
                 lblMensajeProducto.Text = "Edición exitosa";
                 LimpiarDatosProducto();
@@ -300,9 +321,9 @@ namespace Presentation
 
         private void button14_Click(object sender, EventArgs e)
         {
-            if (txtNumeroVehiculo.Text != "" && txtIdConductor.Text != "")
+            if (txtNumeroVehiculo.Text != "" && cmbConductor.Text != "")
             {
-                transporte.RegistrarTransporte(txtNumeroVehiculo.Text, txtIdConductor.Text, true);
+                transporte.RegistrarTransporte(txtNumeroVehiculo.Text, cmbConductor.Text, true);
                 lblMensajeTransporte.Text = "Registro exitoso";
                 LimpiarDatosTransporte();
                 CargarTransportes();
@@ -317,7 +338,7 @@ namespace Presentation
         {
             if (idSeleccionadoTransporte.Text != "")
             {
-                transporte.EditarTransporte(txtNumeroVehiculo.Text, txtIdConductor.Text, true, Convert.ToInt32(idSeleccionadoTransporte.Text));
+                transporte.EditarTransporte(txtNumeroVehiculo.Text, cmbConductor.Text, checkBox4.Checked, checkBox3.Checked, Convert.ToInt32(idSeleccionadoTransporte.Text));
                 CargarTransportes();
                 lblMensajeTransporte.Text = "Edición exitosa";
                 LimpiarDatosTransporte();
@@ -332,8 +353,10 @@ namespace Presentation
             {
                 mensajeSeleccionTransporte.Text = "Transporte seleccionado:";
                 idSeleccionadoTransporte.Text = dtgvTransportes.CurrentRow.Cells[0].Value.ToString();
-                txtIdConductor.Text = dtgvTransportes.CurrentRow.Cells[1].Value.ToString();
-                txtNumeroVehiculo.Text = dtgvTransportes.CurrentRow.Cells[3].Value.ToString();
+                cmbConductor.SelectedItem = dtgvTransportes.CurrentRow.Cells[1].Value.ToString();
+                txtNumeroVehiculo.Text = dtgvTransportes.CurrentRow.Cells[4].Value.ToString();
+                checkBox3.Checked = Convert.ToBoolean(dtgvProductos.CurrentRow.Cells[3].Value);
+                checkBox4.Checked = Convert.ToBoolean(dtgvProductos.CurrentRow.Cells[2].Value);
             }
             catch
             {
@@ -495,6 +518,18 @@ namespace Presentation
                 }
             }
 
+            foreach (Reporte2E r1 in pedido.CargarCantidadPSSCategoria())
+            {
+                foreach (Reporte2E r2 in reporte)
+                {
+                    if (r1.Categoria == r2.Categoria)
+                    {
+                        r2.Cantidad += r1.Cantidad;
+                        break;
+                    }
+                }
+            }
+
             foreach (Reporte2E r1 in pedido.CargarCantidadPClSCategoria())
             {
                 foreach (Reporte2E r2 in reporte)
@@ -621,7 +656,7 @@ namespace Presentation
 
             foreach (Reporte4E r in reporte)
             {
-                chart.Series["Series"].Points.AddXY(r.CodVendedor, r.Cantiddad);
+                chart.Series["Series"].Points.AddXY(r.CodigoVendedor, r.Cantiddad);
             }
         }
         private void Reporte5()
@@ -640,7 +675,7 @@ namespace Presentation
 
             foreach (Reporte4E r in reporte)
             {
-                chart.Series["Series"].Points.AddXY(r.CodVendedor, r.Cantiddad);
+                chart.Series["Series"].Points.AddXY(r.CodigoVendedor, r.Cantiddad);
             }
         }
 
@@ -700,5 +735,24 @@ namespace Presentation
 
         }
 
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            Dispose();
+        }
+
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            Dispose();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

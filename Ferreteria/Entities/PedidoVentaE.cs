@@ -11,7 +11,7 @@ namespace Entities
         public int Id { get; set; }
         public int IdPedido { get; set; }
         public int IdVenta { get; set; }
-        public decimal cantidad;
+        private decimal cantidad;
         public decimal PrecioTotal { get; set; }
 
         public PedidoVentaE() { }

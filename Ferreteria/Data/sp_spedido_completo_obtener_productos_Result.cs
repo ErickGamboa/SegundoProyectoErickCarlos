@@ -10,15 +10,15 @@
 namespace Data
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class usuario
+    public partial class sp_spedido_completo_obtener_productos_Result
     {
         public int id { get; set; }
-        public string codigo { get; set; }
         public string nombre { get; set; }
-        public string contrasena { get; set; }
-        public string cedula { get; set; }
-        public string tipo { get; set; }
+        public string categoria { get; set; }
+        public string descripcion { get; set; }
+        public decimal precio { get; set; }
+        public decimal cantidad { get; set; }
+        public decimal precio_total { get; set; }
     }
 }

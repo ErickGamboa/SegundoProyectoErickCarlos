@@ -13,16 +13,18 @@ namespace Entities
         public string Categoria { get; set; }
         public string Descripcion { get; set; }
         private decimal precio;
+        public bool Activo { get; set; }
 
         public VentaE() { }
 
-        public VentaE(int id, string nombre, string categoria, string descripcion, decimal precio)
+        public VentaE(int id, string nombre, string categoria, string descripcion, decimal precio, bool activo)
         {
             Id = id;
             Nombre = nombre;
             Categoria = categoria;
             Descripcion = descripcion;
             Precio = precio;
+            Activo = activo;
         }
 
         public decimal Precio

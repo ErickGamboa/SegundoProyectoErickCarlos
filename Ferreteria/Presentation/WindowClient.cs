@@ -23,6 +23,7 @@ namespace Presentation
 
         private LProducto prl;
         private LServicio sel;
+        private LTransporte tl;
         private UtilitiesL utilities;
         private decimal subtotal;
         private decimal iva;
@@ -36,6 +37,7 @@ namespace Presentation
             servicios = new LinkedList<PedidoClienteServicioE>();
             prl = new LProducto();
             sel = new LServicio();
+            tl = new LTransporte();
             utilities = new UtilitiesL();
             iva = 13;
             CargarCategoriaProducto();
@@ -45,6 +47,9 @@ namespace Presentation
             Limpiar();
         }
 
+        /// <summary>
+        /// Clears all of the tools that we used during a sell
+        /// </summary>
         private void Limpiar()
         {
             txtCedula.Text = "";
@@ -65,98 +70,197 @@ namespace Presentation
             dgvCarritoComprasServicios.Rows.Clear();
         }
 
+        /// <summary>
+        /// Loads the products categories
+        /// </summary>
         private void CargarCategoriaProducto()
         {
-            cboCategoriaProducto.Items.Clear();
-            cboCategoriaProducto.DataSource = prl.CargarCategoriaProducto();
+            try
+            {
+                cboCategoriaProducto.Items.Clear();
+                cboCategoriaProducto.DataSource = prl.CargarCategoriaProducto();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Cargando categorías productos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        /// <summary>
+        /// Loads the services categories
+        /// </summary>
         private void CargarCategoriaServicio()
         {
-            cboCategoriaServicio.Items.Clear();
-            cboCategoriaServicio.DataSource = sel.CargarCategoriaServicio();
+            try
+            {
+                cboCategoriaServicio.Items.Clear();
+                cboCategoriaServicio.DataSource = sel.CargarCategoriaServicio();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Cargando categorías servicios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        /// <summary>
+        /// Loads the products names
+        /// </summary>
         private void CargarNombreProducto()
         {
-            cboNombreProducto.Items.Clear();
-            foreach (ProductoE i in prl.CargarProducto("", cboCategoriaProducto.Text))
+            try
             {
-                cboNombreProducto.Items.Add(i.Nombre);
+                cboNombreProducto.Items.Clear();
+                foreach (ProductoE i in prl.CargarProducto("", cboCategoriaProducto.Text))
+                {
+                    if (i.Activo)
+                    {
+                        cboNombreProducto.Items.Add(i.Nombre);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Cargando productos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        /// <summary>
+        /// Loads the services names
+        /// </summary>
         private void CargarNombreServicio()
         {
-            cboNombreServicio.Items.Clear();
-            foreach (ServicioE i in sel.CargarServicio("", cboCategoriaServicio.Text))
+            try
             {
-                cboNombreServicio.Items.Add(i.Nombre);
+                cboNombreServicio.Items.Clear();
+                foreach (ServicioE i in sel.CargarServicio("", cboCategoriaServicio.Text))
+                {
+                    if (i.Activo)
+                    {
+                        cboNombreServicio.Items.Add(i.Nombre);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Cargando servicios", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        /// <summary>
+        /// Loads the products bought to the shopping cart
+        /// </summary>
         private void CargarCarritoProductos()
         {
-            dgvCarritoComprasProductos.Rows.Clear();
-            foreach (PedidoClienteProductoE p in productos)
+            try
             {
-                foreach (ProductoE i in prl.CargarProducto("", ""))
+                dgvCarritoComprasProductos.Rows.Clear();
+                foreach (PedidoClienteProductoE p in productos)
                 {
-                    if (i.Id == p.IdVenta)
+                    foreach (ProductoE i in prl.CargarProducto("", ""))
                     {
-                        dgvCarritoComprasProductos.Rows.Add(p, i.Nombre, i.Categoria, i.Descripcion,
-                            i.Precio, p.Cantidad, p.PrecioTotal);
-                        break;
+                        if (i.Id == p.IdVenta)
+                        {
+                            dgvCarritoComprasProductos.Rows.Add(p, i.Nombre, i.Categoria, i.Descripcion,
+                                i.Precio, p.Cantidad, p.PrecioTotal);
+                            break;
+                        }
                     }
                 }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al cargar los productos al carrito de compras",
+                    "Cargando carrito compras", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        /// <summary>
+        /// Loads the services bought to the shopping cart
+        /// </summary>
         private void CargarCarritoServicios()
         {
-            dgvCarritoComprasServicios.Rows.Clear();
-            foreach (PedidoClienteServicioE s in servicios)
+            try
             {
-                foreach (ServicioE i in sel.CargarServicio("", ""))
+                dgvCarritoComprasServicios.Rows.Clear();
+                foreach (PedidoClienteServicioE s in servicios)
                 {
-                    if (i.Id == s.IdVenta)
+                    foreach (ServicioE i in sel.CargarServicio("", ""))
                     {
-                        dgvCarritoComprasServicios.Rows.Add(s, i.Nombre, i.Categoria, i.Descripcion,
-                            i.Precio, s.Cantidad, s.PrecioTotal);
-                        break;
+                        if (i.Id == s.IdVenta)
+                        {
+                            dgvCarritoComprasServicios.Rows.Add(s, i.Nombre, i.Categoria, i.Descripcion,
+                                i.Precio, s.Cantidad, s.PrecioTotal);
+                            break;
+                        }
                     }
                 }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al cargar los servicios al carrito de compras",
+                    "Cargando carrito compras", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        /// <summary>
+        /// Loads the costs of the products to be bougth
+        /// </summary>
         private void CargarCostosProducto()
         {
-            decimal totalP = prl.CargarProducto(cboNombreProducto.Text, cboCategoriaProducto.Text)[0].Precio;
-            lblPrecioUnidadProductoT.Text = totalP.ToString("0.00");
+            try
+            {
+                decimal totalP = prl.CargarProducto(cboNombreProducto.Text, cboCategoriaProducto.Text)[0].Precio;
+                lblPrecioUnidadProductoT.Text = totalP.ToString("0.00");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Cargando costos productos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        /// <summary>
+        /// Loads the costs of the services to be bought
+        /// </summary>
         private void CargarCostosServicio()
         {
-            decimal totalS = sel.CargarServicio(cboNombreServicio.Text, cboCategoriaServicio.Text)[0].Precio;
-            lblPrecioUnidadServicioT.Text = totalS.ToString("0.00");
+            try
+            {
+                decimal totalS = sel.CargarServicio(cboNombreServicio.Text, cboCategoriaServicio.Text)[0].Precio;
+                lblPrecioUnidadServicioT.Text = totalS.ToString("0.00");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Cargando costos servicios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        /// <summary>
+        /// Loads the costs of the products and services bougth
+        /// </summary>
         private void CargarCostosTotales()
         {
-            subtotal = 0;
-            foreach (PedidoClienteProductoE p in productos)
+            try
             {
-                subtotal += p.PrecioTotal;
+                subtotal = 0;
+                foreach (PedidoClienteProductoE p in productos)
+                {
+                    subtotal += p.PrecioTotal;
+                }
+                foreach (PedidoClienteServicioE s in servicios)
+                {
+                    subtotal += s.PrecioTotal;
+                }
+                iva = subtotal * (decimal)0.13;
+                total = subtotal + iva;
+                lblSubtotalT.Text = subtotal.ToString("0.00");
+                lblIVAT.Text = iva.ToString("0.00");
+                lblTotalT.Text = total.ToString("0.00");
             }
-            foreach (PedidoClienteServicioE s in servicios)
+            catch (Exception)
             {
-                subtotal += s.PrecioTotal;
+                MessageBox.Show("Error al cargar los costos de los productos y servicios comprados",
+                    "Cargando costos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            iva = subtotal * (decimal)0.13;
-            total = subtotal + iva;
-            lblSubtotalT.Text = subtotal.ToString("0.00");
-            lblIVAT.Text = iva.ToString("0.00");
-            lblTotalT.Text = total.ToString("0.00");
         }
 
         private void txtCedula_Enter(object sender, EventArgs e)
@@ -186,29 +290,36 @@ namespace Presentation
 
         private void btoAgregarCarritoProducto_Click(object sender, EventArgs e)
         {
-            pcp = new PedidoClienteProductoE();
-            ProductoE p = prl.CargarProducto(cboNombreProducto.Text, cboCategoriaProducto.Text)[0];
-            if (p.Cantidad >= decimal.Parse(txtCantidadProducto.Text))
+            try
             {
-                pcp.IdVenta = p.Id;
-                pcp.Cantidad = decimal.Parse(txtCantidadProducto.Text);
-                pcp.PrecioTotal = p.Precio * pcp.Cantidad;
+                pcp = new PedidoClienteProductoE();
+                ProductoE p = prl.CargarProducto(cboNombreProducto.Text, cboCategoriaProducto.Text)[0];
+                if (p.Cantidad >= decimal.Parse(txtCantidadProducto.Text))
+                {
+                    pcp.IdVenta = p.Id;
+                    pcp.Cantidad = decimal.Parse(txtCantidadProducto.Text);
+                    pcp.PrecioTotal = p.Precio * pcp.Cantidad;
 
-                productos.AddLast(pcp);
+                    productos.AddLast(pcp);
 
-                cboCategoriaProducto.SelectedIndex = 0;
-                txtCantidadProducto.Clear();
-                lblPrecioUnidadProductoT.Text = "0.00";
-                lblTotalProductoT.Text = "0.00";
+                    cboCategoriaProducto.SelectedIndex = 0;
+                    txtCantidadProducto.Clear();
+                    lblPrecioUnidadProductoT.Text = "0.00";
+                    lblTotalProductoT.Text = "0.00";
 
-                CargarCostosTotales();
-                CargarCarritoProductos();
+                    CargarCostosTotales();
+                    CargarCarritoProductos();
+                }
+                else
+                {
+                    MessageBox.Show("La cantidad solicitada es mayor que\nla cantidad disponible ("
+                        + p.Cantidad + ").", "Agregando Producto",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("La cantidad solicitada es mayor que\nla cantidad disponible ("
-                    + p.Cantidad + ").", "Agregando Producto",
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(ex.Message, "Agregando Producto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -224,21 +335,41 @@ namespace Presentation
 
         private void btoAgregarCarritoServicio_Click(object sender, EventArgs e)
         {
-            pcs = new PedidoClienteServicioE();
-            ServicioE s = sel.CargarServicio(cboNombreServicio.Text, cboCategoriaServicio.Text)[0];
-            pcs.IdVenta = s.Id;
-            pcs.Cantidad = int.Parse(txtCantidadServicio.Text);
-            pcs.PrecioTotal = s.Precio * pcp.Cantidad;
+            try
+            {
+                for (int i = 0; i < tl.CargarTransportes().Count; i++)
+                {
+                    if (i == tl.CargarTransportes().Count - 1)
+                    {
+                        MessageBox.Show("No hay transportes disponibles", "Agregando Servicio",
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
+                    }
+                    if (tl.CargarTransportes()[i].Activo == true)
+                    {
+                        pcs = new PedidoClienteServicioE();
+                        ServicioE s = sel.CargarServicio(cboNombreServicio.Text, cboCategoriaServicio.Text)[0];
+                        pcs.IdVenta = s.Id;
+                        pcs.Cantidad = int.Parse(txtCantidadServicio.Text);
+                        pcs.PrecioTotal = s.Precio * pcp.Cantidad;
 
-            servicios.AddLast(pcs);
+                        servicios.AddLast(pcs);
 
-            cboCategoriaServicio.SelectedIndex = 0;
-            txtCantidadServicio.Clear();
-            lblPrecioUnidadServicioT.Text = "0.00";
-            lblTotalServicioT.Text = "0.00";
+                        cboCategoriaServicio.SelectedIndex = 0;
+                        txtCantidadServicio.Clear();
+                        lblPrecioUnidadServicioT.Text = "0.00";
+                        lblTotalServicioT.Text = "0.00";
 
-            CargarCostosTotales();
-            CargarCarritoServicios();
+                        CargarCostosTotales();
+                        CargarCarritoServicios();
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Agregando Servicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btoLogOut_Click(object sender, EventArgs e)
@@ -248,44 +379,58 @@ namespace Presentation
 
         private void btoEliminarProducto_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Seguro que desea eliminar el producto seleccionado?",
-                "Eliminando Producto", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
+            try
             {
-                if (productos.Remove((PedidoClienteProductoE)dgvCarritoComprasProductos.CurrentRow.Cells[0].Value))
+                DialogResult result = MessageBox.Show("¿Seguro que desea eliminar el producto seleccionado?",
+                        "Eliminando Producto", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show("Producto eliminado.", "Eliminando Producto",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (productos.Remove((PedidoClienteProductoE)dgvCarritoComprasProductos.CurrentRow.Cells[0].Value))
+                    {
+                        MessageBox.Show("Producto eliminado.", "Eliminando Producto",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo eliminar el producto seleccionado.\nInténtelo nuevamente.",
+                            "Eliminando Producto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("No se pudo eliminar el producto seleccionado.\nInténtelo nuevamente.",
-                        "Eliminando Producto", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                CargarCostosTotales();
+                CargarCarritoProductos();
             }
-            CargarCostosTotales();
-            CargarCarritoProductos();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Eliminando Producto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btoEliminarServicio_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Seguro que desea eliminar el servicio seleccionado?",
-                "Eliminando Servicio", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
+            try
             {
-                if (servicios.Remove((PedidoClienteServicioE)dgvCarritoComprasServicios.CurrentRow.Cells[0].Value))
+                DialogResult result = MessageBox.Show("¿Seguro que desea eliminar el servicio seleccionado?",
+                        "Eliminando Servicio", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show("Servicio eliminado.", "Eliminando Servicio",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (servicios.Remove((PedidoClienteServicioE)dgvCarritoComprasServicios.CurrentRow.Cells[0].Value))
+                    {
+                        MessageBox.Show("Servicio eliminado.", "Eliminando Servicio",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo eliminar el servicio seleccionado.\nInténtelo nuevamente.",
+                            "Eliminando Servicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("No se pudo eliminar el servicio seleccionado.\nInténtelo nuevamente.",
-                        "Eliminando Servicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                CargarCostosTotales();
+                CargarCarritoServicios();
             }
-            CargarCostosTotales();
-            CargarCarritoServicios();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Eliminando Servicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void cboCategoriaProducto_SelectionChangeCommitted(object sender, EventArgs e)
@@ -323,33 +468,67 @@ namespace Presentation
 
         private void btoRealizarCompra_Click(object sender, EventArgs e)
         {
-            pc = new PedidoClienteE();
-            pc.CedulaCliente = txtCedula.Text.Trim();
-            pc.NombreCliente = txtNombre.Text.Trim() + " " + txtApellido.Text.Trim();
-            pc.Fecha = DateTime.Now;
-            pc.SubTotal = subtotal;
-            pc.IVA = iva;
-            pc.Total = total;
-            pc.Estado = "PENDIENTE";
-            pl.GuardarPedidoClienteCliente(pc);
-
-            List<PedidoClienteE> pedidos = pl.CargarPedidoCliente();
-            int last = pedidos.Count - 1;
-            pc.Id = pedidos[last].Id;
-
-            foreach (PedidoClienteProductoE p in productos)
+            try
             {
-                p.IdPedido = pc.Id;
-                pl.GuardarPedidoClienteProducto(p);
-            }
+                if (string.IsNullOrWhiteSpace(txtCedula.Text))
+                {
+                    throw new ArgumentNullException("Debe ingresar un número de cédula");
+                }
+                if (string.IsNullOrWhiteSpace(txtNombre.Text))
+                {
+                    throw new ArgumentNullException("Debe ingresar un nombre");
+                }
+                if (string.IsNullOrWhiteSpace(txtApellido.Text))
+                {
+                    throw new ArgumentNullException("Debe ingresar un apellido");
+                }
+                pc = new PedidoClienteE();
+                pc.CedulaCliente = txtCedula.Text.Trim();
+                pc.NombreCliente = txtNombre.Text.Trim() + " " + txtApellido.Text.Trim();
+                pc.Fecha = DateTime.Now;
+                pc.SubTotal = subtotal;
+                pc.IVA = iva;
+                pc.Total = total;
+                pc.Estado = "PENDIENTE";
+                pl.GuardarPedidoClienteCliente(pc);
 
-            foreach (PedidoClienteServicioE p in servicios)
+                List<PedidoClienteE> pedidos = pl.CargarPedidoCliente();
+                int last = pedidos.Count - 1;
+                pc.Id = pedidos[last].Id;
+
+                foreach (PedidoClienteProductoE p in productos)
+                {
+                    foreach (ProductoE i in prl.CargarProducto("", ""))
+                    {
+                        if (p.IdVenta == i.Id)
+                        {
+                            i.Cantidad -= p.Cantidad;
+                            break;
+                        }
+                    }
+                    p.IdPedido = pc.Id;
+                    pl.GuardarPedidoClienteProducto(p);
+                }
+
+                foreach (PedidoClienteServicioE p in servicios)
+                {
+                    p.IdPedido = pc.Id;
+                    pl.GuardarPedidoClienteServicio(p);
+                }
+
+                MessageBox.Show(pc.CedulaCliente + "\n" + DateTime.Now.TimeOfDay, "Notificación",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Limpiar();
+            }
+            catch (ArgumentNullException ex)
             {
-                p.IdPedido = pc.Id;
-                pl.GuardarPedidoClienteServicio(p);
+                MessageBox.Show(ex.Message, "Realizando Compra", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            Limpiar();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Realizando Compra", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)

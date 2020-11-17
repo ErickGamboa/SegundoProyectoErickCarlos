@@ -44,7 +44,6 @@
             this.lblCodigoServicio = new System.Windows.Forms.Label();
             this.txtCodigoServicio = new System.Windows.Forms.TextBox();
             this.lblNombreServicioT = new System.Windows.Forms.Label();
-            this.btoBuscarServicio = new System.Windows.Forms.Button();
             this.lblNombreServicioL = new System.Windows.Forms.Label();
             this.btoNuevaOrden = new System.Windows.Forms.Button();
             this.btoLogOut = new System.Windows.Forms.Button();
@@ -65,6 +64,15 @@
             this.lblCodigoConstructorL = new System.Windows.Forms.Label();
             this.lblNombreConstructorL = new System.Windows.Forms.Label();
             this.tpgCarritoCompras = new System.Windows.Forms.TabPage();
+            this.dgvCarritoCompras = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblEliminar = new System.Windows.Forms.Label();
             this.btoEliminar = new System.Windows.Forms.Button();
             this.tpgBodega = new System.Windows.Forms.TabPage();
             this.dgvVentas = new System.Windows.Forms.DataGridView();
@@ -92,15 +100,6 @@
             this.btoRecibido = new System.Windows.Forms.Button();
             this.dtpRecibido = new System.Windows.Forms.DateTimePicker();
             this.lblRecibido = new System.Windows.Forms.Label();
-            this.dgvCarritoCompras = new System.Windows.Forms.DataGridView();
-            this.lblEliminar = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.tpgConsultaServicios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaServicio)).BeginInit();
@@ -109,6 +108,7 @@
             this.pnlServicio.SuspendLayout();
             this.pnlInformacion.SuspendLayout();
             this.tpgCarritoCompras.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCompras)).BeginInit();
             this.tpgBodega.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
@@ -116,7 +116,6 @@
             this.pnlTitulo2.SuspendLayout();
             this.pnlTitulo1.SuspendLayout();
             this.pnlRecibido.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCompras)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -241,7 +240,6 @@
             this.pnlServicio.Controls.Add(this.lblCodigoServicio);
             this.pnlServicio.Controls.Add(this.txtCodigoServicio);
             this.pnlServicio.Controls.Add(this.lblNombreServicioT);
-            this.pnlServicio.Controls.Add(this.btoBuscarServicio);
             this.pnlServicio.Controls.Add(this.lblNombreServicioL);
             this.pnlServicio.Location = new System.Drawing.Point(425, 20);
             this.pnlServicio.Name = "pnlServicio";
@@ -274,7 +272,7 @@
             // 
             this.txtCantidadServicio.Location = new System.Drawing.Point(160, 87);
             this.txtCantidadServicio.Name = "txtCantidadServicio";
-            this.txtCantidadServicio.Size = new System.Drawing.Size(160, 24);
+            this.txtCantidadServicio.Size = new System.Drawing.Size(204, 24);
             this.txtCantidadServicio.TabIndex = 26;
             // 
             // lblCodigoServicio
@@ -290,8 +288,9 @@
             // 
             this.txtCodigoServicio.Location = new System.Drawing.Point(160, 17);
             this.txtCodigoServicio.Name = "txtCodigoServicio";
-            this.txtCodigoServicio.Size = new System.Drawing.Size(160, 24);
+            this.txtCodigoServicio.Size = new System.Drawing.Size(204, 24);
             this.txtCodigoServicio.TabIndex = 22;
+            this.txtCodigoServicio.TextChanged += new System.EventHandler(this.txtCodigoServicio_TextChanged);
             // 
             // lblNombreServicioT
             // 
@@ -301,17 +300,6 @@
             this.lblNombreServicioT.Size = new System.Drawing.Size(119, 18);
             this.lblNombreServicioT.TabIndex = 25;
             this.lblNombreServicioT.Text = "Nombre Servicio";
-            // 
-            // btoBuscarServicio
-            // 
-            this.btoBuscarServicio.Image = global::Presentation.Properties.Resources.search_24px;
-            this.btoBuscarServicio.Location = new System.Drawing.Point(332, 13);
-            this.btoBuscarServicio.Name = "btoBuscarServicio";
-            this.btoBuscarServicio.Size = new System.Drawing.Size(32, 32);
-            this.btoBuscarServicio.TabIndex = 21;
-            this.btoBuscarServicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btoBuscarServicio.UseVisualStyleBackColor = true;
-            this.btoBuscarServicio.Click += new System.EventHandler(this.btoBuscarServicio_Click);
             // 
             // lblNombreServicioL
             // 
@@ -533,6 +521,92 @@
             this.tpgCarritoCompras.Size = new System.Drawing.Size(830, 410);
             this.tpgCarritoCompras.TabIndex = 3;
             this.tpgCarritoCompras.Text = "Ver Carrito de Compras";
+            // 
+            // dgvCarritoCompras
+            // 
+            this.dgvCarritoCompras.AllowUserToAddRows = false;
+            this.dgvCarritoCompras.AllowUserToDeleteRows = false;
+            this.dgvCarritoCompras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvCarritoCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCarritoCompras.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvCarritoCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCarritoCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8});
+            this.dgvCarritoCompras.Location = new System.Drawing.Point(0, 44);
+            this.dgvCarritoCompras.Name = "dgvCarritoCompras";
+            this.dgvCarritoCompras.ReadOnly = true;
+            this.dgvCarritoCompras.RowHeadersVisible = false;
+            this.dgvCarritoCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCarritoCompras.Size = new System.Drawing.Size(830, 366);
+            this.dgvCarritoCompras.TabIndex = 7;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Servicio";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Categoría";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Descripción";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Precio";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Cantidad";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 75;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn8.HeaderText = "Precio Total";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 120;
+            // 
+            // lblEliminar
+            // 
+            this.lblEliminar.AutoSize = true;
+            this.lblEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEliminar.Location = new System.Drawing.Point(8, 10);
+            this.lblEliminar.Name = "lblEliminar";
+            this.lblEliminar.Size = new System.Drawing.Size(86, 24);
+            this.lblEliminar.TabIndex = 6;
+            this.lblEliminar.Text = "Servicios";
             // 
             // btoEliminar
             // 
@@ -817,92 +891,6 @@
             this.lblRecibido.TabIndex = 0;
             this.lblRecibido.Text = "Hora recibido:";
             // 
-            // dgvCarritoCompras
-            // 
-            this.dgvCarritoCompras.AllowUserToAddRows = false;
-            this.dgvCarritoCompras.AllowUserToDeleteRows = false;
-            this.dgvCarritoCompras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dgvCarritoCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCarritoCompras.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvCarritoCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCarritoCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8});
-            this.dgvCarritoCompras.Location = new System.Drawing.Point(0, 44);
-            this.dgvCarritoCompras.Name = "dgvCarritoCompras";
-            this.dgvCarritoCompras.ReadOnly = true;
-            this.dgvCarritoCompras.RowHeadersVisible = false;
-            this.dgvCarritoCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCarritoCompras.Size = new System.Drawing.Size(830, 366);
-            this.dgvCarritoCompras.TabIndex = 7;
-            // 
-            // lblEliminar
-            // 
-            this.lblEliminar.AutoSize = true;
-            this.lblEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEliminar.Location = new System.Drawing.Point(8, 10);
-            this.lblEliminar.Name = "lblEliminar";
-            this.lblEliminar.Size = new System.Drawing.Size(86, 24);
-            this.lblEliminar.TabIndex = 6;
-            this.lblEliminar.Text = "Servicios";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Servicio";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Categoría";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Descripción";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Precio";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn7.HeaderText = "Cantidad";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 75;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn8.HeaderText = "Precio Total";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Width = 120;
-            // 
             // WindowBuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -929,6 +917,7 @@
             this.pnlInformacion.PerformLayout();
             this.tpgCarritoCompras.ResumeLayout(false);
             this.tpgCarritoCompras.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCompras)).EndInit();
             this.tpgBodega.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
@@ -940,7 +929,6 @@
             this.pnlTitulo1.PerformLayout();
             this.pnlRecibido.ResumeLayout(false);
             this.pnlRecibido.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCompras)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -996,7 +984,6 @@
         private System.Windows.Forms.Label lblCodigoServicio;
         private System.Windows.Forms.TextBox txtCodigoServicio;
         private System.Windows.Forms.Label lblNombreServicioT;
-        private System.Windows.Forms.Button btoBuscarServicio;
         private System.Windows.Forms.Label lblNombreServicioL;
         private System.Windows.Forms.Panel pnlObservaciones;
         private System.Windows.Forms.Button btoEliminar;

@@ -11,13 +11,14 @@ namespace Entities
         public string NombreCliente { get; set; }
         public DateTime? Fecha { get; set; }
         public string Estado { get; set; }
+        public bool? PagaSoloProducto { get; set; }
 
         public PedidoClienteE() { }
 
         public PedidoClienteE(int id, string cedulaCliente, string nombreCliente, DateTime? fecha,
             DateTime? horaRecibidoBodega, DateTime? horaSalidaBodega, string codigoConductor,
             DateTime? horaIniciaTransporte, DateTime? horaFinalizaTransporte, DateTime? fechaFactura,
-            string codigoCajero, decimal? subTotal, decimal? iva, decimal? total, string estado)
+            string codigoCajero, decimal? subTotal, decimal? iva, decimal? total, string estado, bool? pagaSoloProducto)
             : base(id, cedulaCliente, horaRecibidoBodega, horaSalidaBodega, codigoConductor,
                   horaIniciaTransporte, horaFinalizaTransporte, fechaFactura, codigoCajero, subTotal, iva, total)
         {
@@ -36,6 +37,7 @@ namespace Entities
             IVA = iva;
             Total = total;
             Estado = estado;
+            PagaSoloProducto = pagaSoloProducto;
         }
     }
 }
