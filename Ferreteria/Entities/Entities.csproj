@@ -64,7 +64,8 @@
     <Compile Include="PedidoVentaE.cs" />
     <Compile Include="ProductoE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReporteE.cs" />
+    <Compile Include="Reportes\Reporte2E.cs" />
+    <Compile Include="Reportes\Reporte9E.cs" />
     <Compile Include="ServicioE.cs" />
     <Compile Include="TransporteE.cs" />
     <Compile Include="UsuarioE.cs" />
