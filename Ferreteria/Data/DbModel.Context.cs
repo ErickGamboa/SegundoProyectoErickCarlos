@@ -49,6 +49,11 @@ namespace Data
         public virtual DbSet<v_spedido_completo_servicio> v_spedido_completo_servicio { get; set; }
         public virtual DbSet<v_spedido_solo_servicio> v_spedido_solo_servicio { get; set; }
         public virtual DbSet<v_spedido_solo_servicio_servicio> v_spedido_solo_servicio_servicio { get; set; }
+        public virtual DbSet<v_scantidad_pclp_categoria> v_scantidad_pclp_categoria { get; set; }
+        public virtual DbSet<v_scantidad_pcop_categoria> v_scantidad_pcop_categoria { get; set; }
+        public virtual DbSet<v_scantidad_pcls_categoria> v_scantidad_pcls_categoria { get; set; }
+        public virtual DbSet<v_scantidad_pcos_categoria> v_scantidad_pcos_categoria { get; set; }
+        public virtual DbSet<v_scantidad_pss_categoria> v_scantidad_pss_categoria { get; set; }
     
         public virtual int sp_ipedido_cliente_cliente(string cedula_cliente, string nombre_cliente, Nullable<System.DateTime> fecha, Nullable<decimal> subtotal, Nullable<decimal> iva, Nullable<decimal> total)
         {
@@ -411,14 +416,49 @@ namespace Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upedido_solo_servicio_transporte", idParameter, codigo_conductorParameter, hora_inicia_transporteParameter, hora_finaliza_transporteParameter);
         }
     
-        public virtual ObjectResult<string> sp_scategoria_producto()
+        public virtual ObjectResult<string> sp_spcl_servicio_dia(Nullable<System.DateTime> fecha)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_scategoria_producto");
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_spcl_servicio_dia", fechaParameter);
         }
     
-        public virtual ObjectResult<string> sp_scategoria_servicio()
+        public virtual ObjectResult<string> sp_spco_dia(Nullable<System.DateTime> fecha)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_scategoria_servicio");
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_spco_dia", fechaParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_spco_servicio_dia(Nullable<System.DateTime> fecha)
+        {
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_spco_servicio_dia", fechaParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_sps_dia(Nullable<System.DateTime> fecha)
+        {
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_sps_dia", fechaParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_sps_servicio_dia(Nullable<System.DateTime> fecha)
+        {
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_sps_servicio_dia", fechaParameter);
         }
     }
 }
