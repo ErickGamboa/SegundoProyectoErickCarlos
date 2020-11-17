@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class ReporteE
+    public class Reporte2E
     {
-        public int Cantidad { get; set; }
+        public decimal Cantidad { get; set; }
         public string Categoria { get; set; }
 
-        public ReporteE() { }
+        public Reporte2E() { }
 
-        public ReporteE(int cantidad, string categoria)
+        public Reporte2E(decimal cantidad, string categoria)
         {
             Cantidad = cantidad;
             Categoria = categoria;
