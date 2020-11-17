@@ -19,7 +19,10 @@ namespace Presentation
         LUsuario usuario = new LUsuario();
 
 
-
+        /*
+         This method generate the user code acording to the type of user and the three last numbers of your ID number
+         Returns one string with the user code
+             */
         private string generarCodigo()
         {
 
@@ -52,7 +55,7 @@ namespace Presentation
             }
             else if (tipo.Equals("Administrador") && cedula.Length == 9)
             {
-                codigo += "---";
+                codigo += "ADM" + Convert.ToString(cedula[6]) + Convert.ToString(cedula[7]) + Convert.ToString(cedula[8]);
             }
             else
             {
@@ -61,6 +64,10 @@ namespace Presentation
 
             return codigo;
         }
+
+        /*
+         This method clean the Register window. Null values are saved to the components of window 
+             */
         private void limpiarVentanaReg() {
             txtCedulaReg.Text = "";
             TxtContraReg.Text = "";
@@ -95,6 +102,11 @@ namespace Presentation
 
 
             
+        }
+
+        private void WindowRegister_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

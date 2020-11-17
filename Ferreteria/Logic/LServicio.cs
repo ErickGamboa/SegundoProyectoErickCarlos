@@ -10,6 +10,12 @@ namespace Logic
 {
     public class LServicio
     {
+
+        /*
+         This method receives all the information of a Service in the parameters. This information is saved on an object of type
+         servicio. After that the object is saved in the data base
+             */
+
         public void RegistrarServicio(string nombre, string categoria, string descripcion, decimal precio)
         {
             using (FerreteriaEntities db = new FerreteriaEntities())
@@ -24,6 +30,12 @@ namespace Logic
             }
 
         }
+
+        /*
+         This method receives name and a category of a service in the parameters. With these parameters is consulted the services 
+         in the data bases. When there is a service with this information, it is saved in a list.
+         The method returns the list with objects. 
+             */
 
         public List<ServicioE> CargarServicio(string nombre, string categoria)
         {
@@ -56,6 +68,11 @@ namespace Logic
             }
         }
 
+        /*
+         This method receives all the information of a Service in the parameters. Data base find this service with the id and 
+         edit the necessary information
+             */
+
         public void EditarServicio(string nombre, string categoria, string descripcion, decimal precio, int id)
         {
 
@@ -75,6 +92,11 @@ namespace Logic
 
 
         }
+
+        /*
+         This method receives the id of a Service in the parameters. Data base find this service with the id and 
+         delete the register
+             */
 
         public void EliminarServicio(int id)
         {

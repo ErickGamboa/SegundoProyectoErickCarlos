@@ -393,20 +393,62 @@ namespace Logic
             }
         }
 
-        //public List<string> CargarCantidadPedidoCompletoProductoCategoria()
-        //{
-        //    using (FerreteriaEntities db = new FerreteriaEntities())
-        //    {
-        //        return db.Database.SqlQuery<string>("SELECT * FROM v_scantidad_pcp_categoria").ToList();
-        //    }
-        //}
+        public List<Reporte2E> CargarCantidadPCoPCategoria()
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                return db.Database.SqlQuery<Reporte2E>("SELECT * FROM v_scantidad_pcop_categoria").ToList();
+            }
+        }
 
-        //public List<object> CargarCantidadPedidoClienteProductoCategoria()
-        //{
-        //    using (FerreteriaEntities db = new FerreteriaEntities())
-        //    {
-        //        return db.Database.SqlQuery<object>("SELECT * FROM v_scantidad_pedido_cliente_producto_categoria").ToList();
-        //    }
-        //}
+        public List<Reporte2E> CargarCantidadPClPCategoria()
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                return db.Database.SqlQuery<Reporte2E>("SELECT * FROM v_scantidad_pclp_categoria").ToList();
+            }
+        }
+
+
+
+        public List<string> CargarPCOServiciosDia(DateTime dia)
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                return db.Database.SqlQuery<string>("sp_spco_servicio_dia @p0", dia).ToList();
+            }
+        }
+
+        public List<string> CargarPSServiciosDia(DateTime dia)
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                return db.Database.SqlQuery<string>("sp_sps_servicio_dia @p0", dia).ToList();
+            }
+        }
+
+        public List<string> CargarPCLServiciosDia(DateTime dia)
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                return db.Database.SqlQuery<string>("sp_spcl_servicio_dia @p0", dia).ToList();
+            }
+        }
+
+        public List<string> CargarPCOEmpleadosDia(DateTime dia)
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                return db.Database.SqlQuery<string>("sp_spco_dia @p0", dia).ToList();
+            }
+        }
+
+        public List<string> CargarPSEmpleadosDia(DateTime dia)
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                return db.Database.SqlQuery<string>("sp_sps_dia @p0", dia).ToList();
+            }
+        }
     }
 }
