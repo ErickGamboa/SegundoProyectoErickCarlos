@@ -23,7 +23,7 @@ namespace Logic
         public UsuarioE Login(string usuario, string contra) {
             UsuarioE u = new UsuarioE();
             var builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "DESKTOP-R9OGT38";
+            builder.DataSource = "ASUS-X412FA-CAR";
             builder.InitialCatalog = "Ferreteria";
             builder.IntegratedSecurity = true;
             var connectionString = builder.ToString();

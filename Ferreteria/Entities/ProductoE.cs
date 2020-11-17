@@ -8,17 +8,13 @@ namespace Entities
 {
     public class ProductoE : VentaE
     {
-        //public int id { get; set; }
-        //public string Nombre { get; set; }
-        //public string Categoria { get; set; }
-        //public string Descripcion { get; set; }
-        //public double Precio { get; set; }
-        public decimal cantidad;
+        private decimal cantidad;
         
         public ProductoE() { }
 
         public ProductoE(int id, string nombre, string categoria, string descripcion,
-            decimal precio, decimal cantidad) : base(id, nombre, categoria, descripcion, precio)
+            decimal precio, decimal cantidad, bool activo)
+            : base(id, nombre, categoria, descripcion, precio, activo)
         {
             Id = id;
             Nombre = nombre;
@@ -26,6 +22,7 @@ namespace Entities
             Descripcion = descripcion;
             Precio = precio;
             Cantidad = cantidad;
+            Activo = activo;
         }
 
         public decimal Cantidad

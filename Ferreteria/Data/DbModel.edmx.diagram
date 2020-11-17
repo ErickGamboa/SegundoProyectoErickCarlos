@@ -4,44 +4,44 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="167a7f85c08a4ab29a7650ed9b46b73d" Name="Diagram1">
+      <Diagram DiagramId="2cf677bab77545619b0c6ba765bfa01b" Name="Diagram1">
         <EntityTypeShape EntityType="FerreteriaModel.pedido_cliente" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.pedido_cliente_producto" Width="1.5" PointX="9" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.pedido_cliente_producto" Width="1.5" PointX="9" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FerreteriaModel.pedido_cliente_servicio" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FerreteriaModel.pedido_completo" Width="1.5" PointX="3.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FerreteriaModel.pedido_completo_producto" Width="1.5" PointX="8" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FerreteriaModel.pedido_completo_servicio" Width="1.5" PointX="6" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.pedido_solo_servicio" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.pedido_solo_servicio" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="FerreteriaModel.pedido_solo_servicio_servicio" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FerreteriaModel.producto" Width="1.5" PointX="5.75" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FerreteriaModel.servicio" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.transporte" Width="1.5" PointX="5.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.usuario" Width="1.5" PointX="7.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.v_categoria_producto" Width="1.5" PointX="9.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.v_categoria_servicio" Width="1.5" PointX="10.75" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.v_scantidad_pclp_categoria" Width="1.5" PointX="10.75" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.v_scantidad_pcls_categoria" Width="1.5" PointX="11.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.v_scantidad_pcop_categoria" Width="1.5" PointX="11.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.v_scantidad_pcos_categoria" Width="1.5" PointX="12.75" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.v_scantidad_pss_categoria" Width="1.5" PointX="7.75" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_cliente" Width="1.5" PointX="12.75" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_cliente_producto" Width="1.5" PointX="9.75" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_cliente_servicio" Width="1.5" PointX="13.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_completo" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_completo_producto" Width="1.5" PointX="2.75" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_completo_servicio" Width="1.5" PointX="13.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_solo_servicio" Width="1.5" PointX="4.75" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_solo_servicio_servicio" Width="1.5" PointX="14.75" PointY="9.125" IsExpanded="true" />
-        <AssociationConnector Association="FerreteriaModel.FK__pedido_cl__id_pe__60A75C0F" ManuallyRouted="false" />
-        <AssociationConnector Association="FerreteriaModel.FK__pedido_cl__id_pe__6477ECF3" ManuallyRouted="false" />
-        <AssociationConnector Association="FerreteriaModel.FK__pedido_cl__id_pr__619B8048" ManuallyRouted="false" />
-        <AssociationConnector Association="FerreteriaModel.FK__pedido_cl__id_se__656C112C" ManuallyRouted="false" />
-        <AssociationConnector Association="FerreteriaModel.FK__pedido_co__id_pe__4CA06362" ManuallyRouted="false" />
-        <AssociationConnector Association="FerreteriaModel.FK__pedido_co__id_pe__5070F446" ManuallyRouted="false" />
-        <AssociationConnector Association="FerreteriaModel.FK__pedido_co__id_pr__4D94879B" ManuallyRouted="false" />
-        <AssociationConnector Association="FerreteriaModel.FK__pedido_co__id_se__5165187F" ManuallyRouted="false" />
-        <AssociationConnector Association="FerreteriaModel.FK__pedido_so__id_pe__59063A47" ManuallyRouted="false" />
-        <AssociationConnector Association="FerreteriaModel.FK__pedido_so__id_se__59FA5E80" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FerreteriaModel.transporte" Width="1.5" PointX="5.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.usuario" Width="1.5" PointX="7.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_categoria_producto" Width="1.5" PointX="9.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_categoria_servicio" Width="1.5" PointX="10.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_scantidad_pclp_categoria" Width="1.5" PointX="10.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_scantidad_pcls_categoria" Width="1.5" PointX="11.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_scantidad_pcop_categoria" Width="1.5" PointX="11.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_scantidad_pcos_categoria" Width="1.5" PointX="12.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_scantidad_pss_categoria" Width="1.5" PointX="7.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_cliente" Width="1.5" PointX="12.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_cliente_producto" Width="1.5" PointX="9.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_cliente_servicio" Width="1.5" PointX="13.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_completo" Width="1.5" PointX="0.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_completo_producto" Width="1.5" PointX="2.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_completo_servicio" Width="1.5" PointX="13.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_solo_servicio" Width="1.5" PointX="4.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreteriaModel.v_spedido_solo_servicio_servicio" Width="1.5" PointX="14.75" PointY="9.25" IsExpanded="true" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_cl__id_pe__3D2915A8" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_cl__id_pe__40F9A68C" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_cl__id_pr__3E1D39E1" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_cl__id_se__41EDCAC5" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_co__id_pe__29221CFB" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_co__id_pe__2CF2ADDF" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_co__id_pr__2A164134" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_co__id_se__2DE6D218" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_so__id_pe__24285DB4" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreteriaModel.FK__pedido_so__id_se__251C81ED" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

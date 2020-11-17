@@ -32,193 +32,346 @@ namespace Presentation
             CargarPedidos();
         }
 
+        /// <summary>
+        /// Loads the orders to the cashier
+        /// </summary>
         private void CargarPedidos()
         {
-            dgvPedidos.Rows.Clear();
-            foreach (PedidoCompletoE p in pl.CargarPedidoCompleto())
+            try
             {
-                if (p.FechaFactura == null)
+                dgvPedidos.Rows.Clear();
+                foreach (PedidoCompletoE p in pl.CargarPedidoCompleto())
                 {
-                    dgvPedidos.Rows.Add(p, "COMPLETO", p.Id, p.CedulaCliente, p.Total);
+                    if (p.FechaFactura == null)
+                    {
+                        dgvPedidos.Rows.Add(p, "COMPLETO", p.Id, p.CedulaCliente, p.Total);
+                    }
+                }
+                foreach (PedidoSoloServicioE p in pl.CargarPedidoSoloServicio())
+                {
+                    if (p.FechaFactura == null)
+                    {
+                        dgvPedidos.Rows.Add(p, "SOLO SERVICIO", p.Id, p.CedulaCliente, p.Total);
+                    }
+                }
+                foreach (PedidoClienteE p in pl.CargarPedidoCliente())
+                {
+                    if (p.FechaFactura == null)
+                    {
+                        dgvPedidos.Rows.Add(p, "CLIENTE", p.Id, p.CedulaCliente, p.Total);
+                    }
                 }
             }
-            foreach (PedidoSoloServicioE p in pl.CargarPedidoSoloServicio())
+            catch (Exception ex)
             {
-                if (p.FechaFactura == null)
-                {
-                    dgvPedidos.Rows.Add(p, "SOLO SERVICIO", p.Id, p.CedulaCliente, p.Total);
-                }
-            }
-            foreach (PedidoClienteE p in pl.CargarPedidoCliente())
-            {
-                if (p.FechaFactura == null)
-                {
-                    dgvPedidos.Rows.Add(p, "CLIENTE", p.Id, p.CedulaCliente, p.Total);
-                }
+                MessageBox.Show(ex.Message, "Cargando pedidos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void Factura()
+        /// <summary>
+        /// Generates a bill for the products and services sold
+        /// </summary>
+        /// <param name="tipoFactura">
+        /// string bill type: only the products or everything
+        /// </param>
+        private void Factura(string tipoFactura)
         {
-            if (dgvPedidos.CurrentRow.Cells[1].Value.Equals("COMPLETO"))
+            try
             {
-                PedidoCompletoE p = (PedidoCompletoE)dgvPedidos.CurrentRow.Cells[0].Value;
-                p.CodigoCajero = u.Codigo;
-                p.FechaFactura = dtpFecha.Value;
-                //pl.GuardarPedidoCompletoFactura(p);
-
-                WindowReceipt factura = new WindowReceipt();
-                factura.lblNumeroFacturaT.Text = p.Id.ToString();
-                factura.lblFechaT.Text = p.FechaFactura.ToString();
-                factura.lblCedulaClienteT.Text = p.CedulaCliente;
-                
-                foreach (UsuarioE i in ul.CargarUsuario())
+                DialogResult result = MessageBox.Show("¿Seguro que desea realizar el pago seleccionado?",
+                        "Realizando Pago", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
                 {
-                    if (i.Codigo == p.CodigoCajero)
-                    {
-                        factura.lblCajeroT.Text = i.Nombre;
-                    }
-                }
+                    decimal subtotal = 0;
+                    decimal iva = 0;
+                    decimal total = 0;
 
-                foreach (PedidoCompletoProductoE i in pl.CargarPedidoCompletoProducto())
-                {
-                    if (i.IdPedido == p.Id)
+                    if (tipoFactura.Equals("Productos"))
                     {
-                        foreach (ProductoE pr in prl.CargarProducto("", ""))
+                        if (dgvPedidos.CurrentRow.Cells[1].Value.Equals("COMPLETO"))
                         {
-                            if (pr.Id == i.IdPedido)
-                            {
-                                factura.txtVentas.Text += "\n" + pr.Nombre + "\n" + i.Cantidad
-                                    + "\t" + pr.Precio.ToString("0.00") + "\t" + i.PrecioTotal.ToString("0.00") + "\n";
-                                break;
-                            }
-                        } 
-                    }
-                }
+                            PedidoCompletoE p = (PedidoCompletoE)dgvPedidos.CurrentRow.Cells[0].Value;
+                            p.CodigoCajero = u.Codigo;
+                            p.FechaFactura = dtpFecha.Value;
+                            p.PagaSoloProducto = true;
+                            pl.GuardarPedidoCompletoFactura(p);
 
-                foreach (PedidoCompletoServicioE i in pl.CargarPedidoCompletoServicio())
-                {
-                    if (i.IdPedido == p.Id)
-                    {
-                        foreach (ServicioE se in sel.CargarServicio("", ""))
+                            WindowReceipt factura = new WindowReceipt();
+                            factura.lblNumeroFacturaT.Text = p.Id.ToString();
+                            factura.lblFechaT.Text = p.FechaFactura.ToString();
+                            factura.lblCedulaClienteT.Text = p.CedulaCliente;
+
+                            foreach (UsuarioE i in ul.CargarUsuario())
+                            {
+                                if (i.Codigo == p.CodigoCajero)
+                                {
+                                    factura.lblCajeroT.Text = i.Nombre;
+                                }
+                            }
+
+                            foreach (PedidoCompletoProductoE i in pl.CargarPedidoCompletoProducto())
+                            {
+                                if (i.IdPedido == p.Id)
+                                {
+                                    foreach (ProductoE pr in prl.CargarProducto("", ""))
+                                    {
+                                        if (pr.Id == i.IdPedido)
+                                        {
+                                            subtotal += (pr.Precio * i.Cantidad);
+                                            factura.txtVentas.Text += "\n" + pr.Nombre + "\n" + i.Cantidad
+                                                + "\t" + pr.Precio.ToString("0.00") + "\t" + i.PrecioTotal.ToString("0.00") + "\n";
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                            iva = subtotal * (decimal)0.13;
+                            total = subtotal + iva;
+
+                            factura.lblSubtotalT.Text = subtotal.ToString();
+                            factura.lblIVAT.Text = iva.ToString();
+                            factura.lblTotalT.Text = total.ToString();
+
+                            factura.ShowDialog();
+                        }
+                        else if (dgvPedidos.CurrentRow.Cells[1].Value.Equals("CLIENTE"))
                         {
-                            if (se.Id == i.IdPedido)
-                            {
-                                factura.txtVentas.Text += "\n" + se.Nombre + "\n" + i.Cantidad
-                                    + "\t" + se.Precio.ToString("0.00") + "\t" + i.PrecioTotal.ToString("0.00") + "\n";
-                                break;
-                            }
-                        } 
-                    }
-                }
+                            PedidoClienteE p = (PedidoClienteE)dgvPedidos.CurrentRow.Cells[0].Value;
+                            p.CodigoCajero = u.Codigo;
+                            p.FechaFactura = dtpFecha.Value;
+                            p.PagaSoloProducto = true;
+                            pl.GuardarPedidoClienteFactura(p);
 
-                factura.lblSubtotalT.Text = p.SubTotal.ToString();
-                factura.lblIVAT.Text = p.IVA.ToString();
-                factura.lblTotalT.Text = p.Total.ToString();
-                
-                factura.ShowDialog();
+                            WindowReceipt factura = new WindowReceipt();
+                            factura.lblNumeroFacturaT.Text = p.Id.ToString();
+                            factura.lblFechaT.Text = p.FechaFactura.ToString();
+                            factura.lblCedulaClienteT.Text = p.CedulaCliente;
+
+                            foreach (UsuarioE i in ul.CargarUsuario())
+                            {
+                                if (i.Codigo == p.CodigoCajero)
+                                {
+                                    factura.lblCajeroT.Text = i.Nombre;
+                                }
+                            }
+
+                            foreach (PedidoClienteProductoE i in pl.CargarPedidoClienteProducto())
+                            {
+                                if (i.IdPedido == p.Id)
+                                {
+                                    foreach (ProductoE pr in prl.CargarProducto("", ""))
+                                    {
+                                        if (pr.Id == i.IdPedido)
+                                        {
+                                            subtotal += (pr.Precio * i.Cantidad);
+                                            factura.txtVentas.Text += "\n" + pr.Nombre + "\n" + i.Cantidad
+                                                + "\t" + pr.Precio.ToString("0.00") + "\t" + i.PrecioTotal.ToString("0.00") + "\n";
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                            iva = subtotal * (decimal)0.13;
+                            total = subtotal + iva;
+
+                            factura.lblSubtotalT.Text = subtotal.ToString();
+                            factura.lblIVAT.Text = iva.ToString();
+                            factura.lblTotalT.Text = total.ToString();
+
+                            factura.ShowDialog();
+                        }
+                    }
+                    else
+                    {
+                        if (dgvPedidos.CurrentRow.Cells[1].Value.Equals("COMPLETO"))
+                        {
+                            PedidoCompletoE p = (PedidoCompletoE)dgvPedidos.CurrentRow.Cells[0].Value;
+                            p.CodigoCajero = u.Codigo;
+                            p.FechaFactura = dtpFecha.Value;
+
+
+                            WindowReceipt factura = new WindowReceipt();
+                            factura.lblNumeroFacturaT.Text = p.Id.ToString();
+                            factura.lblFechaT.Text = p.FechaFactura.ToString();
+                            factura.lblCedulaClienteT.Text = p.CedulaCliente;
+
+                            foreach (UsuarioE i in ul.CargarUsuario())
+                            {
+                                if (i.Codigo == p.CodigoCajero)
+                                {
+                                    factura.lblCajeroT.Text = i.Nombre;
+                                }
+                            }
+
+                            if (p.PagaSoloProducto != true)
+                            {
+                                foreach (PedidoCompletoProductoE i in pl.CargarPedidoCompletoProducto())
+                                {
+                                    if (i.IdPedido == p.Id)
+                                    {
+                                        foreach (ProductoE pr in prl.CargarProducto("", ""))
+                                        {
+                                            if (pr.Id == i.IdPedido)
+                                            {
+                                                subtotal += (pr.Precio * i.Cantidad);
+                                                factura.txtVentas.Text += "\n" + pr.Nombre + "\n" + i.Cantidad
+                                                    + "\t" + pr.Precio.ToString("0.00") + "\t" + i.PrecioTotal.ToString("0.00") + "\n";
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            foreach (PedidoCompletoServicioE i in pl.CargarPedidoCompletoServicio())
+                            {
+                                if (i.IdPedido == p.Id)
+                                {
+                                    foreach (ServicioE se in sel.CargarServicio("", ""))
+                                    {
+                                        if (se.Id == i.IdPedido)
+                                        {
+                                            subtotal += (se.Precio * i.Cantidad);
+                                            factura.txtVentas.Text += "\n" + se.Nombre + "\n" + i.Cantidad
+                                                + "\t" + se.Precio.ToString("0.00") + "\t" + i.PrecioTotal.ToString("0.00") + "\n";
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                            iva = subtotal * (decimal)0.13;
+                            total = subtotal + iva;
+
+                            p.PagaSoloProducto = false;
+                            pl.GuardarPedidoCompletoFactura(p);
+
+                            factura.lblSubtotalT.Text = subtotal.ToString();
+                            factura.lblIVAT.Text = iva.ToString();
+                            factura.lblTotalT.Text = total.ToString();
+
+                            factura.ShowDialog();
+                        }
+                        else if (dgvPedidos.CurrentRow.Cells[1].Value.Equals("SOLO SERVICIO"))
+                        {
+                            PedidoSoloServicioE p = (PedidoSoloServicioE)dgvPedidos.CurrentRow.Cells[0].Value;
+                            p.CodigoCajero = u.Codigo;
+                            p.FechaFactura = dtpFecha.Value;
+                            pl.GuardarPedidoSoloServicioFactura(p);
+
+                            WindowReceipt factura = new WindowReceipt();
+                            factura.lblNumeroFacturaT.Text = p.Id.ToString();
+                            factura.lblFechaT.Text = p.FechaFactura.ToString();
+                            factura.lblCedulaClienteT.Text = p.CedulaCliente;
+
+                            foreach (UsuarioE i in ul.CargarUsuario())
+                            {
+                                if (i.Codigo == p.CodigoCajero)
+                                {
+                                    factura.lblCajeroT.Text = i.Nombre;
+                                }
+                            }
+
+                            foreach (PedidoSoloServicioServicioE i in pl.CargarPedidoSoloServicioServicio())
+                            {
+                                if (i.IdPedido == p.Id)
+                                {
+                                    foreach (ServicioE se in sel.CargarServicio("", ""))
+                                    {
+                                        if (se.Id == i.IdPedido)
+                                        {
+                                            factura.txtVentas.Text += "\n" + se.Nombre + "\n" + i.Cantidad
+                                                + "\t" + se.Precio.ToString("0.00") + "\t" + i.PrecioTotal.ToString("0.00") + "\n";
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                            factura.lblSubtotalT.Text = p.SubTotal.ToString();
+                            factura.lblIVAT.Text = p.IVA.ToString();
+                            factura.lblTotalT.Text = p.Total.ToString();
+
+                            factura.ShowDialog();
+                        }
+                        else if (dgvPedidos.CurrentRow.Cells[1].Value.Equals("CLIENTE"))
+                        {
+                            PedidoClienteE p = (PedidoClienteE)dgvPedidos.CurrentRow.Cells[0].Value;
+                            p.CodigoCajero = u.Codigo;
+                            p.FechaFactura = dtpFecha.Value;
+
+                            WindowReceipt factura = new WindowReceipt();
+                            factura.lblNumeroFacturaT.Text = p.Id.ToString();
+                            factura.lblFechaT.Text = p.FechaFactura.ToString();
+                            factura.lblCedulaClienteT.Text = p.CedulaCliente;
+
+                            foreach (UsuarioE i in ul.CargarUsuario())
+                            {
+                                if (i.Codigo == p.CodigoCajero)
+                                {
+                                    factura.lblCajeroT.Text = i.Nombre;
+                                }
+                            }
+
+                            if (p.PagaSoloProducto != true)
+                            {
+                                foreach (PedidoClienteProductoE i in pl.CargarPedidoClienteProducto())
+                                {
+                                    if (i.IdPedido == p.Id)
+                                    {
+                                        foreach (ProductoE pr in prl.CargarProducto("", ""))
+                                        {
+                                            if (pr.Id == i.IdPedido)
+                                            {
+                                                subtotal += (pr.Precio * i.Cantidad);
+                                                factura.txtVentas.Text += "\n" + pr.Nombre + "\n" + i.Cantidad
+                                                    + "\t" + pr.Precio.ToString("0.00") + "\t" + i.PrecioTotal.ToString("0.00") + "\n";
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            foreach (PedidoClienteServicioE i in pl.CargarPedidoClienteServicio())
+                            {
+                                if (i.IdPedido == p.Id)
+                                {
+                                    foreach (ServicioE se in sel.CargarServicio("", ""))
+                                    {
+                                        if (se.Id == i.IdPedido)
+                                        {
+                                            subtotal += (se.Precio * i.Cantidad);
+                                            factura.txtVentas.Text += "\n" + se.Nombre + "\n" + i.Cantidad
+                                                + "\t" + se.Precio.ToString("0.00") + "\t" + i.PrecioTotal.ToString("0.00") + "\n";
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                            iva = subtotal * (decimal)0.13;
+                            total = subtotal + iva;
+
+                            p.PagaSoloProducto = false;
+                            pl.GuardarPedidoClienteFactura(p);
+
+                            factura.lblSubtotalT.Text = subtotal.ToString();
+                            factura.lblIVAT.Text = iva.ToString();
+                            factura.lblTotalT.Text = total.ToString();
+
+                            factura.ShowDialog();
+                        }
+                    }
+                    CargarPedidos();
+                }
             }
-            else if (dgvPedidos.CurrentRow.Cells[1].Value.Equals("SOLO SERVICIO"))
+            catch (Exception ex)
             {
-                PedidoSoloServicioE p = (PedidoSoloServicioE)dgvPedidos.CurrentRow.Cells[0].Value;
-                p.CodigoCajero = u.Codigo;
-                p.FechaFactura = dtpFecha.Value;
-                //pl.GuardarPedidoSoloServicioFactura(p);
-
-                WindowReceipt factura = new WindowReceipt();
-                factura.lblNumeroFacturaT.Text = p.Id.ToString();
-                factura.lblFechaT.Text = p.FechaFactura.ToString();
-                factura.lblCedulaClienteT.Text = p.CedulaCliente;
-
-                foreach (UsuarioE i in ul.CargarUsuario())
-                {
-                    if (i.Codigo == p.CodigoCajero)
-                    {
-                        factura.lblCajeroT.Text = i.Nombre;
-                    }
-                }
-
-                foreach (PedidoSoloServicioServicioE i in pl.CargarPedidoSoloServicioServicio())
-                {
-                    if (i.IdPedido == p.Id)
-                    {
-                        foreach (ServicioE se in sel.CargarServicio("", ""))
-                        {
-                            if (se.Id == i.IdPedido)
-                            {
-                                factura.txtVentas.Text += "\n" + se.Nombre + "\n" + i.Cantidad
-                                    + "\t" + se.Precio.ToString("0.00") + "\t" + i.PrecioTotal.ToString("0.00") + "\n";
-                                break;
-                            }
-                        } 
-                    }
-                }
-
-                factura.lblSubtotalT.Text = p.SubTotal.ToString();
-                factura.lblIVAT.Text = p.IVA.ToString();
-                factura.lblTotalT.Text = p.Total.ToString();
-
-                factura.ShowDialog();
+                MessageBox.Show(ex.Message, "Generando Factura", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (dgvPedidos.CurrentRow.Cells[1].Value.Equals("CLIENTE"))
-            {
-                PedidoClienteE p = (PedidoClienteE)dgvPedidos.CurrentRow.Cells[0].Value;
-                p.CodigoCajero = u.Codigo;
-                p.FechaFactura = dtpFecha.Value;
-                //pl.GuardarPedidoClienteFactura(p);
-
-                WindowReceipt factura = new WindowReceipt();
-                factura.lblNumeroFacturaT.Text = p.Id.ToString();
-                factura.lblFechaT.Text = p.FechaFactura.ToString();
-                factura.lblCedulaClienteT.Text = p.CedulaCliente;
-
-                foreach (UsuarioE i in ul.CargarUsuario())
-                {
-                    if (i.Codigo == p.CodigoCajero)
-                    {
-                        factura.lblCajeroT.Text = i.Nombre;
-                    }
-                }
-
-                foreach (PedidoClienteProductoE i in pl.CargarPedidoClienteProducto())
-                {
-                    if (i.IdPedido == p.Id)
-                    {
-                        foreach (ProductoE pr in prl.CargarProducto("", ""))
-                        {
-                            if (pr.Id == i.IdPedido)
-                            {
-                                factura.txtVentas.Text += "\n" + pr.Nombre + "\n" + i.Cantidad
-                                    + "\t" + pr.Precio.ToString("0.00") + "\t" + i.PrecioTotal.ToString("0.00") + "\n";
-                                break;
-                            }
-                        } 
-                    }
-                }
-
-                foreach (PedidoClienteServicioE i in pl.CargarPedidoClienteServicio())
-                {
-                    if (i.IdPedido == p.Id)
-                    {
-                        foreach (ServicioE se in sel.CargarServicio("", ""))
-                        {
-                            if (se.Id == i.IdPedido)
-                            {
-                                factura.txtVentas.Text += "\n" + se.Nombre + "\n" + i.Cantidad
-                                    + "\t" + se.Precio.ToString("0.00") + "\t" + i.PrecioTotal.ToString("0.00") + "\n";
-                                break;
-                            }
-                        } 
-                    }
-                }
-
-                factura.lblSubtotalT.Text = p.SubTotal.ToString();
-                factura.lblIVAT.Text = p.IVA.ToString();
-                factura.lblTotalT.Text = p.Total.ToString();
-
-                factura.ShowDialog();
-            }
-            CargarPedidos();
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -226,9 +379,14 @@ namespace Presentation
             Dispose();
         }
 
-        private void btnGenerarFactura_Click(object sender, EventArgs e)
+        private void btnGenerarFacturaCompleta_Click(object sender, EventArgs e)
         {
-            Factura();
+            Factura("Completa");
+        }
+
+        private void btnGenerarFacturaProductos_Click(object sender, EventArgs e)
+        {
+            Factura("Productos");
         }
     }
 }

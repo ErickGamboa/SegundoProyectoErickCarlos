@@ -23,9 +23,15 @@ namespace Presentation
         LLogin login = new LLogin();
         private void label3_Click(object sender, EventArgs e)
         {
-            WindowRegister wregister = new WindowRegister();
-            wregister.Show(this);
-            this.Hide();
+            WindowRegister.InstanciaAgregar.MdiParent = this;
+            splitContainer.Panel1.Controls.Add(WindowRegister.InstanciaAgregar);
+            WindowRegister.InstanciaAgregar.Show();
+        }
+
+        private void Limpiar()
+        {
+            txtUsuarioLogin.Clear();
+            txtContraLogin.Clear();
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -40,33 +46,37 @@ namespace Presentation
             {
                 if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Administrador"))
                 {
-                    WindowManager wmanager = new WindowManager();
-                    wmanager.Show(this);
-                    this.Hide();
+                    WindowManager frm = new WindowManager();
+                    frm.ShowDialog();
+                    Limpiar();
                 }
                 else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Cajero"))
                 {
                     u = login.Login(txtUsuarioLogin.Text, txtContraLogin.Text);
                     WindowCashier frm = new WindowCashier(u);
                     frm.ShowDialog();
+                    Limpiar();
                 }
                 else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Constructor"))
                 {
                     u = login.Login(txtUsuarioLogin.Text, txtContraLogin.Text);
                     WindowBuilder frm = new WindowBuilder(u);
                     frm.ShowDialog();
+                    Limpiar();
                 }
                 else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Conductor"))
                 {
                     u = login.Login(txtUsuarioLogin.Text, txtContraLogin.Text);
                     WindowCarrier frm = new WindowCarrier(u);
                     frm.ShowDialog();
+                    Limpiar();
                 }
                 else if (login.Login(txtUsuarioLogin.Text, txtContraLogin.Text).Tipo.Equals("Vendedor"))
                 {
                     u = login.Login(txtUsuarioLogin.Text, txtContraLogin.Text);
                     WindowSeller frm = new WindowSeller(u);
                     frm.ShowDialog();
+                    Limpiar();
                 }
             }
             catch (Exception ex) {
@@ -75,6 +85,11 @@ namespace Presentation
         }
 
         private void WindowLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }

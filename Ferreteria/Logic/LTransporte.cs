@@ -24,6 +24,7 @@ namespace Logic
                 transporte.numero_vehiculo = numeroVehiculo;
                 transporte.codigo_conductor = idConductor;
                 transporte.disponible = estado;
+                transporte.activo = true;
                 db.transporte.Add(transporte);
                 db.SaveChanges();
             }
@@ -46,9 +47,10 @@ namespace Logic
                 {
                     TransporteE trans = new TransporteE();
                     trans.Id = i.id;
-                    trans.numeroVehiculo = i.numero_vehiculo;
+                    trans.NumeroVehiculo = i.numero_vehiculo;
                     trans.CodigoConductor = i.codigo_conductor;
                     trans.Disponible = i.disponible;
+                    trans.Activo = i.activo;
                     lista.Add(trans);
                 }
                 return lista;
@@ -61,7 +63,7 @@ namespace Logic
          edit the necessary information
              */
 
-        public void EditarTransporte(string numeroVehiculo, string idConductor, Boolean estado, int id)
+        public void EditarTransporte(string numeroVehiculo, string idConductor, Boolean estado, bool activo, int id)
         {
 
             using (FerreteriaEntities db = new FerreteriaEntities())
@@ -72,6 +74,7 @@ namespace Logic
                 trans.numero_vehiculo = numeroVehiculo;
                 trans.codigo_conductor = idConductor;
                 trans.disponible = estado;
+                trans.activo = activo;
                 db.Entry(trans).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
 
@@ -91,7 +94,8 @@ namespace Logic
             {
                 transporte trans;
                 trans = db.transporte.Find(id);
-                db.transporte.Remove(trans);
+                trans.activo = false;
+                db.Entry(trans).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
 

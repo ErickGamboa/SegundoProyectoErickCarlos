@@ -26,6 +26,7 @@ namespace Logic
                 producto.descripcion = descripcion;
                 producto.precio = precio;
                 producto.cantidad = cantidad;
+                producto.activo = true;
                 db.producto.Add(producto);
                 db.SaveChanges();
             }
@@ -55,6 +56,7 @@ namespace Logic
                     produ.Descripcion = i.descripcion;
                     produ.Precio = Convert.ToDecimal(i.precio);
                     produ.Cantidad = Convert.ToDecimal(i.cantidad);
+                    produ.Activo = i.activo;
                     lista.Add(produ);
                 }
                 return lista;
@@ -75,7 +77,7 @@ namespace Logic
          edit the necessary information
              */
 
-        public void EditarProducto(string nombre, string categoria, string descripcion, decimal precio, decimal cantidad, int id)
+        public void EditarProducto(string nombre, string categoria, string descripcion, decimal precio, decimal cantidad, bool activo, int id)
         {
 
             using (FerreteriaEntities db = new FerreteriaEntities())
@@ -88,6 +90,7 @@ namespace Logic
                 producto.descripcion = descripcion;
                 producto.precio = precio;
                 producto.cantidad = cantidad;
+                producto.activo = activo;
                 db.Entry(producto).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
 
@@ -107,7 +110,8 @@ namespace Logic
             {
                 producto producto;
                 producto = db.producto.Find(id);
-                db.producto.Remove(producto);
+                producto.activo = false;
+                db.Entry(producto).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
 

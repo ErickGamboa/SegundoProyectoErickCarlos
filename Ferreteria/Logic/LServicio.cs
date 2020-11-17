@@ -25,6 +25,7 @@ namespace Logic
                 servicio.categoria = categoria;
                 servicio.descripcion = descripcion;
                 servicio.precio = precio;
+                servicio.activo = true;
                 db.servicio.Add(servicio);
                 db.SaveChanges();
             }
@@ -53,6 +54,7 @@ namespace Logic
                     servi.Categoria = i.categoria;
                     servi.Descripcion = i.descripcion;
                     servi.Precio = Convert.ToDecimal(i.precio);
+                    servi.Activo = i.activo;
                     lista.Add(servi);
                 }
                 return lista;
@@ -73,7 +75,7 @@ namespace Logic
          edit the necessary information
              */
 
-        public void EditarServicio(string nombre, string categoria, string descripcion, decimal precio, int id)
+        public void EditarServicio(string nombre, string categoria, string descripcion, decimal precio, bool activo, int id)
         {
 
             using (FerreteriaEntities db = new FerreteriaEntities())
@@ -85,6 +87,7 @@ namespace Logic
                 servi.categoria = categoria;
                 servi.descripcion = descripcion;
                 servi.precio = precio;
+                servi.activo = activo;
                 db.Entry(servi).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
 
@@ -104,7 +107,8 @@ namespace Logic
             {
                 servicio servi;
                 servi = db.servicio.Find(id);
-                db.servicio.Remove(servi);
+                servi.activo = false;
+                db.Entry(servi).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
 

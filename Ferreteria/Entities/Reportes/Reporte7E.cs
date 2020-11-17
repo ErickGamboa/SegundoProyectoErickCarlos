@@ -11,15 +11,12 @@ namespace Entities.Reportes
         public decimal? Total { get; set; }
         public decimal? IVA { get; set; }
 
-        public Reporte7E()
-        {
+        public Reporte7E() { }
 
-        }
-
-        public Reporte7E(decimal? total, decimal? iVA)
+        public Reporte7E(decimal? total, decimal? iva)
         {
             Total = total;
-            IVA = iVA;
+            IVA = iva;
         }
     }
 }

@@ -8,12 +8,12 @@ namespace Entities
 {
     public class Reporte2E
     {
-        public decimal Cantidad { get; set; }
+        public decimal? Cantidad { get; set; }
         public string Categoria { get; set; }
 
         public Reporte2E() { }
 
-        public Reporte2E(decimal cantidad, string categoria)
+        public Reporte2E(decimal? cantidad, string categoria)
         {
             Cantidad = cantidad;
             Categoria = categoria;

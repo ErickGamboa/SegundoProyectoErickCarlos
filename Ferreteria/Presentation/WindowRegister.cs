@@ -77,9 +77,7 @@ namespace Presentation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            WindowLogin wlogin = new WindowLogin();
-            wlogin.Show(this);
-            this.Hide();
+            Dispose();
         }
 
 
@@ -108,5 +106,26 @@ namespace Presentation
         {
 
         }
+
+        private static WindowRegister Instancia = null;
+
+        public static WindowRegister InstanciaAgregar
+        {
+            get
+            {
+                if (Instancia == null)
+                {
+                    Instancia = new WindowRegister();
+                    Instancia.Disposed += new EventHandler(WindowRegisterDispose);
+                }
+                return Instancia;
+            }
+        }
+
+        public static void WindowRegisterDispose(object o, EventArgs e)
+        {
+            Instancia = null;
+        }
+
     }
 }
