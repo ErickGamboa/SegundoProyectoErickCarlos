@@ -21,7 +21,7 @@
           <Property Name="fecha_factura" Type="datetime" />
           <Property Name="codigo_cajero" Type="nvarchar" MaxLength="10" />
           <Property Name="subtotal" Type="numeric" Precision="10" Scale="2" />
-          <Property Name="iva" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="iva" Type="numeric" Precision="5" Scale="2" />
           <Property Name="total" Type="numeric" Precision="10" Scale="2" />
           <Property Name="estado" Type="nvarchar" MaxLength="9" />
         </EntityType>
@@ -62,7 +62,7 @@
           <Property Name="fecha_factura" Type="datetime" />
           <Property Name="codigo_cajero" Type="nvarchar" MaxLength="10" />
           <Property Name="subtotal" Type="numeric" Precision="10" Scale="2" />
-          <Property Name="iva" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="iva" Type="numeric" Precision="5" Scale="2" />
           <Property Name="total" Type="numeric" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="pedido_completo_producto">
@@ -101,7 +101,7 @@
           <Property Name="fecha_factura" Type="datetime" />
           <Property Name="codigo_cajero" Type="nvarchar" MaxLength="10" />
           <Property Name="subtotal" Type="numeric" Precision="10" Scale="2" />
-          <Property Name="iva" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="iva" Type="numeric" Precision="5" Scale="2" />
           <Property Name="total" Type="numeric" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="pedido_solo_servicio_servicio">
@@ -123,7 +123,7 @@
           <Property Name="categoria" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="descripcion" Type="nvarchar" MaxLength="50" />
           <Property Name="precio" Type="numeric" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="cantidad" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="cantidad" Type="numeric" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="servicio">
           <Key>
@@ -152,55 +152,78 @@
           <Property Name="codigo" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="contrasena" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="cedula" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="tipo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="cedula" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="tipo" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Ferreteria.dbo.v_categoria_producto' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Ferreteria.dbo.v_categoria_producto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="v_categoria_producto">
           <Key>
             <PropertyRef Name="categoria" />
           </Key>
           <Property Name="categoria" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Ferreteria.dbo.v_categoria_servicio' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Ferreteria.dbo.v_categoria_servicio' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="v_categoria_servicio">
           <Key>
             <PropertyRef Name="categoria" />
           </Key>
           <Property Name="categoria" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Ferreteria.dbo.v_scantidad_pcp_categoria' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="v_scantidad_pcp_categoria">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Ferreteria.dbo.v_scantidad_pclp_categoria' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_scantidad_pclp_categoria">
           <Key>
             <PropertyRef Name="categoria" />
           </Key>
-          <Property Name="cantidades" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="cantidad" Type="numeric" Precision="38" Scale="2" />
           <Property Name="categoria" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Ferreteria.dbo.v_scantidad_pedido_cliente_producto_categoria' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="v_scantidad_pedido_cliente_producto_categoria">
-          <Key>
-            <PropertyRef Name="cantidad" />
-            <PropertyRef Name="categoria" />
-          </Key>
-          <Property Name="cantidad" Type="numeric" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="categoria" Type="nvarchar" MaxLength="30" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Ferreteria.dbo.v_scantidad_pedido_completo_producto_categoria' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="v_scantidad_pedido_completo_producto_categoria">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Ferreteria.dbo.v_scantidad_pcls_categoria' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_scantidad_pcls_categoria">
           <Key>
             <PropertyRef Name="categoria" />
           </Key>
-          <Property Name="cantidades" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="cantidad" Type="numeric" Precision="38" Scale="2" />
           <Property Name="categoria" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Ferreteria.dbo.v_spedido_cliente' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Ferreteria.dbo.v_scantidad_pco_vendedor' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="v_scantidad_pco_vendedor">
+          <Property Name="cantidad" Type="int" />
+          <Property Name="codigo_vendedor" Type="nvarchar" MaxLength="10" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Ferreteria.dbo.v_scantidad_pcop_categoria' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_scantidad_pcop_categoria">
+          <Key>
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="cantidad" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="categoria" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Ferreteria.dbo.v_scantidad_pcos_categoria' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_scantidad_pcos_categoria">
+          <Key>
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="cantidad" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="categoria" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Ferreteria.dbo.v_scantidad_pss_categoria' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_scantidad_pss_categoria">
+          <Key>
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="cantidad" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="categoria" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Ferreteria.dbo.v_spedido_cliente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="v_spedido_cliente">
           <Key>
             <PropertyRef Name="id" />
@@ -221,8 +244,8 @@ warning 6002: The table/view 'Ferreteria.dbo.v_spedido_cliente' does not have a 
           <Property Name="total" Type="numeric" Precision="10" Scale="2" />
           <Property Name="estado" Type="nvarchar" MaxLength="9" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Ferreteria.dbo.v_spedido_cliente_producto' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Ferreteria.dbo.v_spedido_cliente_producto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="v_spedido_cliente_producto">
           <Key>
             <PropertyRef Name="id" />
@@ -237,8 +260,8 @@ warning 6002: The table/view 'Ferreteria.dbo.v_spedido_cliente_producto' does no
           <Property Name="cantidad" Type="numeric" Precision="5" Scale="2" Nullable="false" />
           <Property Name="precio_total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Ferreteria.dbo.v_spedido_cliente_servicio' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Ferreteria.dbo.v_spedido_cliente_servicio' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="v_spedido_cliente_servicio">
           <Key>
             <PropertyRef Name="id" />
@@ -253,8 +276,8 @@ warning 6002: The table/view 'Ferreteria.dbo.v_spedido_cliente_servicio' does no
           <Property Name="cantidad" Type="numeric" Precision="5" Scale="2" Nullable="false" />
           <Property Name="precio_total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Ferreteria.dbo.v_spedido_completo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Ferreteria.dbo.v_spedido_completo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="v_spedido_completo">
           <Key>
             <PropertyRef Name="id" />
@@ -275,8 +298,8 @@ warning 6002: The table/view 'Ferreteria.dbo.v_spedido_completo' does not have a
           <Property Name="iva" Type="numeric" Precision="5" Scale="2" />
           <Property Name="total" Type="numeric" Precision="10" Scale="2" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Ferreteria.dbo.v_spedido_completo_producto' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Ferreteria.dbo.v_spedido_completo_producto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="v_spedido_completo_producto">
           <Key>
             <PropertyRef Name="id" />
@@ -291,8 +314,8 @@ warning 6002: The table/view 'Ferreteria.dbo.v_spedido_completo_producto' does n
           <Property Name="cantidad" Type="numeric" Precision="5" Scale="2" Nullable="false" />
           <Property Name="precio_total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Ferreteria.dbo.v_spedido_completo_servicio' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Ferreteria.dbo.v_spedido_completo_servicio' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="v_spedido_completo_servicio">
           <Key>
             <PropertyRef Name="id" />
@@ -307,8 +330,8 @@ warning 6002: The table/view 'Ferreteria.dbo.v_spedido_completo_servicio' does n
           <Property Name="cantidad" Type="numeric" Precision="5" Scale="2" Nullable="false" />
           <Property Name="precio_total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Ferreteria.dbo.v_spedido_solo_servicio' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Ferreteria.dbo.v_spedido_solo_servicio' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="v_spedido_solo_servicio">
           <Key>
             <PropertyRef Name="id" />
@@ -328,8 +351,8 @@ warning 6002: The table/view 'Ferreteria.dbo.v_spedido_solo_servicio' does not h
           <Property Name="iva" Type="numeric" Precision="5" Scale="2" />
           <Property Name="total" Type="numeric" Precision="10" Scale="2" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Ferreteria.dbo.v_spedido_solo_servicio_servicio' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Ferreteria.dbo.v_spedido_solo_servicio_servicio' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="v_spedido_solo_servicio_servicio">
           <Key>
             <PropertyRef Name="id" />
@@ -344,13 +367,13 @@ warning 6002: The table/view 'Ferreteria.dbo.v_spedido_solo_servicio_servicio' d
           <Property Name="cantidad" Type="numeric" Precision="5" Scale="2" Nullable="false" />
           <Property Name="precio_total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__pedido_cl__codig__395884C4' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__pedido_cl__codig__395884C4" />-->
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__pedido_cl__codig__3A4CA8FD' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__pedido_cl__codig__3A4CA8FD" />-->
-        <Association Name="FK__pedido_cl__id_pe__3D2915A8">
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_cl__codig__5CD6CB2B' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_cl__codig__5CD6CB2B" />-->
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_cl__codig__5DCAEF64' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_cl__codig__5DCAEF64" />-->
+        <Association Name="FK__pedido_cl__id_pe__60A75C0F">
           <End Role="pedido_cliente" Type="Self.pedido_cliente" Multiplicity="1" />
           <End Role="pedido_cliente_producto" Type="Self.pedido_cliente_producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -362,7 +385,7 @@ warning 6035: The relationship 'FK__pedido_cl__codig__3A4CA8FD' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_cl__id_pe__40F9A68C">
+        <Association Name="FK__pedido_cl__id_pe__6477ECF3">
           <End Role="pedido_cliente" Type="Self.pedido_cliente" Multiplicity="1" />
           <End Role="pedido_cliente_servicio" Type="Self.pedido_cliente_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -374,7 +397,7 @@ warning 6035: The relationship 'FK__pedido_cl__codig__3A4CA8FD' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_cl__id_pr__3E1D39E1">
+        <Association Name="FK__pedido_cl__id_pr__619B8048">
           <End Role="producto" Type="Self.producto" Multiplicity="1" />
           <End Role="pedido_cliente_producto" Type="Self.pedido_cliente_producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -386,7 +409,7 @@ warning 6035: The relationship 'FK__pedido_cl__codig__3A4CA8FD' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_cl__id_se__41EDCAC5">
+        <Association Name="FK__pedido_cl__id_se__656C112C">
           <End Role="servicio" Type="Self.servicio" Multiplicity="1" />
           <End Role="pedido_cliente_servicio" Type="Self.pedido_cliente_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -398,16 +421,16 @@ warning 6035: The relationship 'FK__pedido_cl__codig__3A4CA8FD' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__pedido_co__codig__245D67DE' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__pedido_co__codig__245D67DE" />-->
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__pedido_co__codig__25518C17' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__pedido_co__codig__25518C17" />-->
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__pedido_co__codig__2645B050' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__pedido_co__codig__2645B050" />-->
-        <Association Name="FK__pedido_co__id_pe__29221CFB">
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_co__codig__47DBAE45' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_co__codig__47DBAE45" />-->
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_co__codig__48CFD27E' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_co__codig__48CFD27E" />-->
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_co__codig__49C3F6B7' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_co__codig__49C3F6B7" />-->
+        <Association Name="FK__pedido_co__id_pe__4CA06362">
           <End Role="pedido_completo" Type="Self.pedido_completo" Multiplicity="1" />
           <End Role="pedido_completo_producto" Type="Self.pedido_completo_producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -419,7 +442,7 @@ warning 6035: The relationship 'FK__pedido_co__codig__2645B050' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_co__id_pe__2CF2ADDF">
+        <Association Name="FK__pedido_co__id_pe__5070F446">
           <End Role="pedido_completo" Type="Self.pedido_completo" Multiplicity="1" />
           <End Role="pedido_completo_servicio" Type="Self.pedido_completo_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -431,7 +454,7 @@ warning 6035: The relationship 'FK__pedido_co__codig__2645B050' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_co__id_pr__2A164134">
+        <Association Name="FK__pedido_co__id_pr__4D94879B">
           <End Role="producto" Type="Self.producto" Multiplicity="1" />
           <End Role="pedido_completo_producto" Type="Self.pedido_completo_producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -443,7 +466,7 @@ warning 6035: The relationship 'FK__pedido_co__codig__2645B050' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_co__id_se__2DE6D218">
+        <Association Name="FK__pedido_co__id_se__5165187F">
           <End Role="servicio" Type="Self.servicio" Multiplicity="1" />
           <End Role="pedido_completo_servicio" Type="Self.pedido_completo_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -455,16 +478,16 @@ warning 6035: The relationship 'FK__pedido_co__codig__2645B050' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__pedido_so__codig__30C33EC3' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__pedido_so__codig__30C33EC3" />-->
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__pedido_so__codig__31B762FC' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__pedido_so__codig__31B762FC" />-->
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__pedido_so__codig__32AB8735' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__pedido_so__codig__32AB8735" />-->
-        <Association Name="FK__pedido_so__id_pe__3587F3E0">
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_so__codig__5441852A' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_so__codig__5441852A" />-->
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_so__codig__5535A963' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_so__codig__5535A963" />-->
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__pedido_so__codig__5629CD9C' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__pedido_so__codig__5629CD9C" />-->
+        <Association Name="FK__pedido_so__id_pe__59063A47">
           <End Role="pedido_solo_servicio" Type="Self.pedido_solo_servicio" Multiplicity="1" />
           <End Role="pedido_solo_servicio_servicio" Type="Self.pedido_solo_servicio_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -476,7 +499,7 @@ warning 6035: The relationship 'FK__pedido_so__codig__32AB8735' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pedido_so__id_se__367C1819">
+        <Association Name="FK__pedido_so__id_se__59FA5E80">
           <End Role="servicio" Type="Self.servicio" Multiplicity="1" />
           <End Role="pedido_solo_servicio_servicio" Type="Self.pedido_solo_servicio_servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -488,9 +511,9 @@ warning 6035: The relationship 'FK__pedido_so__codig__32AB8735' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__transport__codig__2C3393D0" />-->
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__transport__codig__44FF419A' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__transport__codig__44FF419A" />-->
         <Function Name="sp_ipedido_cliente_cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cedula_cliente" Type="nvarchar" Mode="In" />
           <Parameter Name="nombre_cliente" Type="nvarchar" Mode="In" />
@@ -546,7 +569,21 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Parameter Name="cantidad" Type="numeric" Mode="In" />
           <Parameter Name="precio_total" Type="numeric" Mode="In" />
         </Function>
-        <Function Name="sp_scantidad_pcp_categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_spcl_servicio_dia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_spco_dia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_spco_servicio_dia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_sps_dia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_sps_servicio_dia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha" Type="date" Mode="In" />
+        </Function>
         <Function Name="sp_upedido_cliente_bodega" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="hora_recibido_bodega" Type="datetime" Mode="In" />
@@ -618,23 +655,35 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
     [v_categoria_servicio].[categoria] AS [categoria]
     FROM [dbo].[v_categoria_servicio] AS [v_categoria_servicio]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="v_scantidad_pcp_categoria" EntityType="Self.v_scantidad_pcp_categoria" store:Type="Views" store:Schema="dbo">
+          <EntitySet Name="v_scantidad_pclp_categoria" EntityType="Self.v_scantidad_pclp_categoria" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [v_scantidad_pcp_categoria].[cantidades] AS [cantidades], 
-    [v_scantidad_pcp_categoria].[categoria] AS [categoria]
-    FROM [dbo].[v_scantidad_pcp_categoria] AS [v_scantidad_pcp_categoria]</DefiningQuery>
+    [v_scantidad_pclp_categoria].[cantidad] AS [cantidad], 
+    [v_scantidad_pclp_categoria].[categoria] AS [categoria]
+    FROM [dbo].[v_scantidad_pclp_categoria] AS [v_scantidad_pclp_categoria]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="v_scantidad_pedido_cliente_producto_categoria" EntityType="Self.v_scantidad_pedido_cliente_producto_categoria" store:Type="Views" store:Schema="dbo">
+          <EntitySet Name="v_scantidad_pcls_categoria" EntityType="Self.v_scantidad_pcls_categoria" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [v_scantidad_pedido_cliente_producto_categoria].[cantidad] AS [cantidad], 
-    [v_scantidad_pedido_cliente_producto_categoria].[categoria] AS [categoria]
-    FROM [dbo].[v_scantidad_pedido_cliente_producto_categoria] AS [v_scantidad_pedido_cliente_producto_categoria]</DefiningQuery>
+    [v_scantidad_pcls_categoria].[cantidad] AS [cantidad], 
+    [v_scantidad_pcls_categoria].[categoria] AS [categoria]
+    FROM [dbo].[v_scantidad_pcls_categoria] AS [v_scantidad_pcls_categoria]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="v_scantidad_pedido_completo_producto_categoria" EntityType="Self.v_scantidad_pedido_completo_producto_categoria" store:Type="Views" store:Schema="dbo">
+          <EntitySet Name="v_scantidad_pcop_categoria" EntityType="Self.v_scantidad_pcop_categoria" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [v_scantidad_pedido_completo_producto_categoria].[cantidades] AS [cantidades], 
-    [v_scantidad_pedido_completo_producto_categoria].[categoria] AS [categoria]
-    FROM [dbo].[v_scantidad_pedido_completo_producto_categoria] AS [v_scantidad_pedido_completo_producto_categoria]</DefiningQuery>
+    [v_scantidad_pcop_categoria].[cantidad] AS [cantidad], 
+    [v_scantidad_pcop_categoria].[categoria] AS [categoria]
+    FROM [dbo].[v_scantidad_pcop_categoria] AS [v_scantidad_pcop_categoria]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_scantidad_pcos_categoria" EntityType="Self.v_scantidad_pcos_categoria" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_scantidad_pcos_categoria].[cantidad] AS [cantidad], 
+    [v_scantidad_pcos_categoria].[categoria] AS [categoria]
+    FROM [dbo].[v_scantidad_pcos_categoria] AS [v_scantidad_pcos_categoria]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_scantidad_pss_categoria" EntityType="Self.v_scantidad_pss_categoria" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_scantidad_pss_categoria].[cantidad] AS [cantidad], 
+    [v_scantidad_pss_categoria].[categoria] AS [categoria]
+    FROM [dbo].[v_scantidad_pss_categoria] AS [v_scantidad_pss_categoria]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_spedido_cliente" EntityType="Self.v_spedido_cliente" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -737,43 +786,43 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
     [v_spedido_solo_servicio_servicio].[precio_total] AS [precio_total]
     FROM [dbo].[v_spedido_solo_servicio_servicio] AS [v_spedido_solo_servicio_servicio]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__pedido_cl__id_pe__3D2915A8" Association="Self.FK__pedido_cl__id_pe__3D2915A8">
+          <AssociationSet Name="FK__pedido_cl__id_pe__60A75C0F" Association="Self.FK__pedido_cl__id_pe__60A75C0F">
             <End Role="pedido_cliente" EntitySet="pedido_cliente" />
             <End Role="pedido_cliente_producto" EntitySet="pedido_cliente_producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_cl__id_pe__40F9A68C" Association="Self.FK__pedido_cl__id_pe__40F9A68C">
+          <AssociationSet Name="FK__pedido_cl__id_pe__6477ECF3" Association="Self.FK__pedido_cl__id_pe__6477ECF3">
             <End Role="pedido_cliente" EntitySet="pedido_cliente" />
             <End Role="pedido_cliente_servicio" EntitySet="pedido_cliente_servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_cl__id_pr__3E1D39E1" Association="Self.FK__pedido_cl__id_pr__3E1D39E1">
+          <AssociationSet Name="FK__pedido_cl__id_pr__619B8048" Association="Self.FK__pedido_cl__id_pr__619B8048">
             <End Role="producto" EntitySet="producto" />
             <End Role="pedido_cliente_producto" EntitySet="pedido_cliente_producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_cl__id_se__41EDCAC5" Association="Self.FK__pedido_cl__id_se__41EDCAC5">
+          <AssociationSet Name="FK__pedido_cl__id_se__656C112C" Association="Self.FK__pedido_cl__id_se__656C112C">
             <End Role="servicio" EntitySet="servicio" />
             <End Role="pedido_cliente_servicio" EntitySet="pedido_cliente_servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_co__id_pe__29221CFB" Association="Self.FK__pedido_co__id_pe__29221CFB">
+          <AssociationSet Name="FK__pedido_co__id_pe__4CA06362" Association="Self.FK__pedido_co__id_pe__4CA06362">
             <End Role="pedido_completo" EntitySet="pedido_completo" />
             <End Role="pedido_completo_producto" EntitySet="pedido_completo_producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_co__id_pe__2CF2ADDF" Association="Self.FK__pedido_co__id_pe__2CF2ADDF">
+          <AssociationSet Name="FK__pedido_co__id_pe__5070F446" Association="Self.FK__pedido_co__id_pe__5070F446">
             <End Role="pedido_completo" EntitySet="pedido_completo" />
             <End Role="pedido_completo_servicio" EntitySet="pedido_completo_servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_co__id_pr__2A164134" Association="Self.FK__pedido_co__id_pr__2A164134">
+          <AssociationSet Name="FK__pedido_co__id_pr__4D94879B" Association="Self.FK__pedido_co__id_pr__4D94879B">
             <End Role="producto" EntitySet="producto" />
             <End Role="pedido_completo_producto" EntitySet="pedido_completo_producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_co__id_se__2DE6D218" Association="Self.FK__pedido_co__id_se__2DE6D218">
+          <AssociationSet Name="FK__pedido_co__id_se__5165187F" Association="Self.FK__pedido_co__id_se__5165187F">
             <End Role="servicio" EntitySet="servicio" />
             <End Role="pedido_completo_servicio" EntitySet="pedido_completo_servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_so__id_pe__3587F3E0" Association="Self.FK__pedido_so__id_pe__3587F3E0">
+          <AssociationSet Name="FK__pedido_so__id_pe__59063A47" Association="Self.FK__pedido_so__id_pe__59063A47">
             <End Role="pedido_solo_servicio" EntitySet="pedido_solo_servicio" />
             <End Role="pedido_solo_servicio_servicio" EntitySet="pedido_solo_servicio_servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__pedido_so__id_se__367C1819" Association="Self.FK__pedido_so__id_se__367C1819">
+          <AssociationSet Name="FK__pedido_so__id_se__59FA5E80" Association="Self.FK__pedido_so__id_se__59FA5E80">
             <End Role="servicio" EntitySet="servicio" />
             <End Role="pedido_solo_servicio_servicio" EntitySet="pedido_solo_servicio_servicio" />
           </AssociationSet>
@@ -798,7 +847,7 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Property Name="fecha_factura" Type="DateTime" Precision="3" />
           <Property Name="codigo_cajero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="subtotal" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="iva" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="iva" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="total" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="estado" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="pedido_cliente_producto" Relationship="Self.FK__pedido_cl__id_pe__60A75C0F" FromRole="pedido_cliente" ToRole="pedido_cliente_producto" />
@@ -845,7 +894,7 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Property Name="fecha_factura" Type="DateTime" Precision="3" />
           <Property Name="codigo_cajero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="subtotal" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="iva" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="iva" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="total" Type="Decimal" Precision="10" Scale="2" />
           <NavigationProperty Name="pedido_completo_producto" Relationship="Self.FK__pedido_co__id_pe__4CA06362" FromRole="pedido_completo" ToRole="pedido_completo_producto" />
           <NavigationProperty Name="pedido_completo_servicio" Relationship="Self.FK__pedido_co__id_pe__5070F446" FromRole="pedido_completo" ToRole="pedido_completo_servicio" />
@@ -890,7 +939,7 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Property Name="fecha_factura" Type="DateTime" Precision="3" />
           <Property Name="codigo_cajero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="subtotal" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="iva" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="iva" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="total" Type="Decimal" Precision="10" Scale="2" />
           <NavigationProperty Name="pedido_solo_servicio_servicio" Relationship="Self.FK__pedido_so__id_pe__59063A47" FromRole="pedido_solo_servicio" ToRole="pedido_solo_servicio_servicio" />
         </EntityType>
@@ -915,7 +964,7 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Property Name="categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <NavigationProperty Name="pedido_cliente_producto" Relationship="Self.FK__pedido_cl__id_pr__619B8048" FromRole="producto" ToRole="pedido_cliente_producto" />
           <NavigationProperty Name="pedido_completo_producto" Relationship="Self.FK__pedido_co__id_pr__4D94879B" FromRole="producto" ToRole="pedido_completo_producto" />
         </EntityType>
@@ -940,6 +989,193 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <Property Name="numero_vehiculo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="codigo_conductor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="disponible" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contrasena" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cedula" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_categoria_producto">
+          <Key>
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_categoria_servicio">
+          <Key>
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_scantidad_pclp_categoria">
+          <Key>
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="cantidad" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_scantidad_pcls_categoria">
+          <Key>
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="cantidad" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_scantidad_pcop_categoria">
+          <Key>
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="cantidad" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_scantidad_pcos_categoria">
+          <Key>
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="cantidad" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_scantidad_pss_categoria">
+          <Key>
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="cantidad" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_spedido_cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cedula_cliente" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="nombre_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="hora_recibido_bodega" Type="DateTime" Precision="3" />
+          <Property Name="hora_salida_bodega" Type="DateTime" Precision="3" />
+          <Property Name="codigo_conductor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="hora_inicia_transporte" Type="DateTime" Precision="3" />
+          <Property Name="hora_finaliza_transporte" Type="DateTime" Precision="3" />
+          <Property Name="fecha_factura" Type="DateTime" Precision="3" />
+          <Property Name="codigo_cajero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="subtotal" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="iva" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="total" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="estado" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_spedido_cliente_producto">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_pedido_cliente" />
+            <PropertyRef Name="id_producto" />
+            <PropertyRef Name="cantidad" />
+            <PropertyRef Name="precio_total" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido_cliente" Type="Int32" Nullable="false" />
+          <Property Name="id_producto" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="precio_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_spedido_cliente_servicio">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_pedido_cliente" />
+            <PropertyRef Name="id_servicio" />
+            <PropertyRef Name="cantidad" />
+            <PropertyRef Name="precio_total" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido_cliente" Type="Int32" Nullable="false" />
+          <Property Name="id_servicio" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="precio_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_spedido_completo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_vendedor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cedula_cliente" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="hora_atencion" Type="DateTime" Precision="3" />
+          <Property Name="hora_venta" Type="DateTime" Precision="3" />
+          <Property Name="hora_recibido_bodega" Type="DateTime" Precision="3" />
+          <Property Name="hora_salida_bodega" Type="DateTime" Precision="3" />
+          <Property Name="codigo_conductor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="hora_inicia_transporte" Type="DateTime" Precision="3" />
+          <Property Name="hora_finaliza_transporte" Type="DateTime" Precision="3" />
+          <Property Name="fecha_factura" Type="DateTime" Precision="3" />
+          <Property Name="codigo_cajero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="subtotal" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="iva" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="total" Type="Decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="v_spedido_completo_producto">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_pedido_completo" />
+            <PropertyRef Name="id_producto" />
+            <PropertyRef Name="cantidad" />
+            <PropertyRef Name="precio_total" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido_completo" Type="Int32" Nullable="false" />
+          <Property Name="id_producto" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="precio_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_spedido_completo_servicio">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_pedido_completo" />
+            <PropertyRef Name="id_servicio" />
+            <PropertyRef Name="cantidad" />
+            <PropertyRef Name="precio_total" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido_completo" Type="Int32" Nullable="false" />
+          <Property Name="id_servicio" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="precio_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_spedido_solo_servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cedula_cliente" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_constructor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="observaciones" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="hora_recibido_bodega" Type="DateTime" Precision="3" />
+          <Property Name="hora_salida_bodega" Type="DateTime" Precision="3" />
+          <Property Name="codigo_conductor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="hora_inicia_transporte" Type="DateTime" Precision="3" />
+          <Property Name="hora_finaliza_transporte" Type="DateTime" Precision="3" />
+          <Property Name="fecha_factura" Type="DateTime" Precision="3" />
+          <Property Name="codigo_cajero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="subtotal" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="iva" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="total" Type="Decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="v_spedido_solo_servicio_servicio">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_pedido_solo_servicio" />
+            <PropertyRef Name="id_servicio" />
+            <PropertyRef Name="cantidad" />
+            <PropertyRef Name="precio_total" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido_solo_servicio" Type="Int32" Nullable="false" />
+          <Property Name="id_servicio" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="precio_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
         <Association Name="FK__pedido_cl__id_pe__60A75C0F">
           <End Role="pedido_cliente" Type="Self.pedido_cliente" Multiplicity="1" />
@@ -1073,6 +1309,22 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
           <EntitySet Name="producto" EntityType="Self.producto" />
           <EntitySet Name="servicio" EntityType="Self.servicio" />
           <EntitySet Name="transporte" EntityType="Self.transporte" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <EntitySet Name="v_categoria_producto" EntityType="Self.v_categoria_producto" />
+          <EntitySet Name="v_categoria_servicio" EntityType="Self.v_categoria_servicio" />
+          <EntitySet Name="v_scantidad_pclp_categoria" EntityType="Self.v_scantidad_pclp_categoria" />
+          <EntitySet Name="v_scantidad_pcls_categoria" EntityType="Self.v_scantidad_pcls_categoria" />
+          <EntitySet Name="v_scantidad_pcop_categoria" EntityType="Self.v_scantidad_pcop_categoria" />
+          <EntitySet Name="v_scantidad_pcos_categoria" EntityType="Self.v_scantidad_pcos_categoria" />
+          <EntitySet Name="v_scantidad_pss_categoria" EntityType="Self.v_scantidad_pss_categoria" />
+          <EntitySet Name="v_spedido_cliente" EntityType="Self.v_spedido_cliente" />
+          <EntitySet Name="v_spedido_cliente_producto" EntityType="Self.v_spedido_cliente_producto" />
+          <EntitySet Name="v_spedido_cliente_servicio" EntityType="Self.v_spedido_cliente_servicio" />
+          <EntitySet Name="v_spedido_completo" EntityType="Self.v_spedido_completo" />
+          <EntitySet Name="v_spedido_completo_producto" EntityType="Self.v_spedido_completo_producto" />
+          <EntitySet Name="v_spedido_completo_servicio" EntityType="Self.v_spedido_completo_servicio" />
+          <EntitySet Name="v_spedido_solo_servicio" EntityType="Self.v_spedido_solo_servicio" />
+          <EntitySet Name="v_spedido_solo_servicio_servicio" EntityType="Self.v_spedido_solo_servicio_servicio" />
           <AssociationSet Name="FK__pedido_cl__id_pe__60A75C0F" Association="Self.FK__pedido_cl__id_pe__60A75C0F">
             <End Role="pedido_cliente" EntitySet="pedido_cliente" />
             <End Role="pedido_cliente_producto" EntitySet="pedido_cliente_producto" />
@@ -1168,6 +1420,21 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
             <Parameter Name="cantidad" Mode="In" Type="Decimal" />
             <Parameter Name="precio_total" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="sp_spcl_servicio_dia" ReturnType="Collection(String)">
+          <Parameter Name="fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_spco_dia" ReturnType="Collection(String)">
+          <Parameter Name="fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_spco_servicio_dia" ReturnType="Collection(String)">
+          <Parameter Name="fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_sps_dia" ReturnType="Collection(String)">
+          <Parameter Name="fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_sps_servicio_dia" ReturnType="Collection(String)">
+          <Parameter Name="fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="sp_upedido_cliente_bodega">
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="hora_recibido_bodega" Mode="In" Type="DateTime" />
@@ -1216,202 +1483,7 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
             <Parameter Name="hora_inicia_transporte" Mode="In" Type="DateTime" />
             <Parameter Name="hora_finaliza_transporte" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <EntitySet Name="usuario" EntityType="FerreteriaModel.usuario" />
-          <EntitySet Name="v_categoria_producto" EntityType="FerreteriaModel.v_categoria_producto" />
-          <EntitySet Name="v_categoria_servicio" EntityType="FerreteriaModel.v_categoria_servicio" />
-          <FunctionImport Name="sp_scategoria_producto" ReturnType="Collection(String)" />
-          <FunctionImport Name="sp_scategoria_servicio" ReturnType="Collection(String)" />
-          <EntitySet Name="v_spedido_cliente" EntityType="FerreteriaModel.v_spedido_cliente" />
-          <EntitySet Name="v_spedido_cliente_producto" EntityType="FerreteriaModel.v_spedido_cliente_producto" />
-          <EntitySet Name="v_spedido_cliente_servicio" EntityType="FerreteriaModel.v_spedido_cliente_servicio" />
-          <EntitySet Name="v_spedido_completo" EntityType="FerreteriaModel.v_spedido_completo" />
-          <EntitySet Name="v_spedido_completo_producto" EntityType="FerreteriaModel.v_spedido_completo_producto" />
-          <EntitySet Name="v_spedido_completo_servicio" EntityType="FerreteriaModel.v_spedido_completo_servicio" />
-          <EntitySet Name="v_spedido_solo_servicio" EntityType="FerreteriaModel.v_spedido_solo_servicio" />
-          <EntitySet Name="v_spedido_solo_servicio_servicio" EntityType="FerreteriaModel.v_spedido_solo_servicio_servicio" />
-          <EntitySet Name="v_scantidad_pedido_cliente_producto_categoria" EntityType="FerreteriaModel.v_scantidad_pedido_cliente_producto_categoria" />
-          <EntitySet Name="v_scantidad_pedido_completo_producto_categoria" EntityType="FerreteriaModel.v_scantidad_pedido_completo_producto_categoria" />
-          <EntitySet Name="v_scantidad_pcp_categoria" EntityType="FerreteriaModel.v_scantidad_pcp_categoria" />
-          <FunctionImport Name="sp_scantidad_pcp_categoria" ReturnType="Collection(FerreteriaModel.sp_scantidad_pcp_categoria_Result)" />
         </EntityContainer>
-        <EntityType Name="usuario">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="codigo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="contrasena" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="cedula" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="tipo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="v_categoria_producto">
-          <Key>
-            <PropertyRef Name="categoria" />
-          </Key>
-          <Property Name="categoria" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="v_categoria_servicio">
-          <Key>
-            <PropertyRef Name="categoria" />
-          </Key>
-          <Property Name="categoria" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="v_spedido_cliente">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cedula_cliente" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="nombre_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="fecha" Type="DateTime" Precision="3" />
-          <Property Name="hora_recibido_bodega" Type="DateTime" Precision="3" />
-          <Property Name="hora_salida_bodega" Type="DateTime" Precision="3" />
-          <Property Name="codigo_conductor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="hora_inicia_transporte" Type="DateTime" Precision="3" />
-          <Property Name="hora_finaliza_transporte" Type="DateTime" Precision="3" />
-          <Property Name="fecha_factura" Type="DateTime" Precision="3" />
-          <Property Name="codigo_cajero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="subtotal" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="iva" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="total" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="estado" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="v_spedido_cliente_producto">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="id_pedido_cliente" />
-            <PropertyRef Name="id_producto" />
-            <PropertyRef Name="cantidad" />
-            <PropertyRef Name="precio_total" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_pedido_cliente" Type="Int32" Nullable="false" />
-          <Property Name="id_producto" Type="Int32" Nullable="false" />
-          <Property Name="cantidad" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
-          <Property Name="precio_total" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-        </EntityType>
-        <EntityType Name="v_spedido_cliente_servicio">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="id_pedido_cliente" />
-            <PropertyRef Name="id_servicio" />
-            <PropertyRef Name="cantidad" />
-            <PropertyRef Name="precio_total" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_pedido_cliente" Type="Int32" Nullable="false" />
-          <Property Name="id_servicio" Type="Int32" Nullable="false" />
-          <Property Name="cantidad" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
-          <Property Name="precio_total" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-        </EntityType>
-        <EntityType Name="v_spedido_completo">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="codigo_vendedor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="cedula_cliente" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="hora_atencion" Type="DateTime" Precision="3" />
-          <Property Name="hora_venta" Type="DateTime" Precision="3" />
-          <Property Name="hora_recibido_bodega" Type="DateTime" Precision="3" />
-          <Property Name="hora_salida_bodega" Type="DateTime" Precision="3" />
-          <Property Name="codigo_conductor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="hora_inicia_transporte" Type="DateTime" Precision="3" />
-          <Property Name="hora_finaliza_transporte" Type="DateTime" Precision="3" />
-          <Property Name="fecha_factura" Type="DateTime" Precision="3" />
-          <Property Name="codigo_cajero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="subtotal" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="iva" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="total" Type="Decimal" Precision="10" Scale="2" />
-        </EntityType>
-        <EntityType Name="v_spedido_completo_producto">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="id_pedido_completo" />
-            <PropertyRef Name="id_producto" />
-            <PropertyRef Name="cantidad" />
-            <PropertyRef Name="precio_total" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_pedido_completo" Type="Int32" Nullable="false" />
-          <Property Name="id_producto" Type="Int32" Nullable="false" />
-          <Property Name="cantidad" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
-          <Property Name="precio_total" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-        </EntityType>
-        <EntityType Name="v_spedido_completo_servicio">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="id_pedido_completo" />
-            <PropertyRef Name="id_servicio" />
-            <PropertyRef Name="cantidad" />
-            <PropertyRef Name="precio_total" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_pedido_completo" Type="Int32" Nullable="false" />
-          <Property Name="id_servicio" Type="Int32" Nullable="false" />
-          <Property Name="cantidad" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
-          <Property Name="precio_total" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-        </EntityType>
-        <EntityType Name="v_spedido_solo_servicio">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cedula_cliente" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="codigo_constructor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="observaciones" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
-          <Property Name="hora_recibido_bodega" Type="DateTime" Precision="3" />
-          <Property Name="hora_salida_bodega" Type="DateTime" Precision="3" />
-          <Property Name="codigo_conductor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="hora_inicia_transporte" Type="DateTime" Precision="3" />
-          <Property Name="hora_finaliza_transporte" Type="DateTime" Precision="3" />
-          <Property Name="fecha_factura" Type="DateTime" Precision="3" />
-          <Property Name="codigo_cajero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="subtotal" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="iva" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="total" Type="Decimal" Precision="10" Scale="2" />
-        </EntityType>
-        <EntityType Name="v_spedido_solo_servicio_servicio">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="id_pedido_solo_servicio" />
-            <PropertyRef Name="id_servicio" />
-            <PropertyRef Name="cantidad" />
-            <PropertyRef Name="precio_total" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_pedido_solo_servicio" Type="Int32" Nullable="false" />
-          <Property Name="id_servicio" Type="Int32" Nullable="false" />
-          <Property Name="cantidad" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
-          <Property Name="precio_total" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-        </EntityType>
-        <EntityType Name="v_scantidad_pedido_cliente_producto_categoria">
-          <Key>
-            <PropertyRef Name="cantidad" />
-            <PropertyRef Name="categoria" />
-          </Key>
-          <Property Name="cantidad" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
-          <Property Name="categoria" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="v_scantidad_pedido_completo_producto_categoria">
-          <Key>
-            <PropertyRef Name="categoria" />
-          </Key>
-          <Property Name="cantidades" Type="Decimal" Precision="38" Scale="2" />
-          <Property Name="categoria" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="v_scantidad_pcp_categoria">
-          <Key>
-            <PropertyRef Name="categoria" />
-          </Key>
-          <Property Name="cantidades" Type="Decimal" Precision="38" Scale="2" />
-          <Property Name="categoria" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <ComplexType Name="sp_scantidad_pcp_categoria_Result">
-          <Property Type="Decimal" Name="cantidades" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="String" Name="categoria" Nullable="false" MaxLength="30" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1568,32 +1640,15 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_ipedido_cliente_cliente" FunctionName="FerreteriaModel.Store.sp_ipedido_cliente_cliente" />
-          <FunctionImportMapping FunctionImportName="sp_ipedido_cliente_producto" FunctionName="FerreteriaModel.Store.sp_ipedido_cliente_producto" />
-          <FunctionImportMapping FunctionImportName="sp_ipedido_cliente_servicio" FunctionName="FerreteriaModel.Store.sp_ipedido_cliente_servicio" />
-          <FunctionImportMapping FunctionImportName="sp_ipedido_completo_producto" FunctionName="FerreteriaModel.Store.sp_ipedido_completo_producto" />
-          <FunctionImportMapping FunctionImportName="sp_ipedido_completo_servicio" FunctionName="FerreteriaModel.Store.sp_ipedido_completo_servicio" />
-          <FunctionImportMapping FunctionImportName="sp_ipedido_completo_vendedor" FunctionName="FerreteriaModel.Store.sp_ipedido_completo_vendedor" />
-          <FunctionImportMapping FunctionImportName="sp_ipedido_solo_servicio_constructor" FunctionName="FerreteriaModel.Store.sp_ipedido_solo_servicio_constructor" />
-          <FunctionImportMapping FunctionImportName="sp_ipedido_solo_servicio_servicio" FunctionName="FerreteriaModel.Store.sp_ipedido_solo_servicio_servicio" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_cliente_bodega" FunctionName="FerreteriaModel.Store.sp_upedido_cliente_bodega" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_cliente_factura" FunctionName="FerreteriaModel.Store.sp_upedido_cliente_factura" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_cliente_transporte" FunctionName="FerreteriaModel.Store.sp_upedido_cliente_transporte" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_completo_bodega" FunctionName="FerreteriaModel.Store.sp_upedido_completo_bodega" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_completo_factura" FunctionName="FerreteriaModel.Store.sp_upedido_completo_factura" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_completo_transporte" FunctionName="FerreteriaModel.Store.sp_upedido_completo_transporte" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_solo_servicio_bodega" FunctionName="FerreteriaModel.Store.sp_upedido_solo_servicio_bodega" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_solo_servicio_factura" FunctionName="FerreteriaModel.Store.sp_upedido_solo_servicio_factura" />
-          <FunctionImportMapping FunctionImportName="sp_upedido_solo_servicio_transporte" FunctionName="FerreteriaModel.Store.sp_upedido_solo_servicio_transporte" />
           <EntitySetMapping Name="usuario">
             <EntityTypeMapping TypeName="FerreteriaModel.usuario">
               <MappingFragment StoreEntitySet="usuario">
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
-                <ScalarProperty Name="cedula" ColumnName="cedula" />
-                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1611,156 +1666,186 @@ warning 6035: The relationship 'FK__transport__codig__2C3393D0' has columns that
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="v_scantidad_pclp_categoria">
+            <EntityTypeMapping TypeName="FerreteriaModel.v_scantidad_pclp_categoria">
+              <MappingFragment StoreEntitySet="v_scantidad_pclp_categoria">
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_scantidad_pcls_categoria">
+            <EntityTypeMapping TypeName="FerreteriaModel.v_scantidad_pcls_categoria">
+              <MappingFragment StoreEntitySet="v_scantidad_pcls_categoria">
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_scantidad_pcop_categoria">
+            <EntityTypeMapping TypeName="FerreteriaModel.v_scantidad_pcop_categoria">
+              <MappingFragment StoreEntitySet="v_scantidad_pcop_categoria">
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_scantidad_pcos_categoria">
+            <EntityTypeMapping TypeName="FerreteriaModel.v_scantidad_pcos_categoria">
+              <MappingFragment StoreEntitySet="v_scantidad_pcos_categoria">
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_scantidad_pss_categoria">
+            <EntityTypeMapping TypeName="FerreteriaModel.v_scantidad_pss_categoria">
+              <MappingFragment StoreEntitySet="v_scantidad_pss_categoria">
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="v_spedido_cliente">
             <EntityTypeMapping TypeName="FerreteriaModel.v_spedido_cliente">
               <MappingFragment StoreEntitySet="v_spedido_cliente">
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="total" ColumnName="total" />
-                <ScalarProperty Name="iva" ColumnName="iva" />
-                <ScalarProperty Name="subtotal" ColumnName="subtotal" />
-                <ScalarProperty Name="codigo_cajero" ColumnName="codigo_cajero" />
-                <ScalarProperty Name="fecha_factura" ColumnName="fecha_factura" />
-                <ScalarProperty Name="hora_finaliza_transporte" ColumnName="hora_finaliza_transporte" />
-                <ScalarProperty Name="hora_inicia_transporte" ColumnName="hora_inicia_transporte" />
-                <ScalarProperty Name="codigo_conductor" ColumnName="codigo_conductor" />
-                <ScalarProperty Name="hora_salida_bodega" ColumnName="hora_salida_bodega" />
-                <ScalarProperty Name="hora_recibido_bodega" ColumnName="hora_recibido_bodega" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="nombre_cliente" ColumnName="nombre_cliente" />
-                <ScalarProperty Name="cedula_cliente" ColumnName="cedula_cliente" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cedula_cliente" ColumnName="cedula_cliente" />
+                <ScalarProperty Name="nombre_cliente" ColumnName="nombre_cliente" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora_recibido_bodega" ColumnName="hora_recibido_bodega" />
+                <ScalarProperty Name="hora_salida_bodega" ColumnName="hora_salida_bodega" />
+                <ScalarProperty Name="codigo_conductor" ColumnName="codigo_conductor" />
+                <ScalarProperty Name="hora_inicia_transporte" ColumnName="hora_inicia_transporte" />
+                <ScalarProperty Name="hora_finaliza_transporte" ColumnName="hora_finaliza_transporte" />
+                <ScalarProperty Name="fecha_factura" ColumnName="fecha_factura" />
+                <ScalarProperty Name="codigo_cajero" ColumnName="codigo_cajero" />
+                <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+                <ScalarProperty Name="iva" ColumnName="iva" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="v_spedido_cliente_producto">
             <EntityTypeMapping TypeName="FerreteriaModel.v_spedido_cliente_producto">
               <MappingFragment StoreEntitySet="v_spedido_cliente_producto">
-                <ScalarProperty Name="precio_total" ColumnName="precio_total" />
-                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
-                <ScalarProperty Name="id_pedido_cliente" ColumnName="id_pedido_cliente" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_pedido_cliente" ColumnName="id_pedido_cliente" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precio_total" ColumnName="precio_total" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="v_spedido_cliente_servicio">
             <EntityTypeMapping TypeName="FerreteriaModel.v_spedido_cliente_servicio">
               <MappingFragment StoreEntitySet="v_spedido_cliente_servicio">
-                <ScalarProperty Name="precio_total" ColumnName="precio_total" />
-                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="id_servicio" ColumnName="id_servicio" />
-                <ScalarProperty Name="id_pedido_cliente" ColumnName="id_pedido_cliente" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_pedido_cliente" ColumnName="id_pedido_cliente" />
+                <ScalarProperty Name="id_servicio" ColumnName="id_servicio" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precio_total" ColumnName="precio_total" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="v_spedido_completo">
             <EntityTypeMapping TypeName="FerreteriaModel.v_spedido_completo">
               <MappingFragment StoreEntitySet="v_spedido_completo">
-                <ScalarProperty Name="total" ColumnName="total" />
-                <ScalarProperty Name="iva" ColumnName="iva" />
-                <ScalarProperty Name="subtotal" ColumnName="subtotal" />
-                <ScalarProperty Name="codigo_cajero" ColumnName="codigo_cajero" />
-                <ScalarProperty Name="fecha_factura" ColumnName="fecha_factura" />
-                <ScalarProperty Name="hora_finaliza_transporte" ColumnName="hora_finaliza_transporte" />
-                <ScalarProperty Name="hora_inicia_transporte" ColumnName="hora_inicia_transporte" />
-                <ScalarProperty Name="codigo_conductor" ColumnName="codigo_conductor" />
-                <ScalarProperty Name="hora_salida_bodega" ColumnName="hora_salida_bodega" />
-                <ScalarProperty Name="hora_recibido_bodega" ColumnName="hora_recibido_bodega" />
-                <ScalarProperty Name="hora_venta" ColumnName="hora_venta" />
-                <ScalarProperty Name="hora_atencion" ColumnName="hora_atencion" />
-                <ScalarProperty Name="cedula_cliente" ColumnName="cedula_cliente" />
-                <ScalarProperty Name="codigo_vendedor" ColumnName="codigo_vendedor" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigo_vendedor" ColumnName="codigo_vendedor" />
+                <ScalarProperty Name="cedula_cliente" ColumnName="cedula_cliente" />
+                <ScalarProperty Name="hora_atencion" ColumnName="hora_atencion" />
+                <ScalarProperty Name="hora_venta" ColumnName="hora_venta" />
+                <ScalarProperty Name="hora_recibido_bodega" ColumnName="hora_recibido_bodega" />
+                <ScalarProperty Name="hora_salida_bodega" ColumnName="hora_salida_bodega" />
+                <ScalarProperty Name="codigo_conductor" ColumnName="codigo_conductor" />
+                <ScalarProperty Name="hora_inicia_transporte" ColumnName="hora_inicia_transporte" />
+                <ScalarProperty Name="hora_finaliza_transporte" ColumnName="hora_finaliza_transporte" />
+                <ScalarProperty Name="fecha_factura" ColumnName="fecha_factura" />
+                <ScalarProperty Name="codigo_cajero" ColumnName="codigo_cajero" />
+                <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+                <ScalarProperty Name="iva" ColumnName="iva" />
+                <ScalarProperty Name="total" ColumnName="total" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="v_spedido_completo_producto">
             <EntityTypeMapping TypeName="FerreteriaModel.v_spedido_completo_producto">
               <MappingFragment StoreEntitySet="v_spedido_completo_producto">
-                <ScalarProperty Name="precio_total" ColumnName="precio_total" />
-                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
-                <ScalarProperty Name="id_pedido_completo" ColumnName="id_pedido_completo" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_pedido_completo" ColumnName="id_pedido_completo" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precio_total" ColumnName="precio_total" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="v_spedido_completo_servicio">
             <EntityTypeMapping TypeName="FerreteriaModel.v_spedido_completo_servicio">
               <MappingFragment StoreEntitySet="v_spedido_completo_servicio">
-                <ScalarProperty Name="precio_total" ColumnName="precio_total" />
-                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="id_servicio" ColumnName="id_servicio" />
-                <ScalarProperty Name="id_pedido_completo" ColumnName="id_pedido_completo" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_pedido_completo" ColumnName="id_pedido_completo" />
+                <ScalarProperty Name="id_servicio" ColumnName="id_servicio" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precio_total" ColumnName="precio_total" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="v_spedido_solo_servicio">
             <EntityTypeMapping TypeName="FerreteriaModel.v_spedido_solo_servicio">
               <MappingFragment StoreEntitySet="v_spedido_solo_servicio">
-                <ScalarProperty Name="total" ColumnName="total" />
-                <ScalarProperty Name="iva" ColumnName="iva" />
-                <ScalarProperty Name="subtotal" ColumnName="subtotal" />
-                <ScalarProperty Name="codigo_cajero" ColumnName="codigo_cajero" />
-                <ScalarProperty Name="fecha_factura" ColumnName="fecha_factura" />
-                <ScalarProperty Name="hora_finaliza_transporte" ColumnName="hora_finaliza_transporte" />
-                <ScalarProperty Name="hora_inicia_transporte" ColumnName="hora_inicia_transporte" />
-                <ScalarProperty Name="codigo_conductor" ColumnName="codigo_conductor" />
-                <ScalarProperty Name="hora_salida_bodega" ColumnName="hora_salida_bodega" />
-                <ScalarProperty Name="hora_recibido_bodega" ColumnName="hora_recibido_bodega" />
-                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
-                <ScalarProperty Name="codigo_constructor" ColumnName="codigo_constructor" />
-                <ScalarProperty Name="cedula_cliente" ColumnName="cedula_cliente" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cedula_cliente" ColumnName="cedula_cliente" />
+                <ScalarProperty Name="codigo_constructor" ColumnName="codigo_constructor" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="hora_recibido_bodega" ColumnName="hora_recibido_bodega" />
+                <ScalarProperty Name="hora_salida_bodega" ColumnName="hora_salida_bodega" />
+                <ScalarProperty Name="codigo_conductor" ColumnName="codigo_conductor" />
+                <ScalarProperty Name="hora_inicia_transporte" ColumnName="hora_inicia_transporte" />
+                <ScalarProperty Name="hora_finaliza_transporte" ColumnName="hora_finaliza_transporte" />
+                <ScalarProperty Name="fecha_factura" ColumnName="fecha_factura" />
+                <ScalarProperty Name="codigo_cajero" ColumnName="codigo_cajero" />
+                <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+                <ScalarProperty Name="iva" ColumnName="iva" />
+                <ScalarProperty Name="total" ColumnName="total" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="v_spedido_solo_servicio_servicio">
             <EntityTypeMapping TypeName="FerreteriaModel.v_spedido_solo_servicio_servicio">
               <MappingFragment StoreEntitySet="v_spedido_solo_servicio_servicio">
-                <ScalarProperty Name="precio_total" ColumnName="precio_total" />
-                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="id_servicio" ColumnName="id_servicio" />
-                <ScalarProperty Name="id_pedido_solo_servicio" ColumnName="id_pedido_solo_servicio" />
                 <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="v_scantidad_pedido_cliente_producto_categoria">
-            <EntityTypeMapping TypeName="FerreteriaModel.v_scantidad_pedido_cliente_producto_categoria">
-              <MappingFragment StoreEntitySet="v_scantidad_pedido_cliente_producto_categoria">
-                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="id_pedido_solo_servicio" ColumnName="id_pedido_solo_servicio" />
+                <ScalarProperty Name="id_servicio" ColumnName="id_servicio" />
                 <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precio_total" ColumnName="precio_total" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="v_scantidad_pedido_completo_producto_categoria">
-            <EntityTypeMapping TypeName="FerreteriaModel.v_scantidad_pedido_completo_producto_categoria">
-              <MappingFragment StoreEntitySet="v_scantidad_pedido_completo_producto_categoria">
-                <ScalarProperty Name="categoria" ColumnName="categoria" />
-                <ScalarProperty Name="cantidades" ColumnName="cantidades" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="v_scantidad_pcp_categoria">
-            <EntityTypeMapping TypeName="FerreteriaModel.v_scantidad_pcp_categoria">
-              <MappingFragment StoreEntitySet="v_scantidad_pcp_categoria">
-                <ScalarProperty Name="categoria" ColumnName="categoria" />
-                <ScalarProperty Name="cantidades" ColumnName="cantidades" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_scantidad_pcp_categoria" FunctionName="FerreteriaModel.Store.sp_scantidad_pcp_categoria">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="FerreteriaModel.sp_scantidad_pcp_categoria_Result">
-                <ScalarProperty Name="cantidades" ColumnName="cantidades" />
-                <ScalarProperty Name="categoria" ColumnName="categoria" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          </EntityContainerMapping>
+          <FunctionImportMapping FunctionImportName="sp_ipedido_cliente_cliente" FunctionName="FerreteriaModel.Store.sp_ipedido_cliente_cliente" />
+          <FunctionImportMapping FunctionImportName="sp_ipedido_cliente_producto" FunctionName="FerreteriaModel.Store.sp_ipedido_cliente_producto" />
+          <FunctionImportMapping FunctionImportName="sp_ipedido_cliente_servicio" FunctionName="FerreteriaModel.Store.sp_ipedido_cliente_servicio" />
+          <FunctionImportMapping FunctionImportName="sp_ipedido_completo_producto" FunctionName="FerreteriaModel.Store.sp_ipedido_completo_producto" />
+          <FunctionImportMapping FunctionImportName="sp_ipedido_completo_servicio" FunctionName="FerreteriaModel.Store.sp_ipedido_completo_servicio" />
+          <FunctionImportMapping FunctionImportName="sp_ipedido_completo_vendedor" FunctionName="FerreteriaModel.Store.sp_ipedido_completo_vendedor" />
+          <FunctionImportMapping FunctionImportName="sp_ipedido_solo_servicio_constructor" FunctionName="FerreteriaModel.Store.sp_ipedido_solo_servicio_constructor" />
+          <FunctionImportMapping FunctionImportName="sp_ipedido_solo_servicio_servicio" FunctionName="FerreteriaModel.Store.sp_ipedido_solo_servicio_servicio" />
+          <FunctionImportMapping FunctionImportName="sp_spcl_servicio_dia" FunctionName="FerreteriaModel.Store.sp_spcl_servicio_dia" />
+          <FunctionImportMapping FunctionImportName="sp_spco_dia" FunctionName="FerreteriaModel.Store.sp_spco_dia" />
+          <FunctionImportMapping FunctionImportName="sp_spco_servicio_dia" FunctionName="FerreteriaModel.Store.sp_spco_servicio_dia" />
+          <FunctionImportMapping FunctionImportName="sp_sps_dia" FunctionName="FerreteriaModel.Store.sp_sps_dia" />
+          <FunctionImportMapping FunctionImportName="sp_sps_servicio_dia" FunctionName="FerreteriaModel.Store.sp_sps_servicio_dia" />
+          <FunctionImportMapping FunctionImportName="sp_upedido_cliente_bodega" FunctionName="FerreteriaModel.Store.sp_upedido_cliente_bodega" />
+          <FunctionImportMapping FunctionImportName="sp_upedido_cliente_factura" FunctionName="FerreteriaModel.Store.sp_upedido_cliente_factura" />
+          <FunctionImportMapping FunctionImportName="sp_upedido_cliente_transporte" FunctionName="FerreteriaModel.Store.sp_upedido_cliente_transporte" />
+          <FunctionImportMapping FunctionImportName="sp_upedido_completo_bodega" FunctionName="FerreteriaModel.Store.sp_upedido_completo_bodega" />
+          <FunctionImportMapping FunctionImportName="sp_upedido_completo_factura" FunctionName="FerreteriaModel.Store.sp_upedido_completo_factura" />
+          <FunctionImportMapping FunctionImportName="sp_upedido_completo_transporte" FunctionName="FerreteriaModel.Store.sp_upedido_completo_transporte" />
+          <FunctionImportMapping FunctionImportName="sp_upedido_solo_servicio_bodega" FunctionName="FerreteriaModel.Store.sp_upedido_solo_servicio_bodega" />
+          <FunctionImportMapping FunctionImportName="sp_upedido_solo_servicio_factura" FunctionName="FerreteriaModel.Store.sp_upedido_solo_servicio_factura" />
+          <FunctionImportMapping FunctionImportName="sp_upedido_solo_servicio_transporte" FunctionName="FerreteriaModel.Store.sp_upedido_solo_servicio_transporte" />
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

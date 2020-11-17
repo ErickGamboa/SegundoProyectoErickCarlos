@@ -362,6 +362,34 @@ namespace Presentation
                 dtpDia.Visible = false;
                 Reporte2();
             }
+            else if (cmbReportes.SelectedIndex == 2)
+            {
+                dtpDia.Visible = false;
+                Reporte3();
+            }
+            else if (cmbReportes.SelectedIndex == 3)
+            {
+                dtpDia.Visible = false;
+                Reporte4();
+            }
+
+            else if (cmbReportes.SelectedIndex == 4)
+            {
+                dtpDia.Visible = false;
+                Reporte5();
+            }
+
+            else if (cmbReportes.SelectedIndex == 5)
+            {
+                dtpDia.Visible = false;
+                Reporte6();
+            }
+            else if (cmbReportes.SelectedIndex == 6)
+            {
+                dtpDia.Visible = false;
+                Reporte7();
+            }
+
             else if (cmbReportes.SelectedIndex == 7)
             {
                 dtpDia.Visible = true;
@@ -437,6 +465,49 @@ namespace Presentation
             }
 
             chart.Titles[0].Text = "Cantidad de ventas por categoría de productos";
+            chart.Series["Series"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            chart.Series["Series"].IsValueShownAsLabel = true;
+
+            foreach (Reporte2E r in reporte)
+            {
+                chart.Series["Series"].Points.AddXY(r.Categoria, r.Cantidad);
+            }
+        }
+        private void Reporte3()
+        {
+            LimpiarGrafico();
+            List<Reporte2E> reporte = new List<Reporte2E>();
+
+            foreach (string s in servicio.CargarCategoriaServicio())
+            {
+                reporte.Add(new Reporte2E(0, s));
+            }
+
+            foreach (Reporte2E r1 in pedido.CargarCantidadPCoSCategoria())
+            {
+                foreach (Reporte2E r2 in reporte)
+                {
+                    if (r1.Categoria == r2.Categoria)
+                    {
+                        r2.Cantidad += r1.Cantidad;
+                        break;
+                    }
+                }
+            }
+
+            foreach (Reporte2E r1 in pedido.CargarCantidadPClSCategoria())
+            {
+                foreach (Reporte2E r2 in reporte)
+                {
+                    if (r1.Categoria == r2.Categoria)
+                    {
+                        r2.Cantidad += r1.Cantidad;
+                        break;
+                    }
+                }
+            }
+
+            chart.Titles[0].Text = "Cantidad de ventas por categoría de servicios";
             chart.Series["Series"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             chart.Series["Series"].IsValueShownAsLabel = true;
 
@@ -533,5 +604,101 @@ namespace Presentation
                 Reporte9(dtpDia.Value.Date);
             }
         }
+
+        private void Reporte4()
+        {
+            LimpiarGrafico();
+            List<Reporte4E> reporte = new List<Reporte4E>();
+
+            foreach (Reporte4E s in pedido.CargarCantidadPCOVendedor())
+            {
+                reporte.Add(s);
+            }
+
+            chart.Titles[0].Text = "Ventas de cada vendedor";
+            chart.Series["Series"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            chart.Series["Series"].IsValueShownAsLabel = false;
+
+            foreach (Reporte4E r in reporte)
+            {
+                chart.Series["Series"].Points.AddXY(r.CodVendedor, r.Cantiddad);
+            }
+        }
+        private void Reporte5()
+        {
+            LimpiarGrafico();
+            List<Reporte4E> reporte = new List<Reporte4E>();
+
+            foreach (Reporte4E s in pedido.CargarCantidadPSSConstructorConductor())
+            {
+                reporte.Add(s);
+            }
+
+            chart.Titles[0].Text = "Servicios realizados por el constructor y conductor";
+            chart.Series["Series"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            chart.Series["Series"].IsValueShownAsLabel = false;
+
+            foreach (Reporte4E r in reporte)
+            {
+                chart.Series["Series"].Points.AddXY(r.CodVendedor, r.Cantiddad);
+            }
+        }
+
+        private void Reporte6()
+        {
+            LimpiarGrafico();
+            int cantidad = 0;
+
+            foreach (int s in pedido.CargarCantidadPCOCliente())
+            {
+                cantidad += s;
+            }
+            foreach (int s in pedido.CargarCantidadPSSCliente())
+            {
+                cantidad += s;
+            }
+            foreach (int s in pedido.CargarCantidadPCLCliente())
+            {
+                cantidad += s;
+            }
+
+            chart.Titles[0].Text = "Servicios realizados por el constructor y conductor";
+            chart.Series["Series"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            chart.Series["Series"].IsValueShownAsLabel = false;
+            chart.Series["Series"].Points.AddXY("Clientes", cantidad);
+            
+        }
+
+        private void Reporte7()
+        {
+            LimpiarGrafico();
+            List<Reporte7E> reporte = new List<Reporte7E>();
+
+            foreach (Reporte7E s in pedido.CargarCantidadSPCOCostos())
+            { 
+            
+                reporte.Add(new Reporte7E (s.Total,s.IVA) );
+            }
+            foreach (Reporte7E s in pedido.CargarCantidadSPSOCostos())
+            {
+
+                reporte[0].Total+=s.Total;
+                reporte[0].IVA += s.IVA;
+            }
+            foreach (Reporte7E s in pedido.CargarCantidadSPCLCostos())
+            {
+
+                reporte[0].Total += s.Total;
+                reporte[0].IVA += s.IVA;
+            }
+
+            chart.Titles[0].Text = "Servicios realizados por el constructor y conductor";
+            chart.Series["Series"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            chart.Series["Series"].IsValueShownAsLabel = false;
+            chart.Series["Series"].Points.AddXY("Total", reporte[0].Total);
+            chart.Series["Series"].Points.AddXY("IVA", reporte[0].IVA);
+
+        }
+
     }
 }
