@@ -1,5 +1,6 @@
 ﻿using Data;
 using Entities;
+using Entities.Reportes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -450,5 +451,86 @@ namespace Logic
                 return db.Database.SqlQuery<string>("sp_sps_dia @p0", dia).ToList();
             }
         }
+
+        public List<Reporte2E> CargarCantidadPCoSCategoria()
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                return db.Database.SqlQuery<Reporte2E>("SELECT * FROM v_scantidad_pcos_categoria").ToList();
+            }
+        }
+
+        public List<Reporte2E> CargarCantidadPClSCategoria()
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                return db.Database.SqlQuery<Reporte2E>("SELECT * FROM v_scantidad_pcls_categoria").ToList();
+            }
+        }
+
+        public List<Reporte4E> CargarCantidadPCOVendedor()
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                return db.Database.SqlQuery<Reporte4E>("SELECT * FROM v_scantidad_pco_vendedor").ToList();
+            }
+        }
+
+        public List<Reporte4E> CargarCantidadPSSConstructorConductor()
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                return db.Database.SqlQuery<Reporte4E>("SELECT * FROM v_scantidad_pss_constructor_conductor").ToList();
+            }
+        }
+
+        public List<int> CargarCantidadPCOCliente()
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                return db.Database.SqlQuery<int>("SELECT * FROM v_scantidad_pco_cliente").ToList();
+            }
+        }
+
+        public List<int> CargarCantidadPSSCliente()
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                return db.Database.SqlQuery<int>("SELECT * FROM v_scantidad_pss_cliente").ToList();
+            }
+        }
+
+        public List<int> CargarCantidadPCLCliente()
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                return db.Database.SqlQuery<int>("SELECT * FROM v_scantidad_pcl_cliente").ToList();
+            }
+        }
+
+        public List<Reporte7E> CargarCantidadSPCOCostos()
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                return db.Database.SqlQuery<Reporte7E>("SELECT * FROM v_spco_costos").ToList();
+            }
+        }
+
+        public List<Reporte7E> CargarCantidadSPSOCostos()
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                return db.Database.SqlQuery<Reporte7E>("SELECT * FROM v_sps_costos").ToList();
+            }
+        }
+
+        public List<Reporte7E> CargarCantidadSPCLCostos()
+        {
+            using (FerreteriaEntities db = new FerreteriaEntities())
+            {
+                return db.Database.SqlQuery<Reporte7E>("SELECT * FROM v_spcl_costos").ToList();
+            }
+        }
+
     }
 }
