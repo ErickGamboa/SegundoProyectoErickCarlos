@@ -45,7 +45,9 @@ namespace Presentation
             catch (Exception) {
             }
 
-
+            /*
+             This method clean the Products tab. Null values are saved to the components of tab
+                 */
         }
         public void LimpiarDatosProducto() {
             txtNombreProducto.Text = "";
@@ -56,10 +58,21 @@ namespace Presentation
             mensajeSeleccion.Text = "";
             idSelecionado.Text = "";
         }
+
+        /*
+         This method connect the logic layer with presentation layer. Call one data grid view 
+         and save objects that brings a logic method
+             */
+
         public void CargarProductos() {
             dtgvProductos.DataSource = null;
             dtgvProductos.DataSource = producto.CargarProducto("", "");
         }
+
+        /*
+         This method clean the Services tab. Null values are saved to the components of tab
+             */
+
         public void LimpiarDatosServicio()
         {
             txtNombreServicio.Text = "";
@@ -70,17 +83,31 @@ namespace Presentation
             idSeleccionadoServicio.Text = "";
         }
 
+        /*
+         This method connect the logic layer with presentation layer. Call one data grid view 
+         and save objects that brings a logic method
+             */
+
         public void CargarServicios()
         {
             dtgvServicios.DataSource = null;
             dtgvServicios.DataSource = servicio.CargarServicio("","");
         }
 
+        /*
+         This method clean the transports tab. Null values are saved to the components of tab
+             */
+
         public void LimpiarDatosTransporte()
         {
             txtNumeroVehiculo.Text = "";
             txtIdConductor.Text = "";
         }
+
+        /*
+         This method connect the logic layer with presentation layer. Call one data grid view 
+         and save objects that brings a logic method
+             */
 
         public void CargarTransportes()
         {

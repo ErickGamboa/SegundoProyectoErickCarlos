@@ -13,6 +13,13 @@ namespace Logic
 {
     public class LLogin
     {
+
+        /*
+         This method receive two string in the parameters. The first string is the user and the second string is the password.
+         With a query the method search the parameters in the database. If the ExecuteReader could read the method return an 
+         object. Else the method throw an exception
+             */
+
         public UsuarioE Login(string usuario, string contra) {
             UsuarioE u = new UsuarioE();
             var builder = new SqlConnectionStringBuilder();

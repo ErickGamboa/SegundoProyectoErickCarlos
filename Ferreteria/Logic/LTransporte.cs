@@ -10,6 +10,12 @@ namespace Logic
 {
     public class LTransporte
     {
+
+        /*
+         This method receives all the information of a Transport in the parameters. This information is saved on an object of type
+         transporte. After that the object is saved in the data base
+             */
+
         public void RegistrarTransporte(string numeroVehiculo, string idConductor, Boolean estado)
         {
             using (FerreteriaEntities db = new FerreteriaEntities())
@@ -23,6 +29,12 @@ namespace Logic
             }
 
         }
+
+        /*
+         This method consults the transports in the data bases. These transports are saved in a list.
+         The method returns the list with objects. 
+             */
+
         public List<TransporteE> CargarTransportes()
         {
             using (FerreteriaEntities db = new FerreteriaEntities())
@@ -44,6 +56,11 @@ namespace Logic
 
         }
 
+        /*
+         This method receives all the information of a Transport in the parameters. Data base find this transport with the id and 
+         edit the necessary information
+             */
+
         public void EditarTransporte(string numeroVehiculo, string idConductor, Boolean estado, int id)
         {
 
@@ -62,6 +79,11 @@ namespace Logic
 
 
         }
+
+        /*
+         This method receives the id of a Transport in the parameters. Data base find this transport with the id and 
+         delete the register
+             */
 
         public void EliminarTransporte(int id)
         {
